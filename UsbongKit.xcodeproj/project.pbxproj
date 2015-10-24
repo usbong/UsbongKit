@@ -10,6 +10,29 @@
 		DFA633D21BDBD17C00C079B2 /* UsbongKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA633D11BDBD17C00C079B2 /* UsbongKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFA633D91BDBD17C00C079B2 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; settings = {ASSET_TAGS = (); }; };
 		DFA633DE1BDBD17C00C079B2 /* UsbongKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */; };
+		DFA634051BDBD19000C079B2 /* ImageDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EA1BDBD19000C079B2 /* ImageDisplayTaskNode.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA634061BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EB1BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA634071BDBD19000C079B2 /* TaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EC1BDBD19000C079B2 /* TaskNode.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA634081BDBD19000C079B2 /* TaskNodeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633ED1BDBD19000C079B2 /* TaskNodeModule.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA634091BDBD19000C079B2 /* TextDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EE1BDBD19000C079B2 /* TextDisplayTaskNode.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA6340A1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EF1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA6340B1BDBD19000C079B2 /* UsbongFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F11BDBD19000C079B2 /* UsbongFileManager.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA6340C1BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F21BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA6340D1BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F31BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA6340E1BDBD19000C079B2 /* UsbongTreeViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F41BDBD19000C079B2 /* UsbongTreeViewer.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA6340F1BDBD19000C079B2 /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F61BDBD19000C079B2 /* LanguagesTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA634101BDBD19000C079B2 /* TaskNodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F71BDBD19000C079B2 /* TaskNodeTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA634111BDBD19000C079B2 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F81BDBD19000C079B2 /* TreeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA634121BDBD19000C079B2 /* CommunityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633FC1BDBD19000C079B2 /* CommunityTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA634131BDBD19000C079B2 /* CommunityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFA633FD1BDBD19000C079B2 /* CommunityTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		DFA634141BDBD19000C079B2 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633FF1BDBD19000C079B2 /* ImageTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA634151BDBD19000C079B2 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFA634001BDBD19000C079B2 /* ImageTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		DFA634161BDBD19000C079B2 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA634021BDBD19000C079B2 /* TextTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		DFA634171BDBD19000C079B2 /* TextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFA634031BDBD19000C079B2 /* TextTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		DFA634181BDBD19000C079B2 /* TreeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA634041BDBD19000C079B2 /* TreeStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
+		DFA6341C1BDBD1F800C079B2 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA634191BDBD1F800C079B2 /* Crypto.framework */; };
+		DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
+		DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +52,29 @@
 		DFA633D81BDBD17C00C079B2 /* UsbongKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UsbongKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbongKitTests.swift; sourceTree = "<group>"; };
 		DFA633DF1BDBD17C00C079B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFA633EA1BDBD19000C079B2 /* ImageDisplayTaskNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDisplayTaskNode.swift; sourceTree = "<group>"; };
+		DFA633EB1BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTextDisplayTaskNode.swift; sourceTree = "<group>"; };
+		DFA633EC1BDBD19000C079B2 /* TaskNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNode.swift; sourceTree = "<group>"; };
+		DFA633ED1BDBD19000C079B2 /* TaskNodeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNodeModule.swift; sourceTree = "<group>"; };
+		DFA633EE1BDBD19000C079B2 /* TextDisplayTaskNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDisplayTaskNode.swift; sourceTree = "<group>"; };
+		DFA633EF1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextImageDisplayTaskNode.swift; sourceTree = "<group>"; };
+		DFA633F11BDBD19000C079B2 /* UsbongFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongFileManager.swift; sourceTree = "<group>"; };
+		DFA633F21BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongTaskNodeGenerator.swift; sourceTree = "<group>"; };
+		DFA633F31BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongTaskNodeGeneratorXML.swift; sourceTree = "<group>"; };
+		DFA633F41BDBD19000C079B2 /* UsbongTreeViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongTreeViewer.swift; sourceTree = "<group>"; };
+		DFA633F61BDBD19000C079B2 /* LanguagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewController.swift; sourceTree = "<group>"; };
+		DFA633F71BDBD19000C079B2 /* TaskNodeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNodeTableViewController.swift; sourceTree = "<group>"; };
+		DFA633F81BDBD19000C079B2 /* TreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
+		DFA633FC1BDBD19000C079B2 /* CommunityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityTableViewCell.swift; sourceTree = "<group>"; };
+		DFA633FD1BDBD19000C079B2 /* CommunityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityTableViewCell.xib; sourceTree = "<group>"; };
+		DFA633FF1BDBD19000C079B2 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		DFA634001BDBD19000C079B2 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
+		DFA634021BDBD19000C079B2 /* TextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
+		DFA634031BDBD19000C079B2 /* TextTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextTableViewCell.xib; sourceTree = "<group>"; };
+		DFA634041BDBD19000C079B2 /* TreeStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TreeStoryboard.storyboard; sourceTree = "<group>"; };
+		DFA634191BDBD1F800C079B2 /* Crypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crypto.framework; path = Carthage/Build/iOS/Crypto.framework; sourceTree = "<group>"; };
+		DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
+		DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFA6341C1BDBD1F800C079B2 /* Crypto.framework in Frameworks */,
+				DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */,
+				DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +102,7 @@
 		DFA633C41BDBD17B00C079B2 = {
 			isa = PBXGroup;
 			children = (
+				DFA6341F1BDBD1FF00C079B2 /* Frameworks */,
 				DFA633D01BDBD17C00C079B2 /* UsbongKit */,
 				DFA633DC1BDBD17C00C079B2 /* UsbongKitTests */,
 				DFA633CF1BDBD17C00C079B2 /* Products */,
@@ -73,6 +123,9 @@
 			children = (
 				DFA633D11BDBD17C00C079B2 /* UsbongKit.h */,
 				DFA633D31BDBD17C00C079B2 /* Info.plist */,
+				DFA633E81BDBD19000C079B2 /* Classes */,
+				DFA633F51BDBD19000C079B2 /* ViewControllers */,
+				DFA633F91BDBD19000C079B2 /* Views */,
 			);
 			path = UsbongKit;
 			sourceTree = "<group>";
@@ -84,6 +137,105 @@
 				DFA633DF1BDBD17C00C079B2 /* Info.plist */,
 			);
 			path = UsbongKitTests;
+			sourceTree = "<group>";
+		};
+		DFA633E81BDBD19000C079B2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DFA633F41BDBD19000C079B2 /* UsbongTreeViewer.swift */,
+				DFA633E91BDBD19000C079B2 /* TaskNode */,
+				DFA633F01BDBD19000C079B2 /* UsbongEngine */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		DFA633E91BDBD19000C079B2 /* TaskNode */ = {
+			isa = PBXGroup;
+			children = (
+				DFA633EA1BDBD19000C079B2 /* ImageDisplayTaskNode.swift */,
+				DFA633EB1BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift */,
+				DFA633EC1BDBD19000C079B2 /* TaskNode.swift */,
+				DFA633ED1BDBD19000C079B2 /* TaskNodeModule.swift */,
+				DFA633EE1BDBD19000C079B2 /* TextDisplayTaskNode.swift */,
+				DFA633EF1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift */,
+			);
+			path = TaskNode;
+			sourceTree = "<group>";
+		};
+		DFA633F01BDBD19000C079B2 /* UsbongEngine */ = {
+			isa = PBXGroup;
+			children = (
+				DFA633F11BDBD19000C079B2 /* UsbongFileManager.swift */,
+				DFA633F21BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift */,
+				DFA633F31BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift */,
+			);
+			path = UsbongEngine;
+			sourceTree = "<group>";
+		};
+		DFA633F51BDBD19000C079B2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DFA633F61BDBD19000C079B2 /* LanguagesTableViewController.swift */,
+				DFA633F71BDBD19000C079B2 /* TaskNodeTableViewController.swift */,
+				DFA633F81BDBD19000C079B2 /* TreeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DFA633F91BDBD19000C079B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DFA633FA1BDBD19000C079B2 /* TableViewCells */,
+				DFA634041BDBD19000C079B2 /* TreeStoryboard.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DFA633FA1BDBD19000C079B2 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				DFA633FB1BDBD19000C079B2 /* CommunityTableViewCell */,
+				DFA633FE1BDBD19000C079B2 /* ImageTableViewCell */,
+				DFA634011BDBD19000C079B2 /* TextTableViewCell */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		DFA633FB1BDBD19000C079B2 /* CommunityTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DFA633FC1BDBD19000C079B2 /* CommunityTableViewCell.swift */,
+				DFA633FD1BDBD19000C079B2 /* CommunityTableViewCell.xib */,
+			);
+			path = CommunityTableViewCell;
+			sourceTree = "<group>";
+		};
+		DFA633FE1BDBD19000C079B2 /* ImageTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DFA633FF1BDBD19000C079B2 /* ImageTableViewCell.swift */,
+				DFA634001BDBD19000C079B2 /* ImageTableViewCell.xib */,
+			);
+			path = ImageTableViewCell;
+			sourceTree = "<group>";
+		};
+		DFA634011BDBD19000C079B2 /* TextTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DFA634021BDBD19000C079B2 /* TextTableViewCell.swift */,
+				DFA634031BDBD19000C079B2 /* TextTableViewCell.xib */,
+			);
+			path = TextTableViewCell;
+			sourceTree = "<group>";
+		};
+		DFA6341F1BDBD1FF00C079B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DFA634191BDBD1F800C079B2 /* Crypto.framework */,
+				DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */,
+				DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,6 +260,7 @@
 				DFA633CA1BDBD17C00C079B2 /* Frameworks */,
 				DFA633CB1BDBD17C00C079B2 /* Headers */,
 				DFA633CC1BDBD17C00C079B2 /* Resources */,
+				DFA634201BDBD21F00C079B2 /* Carthage Script */,
 			);
 			buildRules = (
 			);
@@ -176,6 +329,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFA634131BDBD19000C079B2 /* CommunityTableViewCell.xib in Resources */,
+				DFA634181BDBD19000C079B2 /* TreeStoryboard.storyboard in Resources */,
+				DFA634151BDBD19000C079B2 /* ImageTableViewCell.xib in Resources */,
+				DFA634171BDBD19000C079B2 /* TextTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,11 +345,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DFA634201BDBD21F00C079B2 /* Carthage Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ZipArchive.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Crypto.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SWXMLHash.framework",
+			);
+			name = "Carthage Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DFA633C91BDBD17C00C079B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFA634071BDBD19000C079B2 /* TaskNode.swift in Sources */,
+				DFA6340F1BDBD19000C079B2 /* LanguagesTableViewController.swift in Sources */,
+				DFA634061BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift in Sources */,
+				DFA634121BDBD19000C079B2 /* CommunityTableViewCell.swift in Sources */,
+				DFA634081BDBD19000C079B2 /* TaskNodeModule.swift in Sources */,
+				DFA634091BDBD19000C079B2 /* TextDisplayTaskNode.swift in Sources */,
+				DFA6340A1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift in Sources */,
+				DFA6340E1BDBD19000C079B2 /* UsbongTreeViewer.swift in Sources */,
+				DFA634111BDBD19000C079B2 /* TreeViewController.swift in Sources */,
+				DFA634051BDBD19000C079B2 /* ImageDisplayTaskNode.swift in Sources */,
+				DFA634161BDBD19000C079B2 /* TextTableViewCell.swift in Sources */,
+				DFA634101BDBD19000C079B2 /* TaskNodeTableViewController.swift in Sources */,
+				DFA6340C1BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift in Sources */,
+				DFA634141BDBD19000C079B2 /* ImageTableViewCell.swift in Sources */,
+				DFA6340B1BDBD19000C079B2 /* UsbongFileManager.swift in Sources */,
+				DFA6340D1BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,8 +504,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = UsbongKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ph.usbong.UsbongKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -327,8 +525,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = UsbongKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ph.usbong.UsbongKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
