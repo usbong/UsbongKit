@@ -1,7 +1,7 @@
-# UsbongFramework
+# UsbongKit
 [![License](https://img.shields.io/badge/license-ALv2-blue.svg)](./LICENSE)
 
-UsbongFramework is a framework that contains the main components for Usbong.
+UsbongKit is a framework that contains the main components for Usbong.
 
 # License
 
