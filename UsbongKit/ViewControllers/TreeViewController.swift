@@ -34,6 +34,19 @@ class TreeViewController: UIViewController {
     
     var taskNodeTableViewController = TaskNodeTableViewController()
     
+    var voiceOverOn: Bool {
+        get {
+            // Default to true if not yet set
+            if NSUserDefaults.standardUserDefaults().objectForKey("SpeechOn") == nil {
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "SpeechOn")
+            }
+            return NSUserDefaults.standardUserDefaults().boolForKey("SpeechOn")
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "SpeechOn")
+        }
+    }
+    
     lazy var speechSynthezier: AVSpeechSynthesizer = AVSpeechSynthesizer()
     var backgroundAudioPlayer: AVAudioPlayer?
     var audioSpeechPlayer: AVAudioPlayer?
@@ -67,6 +80,11 @@ class TreeViewController: UIViewController {
             
             // Load background audio at start
             loadBackgroundAudio()
+            
+            // Start voice-over if on
+            if voiceOverOn {
+                startVoiceOver()
+            }
         }
         
         if taskNodeGenerator?.previousTaskNode == nil {
@@ -92,7 +110,7 @@ class TreeViewController: UIViewController {
             presentViewController(alertController, animated: true, completion: nil)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -118,24 +136,13 @@ class TreeViewController: UIViewController {
             
         } else {
             // Next transition
-            if taskNodeGenerator?.currentTaskNode is EndStateTaskNode {
+            if taskNodeGenerator?.currentTaskNode is EndStateTaskNode || taskNodeGenerator?.nextTaskNode is EndStateTaskNode {
                 dismissViewControllerAnimated(true, completion: nil)
             } else {
                 taskNodeGenerator?.transitionToNextTaskNode()
             }
         }
         
-        // Load task node it task node table view controller
-//        if let currentTaskNode = taskNodeGenerator?.currentTaskNode {
-//            let oldTaskNode = taskNodeTableViewController.taskNode
-//            taskNodeTableViewController.taskNode = currentTaskNode
-//            
-//            // Background audio
-//            if oldTaskNode.backgroundAudioFilePath != currentTaskNode.backgroundAudioFilePath {
-//                backgroundAudioPlayer = nil
-//                loadBackgroundAudio()
-//            }
-//        }
         reloadCurrentTaskNode()
         
         // Finished transition
@@ -147,7 +154,7 @@ class TreeViewController: UIViewController {
         }
         
         // Change next button title to exit if transitioned node is end state
-        if taskNodeGenerator?.currentTaskNode is EndStateTaskNode {
+        if taskNodeGenerator?.currentTaskNode is EndStateTaskNode || taskNodeGenerator?.nextTaskNode is EndStateTaskNode {
             sender.setTitle("Exit", forSegmentAtIndex: 1)
         } else {
             sender.setTitle("Next", forSegmentAtIndex: 1)
@@ -161,8 +168,16 @@ class TreeViewController: UIViewController {
     @IBAction func didPressMore(sender: AnyObject) {
         let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
-        let speechAction = UIAlertAction(title: "Speech", style: .Default) { (action) -> Void in
-            self.startVoiceOver()
+        let onOrOffText = voiceOverOn ? "Off" : "On"
+        let speechAction = UIAlertAction(title: "Speech \(onOrOffText)", style: .Default) { (action) -> Void in
+            let turnOn = !self.voiceOverOn
+            
+            // If toggled to on, start voice-over
+            if turnOn {
+                self.startVoiceOver()
+            }
+            
+            self.voiceOverOn = turnOn
         }
         let setLanguageAction = UIAlertAction(title: "Set Language", style: .Default) { (action) -> Void in
             self.showChoosLanguageScreen()
@@ -187,8 +202,14 @@ class TreeViewController: UIViewController {
                 let currentBGFilePath = backgroundAudioPlayer?.url?.path ?? ""
                 if taskNodeBGFilePath.characters.count > 0 && taskNodeBGFilePath != currentBGFilePath {
                     backgroundAudioPlayer = nil
+                    
                     loadBackgroundAudio()
                 }
+            }
+            
+            // Start voice-over if on
+            if voiceOverOn {
+                startVoiceOver()
             }
         }
     }
@@ -202,7 +223,7 @@ class TreeViewController: UIViewController {
                     audioPlayer.numberOfLoops = -1 // Endless loop
                     audioPlayer.prepareToPlay()
                     audioPlayer.play()
-                    audioPlayer.volume = 0.3
+                    audioPlayer.volume = 0.4
                     
                     backgroundAudioPlayer = audioPlayer
                 }
@@ -232,7 +253,6 @@ class TreeViewController: UIViewController {
                 print("\(textModule.text)")
                 let utterance = AVSpeechUtterance(string: textModule.text)
                 
-                // TODO: Set voice with language
                 utterance.voice = AVSpeechSynthesisVoice(language: taskNodeGenerator?.currentLanguageCode ?? "en-EN")
                 
                 // Speak
@@ -285,8 +305,6 @@ class TreeViewController: UIViewController {
         let navigationController = UINavigationController(rootViewController: languagesVC)
         
         presentViewController(navigationController, animated: true, completion: nil)
-        
-//        performSegueWithIdentifier("showLanguages", sender: nil)
     }
     
     // MARK: - Navigation
