@@ -7,35 +7,56 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */; };
+		DF452B481BDE0AFD003EB5C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B471BDE0AFD003EB5C3 /* ViewController.swift */; };
+		DF452B4B1BDE0AFD003EB5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF452B491BDE0AFD003EB5C3 /* Main.storyboard */; };
+		DF452B4D1BDE0AFD003EB5C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF452B4C1BDE0AFD003EB5C3 /* Assets.xcassets */; };
+		DF452B501BDE0AFD003EB5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */; };
+		DF452B5B1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B5A1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift */; };
+		DF452B661BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */; };
 		DFA633D21BDBD17C00C079B2 /* UsbongKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA633D11BDBD17C00C079B2 /* UsbongKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DFA633D91BDBD17C00C079B2 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; settings = {ASSET_TAGS = (); }; };
+		DFA633D91BDBD17C00C079B2 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
 		DFA633DE1BDBD17C00C079B2 /* UsbongKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */; };
-		DFA634051BDBD19000C079B2 /* ImageDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EA1BDBD19000C079B2 /* ImageDisplayTaskNode.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA634061BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EB1BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA634071BDBD19000C079B2 /* TaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EC1BDBD19000C079B2 /* TaskNode.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA634081BDBD19000C079B2 /* TaskNodeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633ED1BDBD19000C079B2 /* TaskNodeModule.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA634091BDBD19000C079B2 /* TextDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EE1BDBD19000C079B2 /* TextDisplayTaskNode.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA6340A1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EF1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA6340B1BDBD19000C079B2 /* UsbongFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F11BDBD19000C079B2 /* UsbongFileManager.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA6340C1BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F21BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA6340D1BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F31BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA6340E1BDBD19000C079B2 /* UsbongTreeViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F41BDBD19000C079B2 /* UsbongTreeViewer.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA6340F1BDBD19000C079B2 /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F61BDBD19000C079B2 /* LanguagesTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA634101BDBD19000C079B2 /* TaskNodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F71BDBD19000C079B2 /* TaskNodeTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA634111BDBD19000C079B2 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F81BDBD19000C079B2 /* TreeViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA634121BDBD19000C079B2 /* CommunityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633FC1BDBD19000C079B2 /* CommunityTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA634131BDBD19000C079B2 /* CommunityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFA633FD1BDBD19000C079B2 /* CommunityTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		DFA634141BDBD19000C079B2 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633FF1BDBD19000C079B2 /* ImageTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA634151BDBD19000C079B2 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFA634001BDBD19000C079B2 /* ImageTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		DFA634161BDBD19000C079B2 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA634021BDBD19000C079B2 /* TextTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		DFA634171BDBD19000C079B2 /* TextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFA634031BDBD19000C079B2 /* TextTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		DFA634181BDBD19000C079B2 /* TreeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA634041BDBD19000C079B2 /* TreeStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
+		DFA634051BDBD19000C079B2 /* ImageDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EA1BDBD19000C079B2 /* ImageDisplayTaskNode.swift */; };
+		DFA634061BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EB1BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift */; };
+		DFA634071BDBD19000C079B2 /* TaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EC1BDBD19000C079B2 /* TaskNode.swift */; };
+		DFA634081BDBD19000C079B2 /* TaskNodeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633ED1BDBD19000C079B2 /* TaskNodeModule.swift */; };
+		DFA634091BDBD19000C079B2 /* TextDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EE1BDBD19000C079B2 /* TextDisplayTaskNode.swift */; };
+		DFA6340A1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EF1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift */; };
+		DFA6340B1BDBD19000C079B2 /* UsbongFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F11BDBD19000C079B2 /* UsbongFileManager.swift */; };
+		DFA6340C1BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F21BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift */; };
+		DFA6340D1BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F31BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift */; };
+		DFA6340E1BDBD19000C079B2 /* UsbongTreeViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F41BDBD19000C079B2 /* UsbongTreeViewer.swift */; };
+		DFA6340F1BDBD19000C079B2 /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F61BDBD19000C079B2 /* LanguagesTableViewController.swift */; };
+		DFA634101BDBD19000C079B2 /* TaskNodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F71BDBD19000C079B2 /* TaskNodeTableViewController.swift */; };
+		DFA634111BDBD19000C079B2 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F81BDBD19000C079B2 /* TreeViewController.swift */; };
+		DFA634121BDBD19000C079B2 /* CommunityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633FC1BDBD19000C079B2 /* CommunityTableViewCell.swift */; };
+		DFA634131BDBD19000C079B2 /* CommunityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFA633FD1BDBD19000C079B2 /* CommunityTableViewCell.xib */; };
+		DFA634141BDBD19000C079B2 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633FF1BDBD19000C079B2 /* ImageTableViewCell.swift */; };
+		DFA634151BDBD19000C079B2 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFA634001BDBD19000C079B2 /* ImageTableViewCell.xib */; };
+		DFA634161BDBD19000C079B2 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA634021BDBD19000C079B2 /* TextTableViewCell.swift */; };
+		DFA634171BDBD19000C079B2 /* TextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFA634031BDBD19000C079B2 /* TextTableViewCell.xib */; };
+		DFA634181BDBD19000C079B2 /* TreeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA634041BDBD19000C079B2 /* TreeStoryboard.storyboard */; };
 		DFA6341C1BDBD1F800C079B2 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA634191BDBD1F800C079B2 /* Crypto.framework */; };
 		DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
 		DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DF452B571BDE0AFD003EB5C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFA633C51BDBD17B00C079B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF452B421BDE0AFD003EB5C3;
+			remoteInfo = "UsbongKit-example";
+		};
+		DF452B621BDE0AFD003EB5C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFA633C51BDBD17B00C079B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF452B421BDE0AFD003EB5C3;
+			remoteInfo = "UsbongKit-example";
+		};
 		DFA633DA1BDBD17C00C079B2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DFA633C51BDBD17B00C079B2 /* Project object */;
@@ -46,6 +67,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF452B431BDE0AFD003EB5C3 /* UsbongKit-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UsbongKit-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DF452B471BDE0AFD003EB5C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DF452B4A1BDE0AFD003EB5C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DF452B4C1BDE0AFD003EB5C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DF452B4F1BDE0AFD003EB5C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DF452B511BDE0AFD003EB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF452B561BDE0AFD003EB5C3 /* UsbongKit-exampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UsbongKit-exampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF452B5A1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbongKit_exampleTests.swift; sourceTree = "<group>"; };
+		DF452B5C1BDE0AFD003EB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF452B611BDE0AFD003EB5C3 /* UsbongKit-exampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UsbongKit-exampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbongKit_exampleUITests.swift; sourceTree = "<group>"; };
+		DF452B671BDE0AFD003EB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UsbongKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA633D11BDBD17C00C079B2 /* UsbongKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsbongKit.h; sourceTree = "<group>"; };
 		DFA633D31BDBD17C00C079B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +112,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DF452B401BDE0AFD003EB5C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF452B531BDE0AFD003EB5C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF452B5E1BDE0AFD003EB5C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DFA633CA1BDBD17C00C079B2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -99,12 +154,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF452B441BDE0AFD003EB5C3 /* UsbongKit-example */ = {
+			isa = PBXGroup;
+			children = (
+				DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */,
+				DF452B471BDE0AFD003EB5C3 /* ViewController.swift */,
+				DF452B491BDE0AFD003EB5C3 /* Main.storyboard */,
+				DF452B4C1BDE0AFD003EB5C3 /* Assets.xcassets */,
+				DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */,
+				DF452B511BDE0AFD003EB5C3 /* Info.plist */,
+			);
+			path = "UsbongKit-example";
+			sourceTree = "<group>";
+		};
+		DF452B591BDE0AFD003EB5C3 /* UsbongKit-exampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				DF452B5A1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift */,
+				DF452B5C1BDE0AFD003EB5C3 /* Info.plist */,
+			);
+			path = "UsbongKit-exampleTests";
+			sourceTree = "<group>";
+		};
+		DF452B641BDE0AFD003EB5C3 /* UsbongKit-exampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */,
+				DF452B671BDE0AFD003EB5C3 /* Info.plist */,
+			);
+			path = "UsbongKit-exampleUITests";
+			sourceTree = "<group>";
+		};
 		DFA633C41BDBD17B00C079B2 = {
 			isa = PBXGroup;
 			children = (
 				DFA6341F1BDBD1FF00C079B2 /* Frameworks */,
 				DFA633D01BDBD17C00C079B2 /* UsbongKit */,
 				DFA633DC1BDBD17C00C079B2 /* UsbongKitTests */,
+				DF452B441BDE0AFD003EB5C3 /* UsbongKit-example */,
+				DF452B591BDE0AFD003EB5C3 /* UsbongKit-exampleTests */,
+				DF452B641BDE0AFD003EB5C3 /* UsbongKit-exampleUITests */,
 				DFA633CF1BDBD17C00C079B2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,6 +203,9 @@
 			children = (
 				DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */,
 				DFA633D81BDBD17C00C079B2 /* UsbongKitTests.xctest */,
+				DF452B431BDE0AFD003EB5C3 /* UsbongKit-example.app */,
+				DF452B561BDE0AFD003EB5C3 /* UsbongKit-exampleTests.xctest */,
+				DF452B611BDE0AFD003EB5C3 /* UsbongKit-exampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,6 +344,59 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		DF452B421BDE0AFD003EB5C3 /* UsbongKit-example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF452B6E1BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-example" */;
+			buildPhases = (
+				DF452B3F1BDE0AFD003EB5C3 /* Sources */,
+				DF452B401BDE0AFD003EB5C3 /* Frameworks */,
+				DF452B411BDE0AFD003EB5C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UsbongKit-example";
+			productName = "UsbongKit-example";
+			productReference = DF452B431BDE0AFD003EB5C3 /* UsbongKit-example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DF452B551BDE0AFD003EB5C3 /* UsbongKit-exampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF452B6F1BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-exampleTests" */;
+			buildPhases = (
+				DF452B521BDE0AFD003EB5C3 /* Sources */,
+				DF452B531BDE0AFD003EB5C3 /* Frameworks */,
+				DF452B541BDE0AFD003EB5C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF452B581BDE0AFD003EB5C3 /* PBXTargetDependency */,
+			);
+			name = "UsbongKit-exampleTests";
+			productName = "UsbongKit-exampleTests";
+			productReference = DF452B561BDE0AFD003EB5C3 /* UsbongKit-exampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DF452B601BDE0AFD003EB5C3 /* UsbongKit-exampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF452B701BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-exampleUITests" */;
+			buildPhases = (
+				DF452B5D1BDE0AFD003EB5C3 /* Sources */,
+				DF452B5E1BDE0AFD003EB5C3 /* Frameworks */,
+				DF452B5F1BDE0AFD003EB5C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF452B631BDE0AFD003EB5C3 /* PBXTargetDependency */,
+			);
+			name = "UsbongKit-exampleUITests";
+			productName = "UsbongKit-exampleUITests";
+			productReference = DF452B611BDE0AFD003EB5C3 /* UsbongKit-exampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		DFA633CD1BDBD17C00C079B2 /* UsbongKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DFA633E21BDBD17C00C079B2 /* Build configuration list for PBXNativeTarget "UsbongKit" */;
@@ -295,9 +440,21 @@
 		DFA633C51BDBD17B00C079B2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Usbong Social Systems, Inc.";
 				TargetAttributes = {
+					DF452B421BDE0AFD003EB5C3 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					DF452B551BDE0AFD003EB5C3 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = DF452B421BDE0AFD003EB5C3;
+					};
+					DF452B601BDE0AFD003EB5C3 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = DF452B421BDE0AFD003EB5C3;
+					};
 					DFA633CD1BDBD17C00C079B2 = {
 						CreatedOnToolsVersion = 7.0.1;
 					};
@@ -312,6 +469,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = DFA633C41BDBD17B00C079B2;
 			productRefGroup = DFA633CF1BDBD17C00C079B2 /* Products */;
@@ -320,11 +478,38 @@
 			targets = (
 				DFA633CD1BDBD17C00C079B2 /* UsbongKit */,
 				DFA633D71BDBD17C00C079B2 /* UsbongKitTests */,
+				DF452B421BDE0AFD003EB5C3 /* UsbongKit-example */,
+				DF452B551BDE0AFD003EB5C3 /* UsbongKit-exampleTests */,
+				DF452B601BDE0AFD003EB5C3 /* UsbongKit-exampleUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DF452B411BDE0AFD003EB5C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF452B501BDE0AFD003EB5C3 /* LaunchScreen.storyboard in Resources */,
+				DF452B4D1BDE0AFD003EB5C3 /* Assets.xcassets in Resources */,
+				DF452B4B1BDE0AFD003EB5C3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF452B541BDE0AFD003EB5C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF452B5F1BDE0AFD003EB5C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DFA633CC1BDBD17C00C079B2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,6 +551,31 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DF452B3F1BDE0AFD003EB5C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF452B481BDE0AFD003EB5C3 /* ViewController.swift in Sources */,
+				DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF452B521BDE0AFD003EB5C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF452B5B1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF452B5D1BDE0AFD003EB5C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF452B661BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DFA633C91BDBD17C00C079B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -400,6 +610,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DF452B581BDE0AFD003EB5C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF452B421BDE0AFD003EB5C3 /* UsbongKit-example */;
+			targetProxy = DF452B571BDE0AFD003EB5C3 /* PBXContainerItemProxy */;
+		};
+		DF452B631BDE0AFD003EB5C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF452B421BDE0AFD003EB5C3 /* UsbongKit-example */;
+			targetProxy = DF452B621BDE0AFD003EB5C3 /* PBXContainerItemProxy */;
+		};
 		DFA633DB1BDBD17C00C079B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DFA633CD1BDBD17C00C079B2 /* UsbongKit */;
@@ -407,7 +627,102 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		DF452B491BDE0AFD003EB5C3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF452B4A1BDE0AFD003EB5C3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF452B4F1BDE0AFD003EB5C3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		DF452B681BDE0AFD003EB5C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "UsbongKit-example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ph.usbong.UsbongKit-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DF452B691BDE0AFD003EB5C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "UsbongKit-example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ph.usbong.UsbongKit-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DF452B6A1BDE0AFD003EB5C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "UsbongKit-exampleTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ph.usbong.UsbongKit-exampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UsbongKit-example.app/UsbongKit-example";
+			};
+			name = Debug;
+		};
+		DF452B6B1BDE0AFD003EB5C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "UsbongKit-exampleTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ph.usbong.UsbongKit-exampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UsbongKit-example.app/UsbongKit-example";
+			};
+			name = Release;
+		};
+		DF452B6C1BDE0AFD003EB5C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "UsbongKit-exampleUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ph.usbong.UsbongKit-exampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "UsbongKit-example";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		DF452B6D1BDE0AFD003EB5C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "UsbongKit-exampleUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ph.usbong.UsbongKit-exampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "UsbongKit-example";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 		DFA633E01BDBD17C00C079B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -562,6 +877,30 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DF452B6E1BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF452B681BDE0AFD003EB5C3 /* Debug */,
+				DF452B691BDE0AFD003EB5C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DF452B6F1BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-exampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF452B6A1BDE0AFD003EB5C3 /* Debug */,
+				DF452B6B1BDE0AFD003EB5C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DF452B701BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-exampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF452B6C1BDE0AFD003EB5C3 /* Debug */,
+				DF452B6D1BDE0AFD003EB5C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		DFA633C81BDBD17B00C079B2 /* Build configuration list for PBXProject "UsbongKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -578,6 +917,7 @@
 				DFA633E41BDBD17C00C079B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DFA633E51BDBD17C00C079B2 /* Build configuration list for PBXNativeTarget "UsbongKitTests" */ = {
 			isa = XCConfigurationList;
@@ -586,6 +926,7 @@
 				DFA633E71BDBD17C00C079B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
