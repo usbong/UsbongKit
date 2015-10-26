@@ -14,6 +14,7 @@
 		DF452B501BDE0AFD003EB5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */; };
 		DF452B5B1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B5A1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift */; };
 		DF452B661BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */; };
+		DF49E0B31BDE5230007C7254 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
 		DFA633D21BDBD17C00C079B2 /* UsbongKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA633D11BDBD17C00C079B2 /* UsbongKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFA633D91BDBD17C00C079B2 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
 		DFA633DE1BDBD17C00C079B2 /* UsbongKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */; };
@@ -116,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF49E0B31BDE5230007C7254 /* UsbongKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,6 +886,7 @@
 				DF452B691BDE0AFD003EB5C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DF452B6F1BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-exampleTests" */ = {
 			isa = XCConfigurationList;
@@ -892,6 +895,7 @@
 				DF452B6B1BDE0AFD003EB5C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DF452B701BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-exampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -900,6 +904,7 @@
 				DF452B6D1BDE0AFD003EB5C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DFA633C81BDBD17B00C079B2 /* Build configuration list for PBXProject "UsbongKit" */ = {
 			isa = XCConfigurationList;

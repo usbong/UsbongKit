@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import UsbongKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print(UsbongFileManager.defaultManager().rootURL)
     }
 
     override func didReceiveMemoryWarning() {
