@@ -1,3 +1,3 @@
-github "soffes/Crypto" "v0.1.0"
-github "drmohundro/SWXMLHash" "2.0.2"
+github "chrisamanse/Crypto" "v0.1.1"
+github "drmohundro/SWXMLHash" "2.0.3"
 github "chrisamanse/ZipArchive" "v0.4"
