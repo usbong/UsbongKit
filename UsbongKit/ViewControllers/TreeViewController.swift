@@ -55,7 +55,7 @@ public class TreeViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var backNextSegmentedControl: UISegmentedControl!
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         // Unpack tree (place this on a background thread if noticeable lag occurs)
@@ -92,7 +92,7 @@ public class TreeViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override public func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         // If no task nodes, show alert
@@ -111,7 +111,7 @@ public class TreeViewController: UIViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -309,7 +309,7 @@ public class TreeViewController: UIViewController {
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showLanguages" {
             if let languagesVC = (segue.destinationViewController as? UINavigationController)?.topViewController as? LanguagesTableViewController {
                 languagesVC.treeViewController = self
