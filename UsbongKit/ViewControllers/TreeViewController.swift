@@ -21,9 +21,9 @@
 import UIKit
 import AVFoundation
 
-// Root view controller for Tree (Page-based)
+// Root view controller for Tree
 // TODO: Place string literals as constants in a class (Global if it will be used throughout the project, or local if used only here). Do this after finalizing UI of app
-class TreeViewController: UIViewController {
+public class TreeViewController: UIViewController {
     static func loadFromStoryboard() -> UINavigationController {
         return UIStoryboard(name: "TreeStoryboard", bundle: NSBundle(forClass: self)).instantiateInitialViewController() as! UINavigationController
     }

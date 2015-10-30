@@ -9,13 +9,14 @@
 import Foundation
 
 public class UsbongTreeViewer {
-    public static func presentTreeViewControllerFromViewController(viewController: UIViewController, withZipURL zipURL: NSURL, animated: Bool, completion: (() -> Void)?) {
+    public static func presentTreeViewControllerFromViewController(viewController: UIViewController, withZipURL zipURL: NSURL, animated: Bool, completion: (() -> Void)?) -> TreeViewController {
         let initialVC = TreeViewController.loadFromStoryboard()
         let treeVC = initialVC.topViewController as! TreeViewController
         
         treeVC.treeZipURL = zipURL
         
         viewController.presentViewController(initialVC, animated: animated, completion: completion)
+        
+        return treeVC
     }
-    
 }
