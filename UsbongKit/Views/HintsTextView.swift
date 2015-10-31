@@ -71,7 +71,7 @@ public class HintsTextView: UITextView {
 }
 
 extension NSAttributedString {
-    public func attributedStringWithHints(hintsDictionary: [String: String]) -> NSAttributedString {
+    public func attributedStringWithHints(hintsDictionary: [String: String], withColor color: UIColor? = nil) -> NSAttributedString {
         let mutableAttributedText = NSMutableAttributedString(attributedString: self)
         let string = self.string as NSString
         let stringLength = string.length
@@ -113,6 +113,9 @@ extension NSAttributedString {
                         let targetRange = NSRange(location: range.location, length: searchStringLength)
                         mutableAttributedText.addAttributes([ContainsHintKey: value], range: targetRange)
                         
+                        if let targetColor = color {
+                            mutableAttributedText.addAttribute(NSForegroundColorAttributeName, value: targetColor, range: targetRange)
+                        }
                     }
                     
                     let newLocation = range.location + range.length

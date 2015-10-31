@@ -22,6 +22,8 @@ import UIKit
 import AVFoundation
 
 public class TaskNodeTableViewController: UITableViewController {
+    private var hintsColor = UIColor(red:0.6, green:0.56, blue:0.36, alpha:1)
+    
     public var taskNode: TaskNode = TaskNode(modules: []) {
         didSet {
             registerNibs()
@@ -124,7 +126,7 @@ public class TaskNodeTableViewController: UITableViewController {
             let textAttributes: [String: AnyObject] = [NSForegroundColorAttributeName: textColor, NSFontAttributeName: font, NSParagraphStyleAttributeName: paragraphStyle]
             attributedText.addAttributes(textAttributes, range: NSRange(location: 0, length: attributedText.length))
             
-            textCell.titleTextView.attributedText = attributedText.attributedStringWithHints(hintsDictionary)
+            textCell.titleTextView.attributedText = attributedText.attributedStringWithHints(hintsDictionary, withColor: hintsColor)
             textCell.titleTextView.hintsTextViewDelegate = self
             
             cell = textCell
