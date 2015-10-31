@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoP-3w-cOq">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoP-3w-cOq" customClass="HintsTextView" customModule="UsbongKit" customModuleProvider="target">
                         <rect key="frame" x="8" y="0.0" width="304" height="89"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -32,6 +32,9 @@
             </tableViewCellContentView>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="titleTextView" destination="ZoP-3w-cOq" id="RYw-eg-Qyd"/>
+            </connections>
             <point key="canvasLocation" x="519" y="518"/>
         </tableViewCell>
     </objects>

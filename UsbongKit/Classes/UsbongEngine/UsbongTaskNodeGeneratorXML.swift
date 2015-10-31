@@ -233,8 +233,6 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
             // Audio URLs
             taskNode?.backgroundAudioFilePath = nameComponents.backgroundAudioPathUsingXMLURL(treeRootURL)
             taskNode?.audioFilePath = nameComponents.audioPathUsingXMLURL(treeRootURL)
-            
-            return taskNode
         } else if let endStateElement = try? processDefinition[UsbongXMLIdentifier.endState].withAttr(UsbongXMLIdentifier.name, name) {
             // Find end-state node if task-node not found
             print(endStateElement)
