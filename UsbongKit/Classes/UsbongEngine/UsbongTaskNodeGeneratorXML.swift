@@ -164,6 +164,7 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
     
     public var taskNodeNames: [String] = []
     public var title: String = "Unnamed"
+    public private(set) var hintsDictionary: [String: String] = [String: String]()
     
     // MARK: Initializers
     public init(treeRootURL: NSURL) {
@@ -176,6 +177,9 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
         
         // Get language
         baseLanguage = processDefinition.element?.attributes["lang"] ?? baseLanguage
+        
+        // Fetch hints dictionary for current language
+        fetchHintsDictionary()
         
         // Set to "Unnamed" if fileName is black or contains spaces only
         title = fileName.stringByReplacingOccurrencesOfString(" ", withString: "").characters.count == 0 ? "Unnamed" : fileName
@@ -226,10 +230,9 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
                 taskNode = nil
             }
             
+            // Audio URLs
             taskNode?.backgroundAudioFilePath = nameComponents.backgroundAudioPathUsingXMLURL(treeRootURL)
             taskNode?.audioFilePath = nameComponents.audioPathUsingXMLURL(treeRootURL)
-            
-            return taskNode
         } else if let endStateElement = try? processDefinition[UsbongXMLIdentifier.endState].withAttr(UsbongXMLIdentifier.name, name) {
             // Find end-state node if task-node not found
             print(endStateElement)
@@ -255,6 +258,7 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
     }
     
     private func fetchLanguageXMLURLs() -> [NSURL]? {
+        // Get trans directory
         let transURL = treeRootURL.URLByAppendingPathComponent("trans")
         
         // Fetch contents of trans directory
@@ -277,7 +281,7 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
         return nil
     }
     
-    public func fetchLanguages() -> [String] {
+    private func fetchLanguages() -> [String] {
         var languages: [String] = []
         if let urls = fetchLanguageXMLURLs() {
             for url in urls {
@@ -289,10 +293,53 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
         return languages
     }
     
+    public func fetchHintsXMLURLs() -> [NSURL]? {
+        // Get hints directory
+        let hintsURL = treeRootURL.URLByAppendingPathComponent("hints")
+        
+        // Fetch contents of hints directory
+        if let contents = try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(hintsURL, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants) {
+            return contents
+        }
+        return nil
+    }
+    
+    public func fetchHintsXMLURLForLanguage(language: String) -> NSURL? {
+        if let urls = fetchHintsXMLURLs() {
+            for url in urls {
+                // Check if file name is equal to language
+                let name = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
+                if language == name {
+                    return url
+                }
+            }
+        }
+        return nil
+    }
+    
+    public func fetchHintsDictionary() {
+        var hints = [String: String]()
+        
+        // Fetch hints from XML
+        if let hintsXMLURL = fetchHintsXMLURLForLanguage(currentLanguage) {
+            let hintsXML = SWXMLHash.parse(NSData(contentsOfURL: hintsXMLURL) ?? NSData())
+            let resources = hintsXML[UsbongXMLIdentifier.resources]
+            
+            let stringXMLIndexers = resources[UsbongXMLIdentifier.string].all
+            for stringXMLIndexer in stringXMLIndexers {
+                if let key = stringXMLIndexer.element?.attributes[UsbongXMLIdentifier.name], let value = stringXMLIndexer.element?.text {
+                    hints[key] = value
+                }
+            }
+        }
+        
+        hintsDictionary = hints
+    }
+    
     public var nextTaskNodeName: String? {
         return currentTransitionInfo[currentTargetTransitionName]
     }
-    public func nextTaskNodeWithTransitionName(transitionName: String) -> TaskNode? {
+    private func nextTaskNodeWithTransitionName(transitionName: String) -> TaskNode? {
         if let taskNodeName = currentTransitionInfo[transitionName] {
             return fetchTaskNodeWithName(taskNodeName)
         }
@@ -331,7 +378,11 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
     
     // MARK: - UsbongTaskNodeGenerator
     
-    public var currentLanguage: String = "English"
+    public var currentLanguage: String = "English" {
+        didSet {
+            fetchHintsDictionary()
+        }
+    }
     public var currentLanguageCode: String {
         switch currentLanguage {
         case "English":

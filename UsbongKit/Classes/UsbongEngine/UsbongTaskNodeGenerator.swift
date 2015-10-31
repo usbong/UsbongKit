@@ -26,6 +26,7 @@ public protocol UsbongTaskNodeGenerator {
     var currentLanguage: String { get set }
     var currentLanguageCode: String { get }
     var availableLanguages: [String] { get }
+    var hintsDictionary: [String: String] { get }
     
     var previousTaskNode: TaskNode? { get }
     var currentTaskNode: TaskNode? { get }

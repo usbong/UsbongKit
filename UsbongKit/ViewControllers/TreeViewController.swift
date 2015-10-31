@@ -197,6 +197,12 @@ public class TreeViewController: UIViewController {
         if let currentTaskNode = taskNodeGenerator?.currentTaskNode {
             taskNodeTableViewController.taskNode = currentTaskNode
             
+            // Hints dictionary
+            if let hintsDictionary = taskNodeGenerator?.hintsDictionary {
+                print(hintsDictionary)
+                taskNodeTableViewController.hintsDictionary = hintsDictionary
+            }
+            
             // Background audio - change only if not empty and different
             if let taskNodeBGFilePath = currentTaskNode.backgroundAudioFilePath {
                 let currentBGFilePath = backgroundAudioPlayer?.url?.path ?? ""

@@ -28,6 +28,7 @@ public class TaskNodeTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    public var hintsDictionary: [String: String] = [String: String]()
     
     public var backgroundAudioPlayer: AVAudioPlayer?
     
@@ -111,7 +112,10 @@ public class TaskNodeTableViewController: UITableViewController {
         case let textModule as TextTaskNodeModule:
             let textCell = tableView.dequeueReusableCellWithIdentifier("Text", forIndexPath: indexPath) as! TextTableViewCell
             print("Text: \(textModule.text)")
-            textCell.titleLabel.text = textModule.text
+            
+            // Add hints if available
+            let attributedText = NSAttributedString(string: textModule.text)
+            textCell.titleTextView.attributedText = attributedText.attributedStringWithHints(hintsDictionary)
             
             cell = textCell
         case let imageModule as ImageTaskNodeModule:

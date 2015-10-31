@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF8848DF1BE449BB008E2658 /* HintsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8848DE1BE449BB008E2658 /* HintsTextView.swift */; };
 		DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */; };
 		DF452B481BDE0AFD003EB5C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B471BDE0AFD003EB5C3 /* ViewController.swift */; };
 		DF452B4B1BDE0AFD003EB5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF452B491BDE0AFD003EB5C3 /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF8848DE1BE449BB008E2658 /* HintsTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintsTextView.swift; sourceTree = "<group>"; };
 		DF452B431BDE0AFD003EB5C3 /* UsbongKit-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UsbongKit-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF452B471BDE0AFD003EB5C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 		DFA633F91BDBD19000C079B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CF8848DE1BE449BB008E2658 /* HintsTextView.swift */,
 				DFA633FA1BDBD19000C079B2 /* TableViewCells */,
 				DFA634041BDBD19000C079B2 /* TreeStoryboard.storyboard */,
 			);
@@ -594,6 +597,7 @@
 				DFA634051BDBD19000C079B2 /* ImageDisplayTaskNode.swift in Sources */,
 				DFA634161BDBD19000C079B2 /* TextTableViewCell.swift in Sources */,
 				DFA634101BDBD19000C079B2 /* TaskNodeTableViewController.swift in Sources */,
+				CF8848DF1BE449BB008E2658 /* HintsTextView.swift in Sources */,
 				DFA6340C1BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift in Sources */,
 				DFA634141BDBD19000C079B2 /* ImageTableViewCell.swift in Sources */,
 				DFA6340B1BDBD19000C079B2 /* UsbongFileManager.swift in Sources */,

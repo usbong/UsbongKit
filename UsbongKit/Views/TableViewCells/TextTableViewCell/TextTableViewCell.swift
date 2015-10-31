@@ -22,7 +22,7 @@ import UIKit
 
 public class TextTableViewCell: UITableViewCell {
 
-    @IBOutlet public weak var titleLabel: UILabel!
+    @IBOutlet public weak var titleTextView: HintsTextView!
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
