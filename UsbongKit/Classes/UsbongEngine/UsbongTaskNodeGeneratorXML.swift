@@ -181,7 +181,7 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
         // Fetch hints dictionary for current language
         fetchHintsDictionary()
         
-        // Set to "Unnamed" if fileName is black or contains spaces only
+        // Set to "Unnamed" if fileName is blank or contains spaces only
         title = fileName.stringByReplacingOccurrencesOfString(" ", withString: "").characters.count == 0 ? "Unnamed" : fileName
         
         // Load starting task node
@@ -233,6 +233,8 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
             // Audio URLs
             taskNode?.backgroundAudioFilePath = nameComponents.backgroundAudioPathUsingXMLURL(treeRootURL)
             taskNode?.audioFilePath = nameComponents.audioPathUsingXMLURL(treeRootURL)
+            
+            return taskNode
         } else if let endStateElement = try? processDefinition[UsbongXMLIdentifier.endState].withAttr(UsbongXMLIdentifier.name, name) {
             // Find end-state node if task-node not found
             print(endStateElement)
