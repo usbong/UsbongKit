@@ -114,7 +114,16 @@ public class TaskNodeTableViewController: UITableViewController {
             print("Text: \(textModule.text)")
             
             // Add hints if available
-            let attributedText = NSAttributedString(string: textModule.text)
+            let attributedText = NSMutableAttributedString(string: textModule.text)
+            
+            let font = UIFont.systemFontOfSize(21)
+            let textColor = UIColor.blackColor()
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .Center
+            
+            let textAttributes: [String: AnyObject] = [NSForegroundColorAttributeName: textColor, NSFontAttributeName: font, NSParagraphStyleAttributeName: paragraphStyle]
+            attributedText.addAttributes(textAttributes, range: NSRange(location: 0, length: attributedText.length))
+            
             textCell.titleTextView.attributedText = attributedText.attributedStringWithHints(hintsDictionary)
             
             cell = textCell
