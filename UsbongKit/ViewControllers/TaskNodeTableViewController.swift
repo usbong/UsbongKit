@@ -65,9 +65,9 @@ public class TaskNodeTableViewController: UITableViewController {
         let modules = taskNode.modules
         for module in modules {
             switch module {
-            case _ as TextTaskNodeModule:
+            case is TextTaskNodeModule:
                 tableView.registerNib(UINib(nibName: "TextTableViewCell", bundle: NSBundle(forClass: TextTableViewCell.self)), forCellReuseIdentifier: "Text")
-            case _ as ImageTaskNodeModule:
+            case is ImageTaskNodeModule:
                 tableView.registerNib(UINib(nibName: "ImageTableViewCell", bundle: NSBundle(forClass: ImageTableViewCell.self)), forCellReuseIdentifier: "Image")
             default:
                 break
