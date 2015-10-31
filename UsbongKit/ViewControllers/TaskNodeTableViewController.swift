@@ -125,7 +125,7 @@ public class TaskNodeTableViewController: UITableViewController {
             attributedText.addAttributes(textAttributes, range: NSRange(location: 0, length: attributedText.length))
             
             textCell.titleTextView.attributedText = attributedText.attributedStringWithHints(hintsDictionary)
-            textCell.titleTextView.delegate = self
+            textCell.titleTextView.hintsTextViewDelegate = self
             
             cell = textCell
         case let imageModule as ImageTaskNodeModule:
