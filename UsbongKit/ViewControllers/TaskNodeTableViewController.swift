@@ -125,6 +125,7 @@ public class TaskNodeTableViewController: UITableViewController {
             attributedText.addAttributes(textAttributes, range: NSRange(location: 0, length: attributedText.length))
             
             textCell.titleTextView.attributedText = attributedText.attributedStringWithHints(hintsDictionary)
+            textCell.titleTextView.delegate = self
             
             cell = textCell
         case let imageModule as ImageTaskNodeModule:
@@ -154,4 +155,16 @@ public class TaskNodeTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension TaskNodeTableViewController: HintsTextViewDelegate {
+    public func hintsTextView(textView: HintsTextView, didTapString: String, withHint hint: String) {
+        let alertController = UIAlertController(title: "Word Hint", message: hint, preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        alertController.addAction(okAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
 }

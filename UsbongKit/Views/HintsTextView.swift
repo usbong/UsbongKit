@@ -64,7 +64,6 @@ public class HintsTextView: UITextView {
                 if let hint = attributedText.attribute(ContainsHintKey, atIndex: charIndex, effectiveRange: &range!) as? String {
                     let tappedString = (attributedText.string as NSString).substringWithRange(range ?? NSRange()) as String ?? ""
                     hintsTextViewDelegate?.hintsTextView(self, didTapString: tappedString, withHint: hint)
-                    print("\(tappedString); \(hint)")
                 }
             }
         }
