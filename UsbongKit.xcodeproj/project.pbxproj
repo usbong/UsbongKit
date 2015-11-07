@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		CF8848DF1BE449BB008E2658 /* HintsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8848DE1BE449BB008E2658 /* HintsTextView.swift */; };
+		CFC4042A1BEE3EC4000658E7 /* TaskNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC404291BEE3EC4000658E7 /* TaskNodeView.swift */; };
+		CFC404311BEE4319000658E7 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
+		CFC404321BEE4319000658E7 /* UsbongKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFC404361BEE4350000658E7 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA634191BDBD1F800C079B2 /* Crypto.framework */; };
+		CFC404371BEE4350000658E7 /* Crypto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA634191BDBD1F800C079B2 /* Crypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFC404381BEE4350000658E7 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
+		CFC404391BEE4350000658E7 /* SWXMLHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFC4043A1BEE4350000658E7 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
+		CFC4043B1BEE4350000658E7 /* ZipArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFC4043D1BEE440B000658E7 /* Usbong iOS.utree in Resources */ = {isa = PBXBuildFile; fileRef = CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */; };
 		DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */; };
 		DF452B481BDE0AFD003EB5C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B471BDE0AFD003EB5C3 /* ViewController.swift */; };
 		DF452B4B1BDE0AFD003EB5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF452B491BDE0AFD003EB5C3 /* Main.storyboard */; };
@@ -15,7 +25,6 @@
 		DF452B501BDE0AFD003EB5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */; };
 		DF452B5B1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B5A1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift */; };
 		DF452B661BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */; };
-		DF49E0B31BDE5230007C7254 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
 		DFA633D21BDBD17C00C079B2 /* UsbongKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA633D11BDBD17C00C079B2 /* UsbongKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFA633D91BDBD17C00C079B2 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
 		DFA633DE1BDBD17C00C079B2 /* UsbongKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */; };
@@ -45,6 +54,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CFC404331BEE4319000658E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFA633C51BDBD17B00C079B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DFA633CD1BDBD17C00C079B2;
+			remoteInfo = UsbongKit;
+		};
 		DF452B571BDE0AFD003EB5C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DFA633C51BDBD17B00C079B2 /* Project object */;
@@ -68,8 +84,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CFC404351BEE4319000658E7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CFC404321BEE4319000658E7 /* UsbongKit.framework in Embed Frameworks */,
+				CFC4043B1BEE4350000658E7 /* ZipArchive.framework in Embed Frameworks */,
+				CFC404371BEE4350000658E7 /* Crypto.framework in Embed Frameworks */,
+				CFC404391BEE4350000658E7 /* SWXMLHash.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CF8848DE1BE449BB008E2658 /* HintsTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintsTextView.swift; sourceTree = "<group>"; };
+		CFC404291BEE3EC4000658E7 /* TaskNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNodeView.swift; sourceTree = "<group>"; };
+		CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Usbong iOS.utree"; sourceTree = "<group>"; };
 		DF452B431BDE0AFD003EB5C3 /* UsbongKit-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UsbongKit-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF452B471BDE0AFD003EB5C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +154,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF49E0B31BDE5230007C7254 /* UsbongKit.framework in Frameworks */,
+				CFC404311BEE4319000658E7 /* UsbongKit.framework in Frameworks */,
+				CFC4043A1BEE4350000658E7 /* ZipArchive.framework in Frameworks */,
+				CFC404361BEE4350000658E7 /* Crypto.framework in Frameworks */,
+				CFC404381BEE4350000658E7 /* SWXMLHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +205,7 @@
 				DF452B4C1BDE0AFD003EB5C3 /* Assets.xcassets */,
 				DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */,
 				DF452B511BDE0AFD003EB5C3 /* Info.plist */,
+				CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */,
 			);
 			path = "UsbongKit-example";
 			sourceTree = "<group>";
@@ -282,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				CF8848DE1BE449BB008E2658 /* HintsTextView.swift */,
+				CFC404291BEE3EC4000658E7 /* TaskNodeView.swift */,
 				DFA633FA1BDBD19000C079B2 /* TableViewCells */,
 				DFA634041BDBD19000C079B2 /* TreeStoryboard.storyboard */,
 			);
@@ -356,10 +396,12 @@
 				DF452B3F1BDE0AFD003EB5C3 /* Sources */,
 				DF452B401BDE0AFD003EB5C3 /* Frameworks */,
 				DF452B411BDE0AFD003EB5C3 /* Resources */,
+				CFC404351BEE4319000658E7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CFC404341BEE4319000658E7 /* PBXTargetDependency */,
 			);
 			name = "UsbongKit-example";
 			productName = "UsbongKit-example";
@@ -495,6 +537,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFC4043D1BEE440B000658E7 /* Usbong iOS.utree in Resources */,
 				DF452B501BDE0AFD003EB5C3 /* LaunchScreen.storyboard in Resources */,
 				DF452B4D1BDE0AFD003EB5C3 /* Assets.xcassets in Resources */,
 				DF452B4B1BDE0AFD003EB5C3 /* Main.storyboard in Resources */,
@@ -588,6 +631,7 @@
 				DFA634071BDBD19000C079B2 /* TaskNode.swift in Sources */,
 				DFA6340F1BDBD19000C079B2 /* LanguagesTableViewController.swift in Sources */,
 				DFA634061BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift in Sources */,
+				CFC4042A1BEE3EC4000658E7 /* TaskNodeView.swift in Sources */,
 				DFA634121BDBD19000C079B2 /* CommunityTableViewCell.swift in Sources */,
 				DFA634081BDBD19000C079B2 /* TaskNodeModule.swift in Sources */,
 				DFA634091BDBD19000C079B2 /* TextDisplayTaskNode.swift in Sources */,
@@ -616,6 +660,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CFC404341BEE4319000658E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DFA633CD1BDBD17C00C079B2 /* UsbongKit */;
+			targetProxy = CFC404331BEE4319000658E7 /* PBXContainerItemProxy */;
+		};
 		DF452B581BDE0AFD003EB5C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DF452B421BDE0AFD003EB5C3 /* UsbongKit-example */;
@@ -657,6 +706,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "UsbongKit-example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -669,6 +723,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "UsbongKit-example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

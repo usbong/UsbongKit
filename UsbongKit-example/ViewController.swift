@@ -10,18 +10,27 @@ import UIKit
 import UsbongKit
 
 class ViewController: UIViewController {
-
+    var treeZipURL: NSURL?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print(UsbongFileManager.defaultManager().rootURL)
+//        print(UsbongFileManager.defaultManager().rootURL)
+        
+        treeZipURL = NSBundle.mainBundle().URLForResource("Usbong iOS", withExtension: "utree")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    @IBAction func didPressTreeViewer(sender: AnyObject) {
+        print("Did Press Start")
+        
+        if let zipURL = treeZipURL {
+            let treeViewer = UsbongTreeViewer(treeZipURL: zipURL)
+            treeViewer.presentTreeViewControllerFromViewController(self, animated: true, completion: nil)
+        }
+    }
 }
 
