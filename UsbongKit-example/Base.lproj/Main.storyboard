@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -59,13 +60,64 @@
                     <view key="view" contentMode="scaleToFill" id="pxA-eo-s0c">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfI-Q4-UfA">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdU-hJ-Sl8">
+                                        <rect key="frame" x="8" y="7" width="59" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="Previous"/>
+                                        <connections>
+                                            <action selector="didPressPrevious:" destination="9WY-gy-CNB" eventType="touchUpInside" id="1oq-rB-Oiq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kno-Y9-sT4">
+                                        <rect key="frame" x="560" y="7" width="32" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="Next"/>
+                                        <connections>
+                                            <action selector="didPressNext:" destination="9WY-gy-CNB" eventType="touchUpInside" id="wrP-lQ-7OA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="rdU-hJ-Sl8" firstAttribute="leading" secondItem="dfI-Q4-UfA" secondAttribute="leadingMargin" id="8uP-n1-ti2"/>
+                                    <constraint firstItem="Kno-Y9-sT4" firstAttribute="centerY" secondItem="dfI-Q4-UfA" secondAttribute="centerY" id="JVZ-Qc-N7B"/>
+                                    <constraint firstItem="Kno-Y9-sT4" firstAttribute="trailing" secondItem="dfI-Q4-UfA" secondAttribute="trailingMargin" id="TIe-8b-GWE"/>
+                                    <constraint firstAttribute="height" constant="44" id="vp7-Tr-0wG"/>
+                                    <constraint firstItem="rdU-hJ-Sl8" firstAttribute="centerY" secondItem="dfI-Q4-UfA" secondAttribute="centerY" id="wXp-Tf-6ho"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xdy-77-Qn5">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.96652759600000004" green="0.96652759600000004" blue="0.96652759600000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Xdy-77-Qn5" secondAttribute="trailing" id="3kK-kj-WeS"/>
+                            <constraint firstItem="1l2-2A-dLQ" firstAttribute="top" secondItem="dfI-Q4-UfA" secondAttribute="bottom" id="DDu-Vg-qa5"/>
+                            <constraint firstItem="dfI-Q4-UfA" firstAttribute="leading" secondItem="pxA-eo-s0c" secondAttribute="leading" id="LZC-Ov-if9"/>
+                            <constraint firstItem="dfI-Q4-UfA" firstAttribute="top" secondItem="Xdy-77-Qn5" secondAttribute="bottom" id="dyG-Jg-EDj"/>
+                            <constraint firstItem="Xdy-77-Qn5" firstAttribute="top" secondItem="Dcc-a1-fxp" secondAttribute="bottom" id="hhM-sO-gwQ"/>
+                            <constraint firstItem="Xdy-77-Qn5" firstAttribute="leading" secondItem="pxA-eo-s0c" secondAttribute="leading" id="pHI-lh-1ez"/>
+                            <constraint firstAttribute="trailing" secondItem="dfI-Q4-UfA" secondAttribute="trailing" id="uYr-G0-hzm"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5hQ-Ot-2Hc">
                         <barButtonItem key="leftBarButtonItem" title="Exit" id="6jI-jS-5EW">
                             <connections>
                                 <action selector="didPressExit:" destination="9WY-gy-CNB" id="3XG-Nu-2eQ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="More" id="8jH-wk-fl2">
+                            <connections>
+                                <action selector="didPressMore:" destination="9WY-gy-CNB" id="cQR-iT-lEc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

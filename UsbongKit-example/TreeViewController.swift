@@ -25,4 +25,16 @@ class TreeViewController: UIViewController {
         print("Did Press Exit")
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func didPressMore(sender: AnyObject) {
+        print("Did Press More")
+    }
+    
+    @IBAction func didPressPrevious(sender: AnyObject) {
+        print("Did Press Previous")
+    }
+    
+    @IBAction func didPressNext(sender: AnyObject) {
+        print("Did Press Next")
+    }
 }
