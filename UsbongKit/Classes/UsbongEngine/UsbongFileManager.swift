@@ -33,15 +33,19 @@ public class UsbongFileManager {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1]
     }()
-    public var temporaryDirectoryURL = NSURL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true).URLByAppendingPathComponent("trees", isDirectory: true)
+    public var cacheDirectoryURL: NSURL = {
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)
+        return urls[urls.count-1].URLByAppendingPathComponent("trees", isDirectory: true)
+    }()
+    
     public var defaultFileName = "Unnamed"
     
     public func contentsOfDirectoryAtRootURL() -> [NSURL]? {
         return try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(rootURL, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsHiddenFiles)
     }
     
-    public func clearTemporaryDirectory() -> Bool {
-        return (try? NSFileManager.defaultManager().removeItemAtURL(temporaryDirectoryURL)) != nil
+    public func clearCacheDirectory() -> Bool {
+        return (try? NSFileManager.defaultManager().removeItemAtURL(cacheDirectoryURL)) != nil
     }
     
     public func treesAtRootURL() -> [NSURL] {
@@ -117,7 +121,7 @@ public class UsbongFileManager {
         let md5 = NSString(bytesNoCopy: p, length: dataLength*2, encoding: NSUTF8StringEncoding, freeWhenDone: true) as! String
         
         // Create Unpack directory URL
-        let unpackDirectoryURL = temporaryDirectoryURL.URLByAppendingPathComponent("\(md5)", isDirectory: true)
+        let unpackDirectoryURL = cacheDirectoryURL.URLByAppendingPathComponent("\(md5)", isDirectory: true)
         
         // TODO: If temporary directory has lots of unpacked trees, delete all first
         
