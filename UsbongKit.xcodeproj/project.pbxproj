@@ -18,6 +18,7 @@
 		CFC4043A1BEE4350000658E7 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
 		CFC4043B1BEE4350000658E7 /* ZipArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFC4043D1BEE440B000658E7 /* Usbong iOS.utree in Resources */ = {isa = PBXBuildFile; fileRef = CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */; };
+		CFC4043F1BEE474E000658E7 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC4043E1BEE474E000658E7 /* TreeViewController.swift */; };
 		DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */; };
 		DF452B481BDE0AFD003EB5C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B471BDE0AFD003EB5C3 /* ViewController.swift */; };
 		DF452B4B1BDE0AFD003EB5C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF452B491BDE0AFD003EB5C3 /* Main.storyboard */; };
@@ -105,6 +106,7 @@
 		CF8848DE1BE449BB008E2658 /* HintsTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintsTextView.swift; sourceTree = "<group>"; };
 		CFC404291BEE3EC4000658E7 /* TaskNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNodeView.swift; sourceTree = "<group>"; };
 		CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Usbong iOS.utree"; sourceTree = "<group>"; };
+		CFC4043E1BEE474E000658E7 /* TreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
 		DF452B431BDE0AFD003EB5C3 /* UsbongKit-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UsbongKit-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF452B471BDE0AFD003EB5C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			children = (
 				DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */,
 				DF452B471BDE0AFD003EB5C3 /* ViewController.swift */,
+				CFC4043E1BEE474E000658E7 /* TreeViewController.swift */,
 				DF452B491BDE0AFD003EB5C3 /* Main.storyboard */,
 				DF452B4C1BDE0AFD003EB5C3 /* Assets.xcassets */,
 				DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */,
@@ -604,6 +607,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF452B481BDE0AFD003EB5C3 /* ViewController.swift in Sources */,
+				CFC4043F1BEE474E000658E7 /* TreeViewController.swift in Sources */,
 				DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

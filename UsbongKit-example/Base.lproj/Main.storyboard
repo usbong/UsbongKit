@@ -21,6 +21,9 @@
                                 <rect key="frame" x="283" y="285" width="34" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Start"/>
+                                <connections>
+                                    <segue destination="gQE-Vz-SDJ" kind="presentation" id="q2n-Zy-V3V"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8B7-je-BNK">
                                 <rect key="frame" x="262" y="323" width="77" height="30"/>
@@ -44,6 +47,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="354" y="471"/>
+        </scene>
+        <!--Tree View Controller-->
+        <scene sceneID="geF-A2-aTr">
+            <objects>
+                <viewController id="9WY-gy-CNB" customClass="TreeViewController" customModule="UsbongKit_example" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dcc-a1-fxp"/>
+                        <viewControllerLayoutGuide type="bottom" id="1l2-2A-dLQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pxA-eo-s0c">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5hQ-Ot-2Hc">
+                        <barButtonItem key="leftBarButtonItem" title="Exit" id="6jI-jS-5EW">
+                            <connections>
+                                <action selector="didPressExit:" destination="9WY-gy-CNB" id="3XG-Nu-2eQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUe-qj-3Xm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1927" y="471"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="D3n-VP-dWl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gQE-Vz-SDJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IXs-nw-odC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9WY-gy-CNB" kind="relationship" relationship="rootViewController" id="A2V-IA-nEM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUm-60-gvL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1255" y="471"/>
         </scene>
     </scenes>
 </document>
