@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import UsbongKit
 
 class TreeViewController: UIViewController {
 
+    @IBOutlet weak var taskNodeView: TaskNodeView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        taskNodeView.taskNode = TextDisplayTaskNode(text: "Hello, World!\nHello!")
     }
 
     override func didReceiveMemoryWarning() {
