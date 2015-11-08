@@ -60,7 +60,7 @@ public class TreeViewController: UIViewController {
         
         // Unpack tree (place this on a background thread if noticeable lag occurs)
         if let zipURL = treeZipURL {
-            if let treeRootURL = UsbongFileManager.defaultManager().unpackTreeToTemporaryDirectoryWithTreeURL(zipURL) {
+            if let treeRootURL = UsbongFileManager.defaultManager().unpackTreeToCacheDirectoryWithTreeURL(zipURL) {
                 taskNodeGenerator = UsbongTaskNodeGeneratorXML(treeRootURL: treeRootURL)
                 
                 navigationItem.title = taskNodeGenerator?.title

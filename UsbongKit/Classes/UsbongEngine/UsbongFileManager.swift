@@ -98,7 +98,7 @@ public class UsbongFileManager {
         return nil
     }
     
-    public func unpackTreeToTemporaryDirectoryWithTreeURL(treeURL: NSURL) -> NSURL? {
+    public func unpackTreeToCacheDirectoryWithTreeURL(treeURL: NSURL) -> NSURL? {
         let md5Data = (NSData(contentsOfURL: treeURL) ?? NSData(bytes: nil, length: 64)).MD5
         
         // Convert md5Data to string
