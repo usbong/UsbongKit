@@ -9,7 +9,7 @@
 import UIKit
 
 public class TaskNodeView: UIView {
-    public var taskNodeTableView: UITableView = UITableView()
+    public var taskNodeTableView: UITableView = UITableView(frame: CGRect.zero, style: .Plain)
     public weak var hintsTextViewDelegate: HintsTextViewDelegate?
     
     public var taskNode: TaskNode = TaskNode(modules: []) {
@@ -21,14 +21,53 @@ public class TaskNodeView: UIView {
     public var hintsDictionary: [String: String] = [String: String]()
     public var hintsColor = UIColor(red: 0.6, green: 0.56, blue: 0.36, alpha: 1)
     
+    // MARK: - Initialization
+    
     override public init(frame: CGRect) {
         super.init(frame: frame)
         
-        taskNodeTableView.frame = bounds
+        customInitialization()
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    public override func awakeFromNib() {
+        customInitialization()
+    }
+    
+    private func customInitialization() {
+        // Table view properties
+        taskNodeTableView.backgroundColor = UIColor.clearColor()
+        taskNodeTableView.separatorStyle = .None
+        
+        // Table view self-sizing height
+        taskNodeTableView.rowHeight = UITableViewAutomaticDimension
+        taskNodeTableView.estimatedRowHeight = 100
+        
+        addTaskNodeTableView()
+    }
+    
+    private func addTaskNodeTableView() {
+        addSubview(taskNodeTableView)
+        
+        // Setup constraints
+        taskNodeTableView.translatesAutoresizingMaskIntoConstraints = false
+        let viewsDictionary: [String: AnyObject] = ["tableView" : taskNodeTableView]
+        
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[tableView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[tableView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        
+        // Add constraints
+        addConstraints(horizontalConstraints)
+        addConstraints(verticalConstraints)
+        
+        // Add data source and delegate
+        taskNodeTableView.dataSource = self
+        taskNodeTableView.delegate = self
+        
+        print(taskNodeTableView.backgroundColor)
+        print(taskNodeTableView.separatorStyle == .None)
     }
     
     // MARK: - Custom
