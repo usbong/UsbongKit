@@ -13,11 +13,32 @@ class TreeViewController: UIViewController {
 
     @IBOutlet weak var taskNodeView: TaskNodeView!
     
+    var taskNodeGenerator: UsbongTaskNodeGenerator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let treeURL = NSBundle.mainBundle().URLForResource("Usbong iOS", withExtension: "utree") {
+            if let treeRootURL = UsbongFileManager.defaultManager().unpackTreeToCacheDirectoryWithTreeURL(treeURL) {
+                taskNodeGenerator = UsbongTaskNodeGeneratorXML(treeRootURL: treeRootURL)
+                
+                navigationItem.title = taskNodeGenerator?.title ?? "Unknown"
+            }
+        }
         taskNodeView.taskNode = TextDisplayTaskNode(text: "Hello, World!\nHello!")
+        
+        if let firstTaskNode = taskNodeGenerator?.currentTaskNode {
+            taskNodeView.taskNode = firstTaskNode
+            
+            // Load background audio at start
+//            loadBackgroundAudio()
+            
+            // Start voice-over if on
+//            if voiceOverOn {
+//                startVoiceOver()
+//            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
