@@ -9,8 +9,15 @@
 import UIKit
 import UsbongKit
 
+private enum TransitionDirection {
+    case Backward, Forward
+}
+
 class TreeViewController: UIViewController {
 
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    
     @IBOutlet weak var taskNodeView: TaskNodeView!
     
     var taskNodeGenerator: UsbongTaskNodeGenerator?
@@ -60,24 +67,57 @@ class TreeViewController: UIViewController {
     @IBAction func didPressPrevious(sender: AnyObject) {
         print("Did Press Previous")
         
-        taskNodeGenerator?.transitionToPreviousTaskNode()
-        
-        reloadCurrentTaskNode()
+        transitionWithDirection(.Backward)
     }
     
     @IBAction func didPressNext(sender: AnyObject) {
         print("Did Press Next")
         
-        taskNodeGenerator?.transitionToNextTaskNode()
-        
-        reloadCurrentTaskNode()
+        transitionWithDirection(.Forward)
     }
     
     // MARK: - Custom
     
-    func reloadCurrentTaskNode() {
+    private func reloadCurrentTaskNode() {
         if let currentTaskNode = taskNodeGenerator?.currentTaskNode {
             taskNodeView.taskNode = currentTaskNode
+        }
+    }
+    
+    private func transitionWithDirection(direction: TransitionDirection) {
+        // Before transition
+        if direction == .Backward {
+            // Previous
+            if taskNodeGenerator?.previousTaskNode == nil {
+                dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                taskNodeGenerator?.transitionToPreviousTaskNode()
+            }
+            
+        } else {
+            // Next transition
+            if taskNodeGenerator?.currentTaskNode is EndStateTaskNode {
+                dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                taskNodeGenerator?.transitionToNextTaskNode()
+            }
+        }
+        
+        reloadCurrentTaskNode()
+        
+        // Finished transition
+        // Change back button title to exit if there are no previous task nodes
+        if taskNodeGenerator?.previousTaskNode == nil {
+            previousButton.setTitle("Exit", forState: .Normal)
+        } else {
+            previousButton.setTitle("Back", forState: .Normal)
+        }
+        
+        // Change next button title to exit if transitioned node is end state
+        if taskNodeGenerator?.currentTaskNode is EndStateTaskNode {
+            nextButton.setTitle("Exit", forState: .Normal)
+        } else {
+            nextButton.setTitle("Next", forState: .Normal)
         }
     }
 }
