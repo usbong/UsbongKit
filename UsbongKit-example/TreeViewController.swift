@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 import UsbongKit
 
 private enum TransitionDirection {
@@ -22,6 +23,8 @@ class TreeViewController: UIViewController {
     
     var taskNodeGenerator: UsbongTaskNodeGenerator?
     
+    var backgroundAudioPlayer: AVAudioPlayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,19 +36,8 @@ class TreeViewController: UIViewController {
                 navigationItem.title = taskNodeGenerator?.title ?? "Unknown"
             }
         }
-        taskNodeView.taskNode = TextDisplayTaskNode(text: "Hello, World!\nHello!")
         
-        if let firstTaskNode = taskNodeGenerator?.currentTaskNode {
-            taskNodeView.taskNode = firstTaskNode
-            
-            // Load background audio at start
-//            loadBackgroundAudio()
-            
-            // Start voice-over if on
-//            if voiceOverOn {
-//                startVoiceOver()
-//            }
-        }
+        reloadCurrentTaskNode()
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,9 +70,31 @@ class TreeViewController: UIViewController {
     
     // MARK: - Custom
     
+    // MARK: Transition
     private func reloadCurrentTaskNode() {
         if let currentTaskNode = taskNodeGenerator?.currentTaskNode {
             taskNodeView.taskNode = currentTaskNode
+            
+            // Hints dictionary
+            if let hintsDictionary = taskNodeGenerator?.hintsDictionary {
+                print(hintsDictionary)
+                taskNodeView.hintsDictionary = hintsDictionary
+            }
+            
+            // Background audio - change only if not empty and different
+            if let taskNodeBGFilePath = currentTaskNode.backgroundAudioFilePath {
+                let currentBGFilePath = backgroundAudioPlayer?.url?.path ?? ""
+                if taskNodeBGFilePath.characters.count > 0 && taskNodeBGFilePath != currentBGFilePath {
+                    backgroundAudioPlayer = nil
+                    
+                    loadBackgroundAudio()
+                }
+            }
+            
+            // Start voice-over if on
+//            if voiceOverOn {
+//                startVoiceOver()
+//            }
         }
     }
     
@@ -118,6 +132,23 @@ class TreeViewController: UIViewController {
             nextButton.setTitle("Exit", forState: .Normal)
         } else {
             nextButton.setTitle("Next", forState: .Normal)
+        }
+    }
+    
+    // MARK: Background audio
+    
+    func loadBackgroundAudio() {
+        if let currentTaskNode = taskNodeGenerator?.currentTaskNode {
+            if let backgroundAudopFilePath = currentTaskNode.backgroundAudioFilePath {
+                if let audioPlayer = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: backgroundAudopFilePath)) {
+                    audioPlayer.numberOfLoops = -1 // Endless loop
+                    audioPlayer.prepareToPlay()
+                    audioPlayer.play()
+                    audioPlayer.volume = 0.4
+                    
+                    backgroundAudioPlayer = audioPlayer
+                }
+            }
         }
     }
 }
