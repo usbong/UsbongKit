@@ -46,6 +46,8 @@ class TreeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Actions
+    
     @IBAction func didPressExit(sender: AnyObject) {
         print("Did Press Exit")
         dismissViewControllerAnimated(true, completion: nil)
@@ -57,9 +59,25 @@ class TreeViewController: UIViewController {
     
     @IBAction func didPressPrevious(sender: AnyObject) {
         print("Did Press Previous")
+        
+        taskNodeGenerator?.transitionToPreviousTaskNode()
+        
+        reloadCurrentTaskNode()
     }
     
     @IBAction func didPressNext(sender: AnyObject) {
         print("Did Press Next")
+        
+        taskNodeGenerator?.transitionToNextTaskNode()
+        
+        reloadCurrentTaskNode()
+    }
+    
+    // MARK: - Custom
+    
+    func reloadCurrentTaskNode() {
+        if let currentTaskNode = taskNodeGenerator?.currentTaskNode {
+            taskNodeView.taskNode = currentTaskNode
+        }
     }
 }
