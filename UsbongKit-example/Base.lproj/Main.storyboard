@@ -94,11 +94,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xdy-77-Qn5" customClass="TaskNodeView" customModule="UsbongKit">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.96652759600000004" green="0.96652759600000004" blue="0.96652759600000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.92156862750000001" green="0.93725490199999995" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Xdy-77-Qn5" secondAttribute="trailing" id="3kK-kj-WeS"/>
                             <constraint firstItem="1l2-2A-dLQ" firstAttribute="top" secondItem="dfI-Q4-UfA" secondAttribute="bottom" id="DDu-Vg-qa5"/>
