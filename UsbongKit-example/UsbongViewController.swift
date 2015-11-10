@@ -70,6 +70,30 @@ class UsbongViewController: UIViewController {
     
     @IBAction func didPressMore(sender: AnyObject) {
         print("Did Press More")
+        
+        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        
+        let onOrOffText = voiceOverOn ? "Off" : "On"
+        let speechAction = UIAlertAction(title: "Speech \(onOrOffText)", style: .Default) { (action) -> Void in
+            let turnOn = !self.voiceOverOn
+            
+            // If toggled to on, start voice-over
+            if turnOn {
+                self.startVoiceOver()
+            }
+            
+            self.voiceOverOn = turnOn
+        }
+        let setLanguageAction = UIAlertAction(title: "Set Language", style: .Default) { (action) -> Void in
+//            self.showChoosLanguageScreen()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        actionController.addAction(speechAction)
+        actionController.addAction(setLanguageAction)
+        actionController.addAction(cancelAction)
+        
+        presentViewController(actionController, animated: true, completion: nil)
     }
     
     @IBAction func didPressPrevious(sender: AnyObject) {
