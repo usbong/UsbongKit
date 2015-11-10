@@ -23,7 +23,23 @@ class UsbongViewController: UIViewController {
     
     var taskNodeGenerator: UsbongTaskNodeGenerator?
     
+    lazy var speechSynthezier: AVSpeechSynthesizer = AVSpeechSynthesizer()
     var backgroundAudioPlayer: AVAudioPlayer?
+    var audioSpeechPlayer: AVAudioPlayer?
+    
+    var voiceOverOn: Bool {
+        get {
+            // Default to true if not yet set
+            let standardUserDefaults = NSUserDefaults.standardUserDefaults()
+            if standardUserDefaults.objectForKey("SpeechOn") == nil {
+                standardUserDefaults.setBool(true, forKey: "SpeechOn")
+            }
+            return standardUserDefaults.boolForKey("SpeechOn")
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "SpeechOn")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,18 +108,21 @@ class UsbongViewController: UIViewController {
             }
             
             // Start voice-over if on
-//            if voiceOverOn {
-//                startVoiceOver()
-//            }
+            if voiceOverOn {
+                startVoiceOver()
+            }
         }
     }
     
     private func transitionWithDirection(direction: TransitionDirection) {
         // Before transition
+        stopVoiceOver()
+        
         if direction == .Backward {
             // Previous
             if taskNodeGenerator?.previousTaskNode == nil {
                 dismissViewControllerAnimated(true, completion: nil)
+                return
             } else {
                 taskNodeGenerator?.transitionToPreviousTaskNode()
             }
@@ -112,6 +131,7 @@ class UsbongViewController: UIViewController {
             // Next transition
             if taskNodeGenerator?.currentTaskNode is EndStateTaskNode {
                 dismissViewControllerAnimated(true, completion: nil)
+                return
             } else {
                 taskNodeGenerator?.transitionToNextTaskNode()
             }
@@ -148,6 +168,67 @@ class UsbongViewController: UIViewController {
                     
                     backgroundAudioPlayer = audioPlayer
                 }
+            }
+        }
+    }
+    
+    // MARK: Voice-over
+    func startVoiceOver() {
+        if let currentTaskNode = taskNodeGenerator?.currentTaskNode {
+            // Attempt to play speech from audio file, if failed, resort to text-to-speech
+            if !startAudioSpeechInTaskNode(currentTaskNode) {
+                print(">>> Text-to-speech")
+                startTextToSpeechInTaskNode(currentTaskNode)
+            }
+        }
+    }
+    func stopVoiceOver() {
+        stopTextToSpeech()
+        stopAudioSpeech()
+    }
+    
+    func startTextToSpeechInTaskNode(taskNode: TaskNode) {
+        let modules = taskNode.modules
+        for module in modules {
+            if let textModule = module as? TextTaskNodeModule {
+                print("\(textModule.text)")
+                let utterance = AVSpeechUtterance(string: textModule.text)
+                
+                utterance.voice = AVSpeechSynthesisVoice(language: taskNodeGenerator?.currentLanguageCode ?? "en-EN")
+                
+                // Speak
+                speechSynthezier.speakUtterance(utterance)
+            }
+        }
+    }
+    func stopTextToSpeech() {
+        if speechSynthezier.speaking {
+            speechSynthezier.stopSpeakingAtBoundary(.Immediate)
+        }
+    }
+    
+    func startAudioSpeechInTaskNode(taskNode: TaskNode) -> Bool {
+        if let audioFilePath = taskNode.audioFilePath {
+            do {
+                let audioPlayer = try AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: audioFilePath))
+                
+                audioPlayer.prepareToPlay()
+                audioPlayer.play()
+                
+                audioSpeechPlayer = audioPlayer
+                print(">>> Played Audio File")
+                return true
+            } catch let error as NSError {
+                print("Error loading audio file: \(error)")
+                return false
+            }
+        }
+        return false
+    }
+    func stopAudioSpeech() {
+        if let player = audioSpeechPlayer {
+            if player.playing {
+                player.stop()
             }
         }
     }
