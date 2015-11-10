@@ -1,5 +1,5 @@
 //
-//  TreeViewController.swift
+//  UsbongViewController.swift
 //  UsbongKit
 //
 //  Created by Joe Amanse on 07/11/2015.
@@ -14,7 +14,7 @@ private enum TransitionDirection {
     case Backward, Forward
 }
 
-class TreeViewController: UIViewController {
+class UsbongViewController: UIViewController {
 
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!

@@ -49,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="354" y="471"/>
         </scene>
-        <!--Tree View Controller-->
+        <!--Usbong View Controller-->
         <scene sceneID="geF-A2-aTr">
             <objects>
-                <viewController id="9WY-gy-CNB" customClass="TreeViewController" customModule="UsbongKit_example" sceneMemberID="viewController">
+                <viewController id="9WY-gy-CNB" customClass="UsbongViewController" customModule="UsbongKit_example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dcc-a1-fxp"/>
                         <viewControllerLayoutGuide type="bottom" id="1l2-2A-dLQ"/>
