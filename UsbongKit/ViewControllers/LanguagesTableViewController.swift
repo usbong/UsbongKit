@@ -21,7 +21,9 @@
 import UIKit
 
 class LanguagesTableViewController: UITableViewController {
-    var treeViewController: TreeViewController?
+    var taskNodeGenerator: UsbongTaskNodeGenerator?
+    
+    var selectLanguageCompletion: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +54,7 @@ class LanguagesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return treeViewController?.taskNodeGenerator?.availableLanguages.count ?? 0
+        return taskNodeGenerator?.availableLanguages.count ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -65,11 +67,10 @@ class LanguagesTableViewController: UITableViewController {
 //        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
         // Configure the cell...
-        let generator = treeViewController?.taskNodeGenerator
-        let language = generator?.availableLanguages[indexPath.row]
+        let language = taskNodeGenerator?.availableLanguages[indexPath.row]
         cell.textLabel?.text = language
         
-        if generator?.currentLanguage == language {
+        if taskNodeGenerator?.currentLanguage == language {
             cell.accessoryType = .Checkmark
         } else {
             cell.accessoryType = .None
@@ -82,14 +83,11 @@ class LanguagesTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Set current language to selected language
-        var generator = treeViewController?.taskNodeGenerator
-        if let selectedLanguage = generator?.availableLanguages[indexPath.row] {
-            generator?.currentLanguage = selectedLanguage
+        if let selectedLanguage = taskNodeGenerator?.availableLanguages[indexPath.row] {
+            taskNodeGenerator?.currentLanguage = selectedLanguage
         }
         
         tableView.reloadData()
-        dismissViewControllerAnimated(true) {
-            self.treeViewController?.reloadCurrentTaskNode()
-        }
+        dismissViewControllerAnimated(true, completion: selectLanguageCompletion)
     }
 }

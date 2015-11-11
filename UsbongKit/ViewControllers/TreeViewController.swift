@@ -305,7 +305,10 @@ public class TreeViewController: UIViewController {
         
         // Create languages view controller
         let languagesVC = LanguagesTableViewController()
-        languagesVC.treeViewController = self
+        languagesVC.taskNodeGenerator = taskNodeGenerator
+        languagesVC.selectLanguageCompletion = {
+            self.reloadCurrentTaskNode()
+        }
         
         // Embed in navigation controller
         let navigationController = UINavigationController(rootViewController: languagesVC)
@@ -315,11 +318,4 @@ public class TreeViewController: UIViewController {
     
     // MARK: - Navigation
     
-    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showLanguages" {
-            if let languagesVC = (segue.destinationViewController as? UINavigationController)?.topViewController as? LanguagesTableViewController {
-                languagesVC.treeViewController = self
-            }
-        }
-    }
 }
