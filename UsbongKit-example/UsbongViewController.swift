@@ -54,6 +54,9 @@ class UsbongViewController: UIViewController {
         }
         
         reloadCurrentTaskNode()
+        
+        // Set hints text view delegate in task node view
+        taskNodeView.hintsTextViewDelegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -273,5 +276,17 @@ class UsbongViewController: UIViewController {
         let navigationController = UINavigationController(rootViewController: languagesVC)
         
         presentViewController(navigationController, animated: true, completion: nil)
+    }
+}
+
+extension UsbongViewController: HintsTextViewDelegate {
+    func hintsTextView(textView: HintsTextView, didTapString: String, withHint hint: String) {
+        let alertController = UIAlertController(title: "Word Hint", message: hint, preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        alertController.addAction(okAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
 }
