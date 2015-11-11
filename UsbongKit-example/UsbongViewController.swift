@@ -85,7 +85,7 @@ class UsbongViewController: UIViewController {
             self.voiceOverOn = turnOn
         }
         let setLanguageAction = UIAlertAction(title: "Set Language", style: .Default) { (action) -> Void in
-//            self.showChoosLanguageScreen()
+            self.showChoosLanguageScreen()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
@@ -255,5 +255,23 @@ class UsbongViewController: UIViewController {
                 player.stop()
             }
         }
+    }
+    
+    // MARK: Translation
+    
+    func showChoosLanguageScreen() {
+        print(">>> Show choose language screen")
+        
+        // Create languages view controller
+        let languagesVC = LanguagesTableViewController()
+        languagesVC.taskNodeGenerator = taskNodeGenerator
+        languagesVC.selectLanguageCompletion = {
+            self.reloadCurrentTaskNode()
+        }
+        
+        // Embed in navigation controller
+        let navigationController = UINavigationController(rootViewController: languagesVC)
+        
+        presentViewController(navigationController, animated: true, completion: nil)
     }
 }
