@@ -20,12 +20,12 @@
 
 import UIKit
 
-class LanguagesTableViewController: UITableViewController {
-    var taskNodeGenerator: UsbongTaskNodeGenerator?
+public class LanguagesTableViewController: UITableViewController {
+    public var taskNodeGenerator: UsbongTaskNodeGenerator?
     
-    var selectLanguageCompletion: (() -> Void)?
+    public var selectLanguageCompletion: (() -> Void)?
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -36,7 +36,7 @@ class LanguagesTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: Selector("didPressCancel:"))
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -49,15 +49,15 @@ class LanguagesTableViewController: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskNodeGenerator?.availableLanguages.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell
         if tableView.dequeueReusableCellWithIdentifier("Cell") == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
@@ -81,7 +81,7 @@ class LanguagesTableViewController: UITableViewController {
     
     // MARK: - Table view delegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Set current language to selected language
         if let selectedLanguage = taskNodeGenerator?.availableLanguages[indexPath.row] {
             taskNodeGenerator?.currentLanguage = selectedLanguage
