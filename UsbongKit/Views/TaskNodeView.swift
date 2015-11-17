@@ -9,6 +9,7 @@
 import UIKit
 
 public class TaskNodeView: UIView {
+    public var backgroundImageView: UIImageView = UIImageView(frame: CGRect.zero)
     public var taskNodeTableView: UITableView = UITableView(frame: CGRect.zero, style: .Plain)
     public weak var hintsTextViewDelegate: HintsTextViewDelegate?
     
@@ -37,6 +38,10 @@ public class TaskNodeView: UIView {
     }
     
     private func customInitialization() {
+        // Background image view properties
+        backgroundImageView.backgroundColor = UIColor.clearColor()
+        backgroundImageView.contentMode = .ScaleAspectFill
+        
         // Table view properties
         taskNodeTableView.backgroundColor = UIColor.clearColor()
         taskNodeTableView.separatorStyle = .None
@@ -45,7 +50,21 @@ public class TaskNodeView: UIView {
         taskNodeTableView.rowHeight = UITableViewAutomaticDimension
         taskNodeTableView.estimatedRowHeight = 100
         
+        addBackgroundImageView()
         addTaskNodeTableView()
+    }
+    private func addBackgroundImageView() {
+        addSubview(backgroundImageView)
+        
+        // Setup constraints
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        let viewsDictionary: [String: AnyObject] = ["view" : backgroundImageView]
+        
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        
+        addConstraints(horizontalConstraints)
+        addConstraints(verticalConstraints)
     }
     
     private func addTaskNodeTableView() {
