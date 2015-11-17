@@ -85,7 +85,7 @@ public class UsbongFileManager {
         // Unpack
         if let zipPath = url.path, let destinationPath = destinationURL.path {
             guard Main.unzipFileAtPath(zipPath, toDestination: destinationPath) else {
-                print("Failed to unzip")
+                print("UsbongFileManager: Failed to unzip")
                 return nil
             }
             
@@ -132,7 +132,7 @@ public class UsbongFileManager {
             // Return first tree in unpacked directory
             return firstTreeInURL(unpackDirectoryURL)
         }
-        print(unpackDirectoryURL.path)
+        print("UsbongFileManager:\nUnpack directory URL: \(unpackDirectoryURL.path)")
         
         return unpackTreeWithURL(treeURL, toDestinationURL: unpackDirectoryURL)
     }

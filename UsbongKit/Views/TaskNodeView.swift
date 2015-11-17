@@ -84,9 +84,6 @@ public class TaskNodeView: UIView {
         // Add data source and delegate
         taskNodeTableView.dataSource = self
         taskNodeTableView.delegate = self
-        
-        print(taskNodeTableView.backgroundColor)
-        print(taskNodeTableView.separatorStyle == .None)
     }
     
     // MARK: - Custom
@@ -145,7 +142,6 @@ extension TaskNodeView: UITableViewDataSource {
         switch module {
         case let textModule as TextTaskNodeModule:
             let textCell = tableView.dequeueReusableCellWithIdentifier("Text", forIndexPath: indexPath) as! TextTableViewCell
-            print("Text: \(textModule.text)")
             
             // Add hints if available
             let attributedText = NSMutableAttributedString(string: textModule.text)
@@ -164,7 +160,7 @@ extension TaskNodeView: UITableViewDataSource {
             cell = textCell
         case let imageModule as ImageTaskNodeModule:
             let imageCell = tableView.dequeueReusableCellWithIdentifier("Image", forIndexPath: indexPath) as! ImageTableViewCell
-            print("Image: \(imageModule.imageFilePath)")
+            
             imageCell.customImageView.image = UIImage(contentsOfFile: imageModule.imageFilePath)
             
             cell = imageCell

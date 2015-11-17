@@ -252,15 +252,13 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
             }
             
             // Background Path
-            print("BACKGROUND IMAGE: \(nameComponents.backgroundImagePathUsingXMLURL(treeRootURL))")
             taskNode?.backgroundImageFilePath = nameComponents.backgroundImagePathUsingXMLURL(treeRootURL)
             
             // Audio Paths
             taskNode?.backgroundAudioFilePath = nameComponents.backgroundAudioPathUsingXMLURL(treeRootURL)
             taskNode?.audioFilePath = nameComponents.audioPathUsingXMLURL(treeRootURL)
-        } else if let endStateElement = try? processDefinition[UsbongXMLIdentifier.endState].withAttr(UsbongXMLIdentifier.name, name) {
+        } else if (try? processDefinition[UsbongXMLIdentifier.endState].withAttr(UsbongXMLIdentifier.name, name)) != nil {
             // Find end-state node if task-node not found
-            print(endStateElement)
             taskNode =  EndStateTaskNode(text: "You've now reached the end")
         }
         
@@ -374,8 +372,6 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
     // MARK: - Translation and parsing
     
     public func translateText(text: String) -> String {
-        print("Translate this: \(text)")
-        
         var translatedText = text
         
         // Fetch translation from XML
@@ -384,7 +380,6 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
             let resources = languageXML[UsbongXMLIdentifier.resources]
             
             if let stringElement = try? resources[UsbongXMLIdentifier.string].withAttr(UsbongXMLIdentifier.name, text) {
-                print(stringElement)
                 translatedText = stringElement.element?.text ?? text
             }
         }
