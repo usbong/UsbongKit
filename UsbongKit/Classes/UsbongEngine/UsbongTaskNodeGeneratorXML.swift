@@ -85,16 +85,21 @@ private struct UsbongXMLName {
         return nil
     }
     
-    // MARK: Background audio
-    var backgroundAudioFileName: String? {
-        let fullIdentifier = "@" + UsbongXMLName.backgroundAudioIdentifier + "="
+    // MARK: Fetch value of identifier
+    func valueOfIdentifer(identifier: String) -> String? {
         for component in components {
-            if component.hasPrefix(fullIdentifier) {
-                let endIndex = component.startIndex.advancedBy(fullIdentifier.characters.count)
+            if component.hasPrefix(identifier) {
+                let endIndex = component.startIndex.advancedBy(identifier.characters.count)
                 return component.substringFromIndex(endIndex)
             }
         }
         return nil
+    }
+    
+    // MARK: Background audio
+    var backgroundAudioFileName: String? {
+        let fullIdentifier = "@" + UsbongXMLName.backgroundAudioIdentifier + "="
+        return valueOfIdentifer(fullIdentifier)
     }
     func backgroundAudioPathUsingXMLURL(url: NSURL) -> String? {
         let audioURL = url.URLByAppendingPathComponent("audio")
@@ -116,14 +121,7 @@ private struct UsbongXMLName {
     // MARK: Audio
     var audioFileName: String? {
         let fullIdentifier = "@" + UsbongXMLName.audioIdentifier + "="
-        
-        for component in components {
-            if component.hasPrefix(fullIdentifier) {
-                let endIndex = component.startIndex.advancedBy(fullIdentifier.characters.count)
-                return component.substringFromIndex(endIndex)
-            }
-        }
-        return nil
+        return valueOfIdentifer(fullIdentifier)
     }
     func audioPathUsingXMLURL(url: NSURL) -> String? {
         let audioURL = url.URLByAppendingPathComponent("audio")
