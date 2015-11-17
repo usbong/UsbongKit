@@ -90,10 +90,8 @@ private struct UsbongXMLName {
         let fullIdentifier = "@" + UsbongXMLName.backgroundAudioIdentifier + "="
         for component in components {
             if component.hasPrefix(fullIdentifier) {
-                let startIndex = component.startIndex
-                let endIndex = startIndex.advancedBy(fullIdentifier.characters.count)
-                let range = Range(start: startIndex, end: endIndex)
-                return component.stringByReplacingCharactersInRange(range, withString: "")
+                let endIndex = component.startIndex.advancedBy(fullIdentifier.characters.count)
+                return component.substringFromIndex(endIndex)
             }
         }
         return nil
@@ -121,10 +119,8 @@ private struct UsbongXMLName {
         
         for component in components {
             if component.hasPrefix(fullIdentifier) {
-                let startIndex = component.startIndex
-                let endIndex = startIndex.advancedBy(fullIdentifier.characters.count)
-                let range = Range(start: startIndex, end: endIndex)
-                return component.stringByReplacingCharactersInRange(range, withString: "")
+                let endIndex = component.startIndex.advancedBy(fullIdentifier.characters.count)
+                return component.substringFromIndex(endIndex)
             }
         }
         return nil
