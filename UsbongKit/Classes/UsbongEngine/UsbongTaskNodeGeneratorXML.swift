@@ -35,8 +35,12 @@ private struct UsbongXMLIdentifier {
 }
 
 private struct UsbongXMLName {
+    static let backgroundImageIdentifier = "bg"
     static let backgroundAudioIdentifier = "bgAudioName"
     static let audioIdentifier = "audioName"
+    
+    
+    let supportedImageFormats = ["jpg", "jpeg", "png", "gif", "bmp", "tiff", "tif", "ico", "cur", "BMPf", "xbm"]
     
     let components: [String]
     let language: String
@@ -72,7 +76,6 @@ private struct UsbongXMLName {
         let imageURLWithoutExtension = resURL.URLByAppendingPathComponent(imageFileName!)
         
         // Check for images with supported image formats
-        let supportedImageFormats = ["jpg", "jpeg", "png", "gif", "bmp", "tiff", "tif", "ico", "cur", "BMPf", "xbm"]
         let fileManager = NSFileManager.defaultManager()
         for format in supportedImageFormats {
             if let imagePath = imageURLWithoutExtension.URLByAppendingPathExtension(format).path {
@@ -93,6 +96,30 @@ private struct UsbongXMLName {
                 return component.substringFromIndex(endIndex)
             }
         }
+        return nil
+    }
+    
+    // MARK: Background image
+    
+    var backgroundImageFileName: String {
+        let fullIdentifier = "@" + UsbongXMLName.backgroundImageIdentifier + "="
+        return valueOfIdentifer(fullIdentifier) ?? "bg"
+    }
+    func backgroundImagePathUsingXMLURL(url: NSURL) -> String? {
+        let resURL = url.URLByAppendingPathComponent("res")
+        let imageURLWithoutExtension = resURL.URLByAppendingPathComponent(backgroundImageFileName)
+        
+        // Check for images with supported image formats
+        
+        let fileManager = NSFileManager.defaultManager()
+        for format in supportedImageFormats {
+            if let imagePath = imageURLWithoutExtension.URLByAppendingPathExtension(format).path {
+                if fileManager.fileExistsAtPath(imagePath) {
+                    return imagePath
+                }
+            }
+        }
+        
         return nil
     }
     
@@ -224,7 +251,11 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
                 taskNode = nil
             }
             
-            // Audio URLs
+            // Background Path
+            print("BACKGROUND IMAGE: \(nameComponents.backgroundImagePathUsingXMLURL(treeRootURL))")
+            taskNode?.backgroundImageFilePath = nameComponents.backgroundImagePathUsingXMLURL(treeRootURL)
+            
+            // Audio Paths
             taskNode?.backgroundAudioFilePath = nameComponents.backgroundAudioPathUsingXMLURL(treeRootURL)
             taskNode?.audioFilePath = nameComponents.audioPathUsingXMLURL(treeRootURL)
         } else if let endStateElement = try? processDefinition[UsbongXMLIdentifier.endState].withAttr(UsbongXMLIdentifier.name, name) {

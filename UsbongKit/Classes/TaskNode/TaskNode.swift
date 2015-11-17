@@ -26,6 +26,8 @@ public class TaskNode {
     
     public let modules: [TaskNodeModule]
     
+    public var backgroundImageFilePath: String?
+    
     public var backgroundAudioFilePath: String?
     public var audioFilePath: String?
     
