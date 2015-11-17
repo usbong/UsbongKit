@@ -118,6 +118,12 @@ class UsbongViewController: UIViewController {
         if let currentTaskNode = taskNodeGenerator?.currentTaskNode {
             taskNodeView.taskNode = currentTaskNode
             
+            // Background image
+            
+            if let backgroundImageFilePath = currentTaskNode.backgroundImageFilePath {
+                taskNodeView.backgroundImageView.image = UIImage(contentsOfFile: backgroundImageFilePath)
+            }
+            
             // Hints dictionary
             if let hintsDictionary = taskNodeGenerator?.hintsDictionary {
                 print(hintsDictionary)
