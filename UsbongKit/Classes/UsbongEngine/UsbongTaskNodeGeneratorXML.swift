@@ -247,6 +247,8 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
                 taskNode = TextImageDisplayTaskNode(text: finalText, imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "")
             case ImageTextDisplayTaskNode.type:
                 taskNode = ImageTextDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "", text: finalText)
+            case LinkTaskNode.type:
+                taskNode = LinkTaskNode(text: finalText, tasks: [String]())
             default:
                 taskNode = nil
             }
