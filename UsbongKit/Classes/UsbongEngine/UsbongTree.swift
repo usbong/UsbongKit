@@ -157,7 +157,12 @@ private struct UsbongXMLName {
     }
 }
 
-public enum TaskNodeType: String {
+private struct TransitionInfo {
+    private var transitionName: String
+    private var taskNodeName: String
+}
+
+private enum TaskNodeType: String {
     case TextDisplay = "textDisplay"
     case ImageDisplay = "imageDisplay"
     case TextImageDisplay = "textImageDisplay"
@@ -180,6 +185,9 @@ public class UsbongTree {
     
     public private(set) var currentTaskNode: TaskNode?
     
+    public var currentTargetTransitionName: String = "Any"
+//    public var transitionInfo: [String: String] = [String: String]()
+    private var transitionInfos: [TransitionInfo] = []
     public init(treeRootURL: NSURL) {
         self.treeRootURL = treeRootURL
         
@@ -218,8 +226,7 @@ public class UsbongTree {
 //                let translatedText = currentLanguage != baseLanguage ? translateText(nameComponents.text) : nameComponents.text
                 
                 // Parse text
-//                let finalText = parseText(translatedText)
-                let finalText = nameComponents.text
+                let finalText = parseText(nameComponents.text)
                 
                 switch taskNodeType {
                 case .TextDisplay:
@@ -232,9 +239,9 @@ public class UsbongTree {
                     taskNode = ImageTextDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "", text: finalText)
                 case .Link:
                     taskNode = LinkTaskNode(text: finalText, tasks: [String]())
-//                default:
-//                    taskNode = nil
                 }
+                
+                // Fetch transition info
                 
                 // Background Path
                 taskNode?.backgroundImageFilePath = nameComponents.backgroundImagePathUsingXMLURL(treeRootURL)
@@ -250,6 +257,15 @@ public class UsbongTree {
         }
         
         return taskNode
+    }
+    
+    private func parseText(text: String) -> String {
+        var currentText = text
+        
+        // Replace markups
+        currentText = currentText.stringByReplacingOccurrencesOfString("{br}", withString: "\n")
+        
+        return currentText
     }
 }
 public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
