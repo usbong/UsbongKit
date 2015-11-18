@@ -162,7 +162,7 @@ class UsbongViewController: UIViewController {
             
         } else {
             // Next transition
-            if taskNodeGenerator?.currentTaskNode is EndStateTaskNode {
+            if taskNodeGenerator?.currentTaskNode is EndStateTaskNode || taskNodeGenerator?.nextTaskNode == nil {
                 dismissViewControllerAnimated(true, completion: nil)
                 return
             } else {
@@ -181,7 +181,7 @@ class UsbongViewController: UIViewController {
         }
         
         // Change next button title to exit if transitioned node is end state
-        if taskNodeGenerator?.currentTaskNode is EndStateTaskNode {
+        if taskNodeGenerator?.currentTaskNode is EndStateTaskNode || taskNodeGenerator?.nextTaskNode == nil {
             nextButton.setTitle("Exit", forState: .Normal)
         } else {
             nextButton.setTitle("Next", forState: .Normal)
