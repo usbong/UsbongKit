@@ -17,6 +17,17 @@ class ViewController: UIViewController {
 //        print(UsbongFileManager.defaultManager().rootURL)
         
         treeZipURL = NSBundle.mainBundle().URLForResource("Usbong iOS", withExtension: "utree")
+        
+        if let zipURL = treeZipURL {
+            if let treeRootURL = UsbongFileManager.defaultManager().unpackTreeToCacheDirectoryWithTreeURL(zipURL) {
+                let tree = UsbongTree(treeRootURL: treeRootURL)
+                print("Root: \(tree.treeRootURL)\nXML: \(tree.xmlURL)")
+                print("Title: \(tree.title)")
+                print("TaskNodeName: \(tree.taskNodeNames)")
+                let currentTaskNode = tree.currentTaskNode
+                print("TaskNode: \(currentTaskNode)")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -21,8 +21,6 @@
 import Foundation
 
 public class ImageTextDisplayTaskNode: TaskNode {
-    override public class var type: String { return "imageTextDisplay" }
-    
     public init(imageFilePath: String, text: String) {
         let imageModule = ImageTaskNodeModule(imageFilePath: imageFilePath)
         let textModule = TextTaskNodeModule(text: text)

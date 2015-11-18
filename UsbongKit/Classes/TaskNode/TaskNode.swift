@@ -21,9 +21,6 @@
 import Foundation
 
 public class TaskNode {
-    // TODO: Don't put type in TaskNode. This is used only in XML parser, so put it there. (Even for subclasses)
-    public class var type: String { return "taskNode" }
-    
     public let modules: [TaskNodeModule]
     
     public var backgroundImageFilePath: String?
@@ -32,7 +29,6 @@ public class TaskNode {
     public var audioFilePath: String?
     
     public var targetTransitionName: String?
-    public var transitionNamesAndToTaskNodeNames: [String: String] = [String: String]()
     
     public init(modules: [TaskNodeModule]) {
         self.modules = modules

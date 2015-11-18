@@ -21,8 +21,6 @@
 import Foundation
 
 public class TextDisplayTaskNode: TaskNode {
-    override public class var type: String { return "textDisplay" }
-    
     public init(text: String) {
         let textModule = TextTaskNodeModule(text: text)
         super.init(modules: [textModule])

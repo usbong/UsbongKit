@@ -9,8 +9,6 @@
 import Foundation
 
 public class LinkTaskNode: TaskNode {
-    override public class var type: String { return "link" }
-    
     public init(text: String, tasks: [String]) {
         let textModule = TextTaskNodeModule(text: text)
         

@@ -21,7 +21,7 @@
 import Foundation
 
 public class TaskNodeModule {
-    public var content: [String: NSObject]
+    public private(set) var content: [String: NSObject]
     
     public init(content: [String: NSObject]) {
         self.content = content
@@ -35,7 +35,7 @@ public func ==(lhs: TaskNodeModule, rhs: TaskNodeModule) -> Bool {
 
 public class TextTaskNodeModule: TaskNodeModule {
     public init(text: String) {
-        let dict: [String: NSObject] = [ "text": NSString(string: text) ]
+        let dict: [String: NSObject] = ["text": NSString(string: text) ]
         super.init(content: dict)
     }
     public var text: String {
@@ -50,7 +50,7 @@ public class TextTaskNodeModule: TaskNodeModule {
 
 public class ImageTaskNodeModule: TaskNodeModule {
     public init(imageFilePath: String) {
-        let dict: [String: NSObject] = [ "imageFilePath": NSString(string: imageFilePath)]
+        let dict: [String: NSObject] = ["imageFilePath": NSString(string: imageFilePath)]
         super.init(content: dict)
     }
     public var imageFilePath: String {
