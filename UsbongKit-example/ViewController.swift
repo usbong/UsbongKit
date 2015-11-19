@@ -23,9 +23,11 @@ class ViewController: UIViewController {
                 let tree = UsbongTree(treeRootURL: treeRootURL)
                 print("Root: \(tree.treeRootURL)\nXML: \(tree.xmlURL)")
                 print("Title: \(tree.title)")
-                print("TaskNodeName: \(tree.taskNodeNames)")
+                tree.transitionToNextTaskNode()
+                print("TaskNodeNames: \(tree.taskNodeNames)")
                 let currentTaskNode = tree.currentTaskNode
                 print("TaskNode: \(currentTaskNode)")
+                print("TransitionInfo: \(tree.transitionInfo)")
             }
         }
     }

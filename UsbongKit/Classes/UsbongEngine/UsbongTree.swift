@@ -15,6 +15,7 @@ private struct UsbongXMLIdentifier {
     static let endState = "end-state"
     static let taskNode = "task-node"
     static let transition = "transition"
+    static let task = "task"
     static let to = "to"
     static let name = "name"
     
@@ -157,11 +158,6 @@ private struct UsbongXMLName {
     }
 }
 
-private struct TransitionInfo {
-    private var transitionName: String
-    private var taskNodeName: String
-}
-
 private enum TaskNodeType: String {
     case TextDisplay = "textDisplay"
     case ImageDisplay = "imageDisplay"
@@ -186,8 +182,8 @@ public class UsbongTree {
     public private(set) var currentTaskNode: TaskNode?
     
     public var currentTargetTransitionName: String = "Any"
-//    public var transitionInfo: [String: String] = [String: String]()
-    private var transitionInfos: [TransitionInfo] = []
+    public var transitionInfo: [String: String] = [String: String]()
+    
     public init(treeRootURL: NSURL) {
         self.treeRootURL = treeRootURL
         
@@ -219,7 +215,7 @@ public class UsbongTree {
         // task-node
         var taskNode: TaskNode? = nil
         // Find task-node element with attribute name value
-        if (try? processDefinition[UsbongXMLIdentifier.taskNode].withAttr(UsbongXMLIdentifier.name, name)) != nil {
+        if let taskNodeElement = try? processDefinition[UsbongXMLIdentifier.taskNode].withAttr(UsbongXMLIdentifier.name, name) {
             let nameComponents = UsbongXMLName(name: name, language: currentLanguage)
             if let taskNodeType = TaskNodeType(rawValue: nameComponents.type) {
                 // Translate text if current language is not base language
@@ -227,6 +223,9 @@ public class UsbongTree {
                 
                 // Parse text
                 let finalText = parseText(nameComponents.text)
+                
+                // Temporary transition info to be used by link and decision task nodes
+                var fetchedTransitionInfo = [String: String]()
                 
                 switch taskNodeType {
                 case .TextDisplay:
@@ -238,10 +237,39 @@ public class UsbongTree {
                 case .ImageTextDisplay:
                     taskNode = ImageTextDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "", text: finalText)
                 case .Link:
-                    taskNode = LinkTaskNode(text: finalText, tasks: [String]())
+                    var tasks = [LinkTaskNodeTask]()
+                    // Fetch transition info from task elements
+                    let taskElements = taskNodeElement[UsbongXMLIdentifier.task].all
+                    for taskElement in taskElements {
+                        if let name = taskElement.element?.attributes[UsbongXMLIdentifier.name] {
+                            var nameComponents = name.componentsSeparatedByString("~")
+                            if nameComponents.count > 1 {
+                                let key = nameComponents.removeLast()
+                                let translatedKey = key
+                                tasks.append(LinkTaskNodeTask(identifier: key, value: translatedKey))
+                                
+                                let value = nameComponents.joinWithSeparator("~")
+                                fetchedTransitionInfo[key] = value
+                            }
+                        }
+                    }
+                    
+                    print(tasks)
+                    taskNode = LinkTaskNode(text: finalText, tasks: tasks)
                 }
                 
-                // Fetch transition info
+                // Fetch transition info from transition elements
+                let transitionElements = taskNodeElement[UsbongXMLIdentifier.transition].all
+                for transitionElement in transitionElements {
+                    if let attributes = transitionElement.element?.attributes {
+                        // Get values of attributes name and to, add to taskNode object
+                        let name = attributes[UsbongXMLIdentifier.name] ?? "Any" // Default is Any if no name found
+                        
+                        // Save transition info
+                        fetchedTransitionInfo[name] = attributes[UsbongXMLIdentifier.to] ?? ""
+                    }
+                }
+                transitionInfo = fetchedTransitionInfo
                 
                 // Background Path
                 taskNode?.backgroundImageFilePath = nameComponents.backgroundImagePathUsingXMLURL(treeRootURL)
@@ -266,6 +294,16 @@ public class UsbongTree {
         currentText = currentText.stringByReplacingOccurrencesOfString("{br}", withString: "\n")
         
         return currentText
+    }
+    
+    public func transitionToNextTaskNode() -> Bool {
+        // Get next task node name
+        if let nextTaskNodeName = transitionInfo[currentTargetTransitionName] {
+            taskNodeNames.append(nextTaskNodeName)
+            currentTaskNode = taskNodeWithName(nextTaskNodeName)
+            return true
+        }
+        return false
     }
 }
 public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
@@ -345,7 +383,7 @@ public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
                 case .ImageTextDisplay:
                     taskNode = ImageTextDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "", text: finalText)
                 case .Link:
-                    taskNode = LinkTaskNode(text: finalText, tasks: [String]())
+                    taskNode = LinkTaskNode(text: finalText, tasks: [LinkTaskNodeTask]())
 //                default:
 //                    taskNode = nil
                 }

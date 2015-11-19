@@ -8,10 +8,28 @@
 
 import Foundation
 
+public struct LinkTaskNodeTask {
+    public let identifier: String
+    public let value: String
+    
+    public init(identifier: String, value: String) {
+        self.identifier = identifier
+        self.value = value
+    }
+}
+
 public class LinkTaskNode: TaskNode {
-    public init(text: String, tasks: [String]) {
-        let textModule = TextTaskNodeModule(text: text)
+    public var currentSelectedIndex: Int = -1 // -1 means none
+    
+    public init(text: String, tasks: [LinkTaskNodeTask]) {
+        var currentModules = [TaskNodeModule]()
+        currentModules.append(TextTaskNodeModule(text: text))
         
-        super.init(modules: [textModule])
+        // Test tasks
+        for task in tasks {
+            currentModules.append(TextTaskNodeModule(text: task.value))
+        }
+        
+        super.init(modules: currentModules)
     }
 }
