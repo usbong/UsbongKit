@@ -305,6 +305,12 @@ public class UsbongTree {
         return transitionInfo[currentTargetTransitionName]
     }
     
+    public func reloadCurrentTaskNode() {
+        if let currentTaskNodeName = taskNodeNames.last {
+            currentTaskNode = taskNodeWithName(currentTaskNodeName)
+        }
+    }
+    
     // MARK: Transitions
     public func transitionToNextTaskNode() -> Bool {
         // Get next task node name
