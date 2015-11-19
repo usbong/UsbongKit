@@ -215,7 +215,7 @@ public class UsbongTree {
         // task-node
         var taskNode: TaskNode? = nil
         // Find task-node element with attribute name value
-        if let taskNodeElement = try? processDefinition[UsbongXMLIdentifier.taskNode].withAttr(UsbongXMLIdentifier.name, name) {
+        if let taskNodeXMLIndexer = taskNodeXMLIndexerWithName(name) {
             let nameComponents = UsbongXMLName(name: name, language: currentLanguage)
             if let taskNodeType = TaskNodeType(rawValue: nameComponents.type) {
                 // Translate text if current language is not base language
@@ -239,9 +239,9 @@ public class UsbongTree {
                 case .Link:
                     var tasks = [LinkTaskNodeTask]()
                     // Fetch transition info from task elements
-                    let taskElements = taskNodeElement[UsbongXMLIdentifier.task].all
-                    for taskElement in taskElements {
-                        if let name = taskElement.element?.attributes[UsbongXMLIdentifier.name] {
+                    let taskXMLIndexers = taskNodeXMLIndexer[UsbongXMLIdentifier.task].all
+                    for taskXMLIndexer in taskXMLIndexers {
+                        if let name = taskXMLIndexer.element?.attributes[UsbongXMLIdentifier.name] {
                             var nameComponents = name.componentsSeparatedByString("~")
                             if nameComponents.count > 1 {
                                 let key = nameComponents.removeLast()
@@ -259,7 +259,7 @@ public class UsbongTree {
                 }
                 
                 // Fetch transition info from transition elements
-                let transitionElements = taskNodeElement[UsbongXMLIdentifier.transition].all
+                let transitionElements = taskNodeXMLIndexer[UsbongXMLIdentifier.transition].all
                 for transitionElement in transitionElements {
                     if let attributes = transitionElement.element?.attributes {
                         // Get values of attributes name and to, add to taskNode object
@@ -296,11 +296,21 @@ public class UsbongTree {
         return currentText
     }
     
+    // MARK: Convenience
+    private func taskNodeXMLIndexerWithName(name: String) -> XMLIndexer? {
+        return try? processDefinition[UsbongXMLIdentifier.taskNode].withAttr(UsbongXMLIdentifier.name, name)
+    }
+    
+    private var nextTaskNodeName: String? {
+        return transitionInfo[currentTargetTransitionName]
+    }
+    
+    // MARK: Transitions
     public func transitionToNextTaskNode() -> Bool {
         // Get next task node name
-        if let nextTaskNodeName = transitionInfo[currentTargetTransitionName] {
-            taskNodeNames.append(nextTaskNodeName)
-            currentTaskNode = taskNodeWithName(nextTaskNodeName)
+        if let name = nextTaskNodeName {
+            taskNodeNames.append(name)
+            currentTaskNode = taskNodeWithName(name)
             return true
         }
         return false
@@ -317,6 +327,14 @@ public class UsbongTree {
             }
         }
         return false
+    }
+    
+    // MARK: Availability check
+    public var nextTaskNodeIsAvailable: Bool {
+        return nextTaskNodeName != nil
+    }
+    public var previousTaskNodeIsAvailable: Bool {
+        return taskNodeNames.count > 1
     }
 }
 public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
