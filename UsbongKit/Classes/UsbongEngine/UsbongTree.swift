@@ -367,8 +367,17 @@ public class UsbongTree {
                         // Get values of attributes name and to, add to taskNode object
                         let name = attributes[UsbongXMLIdentifier.name] ?? "Any" // Default is Any if no name found
                         
+                        var to = attributes[UsbongXMLIdentifier.to] ?? ""
+                        
+                        // Remove identifier for link transition
+                        if taskNodeType == .Link {
+                            var components = to.componentsSeparatedByString("~")
+                            components.removeLast()
+                            to = components.joinWithSeparator("~")
+                        }
+                        
                         // Save transition info
-                        fetchedTransitionInfo[name] = attributes[UsbongXMLIdentifier.to] ?? ""
+                        fetchedTransitionInfo[name] = to
                     }
                 }
                 transitionInfo = fetchedTransitionInfo
@@ -489,6 +498,7 @@ public class UsbongTree {
     public func transitionToNextTaskNode() -> Bool {
         // Get next task node name
         if let name = nextTaskNodeName {
+            print(name)
             taskNodeNames.append(name)
             currentTaskNode = taskNodeWithName(name)
             return true
@@ -511,7 +521,10 @@ public class UsbongTree {
     
     // MARK: Availability check
     public var nextTaskNodeIsAvailable: Bool {
-        return nextTaskNodeName != nil
+        if let name = nextTaskNodeName {
+            return taskNodeXMLIndexerWithName(name) != nil
+        }
+        return false
     }
     public var previousTaskNodeIsAvailable: Bool {
         return taskNodeNames.count > 1
