@@ -234,6 +234,7 @@ public class UsbongTree {
     public var currentLanguage: String = "English" {
         didSet {
             reloadCurrentTaskNode()
+            reloadHintsDictionary()
         }
     }
     public var currentLanguageCode: String {
@@ -251,6 +252,9 @@ public class UsbongTree {
     private let languageXMLURLs: [NSURL]
     public let availableLanguages: [String]
     
+    private let hintsXMLURLs: [NSURL]
+    public private(set) var hintsDictionary: [String: String] = [String: String]()
+    
     public init(treeRootURL: NSURL) {
         self.treeRootURL = treeRootURL
         
@@ -265,7 +269,7 @@ public class UsbongTree {
         // Get trans directory
         let transURL = treeRootURL.URLByAppendingPathComponent("trans")
         // Fetch contents of trans directory
-        languageXMLURLs = (try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(transURL, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants)) ?? [NSURL]()
+        languageXMLURLs = (try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(transURL, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants)) ?? []
         
         // Get available languages
         var languages: [String] = []
@@ -281,6 +285,13 @@ public class UsbongTree {
             languages.sortInPlace()
         }
         availableLanguages = languages
+        
+        // Get hints directory
+        let hintsURL = treeRootURL.URLByAppendingPathComponent("hints")
+        
+        // Fetch contents of hints directory
+        hintsXMLURLs = (try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(hintsURL, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants)) ?? []
+        reloadHintsDictionary()
         
         // Get language
         baseLanguage = processDefinition.element?.attributes[UsbongXMLIdentifier.lang] ?? baseLanguage
@@ -429,6 +440,50 @@ public class UsbongTree {
         
         return translatedText
     }
+    
+    // MARK: Hints
+    public func reloadHintsDictionary() {
+        hintsDictionary.removeAll()
+        for url in hintsXMLURLs {
+            // Check if file name is equal to language
+            let name = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
+            if currentLanguage == name {
+                var hints = [String: String]()
+                
+                // Fetch hints from XML
+                let hintsXML = SWXMLHash.parse(NSData(contentsOfURL: url) ?? NSData())
+                let resources = hintsXML[UsbongXMLIdentifier.resources]
+                
+                let stringXMLIndexers = resources[UsbongXMLIdentifier.string].all
+                for stringXMLIndexer in stringXMLIndexers {
+                    if let key = stringXMLIndexer.element?.attributes[UsbongXMLIdentifier.name], let value = stringXMLIndexer.element?.text {
+                        hints[key] = value
+                    }
+                }
+                
+                hintsDictionary = hints
+                break
+            }
+        }
+    }
+//    public func loadHintsXMLURL() {
+//        var hints = [String: String]()
+//        
+//        // Fetch hints from XML
+//        if let hintsXMLURL = fetchHintsXMLURLForLanguage(currentLanguage) {
+//            let hintsXML = SWXMLHash.parse(NSData(contentsOfURL: hintsXMLURL) ?? NSData())
+//            let resources = hintsXML[UsbongXMLIdentifier.resources]
+//            
+//            let stringXMLIndexers = resources[UsbongXMLIdentifier.string].all
+//            for stringXMLIndexer in stringXMLIndexers {
+//                if let key = stringXMLIndexer.element?.attributes[UsbongXMLIdentifier.name], let value = stringXMLIndexer.element?.text {
+//                    hints[key] = value
+//                }
+//            }
+//        }
+//        
+//        hintsDictionary = hints
+//    }
     
     // MARK: Transitions
     public func transitionToNextTaskNode() -> Bool {
@@ -621,7 +676,7 @@ public class UsbongTree {
 //        }
 //        return nil
 //    }
-//    
+//
 //    public func fetchHintsXMLURLForLanguage(language: String) -> NSURL? {
 //        if let urls = fetchHintsXMLURLs() {
 //            for url in urls {

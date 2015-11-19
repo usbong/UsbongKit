@@ -127,10 +127,10 @@ class UsbongViewController: UIViewController {
             }
             
             // Hints dictionary
-//            if let hintsDictionary = tree?.hintsDictionary {
-//                print(hintsDictionary)
-//                taskNodeView.hintsDictionary = hintsDictionary
-//            }
+            if let hintsDictionary = tree?.hintsDictionary {
+                print(hintsDictionary)
+                taskNodeView.hintsDictionary = hintsDictionary
+            }
             
             // Background audio - change only if not empty and different
             if let taskNodeBGFilePath = currentTaskNode.backgroundAudioFilePath {
