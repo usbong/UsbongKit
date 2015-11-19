@@ -166,6 +166,63 @@ private enum TaskNodeType: String {
     case Link = "link"
 }
 
+private func languageCodeOfLanguage(language: String) -> String {
+    switch language {
+    case "English":
+        return "en-EN"
+    case "Czech":
+        return "cs-CZ"
+    case "Danish":
+        return "da-DK"
+    case "German":
+        return "de-DE"
+    case "Greek":
+        return "el-GR"
+    case "Spanish", "Bisaya", "Ilonggo", "Tagalog", "Filipino":
+        return "es-ES"
+    case "Finnish":
+        return "fi-FI"
+    case "French":
+        return "fr-FR"
+    case "Hindi":
+        return "hi-IN"
+    case "Hungarian":
+        return "hu-HU"
+    case "Indonesian":
+        return "id-ID"
+    case "Italian":
+        return "it-IT"
+    case "Japanese":
+        return "ja-JP"
+    case "Korean":
+        return "ko-KR"
+    case "Dutch":
+        return "nl-BE"
+    case "Norwegian":
+        return "nb-NO"
+    case "Polish":
+        return "pl-PL"
+    case "Portuguese":
+        return "pt-PT"
+    case "Romanian":
+        return "ro-RO"
+    case "Russian":
+        return "ru-RU"
+    case "Slovak":
+        return "sk-SK"
+    case "Swedish":
+        return "sv-SE"
+    case "Thai":
+        return "th-TH"
+    case "Turkish":
+        return "tr-TR"
+    case "Chinese":
+        return "zh-CN"
+    default:
+        return "en-EN"
+    }
+}
+
 public class UsbongTree {
     public let treeRootURL: NSURL
     public let xmlURL: NSURL
@@ -174,7 +231,14 @@ public class UsbongTree {
     
     public private(set) var title: String = "Title"
     public private(set) var baseLanguage: String = "English"
-    public private(set) var currentLanguage: String = "English"
+    public var currentLanguage: String = "English" {
+        didSet {
+            reloadCurrentTaskNode()
+        }
+    }
+    public var currentLanguageCode: String {
+        return languageCodeOfLanguage(currentLanguage)
+    }
     
     private let wholeXML: XMLIndexer
     private let processDefinition: XMLIndexer
@@ -184,20 +248,31 @@ public class UsbongTree {
     public var currentTargetTransitionName: String = "Any"
     public var transitionInfo: [String: String] = [String: String]()
     
+    private var languageXMLURLs: [NSURL]
+    
     public init(treeRootURL: NSURL) {
         self.treeRootURL = treeRootURL
         
+        // Fetch main xml
         let fileName = treeRootURL.URLByDeletingPathExtension?.lastPathComponent ?? ""
         xmlURL = treeRootURL.URLByAppendingPathComponent(fileName).URLByAppendingPathExtension("xml")
         
         wholeXML = SWXMLHash.parse(NSData(contentsOfURL: xmlURL) ?? NSData())
         processDefinition = wholeXML[UsbongXMLIdentifier.processDefinition]
         
+        // Fetch language XMLs urls
+        // Get trans directory
+        let transURL = treeRootURL.URLByAppendingPathComponent("trans")
+        // Fetch contents of trans directory
+        languageXMLURLs = (try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(transURL, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants)) ?? [NSURL]()
+        
         // Get language
         baseLanguage = processDefinition.element?.attributes[UsbongXMLIdentifier.lang] ?? baseLanguage
+        currentLanguage = baseLanguage
         
         // Set title to file name if file name is not blank or contains spaces only
         title = fileName.stringByReplacingOccurrencesOfString(" ", withString: "").characters.count == 0 ? title : fileName
+        
         
         // Fetch starting task node
         if let element = processDefinition[UsbongXMLIdentifier.startState][UsbongXMLIdentifier.transition].element {
@@ -219,10 +294,10 @@ public class UsbongTree {
             let nameComponents = UsbongXMLName(name: name, language: currentLanguage)
             if let taskNodeType = TaskNodeType(rawValue: nameComponents.type) {
                 // Translate text if current language is not base language
-//                let translatedText = currentLanguage != baseLanguage ? translateText(nameComponents.text) : nameComponents.text
+                let translatedText = currentLanguage != baseLanguage ? translateText(nameComponents.text) : nameComponents.text
                 
                 // Parse text
-                let finalText = parseText(nameComponents.text)
+                let finalText = parseText(translatedText)
                 
                 // Temporary transition info to be used by link and decision task nodes
                 var fetchedTransitionInfo = [String: String]()
@@ -309,6 +384,34 @@ public class UsbongTree {
         if let currentTaskNodeName = taskNodeNames.last {
             currentTaskNode = taskNodeWithName(currentTaskNodeName)
         }
+    }
+    
+    // MARK: Language
+    private var currentLanguageXMLURL: NSURL? {
+        for url in languageXMLURLs {
+            // Check if file name is equal to language
+            let name = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
+            if currentLanguage == name {
+                return url
+            }
+        }
+        return nil
+    }
+    
+    private func translateText(text: String) -> String {
+        var translatedText = text
+        
+        // Fetch translation from XML
+        if let languageXMLURL = currentLanguageXMLURL {
+            let languageXML = SWXMLHash.parse(NSData(contentsOfURL: languageXMLURL) ?? NSData())
+            let resources = languageXML[UsbongXMLIdentifier.resources]
+            
+            if let stringElement = try? resources[UsbongXMLIdentifier.string].withAttr(UsbongXMLIdentifier.name, text) {
+                translatedText = stringElement.element?.text ?? text
+            }
+        }
+        
+        return translatedText
     }
     
     // MARK: Transitions
