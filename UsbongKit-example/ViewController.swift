@@ -38,12 +38,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didPressTreeViewer(sender: AnyObject) {
-        print("Did Press Start")
+        print("Did Press TreeViewer")
         
-        if let zipURL = treeZipURL {
-            let treeViewer = UsbongTreeViewer(treeZipURL: zipURL)
-            treeViewer.presentTreeViewControllerFromViewController(self, animated: true, completion: nil)
-        }
+//        if let zipURL = treeZipURL {
+//            let treeViewer = UsbongTreeViewer(treeZipURL: zipURL)
+//            treeViewer.presentTreeViewControllerFromViewController(self, animated: true, completion: nil)
+//        }
     }
 }
 

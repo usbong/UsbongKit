@@ -20,18 +20,18 @@
 
 import Foundation
 
-public protocol UsbongTaskNodeGenerator {
-    var title: String { get }
-    var taskNodesCount: Int { get }
-    var currentLanguage: String { get set }
-    var currentLanguageCode: String { get }
-    var availableLanguages: [String] { get }
-    var hintsDictionary: [String: String] { get }
-    
-    var previousTaskNode: TaskNode? { get }
-    var currentTaskNode: TaskNode? { get }
-    var nextTaskNode: TaskNode? { get }
-    
-    func transitionToNextTaskNode() -> Bool
-    func transitionToPreviousTaskNode() -> Bool
-}
+//public protocol UsbongTaskNodeGenerator {
+//    var title: String { get }
+//    var taskNodesCount: Int { get }
+//    var currentLanguage: String { get set }
+//    var currentLanguageCode: String { get }
+//    var availableLanguages: [String] { get }
+//    var hintsDictionary: [String: String] { get }
+//    
+//    var previousTaskNode: TaskNode? { get }
+//    var currentTaskNode: TaskNode? { get }
+//    var nextTaskNode: TaskNode? { get }
+//    
+//    func transitionToNextTaskNode() -> Bool
+//    func transitionToPreviousTaskNode() -> Bool
+//}

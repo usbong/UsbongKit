@@ -21,7 +21,7 @@ class UsbongViewController: UIViewController {
     
     @IBOutlet weak var taskNodeView: TaskNodeView!
     
-    var taskNodeGenerator: UsbongTaskNodeGenerator?
+    var tree: UsbongTree?
     
     lazy var speechSynthezier: AVSpeechSynthesizer = AVSpeechSynthesizer()
     var backgroundAudioPlayer: AVAudioPlayer?
@@ -47,9 +47,9 @@ class UsbongViewController: UIViewController {
         // Do any additional setup after loading the view.
         if let treeURL = NSBundle.mainBundle().URLForResource("Usbong iOS", withExtension: "utree") {
             if let treeRootURL = UsbongFileManager.defaultManager().unpackTreeToCacheDirectoryWithTreeURL(treeURL) {
-                taskNodeGenerator = UsbongTaskNodeGeneratorXML(treeRootURL: treeRootURL)
+                tree = UsbongTree(treeRootURL: treeRootURL)
                 
-                navigationItem.title = taskNodeGenerator?.title ?? "Unknown"
+                navigationItem.title = tree?.title ?? "Unknown"
             }
         }
         
@@ -83,6 +83,8 @@ class UsbongViewController: UIViewController {
             // If toggled to on, start voice-over
             if turnOn {
                 self.startVoiceOver()
+            } else {
+                self.stopVoiceOver()
             }
             
             self.voiceOverOn = turnOn
@@ -115,7 +117,7 @@ class UsbongViewController: UIViewController {
     
     // MARK: Transition
     private func reloadCurrentTaskNode() {
-        if let currentTaskNode = taskNodeGenerator?.currentTaskNode {
+        if let currentTaskNode = tree?.currentTaskNode {
             taskNodeView.taskNode = currentTaskNode
             
             // Background image
@@ -125,10 +127,10 @@ class UsbongViewController: UIViewController {
             }
             
             // Hints dictionary
-            if let hintsDictionary = taskNodeGenerator?.hintsDictionary {
-                print(hintsDictionary)
-                taskNodeView.hintsDictionary = hintsDictionary
-            }
+//            if let hintsDictionary = tree?.hintsDictionary {
+//                print(hintsDictionary)
+//                taskNodeView.hintsDictionary = hintsDictionary
+//            }
             
             // Background audio - change only if not empty and different
             if let taskNodeBGFilePath = currentTaskNode.backgroundAudioFilePath {
@@ -148,50 +150,51 @@ class UsbongViewController: UIViewController {
     }
     
     private func transitionWithDirection(direction: TransitionDirection) {
-        // Before transition
-        stopVoiceOver()
-        
-        if direction == .Backward {
-            // Previous
-            if taskNodeGenerator?.previousTaskNode == nil {
-                dismissViewControllerAnimated(true, completion: nil)
-                return
+        if let currentTree = tree {
+            // Before transition
+            stopVoiceOver()
+            
+            if direction == .Backward {
+                // Previous
+                if !currentTree.previousTaskNodeIsAvailable {
+                    dismissViewControllerAnimated(true, completion: nil)
+                    return
+                } else {
+                    currentTree.transitionToPreviousTaskNode()
+                }
             } else {
-                taskNodeGenerator?.transitionToPreviousTaskNode()
+                // Next transition
+                if currentTree.currentTaskNode is EndStateTaskNode || !currentTree.nextTaskNodeIsAvailable {
+                    dismissViewControllerAnimated(true, completion: nil)
+                    return
+                } else {
+                    currentTree.transitionToNextTaskNode()
+                }
             }
             
-        } else {
-            // Next transition
-            if taskNodeGenerator?.currentTaskNode is EndStateTaskNode || taskNodeGenerator?.nextTaskNode == nil {
-                dismissViewControllerAnimated(true, completion: nil)
-                return
+            reloadCurrentTaskNode()
+            
+            // Finished transition
+            // Change back button title to exit if there are no previous task nodes
+            if !currentTree.previousTaskNodeIsAvailable {
+                previousButton.setTitle("Exit", forState: .Normal)
             } else {
-                taskNodeGenerator?.transitionToNextTaskNode()
+                previousButton.setTitle("Back", forState: .Normal)
             }
-        }
-        
-        reloadCurrentTaskNode()
-        
-        // Finished transition
-        // Change back button title to exit if there are no previous task nodes
-        if taskNodeGenerator?.previousTaskNode == nil {
-            previousButton.setTitle("Exit", forState: .Normal)
-        } else {
-            previousButton.setTitle("Back", forState: .Normal)
-        }
-        
-        // Change next button title to exit if transitioned node is end state
-        if taskNodeGenerator?.currentTaskNode is EndStateTaskNode || taskNodeGenerator?.nextTaskNode == nil {
-            nextButton.setTitle("Exit", forState: .Normal)
-        } else {
-            nextButton.setTitle("Next", forState: .Normal)
+            
+            // Change next button title to exit if transitioned node is end state
+            if currentTree.currentTaskNode is EndStateTaskNode || !currentTree.nextTaskNodeIsAvailable {
+                nextButton.setTitle("Exit", forState: .Normal)
+            } else {
+                nextButton.setTitle("Next", forState: .Normal)
+            }
         }
     }
     
     // MARK: Background audio
     
     func loadBackgroundAudio() {
-        if let currentTaskNode = taskNodeGenerator?.currentTaskNode {
+        if let currentTaskNode = tree?.currentTaskNode {
             if let backgroundAudopFilePath = currentTaskNode.backgroundAudioFilePath {
                 if let audioPlayer = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: backgroundAudopFilePath)) {
                     audioPlayer.numberOfLoops = -1 // Endless loop
@@ -207,7 +210,7 @@ class UsbongViewController: UIViewController {
     
     // MARK: Voice-over
     func startVoiceOver() {
-        if let currentTaskNode = taskNodeGenerator?.currentTaskNode {
+        if let currentTaskNode = tree?.currentTaskNode {
             // Attempt to play speech from audio file, if failed, resort to text-to-speech
             if !startAudioSpeechInTaskNode(currentTaskNode) {
                 print(">>> Text-to-speech")
@@ -227,7 +230,7 @@ class UsbongViewController: UIViewController {
                 print("\(textModule.text)")
                 let utterance = AVSpeechUtterance(string: textModule.text)
                 
-                utterance.voice = AVSpeechSynthesisVoice(language: taskNodeGenerator?.currentLanguageCode ?? "en-EN")
+                utterance.voice = AVSpeechSynthesisVoice(language: tree?.currentLanguageCode ?? "en-EN")
                 
                 // Speak
                 speechSynthezier.speakUtterance(utterance)
@@ -273,7 +276,7 @@ class UsbongViewController: UIViewController {
         
         // Create languages view controller
         let languagesVC = LanguagesTableViewController()
-        languagesVC.taskNodeGenerator = taskNodeGenerator
+        languagesVC.tree = tree
         languagesVC.selectLanguageCompletion = {
             self.reloadCurrentTaskNode()
         }

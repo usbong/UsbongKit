@@ -248,7 +248,8 @@ public class UsbongTree {
     public var currentTargetTransitionName: String = "Any"
     public var transitionInfo: [String: String] = [String: String]()
     
-    private var languageXMLURLs: [NSURL]
+    private let languageXMLURLs: [NSURL]
+    public let availableLanguages: [String]
     
     public init(treeRootURL: NSURL) {
         self.treeRootURL = treeRootURL
@@ -265,6 +266,21 @@ public class UsbongTree {
         let transURL = treeRootURL.URLByAppendingPathComponent("trans")
         // Fetch contents of trans directory
         languageXMLURLs = (try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(transURL, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants)) ?? [NSURL]()
+        
+        // Get available languages
+        var languages: [String] = []
+        for url in languageXMLURLs {
+            // Get file name only
+            let name = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
+            languages.append(name)
+        }
+        
+        // Add base language
+        if !languages.contains(baseLanguage) {
+            languages.append(baseLanguage)
+            languages.sortInPlace()
+        }
+        availableLanguages = languages
         
         // Get language
         baseLanguage = processDefinition.element?.attributes[UsbongXMLIdentifier.lang] ?? baseLanguage
@@ -446,344 +462,344 @@ public class UsbongTree {
         return taskNodeNames.count > 1
     }
 }
-public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
-    // MARK: - Properties
-    public let treeRootURL: NSURL
-    public let xmlURL: NSURL
-    
-    public var xml: XMLIndexer
-    public var processDefinition: XMLIndexer
-    
-    public var currentTransitionInfo: [String: String] = [String: String]()
-    public var currentTargetTransitionName: String = "Any"
-    
-    public var baseLanguage: String = "English"
-    
-    public var taskNodeNames: [String] = []
-    public var title: String = "Unnamed"
-    public private(set) var hintsDictionary: [String: String] = [String: String]()
-    
-    // MARK: Initializers
-    public init(treeRootURL: NSURL) {
-        self.treeRootURL = treeRootURL
-        
-        let fileName = treeRootURL.lastPathComponent?.componentsSeparatedByString(".").first ?? ""
-        xmlURL = treeRootURL.URLByAppendingPathComponent("\(fileName).xml")
-        xml = SWXMLHash.parse(NSData(contentsOfURL: xmlURL) ?? NSData())
-        processDefinition = xml[UsbongXMLIdentifier.processDefinition]
-        
-        // Get language
-        baseLanguage = processDefinition.element?.attributes["lang"] ?? baseLanguage
-        
-        // Fetch hints dictionary for current language
-        fetchHintsDictionary()
-        
-        // Set to "Unnamed" if fileName is blank or contains spaces only
-        title = fileName.stringByReplacingOccurrencesOfString(" ", withString: "").characters.count == 0 ? "Unnamed" : fileName
-        
-        // Load starting task node
-        loadStartingTaskNode()
-    }
-    
-    // MARK: - Fetching from XML
-    
-    private func loadStartingTaskNode() {
-        if let startName = fetchStartingTaskNodeName() {
-            taskNodeNames.append(startName)
-            fetchTransitionInfoFromTaskNodeName(startName)
-        }
-    }
-    private func fetchStartingTaskNodeName() -> String? {
-        if let element = processDefinition[UsbongXMLIdentifier.startState][UsbongXMLIdentifier.transition].element {
-            return element.attributes[UsbongXMLIdentifier.to]
-        }
-        return nil
-    }
-    
-    public func fetchTaskNodeWithName(name: String) -> TaskNode? {
-        // task-node
-        var taskNode: TaskNode?
-        // Find task-node element with attribute name value
-        if (try? processDefinition[UsbongXMLIdentifier.taskNode].withAttr(UsbongXMLIdentifier.name, name)) != nil {
-            let nameComponents = UsbongXMLName(name: name, language: currentLanguage)
-            if let taskNodeType = TaskNodeType(rawValue: nameComponents.type) {
-                // Translate text if current language is not base language
-                let translatedText = currentLanguage != baseLanguage ? translateText(nameComponents.text) : nameComponents.text
-                
-                // Parse text
-                let finalText = parseText(translatedText)
-                
-                switch taskNodeType {
-                case .TextDisplay:
-                    taskNode =  TextDisplayTaskNode(text: finalText)
-                case .ImageDisplay:
-                    taskNode =  ImageDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "")
-                case .TextImageDisplay:
-                    taskNode = TextImageDisplayTaskNode(text: finalText, imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "")
-                case .ImageTextDisplay:
-                    taskNode = ImageTextDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "", text: finalText)
-                case .Link:
-                    taskNode = LinkTaskNode(text: finalText, tasks: [LinkTaskNodeTask]())
-//                default:
-//                    taskNode = nil
-                }
-                
-                // Background Path
-                taskNode?.backgroundImageFilePath = nameComponents.backgroundImagePathUsingXMLURL(treeRootURL)
-                
-                // Audio Paths
-                taskNode?.backgroundAudioFilePath = nameComponents.backgroundAudioPathUsingXMLURL(treeRootURL)
-                taskNode?.audioFilePath = nameComponents.audioPathUsingXMLURL(treeRootURL)
-            }
-            
-        } else if (try? processDefinition[UsbongXMLIdentifier.endState].withAttr(UsbongXMLIdentifier.name, name)) != nil {
-            // Find end-state node if task-node not found
-            taskNode =  EndStateTaskNode(text: "You've now reached the end")
-        }
-        
-        return taskNode
-    }
-    
-    public func fetchTransitionInfoFromTaskNodeName(name: String) {
-        if let taskNodeElement = try? processDefinition[UsbongXMLIdentifier.taskNode].withAttr(UsbongXMLIdentifier.name, name) {
-            let transitionElements = taskNodeElement[UsbongXMLIdentifier.transition].all
-            for transitionElement in transitionElements {
-                if let attributes = transitionElement.element?.attributes {
-                    // Get values of attributes name and to, add to taskNode object
-                    let name = attributes["name"] ?? "Any" // Default is Any if no name found
-                    
-                    // Save transition info
-                    currentTransitionInfo[name] = attributes[UsbongXMLIdentifier.to] ?? ""
-                }
-            }
-        }
-    }
-    
-    private func fetchLanguageXMLURLs() -> [NSURL]? {
-        // Get trans directory
-        let transURL = treeRootURL.URLByAppendingPathComponent("trans")
-        
-        // Fetch contents of trans directory
-        if let contents = try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(transURL, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants) {
-            return contents
-        }
-        return nil
-    }
-    private func fetchLanguageXMLURLForLanguage(language: String) -> NSURL? {
-        if let urls = fetchLanguageXMLURLs() {
-            for url in urls {
-                // Check if file name is equal to language
-                let name = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
-                if language == name {
-                    return url
-                }
-            }
-        }
-        
-        return nil
-    }
-    
-    private func fetchLanguages() -> [String] {
-        var languages: [String] = []
-        if let urls = fetchLanguageXMLURLs() {
-            for url in urls {
-                // Get file name only
-                let name = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
-                languages.append(name)
-            }
-        }
-        return languages
-    }
-    
-    public func fetchHintsXMLURLs() -> [NSURL]? {
-        // Get hints directory
-        let hintsURL = treeRootURL.URLByAppendingPathComponent("hints")
-        
-        // Fetch contents of hints directory
-        if let contents = try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(hintsURL, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants) {
-            return contents
-        }
-        return nil
-    }
-    
-    public func fetchHintsXMLURLForLanguage(language: String) -> NSURL? {
-        if let urls = fetchHintsXMLURLs() {
-            for url in urls {
-                // Check if file name is equal to language
-                let name = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
-                if language == name {
-                    return url
-                }
-            }
-        }
-        return nil
-    }
-    
-    public func fetchHintsDictionary() {
-        var hints = [String: String]()
-        
-        // Fetch hints from XML
-        if let hintsXMLURL = fetchHintsXMLURLForLanguage(currentLanguage) {
-            let hintsXML = SWXMLHash.parse(NSData(contentsOfURL: hintsXMLURL) ?? NSData())
-            let resources = hintsXML[UsbongXMLIdentifier.resources]
-            
-            let stringXMLIndexers = resources[UsbongXMLIdentifier.string].all
-            for stringXMLIndexer in stringXMLIndexers {
-                if let key = stringXMLIndexer.element?.attributes[UsbongXMLIdentifier.name], let value = stringXMLIndexer.element?.text {
-                    hints[key] = value
-                }
-            }
-        }
-        
-        hintsDictionary = hints
-    }
-    
-    public var nextTaskNodeName: String? {
-        return currentTransitionInfo[currentTargetTransitionName]
-    }
-    private func nextTaskNodeWithTransitionName(transitionName: String) -> TaskNode? {
-        if let taskNodeName = currentTransitionInfo[transitionName] {
-            return fetchTaskNodeWithName(taskNodeName)
-        }
-        return nil
-    }
-    
-    // MARK: - Translation and parsing
-    
-    public func translateText(text: String) -> String {
-        var translatedText = text
-        
-        // Fetch translation from XML
-        if let languageXMLURL = fetchLanguageXMLURLForLanguage(currentLanguage) {
-            let languageXML = SWXMLHash.parse(NSData(contentsOfURL: languageXMLURL) ?? NSData())
-            let resources = languageXML[UsbongXMLIdentifier.resources]
-            
-            if let stringElement = try? resources[UsbongXMLIdentifier.string].withAttr(UsbongXMLIdentifier.name, text) {
-                translatedText = stringElement.element?.text ?? text
-            }
-        }
-        
-        return translatedText
-    }
-    
-    public func parseText(text: String) -> String {
-        var parsedText = text
-        
-        // Parse new line strings
-        parsedText = parsedText.stringByReplacingOccurrencesOfString("\\n", withString: "\n")
-        
-        return parsedText
-    }
-    
-    // MARK: - UsbongTaskNodeGenerator
-    
-    public var currentLanguage: String = "English" {
-        didSet {
-            fetchHintsDictionary()
-        }
-    }
-    public var currentLanguageCode: String {
-        switch currentLanguage {
-        case "English":
-            return "en-EN"
-        case "Czech":
-            return "cs-CZ"
-        case "Danish":
-            return "da-DK"
-        case "German":
-            return "de-DE"
-        case "Greek":
-            return "el-GR"
-        case "Spanish", "Bisaya", "Ilonggo", "Tagalog":
-            return "es-ES"
-        case "Finnish":
-            return "fi-FI"
-        case "French":
-            return "fr-FR"
-        case "Hindi":
-            return "hi-IN"
-        case "Hungarian":
-            return "hu-HU"
-        case "Indonesian":
-            return "id-ID"
-        case "Italian":
-            return "it-IT"
-        case "Japanese":
-            return "ja-JP"
-        case "Korean":
-            return "ko-KR"
-        case "Dutch":
-            return "nl-BE"
-        case "Norwegian":
-            return "nb-NO"
-        case "Polish":
-            return "pl-PL"
-        case "Portuguese":
-            return "pt-PT"
-        case "Romanian":
-            return "ro-RO"
-        case "Russian":
-            return "ru-RU"
-        case "Slovak":
-            return "sk-SK"
-        case "Swedish":
-            return "sv-SE"
-        case "Thai":
-            return "th-TH"
-        case "Turkish":
-            return "tr-TR"
-        case "Chinese":
-            return "zh-CN"
-        default:
-            return "en-EN"
-        }
-    }
-    public var availableLanguages: [String] {
-        var languages = fetchLanguages()
-        // Add base language
-        if !languages.contains(baseLanguage) {
-            languages.append(baseLanguage)
-            languages.sortInPlace()
-        }
-        return languages
-    }
-    
-    public var taskNodesCount: Int {
-        return taskNodeNames.count
-    }
-    public var previousTaskNode: TaskNode? {
-        guard taskNodeNames.count > 1 else {
-            return nil
-        }
-        return fetchTaskNodeWithName(taskNodeNames[taskNodeNames.count - 2])
-    }
-    public var currentTaskNode: TaskNode? {
-        if let name = taskNodeNames.last {
-            return fetchTaskNodeWithName(name)
-        }
-        return nil
-    }
-    public var nextTaskNode: TaskNode? {
-        if let name = nextTaskNodeName {
-            return fetchTaskNodeWithName(name)
-        }
-        return nil
-    }
-    
-    public func transitionToNextTaskNode() -> Bool {
-        if let taskNodeName = self.nextTaskNodeName {
-            taskNodeNames.append(taskNodeName)
-            
-            fetchTransitionInfoFromTaskNodeName(taskNodeNames.last ?? "")
-        }
-        return false
-    }
-    public func transitionToPreviousTaskNode() -> Bool {
-        if taskNodeNames.count > 1 {
-            taskNodeNames.removeLast()
-            
-            fetchTransitionInfoFromTaskNodeName(taskNodeNames.last ?? "")
-        }
-        return false
-    }
-}
+//public class UsbongTaskNodeGeneratorXML: UsbongTaskNodeGenerator {
+//    // MARK: - Properties
+//    public let treeRootURL: NSURL
+//    public let xmlURL: NSURL
+//    
+//    public var xml: XMLIndexer
+//    public var processDefinition: XMLIndexer
+//    
+//    public var currentTransitionInfo: [String: String] = [String: String]()
+//    public var currentTargetTransitionName: String = "Any"
+//    
+//    public var baseLanguage: String = "English"
+//    
+//    public var taskNodeNames: [String] = []
+//    public var title: String = "Unnamed"
+//    public private(set) var hintsDictionary: [String: String] = [String: String]()
+//    
+//    // MARK: Initializers
+//    public init(treeRootURL: NSURL) {
+//        self.treeRootURL = treeRootURL
+//        
+//        let fileName = treeRootURL.lastPathComponent?.componentsSeparatedByString(".").first ?? ""
+//        xmlURL = treeRootURL.URLByAppendingPathComponent("\(fileName).xml")
+//        xml = SWXMLHash.parse(NSData(contentsOfURL: xmlURL) ?? NSData())
+//        processDefinition = xml[UsbongXMLIdentifier.processDefinition]
+//        
+//        // Get language
+//        baseLanguage = processDefinition.element?.attributes["lang"] ?? baseLanguage
+//        
+//        // Fetch hints dictionary for current language
+//        fetchHintsDictionary()
+//        
+//        // Set to "Unnamed" if fileName is blank or contains spaces only
+//        title = fileName.stringByReplacingOccurrencesOfString(" ", withString: "").characters.count == 0 ? "Unnamed" : fileName
+//        
+//        // Load starting task node
+//        loadStartingTaskNode()
+//    }
+//    
+//    // MARK: - Fetching from XML
+//    
+//    private func loadStartingTaskNode() {
+//        if let startName = fetchStartingTaskNodeName() {
+//            taskNodeNames.append(startName)
+//            fetchTransitionInfoFromTaskNodeName(startName)
+//        }
+//    }
+//    private func fetchStartingTaskNodeName() -> String? {
+//        if let element = processDefinition[UsbongXMLIdentifier.startState][UsbongXMLIdentifier.transition].element {
+//            return element.attributes[UsbongXMLIdentifier.to]
+//        }
+//        return nil
+//    }
+//    
+//    public func fetchTaskNodeWithName(name: String) -> TaskNode? {
+//        // task-node
+//        var taskNode: TaskNode?
+//        // Find task-node element with attribute name value
+//        if (try? processDefinition[UsbongXMLIdentifier.taskNode].withAttr(UsbongXMLIdentifier.name, name)) != nil {
+//            let nameComponents = UsbongXMLName(name: name, language: currentLanguage)
+//            if let taskNodeType = TaskNodeType(rawValue: nameComponents.type) {
+//                // Translate text if current language is not base language
+//                let translatedText = currentLanguage != baseLanguage ? translateText(nameComponents.text) : nameComponents.text
+//                
+//                // Parse text
+//                let finalText = parseText(translatedText)
+//                
+//                switch taskNodeType {
+//                case .TextDisplay:
+//                    taskNode =  TextDisplayTaskNode(text: finalText)
+//                case .ImageDisplay:
+//                    taskNode =  ImageDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "")
+//                case .TextImageDisplay:
+//                    taskNode = TextImageDisplayTaskNode(text: finalText, imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "")
+//                case .ImageTextDisplay:
+//                    taskNode = ImageTextDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "", text: finalText)
+//                case .Link:
+//                    taskNode = LinkTaskNode(text: finalText, tasks: [LinkTaskNodeTask]())
+////                default:
+////                    taskNode = nil
+//                }
+//                
+//                // Background Path
+//                taskNode?.backgroundImageFilePath = nameComponents.backgroundImagePathUsingXMLURL(treeRootURL)
+//                
+//                // Audio Paths
+//                taskNode?.backgroundAudioFilePath = nameComponents.backgroundAudioPathUsingXMLURL(treeRootURL)
+//                taskNode?.audioFilePath = nameComponents.audioPathUsingXMLURL(treeRootURL)
+//            }
+//            
+//        } else if (try? processDefinition[UsbongXMLIdentifier.endState].withAttr(UsbongXMLIdentifier.name, name)) != nil {
+//            // Find end-state node if task-node not found
+//            taskNode =  EndStateTaskNode(text: "You've now reached the end")
+//        }
+//        
+//        return taskNode
+//    }
+//    
+//    public func fetchTransitionInfoFromTaskNodeName(name: String) {
+//        if let taskNodeElement = try? processDefinition[UsbongXMLIdentifier.taskNode].withAttr(UsbongXMLIdentifier.name, name) {
+//            let transitionElements = taskNodeElement[UsbongXMLIdentifier.transition].all
+//            for transitionElement in transitionElements {
+//                if let attributes = transitionElement.element?.attributes {
+//                    // Get values of attributes name and to, add to taskNode object
+//                    let name = attributes["name"] ?? "Any" // Default is Any if no name found
+//                    
+//                    // Save transition info
+//                    currentTransitionInfo[name] = attributes[UsbongXMLIdentifier.to] ?? ""
+//                }
+//            }
+//        }
+//    }
+//    
+//    private func fetchLanguageXMLURLs() -> [NSURL]? {
+//        // Get trans directory
+//        let transURL = treeRootURL.URLByAppendingPathComponent("trans")
+//        
+//        // Fetch contents of trans directory
+//        if let contents = try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(transURL, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants) {
+//            return contents
+//        }
+//        return nil
+//    }
+//    private func fetchLanguageXMLURLForLanguage(language: String) -> NSURL? {
+//        if let urls = fetchLanguageXMLURLs() {
+//            for url in urls {
+//                // Check if file name is equal to language
+//                let name = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
+//                if language == name {
+//                    return url
+//                }
+//            }
+//        }
+//        
+//        return nil
+//    }
+//    
+//    private func fetchLanguages() -> [String] {
+//        var languages: [String] = []
+//        if let urls = fetchLanguageXMLURLs() {
+//            for url in urls {
+//                // Get file name only
+//                let name = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
+//                languages.append(name)
+//            }
+//        }
+//        return languages
+//    }
+//
+//    public func fetchHintsXMLURLs() -> [NSURL]? {
+//        // Get hints directory
+//        let hintsURL = treeRootURL.URLByAppendingPathComponent("hints")
+//        
+//        // Fetch contents of hints directory
+//        if let contents = try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(hintsURL, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants) {
+//            return contents
+//        }
+//        return nil
+//    }
+//    
+//    public func fetchHintsXMLURLForLanguage(language: String) -> NSURL? {
+//        if let urls = fetchHintsXMLURLs() {
+//            for url in urls {
+//                // Check if file name is equal to language
+//                let name = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
+//                if language == name {
+//                    return url
+//                }
+//            }
+//        }
+//        return nil
+//    }
+//    
+//    public func fetchHintsDictionary() {
+//        var hints = [String: String]()
+//        
+//        // Fetch hints from XML
+//        if let hintsXMLURL = fetchHintsXMLURLForLanguage(currentLanguage) {
+//            let hintsXML = SWXMLHash.parse(NSData(contentsOfURL: hintsXMLURL) ?? NSData())
+//            let resources = hintsXML[UsbongXMLIdentifier.resources]
+//            
+//            let stringXMLIndexers = resources[UsbongXMLIdentifier.string].all
+//            for stringXMLIndexer in stringXMLIndexers {
+//                if let key = stringXMLIndexer.element?.attributes[UsbongXMLIdentifier.name], let value = stringXMLIndexer.element?.text {
+//                    hints[key] = value
+//                }
+//            }
+//        }
+//        
+//        hintsDictionary = hints
+//    }
+//    
+//    public var nextTaskNodeName: String? {
+//        return currentTransitionInfo[currentTargetTransitionName]
+//    }
+//    private func nextTaskNodeWithTransitionName(transitionName: String) -> TaskNode? {
+//        if let taskNodeName = currentTransitionInfo[transitionName] {
+//            return fetchTaskNodeWithName(taskNodeName)
+//        }
+//        return nil
+//    }
+//    
+//    // MARK: - Translation and parsing
+//    
+//    public func translateText(text: String) -> String {
+//        var translatedText = text
+//        
+//        // Fetch translation from XML
+//        if let languageXMLURL = fetchLanguageXMLURLForLanguage(currentLanguage) {
+//            let languageXML = SWXMLHash.parse(NSData(contentsOfURL: languageXMLURL) ?? NSData())
+//            let resources = languageXML[UsbongXMLIdentifier.resources]
+//            
+//            if let stringElement = try? resources[UsbongXMLIdentifier.string].withAttr(UsbongXMLIdentifier.name, text) {
+//                translatedText = stringElement.element?.text ?? text
+//            }
+//        }
+//        
+//        return translatedText
+//    }
+//    
+//    public func parseText(text: String) -> String {
+//        var parsedText = text
+//        
+//        // Parse new line strings
+//        parsedText = parsedText.stringByReplacingOccurrencesOfString("\\n", withString: "\n")
+//        
+//        return parsedText
+//    }
+//    
+//    // MARK: - UsbongTaskNodeGenerator
+//    
+//    public var currentLanguage: String = "English" {
+//        didSet {
+//            fetchHintsDictionary()
+//        }
+//    }
+//    public var currentLanguageCode: String {
+//        switch currentLanguage {
+//        case "English":
+//            return "en-EN"
+//        case "Czech":
+//            return "cs-CZ"
+//        case "Danish":
+//            return "da-DK"
+//        case "German":
+//            return "de-DE"
+//        case "Greek":
+//            return "el-GR"
+//        case "Spanish", "Bisaya", "Ilonggo", "Tagalog":
+//            return "es-ES"
+//        case "Finnish":
+//            return "fi-FI"
+//        case "French":
+//            return "fr-FR"
+//        case "Hindi":
+//            return "hi-IN"
+//        case "Hungarian":
+//            return "hu-HU"
+//        case "Indonesian":
+//            return "id-ID"
+//        case "Italian":
+//            return "it-IT"
+//        case "Japanese":
+//            return "ja-JP"
+//        case "Korean":
+//            return "ko-KR"
+//        case "Dutch":
+//            return "nl-BE"
+//        case "Norwegian":
+//            return "nb-NO"
+//        case "Polish":
+//            return "pl-PL"
+//        case "Portuguese":
+//            return "pt-PT"
+//        case "Romanian":
+//            return "ro-RO"
+//        case "Russian":
+//            return "ru-RU"
+//        case "Slovak":
+//            return "sk-SK"
+//        case "Swedish":
+//            return "sv-SE"
+//        case "Thai":
+//            return "th-TH"
+//        case "Turkish":
+//            return "tr-TR"
+//        case "Chinese":
+//            return "zh-CN"
+//        default:
+//            return "en-EN"
+//        }
+//    }
+//    public var availableLanguages: [String] {
+//        var languages = fetchLanguages()
+//        // Add base language
+//        if !languages.contains(baseLanguage) {
+//            languages.append(baseLanguage)
+//            languages.sortInPlace()
+//        }
+//        return languages
+//    }
+//
+//    public var taskNodesCount: Int {
+//        return taskNodeNames.count
+//    }
+//    public var previousTaskNode: TaskNode? {
+//        guard taskNodeNames.count > 1 else {
+//            return nil
+//        }
+//        return fetchTaskNodeWithName(taskNodeNames[taskNodeNames.count - 2])
+//    }
+//    public var currentTaskNode: TaskNode? {
+//        if let name = taskNodeNames.last {
+//            return fetchTaskNodeWithName(name)
+//        }
+//        return nil
+//    }
+//    public var nextTaskNode: TaskNode? {
+//        if let name = nextTaskNodeName {
+//            return fetchTaskNodeWithName(name)
+//        }
+//        return nil
+//    }
+//    
+//    public func transitionToNextTaskNode() -> Bool {
+//        if let taskNodeName = self.nextTaskNodeName {
+//            taskNodeNames.append(taskNodeName)
+//            
+//            fetchTransitionInfoFromTaskNodeName(taskNodeNames.last ?? "")
+//        }
+//        return false
+//    }
+//    public func transitionToPreviousTaskNode() -> Bool {
+//        if taskNodeNames.count > 1 {
+//            taskNodeNames.removeLast()
+//            
+//            fetchTransitionInfoFromTaskNodeName(taskNodeNames.last ?? "")
+//        }
+//        return false
+//    }
+//}

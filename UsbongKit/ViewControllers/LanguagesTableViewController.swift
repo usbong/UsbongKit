@@ -21,7 +21,8 @@
 import UIKit
 
 public class LanguagesTableViewController: UITableViewController {
-    public var taskNodeGenerator: UsbongTaskNodeGenerator?
+//    public var taskNodeGenerator: UsbongTaskNodeGenerator?
+    public var tree: UsbongTree?
     
     public var selectLanguageCompletion: (() -> Void)?
     
@@ -54,7 +55,7 @@ public class LanguagesTableViewController: UITableViewController {
     }
 
     override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskNodeGenerator?.availableLanguages.count ?? 0
+        return tree?.availableLanguages.count ?? 0
     }
     
     override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -67,10 +68,10 @@ public class LanguagesTableViewController: UITableViewController {
 //        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
         // Configure the cell...
-        let language = taskNodeGenerator?.availableLanguages[indexPath.row]
+        let language = tree?.availableLanguages[indexPath.row]
         cell.textLabel?.text = language
         
-        if taskNodeGenerator?.currentLanguage == language {
+        if tree?.currentLanguage == language {
             cell.accessoryType = .Checkmark
         } else {
             cell.accessoryType = .None
@@ -83,8 +84,8 @@ public class LanguagesTableViewController: UITableViewController {
     
     override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Set current language to selected language
-        if let selectedLanguage = taskNodeGenerator?.availableLanguages[indexPath.row] {
-            taskNodeGenerator?.currentLanguage = selectedLanguage
+        if let selectedLanguage = tree?.availableLanguages[indexPath.row] {
+            tree?.currentLanguage = selectedLanguage
         }
         
         tableView.reloadData()
