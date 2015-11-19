@@ -38,8 +38,6 @@
 		DFA634091BDBD19000C079B2 /* TextDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EE1BDBD19000C079B2 /* TextDisplayTaskNode.swift */; };
 		DFA6340A1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EF1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift */; };
 		DFA6340B1BDBD19000C079B2 /* UsbongFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F11BDBD19000C079B2 /* UsbongFileManager.swift */; };
-		DFA6340C1BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F21BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift */; };
-		DFA6340D1BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F31BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift */; };
 		DFA6340F1BDBD19000C079B2 /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F61BDBD19000C079B2 /* LanguagesTableViewController.swift */; };
 		DFA634121BDBD19000C079B2 /* CommunityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633FC1BDBD19000C079B2 /* CommunityTableViewCell.swift */; };
 		DFA634131BDBD19000C079B2 /* CommunityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFA633FD1BDBD19000C079B2 /* CommunityTableViewCell.xib */; };
@@ -133,8 +131,6 @@
 		DFA633EE1BDBD19000C079B2 /* TextDisplayTaskNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDisplayTaskNode.swift; sourceTree = "<group>"; };
 		DFA633EF1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextImageDisplayTaskNode.swift; sourceTree = "<group>"; };
 		DFA633F11BDBD19000C079B2 /* UsbongFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongFileManager.swift; sourceTree = "<group>"; };
-		DFA633F21BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongTaskNodeGenerator.swift; sourceTree = "<group>"; };
-		DFA633F31BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongTaskNodeGeneratorXML.swift; sourceTree = "<group>"; };
 		DFA633F61BDBD19000C079B2 /* LanguagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewController.swift; sourceTree = "<group>"; };
 		DFA633FC1BDBD19000C079B2 /* CommunityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityTableViewCell.swift; sourceTree = "<group>"; };
 		DFA633FD1BDBD19000C079B2 /* CommunityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityTableViewCell.xib; sourceTree = "<group>"; };
@@ -301,8 +297,6 @@
 			children = (
 				DFA633F11BDBD19000C079B2 /* UsbongFileManager.swift */,
 				CF8DCA341BFC78D100894489 /* UsbongTree.swift */,
-				DFA633F21BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift */,
-				DFA633F31BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift */,
 			);
 			path = UsbongEngine;
 			sourceTree = "<group>";
@@ -638,10 +632,8 @@
 				DFA634051BDBD19000C079B2 /* ImageDisplayTaskNode.swift in Sources */,
 				DFA634161BDBD19000C079B2 /* TextTableViewCell.swift in Sources */,
 				CF8848DF1BE449BB008E2658 /* HintsTextView.swift in Sources */,
-				DFA6340C1BDBD19000C079B2 /* UsbongTaskNodeGenerator.swift in Sources */,
 				DFA634141BDBD19000C079B2 /* ImageTableViewCell.swift in Sources */,
 				DFA6340B1BDBD19000C079B2 /* UsbongFileManager.swift in Sources */,
-				DFA6340D1BDBD19000C079B2 /* UsbongTaskNodeGeneratorXML.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
