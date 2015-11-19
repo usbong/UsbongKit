@@ -254,7 +254,7 @@ public class UsbongTree {
                         }
                     }
                     
-                    print(tasks)
+                    // Create link task node
                     taskNode = LinkTaskNode(text: finalText, tasks: tasks)
                 }
                 
@@ -302,6 +302,19 @@ public class UsbongTree {
             taskNodeNames.append(nextTaskNodeName)
             currentTaskNode = taskNodeWithName(nextTaskNodeName)
             return true
+        }
+        return false
+    }
+    
+    public func transitionToPreviousTaskNode() -> Bool {
+        // Remove current task node name
+        if taskNodeNames.count > 1 {
+            taskNodeNames.removeLast()
+            
+            if let currentTaskNodeName = taskNodeNames.last {
+                currentTaskNode = taskNodeWithName(currentTaskNodeName)
+                return true
+            }
         }
         return false
     }
