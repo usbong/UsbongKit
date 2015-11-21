@@ -443,7 +443,6 @@
 				DFA633CA1BDBD17C00C079B2 /* Frameworks */,
 				DFA633CB1BDBD17C00C079B2 /* Headers */,
 				DFA633CC1BDBD17C00C079B2 /* Resources */,
-				DFA634201BDBD21F00C079B2 /* Carthage Script */,
 			);
 			buildRules = (
 			);
@@ -567,26 +566,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		DFA634201BDBD21F00C079B2 /* Carthage Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/ZipArchive.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Crypto.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SWXMLHash.framework",
-			);
-			name = "Carthage Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DF452B3F1BDE0AFD003EB5C3 /* Sources */ = {
