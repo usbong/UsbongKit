@@ -169,6 +169,9 @@ extension TaskNodeView: UITableViewDataSource {
             cell.textLabel?.text = "Unkown"
         }
         
+        // Set cell background color equal to content view background color due to iPad cell background bug
+        cell.backgroundColor = cell.contentView.backgroundColor
+        
         return cell
     }
 }
