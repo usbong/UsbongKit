@@ -118,7 +118,7 @@ extension TaskNodeView: UITableViewDataSource {
         switch module {
         case let imageModule as ImageTaskNodeModule:
             if let originalSize = UIImage(contentsOfFile: imageModule.imageFilePath)?.size {
-                let width = UIScreen.mainScreen().bounds.width
+                let width = tableView.bounds.width
                 let aspectRatio = width / originalSize.width
                 let height = aspectRatio * originalSize.height
                 
