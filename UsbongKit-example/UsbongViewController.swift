@@ -98,6 +98,11 @@ class UsbongViewController: UIViewController {
         actionController.addAction(setLanguageAction)
         actionController.addAction(cancelAction)
         
+        // For iPad action sheet behavior (similar to a popover)
+        if let popover = actionController.popoverPresentationController, let barButtonItem = sender as? UIBarButtonItem {
+            popover.barButtonItem = barButtonItem
+        }
+        
         presentViewController(actionController, animated: true, completion: nil)
     }
     
