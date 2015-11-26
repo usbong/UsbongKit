@@ -60,12 +60,11 @@ public class LanguagesTableViewController: UITableViewController {
     
     override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell
-        if tableView.dequeueReusableCellWithIdentifier("Cell") == nil {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
+        if let reusableCell = tableView.dequeueReusableCellWithIdentifier("Cell") {
+            cell = reusableCell
         } else {
-            cell = tableView.dequeueReusableCellWithIdentifier("Cell")!
+            cell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
         }
-//        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
         // Configure the cell...
         let language = tree?.availableLanguages[indexPath.row]
