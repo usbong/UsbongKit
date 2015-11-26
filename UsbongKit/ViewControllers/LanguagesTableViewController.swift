@@ -35,6 +35,11 @@ public class LanguagesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: Selector("didPressCancel:"))
+        
+        // Make table view width to stretch to view width - required only for iOS 9.0 and above
+        if #available(iOS 9.0, *) {
+            tableView.cellLayoutMarginsFollowReadableWidth = false
+        }
     }
 
     override public func didReceiveMemoryWarning() {
