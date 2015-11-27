@@ -10,6 +10,8 @@
 		CF8848DF1BE449BB008E2658 /* HintsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8848DE1BE449BB008E2658 /* HintsTextView.swift */; };
 		CF8DCA331BFC59DD00894489 /* LinkTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8DCA321BFC59DD00894489 /* LinkTaskNode.swift */; };
 		CF8DCA351BFC78D100894489 /* UsbongTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8DCA341BFC78D100894489 /* UsbongTree.swift */; };
+		CFBF5ADA1C07F06600E5A9DD /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF5AD81C07F06600E5A9DD /* LinkTableViewCell.swift */; };
+		CFBF5ADB1C07F06600E5A9DD /* LinkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBF5AD91C07F06600E5A9DD /* LinkTableViewCell.xib */; };
 		CFC4042A1BEE3EC4000658E7 /* TaskNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC404291BEE3EC4000658E7 /* TaskNodeView.swift */; };
 		CFC404311BEE4319000658E7 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
 		CFC404321BEE4319000658E7 /* UsbongKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -100,6 +102,8 @@
 		CF8848DE1BE449BB008E2658 /* HintsTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintsTextView.swift; sourceTree = "<group>"; };
 		CF8DCA321BFC59DD00894489 /* LinkTaskNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkTaskNode.swift; sourceTree = "<group>"; };
 		CF8DCA341BFC78D100894489 /* UsbongTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongTree.swift; sourceTree = "<group>"; };
+		CFBF5AD81C07F06600E5A9DD /* LinkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkTableViewCell.swift; path = LinkTableViewCell/LinkTableViewCell.swift; sourceTree = "<group>"; };
+		CFBF5AD91C07F06600E5A9DD /* LinkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LinkTableViewCell.xib; path = LinkTableViewCell/LinkTableViewCell.xib; sourceTree = "<group>"; };
 		CFC404291BEE3EC4000658E7 /* TaskNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNodeView.swift; sourceTree = "<group>"; };
 		CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Usbong iOS.utree"; sourceTree = "<group>"; };
 		CFC4043E1BEE474E000658E7 /* UsbongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +190,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CFBF5ADC1C07F06C00E5A9DD /* LinkTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CFBF5AD81C07F06600E5A9DD /* LinkTableViewCell.swift */,
+				CFBF5AD91C07F06600E5A9DD /* LinkTableViewCell.xib */,
+			);
+			name = LinkTableViewCell;
+			sourceTree = "<group>";
+		};
 		DF452B441BDE0AFD003EB5C3 /* UsbongKit-example */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +333,7 @@
 			children = (
 				DFA633FE1BDBD19000C079B2 /* ImageTableViewCell */,
 				DFA634011BDBD19000C079B2 /* TextTableViewCell */,
+				CFBF5ADC1C07F06C00E5A9DD /* LinkTableViewCell */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -538,6 +552,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFBF5ADB1C07F06600E5A9DD /* LinkTableViewCell.xib in Resources */,
 				DFA634151BDBD19000C079B2 /* ImageTableViewCell.xib in Resources */,
 				DFA634171BDBD19000C079B2 /* TextTableViewCell.xib in Resources */,
 			);
@@ -588,6 +603,7 @@
 				DFA6340F1BDBD19000C079B2 /* LanguagesTableViewController.swift in Sources */,
 				DFA634061BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift in Sources */,
 				CFC4042A1BEE3EC4000658E7 /* TaskNodeView.swift in Sources */,
+				CFBF5ADA1C07F06600E5A9DD /* LinkTableViewCell.swift in Sources */,
 				DFA634081BDBD19000C079B2 /* TaskNodeModule.swift in Sources */,
 				DFA634091BDBD19000C079B2 /* TextDisplayTaskNode.swift in Sources */,
 				DFA6340A1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift in Sources */,
