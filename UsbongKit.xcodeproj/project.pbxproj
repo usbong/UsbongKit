@@ -13,6 +13,8 @@
 		CFBF5ADA1C07F06600E5A9DD /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF5AD81C07F06600E5A9DD /* LinkTableViewCell.swift */; };
 		CFBF5ADB1C07F06600E5A9DD /* LinkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBF5AD91C07F06600E5A9DD /* LinkTableViewCell.xib */; };
 		CFBF5ADE1C07FA7500E5A9DD /* RadioButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBF5ADD1C07FA7500E5A9DD /* RadioButton.framework */; };
+		CFBF5AE21C07FE7E00E5A9DD /* RadioButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBF5ADD1C07FA7500E5A9DD /* RadioButton.framework */; };
+		CFBF5AE31C07FE7E00E5A9DD /* RadioButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFBF5ADD1C07FA7500E5A9DD /* RadioButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFC4042A1BEE3EC4000658E7 /* TaskNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC404291BEE3EC4000658E7 /* TaskNodeView.swift */; };
 		CFC404311BEE4319000658E7 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
 		CFC404321BEE4319000658E7 /* UsbongKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -91,6 +93,7 @@
 			files = (
 				CFC404321BEE4319000658E7 /* UsbongKit.framework in Embed Frameworks */,
 				CFC4043B1BEE4350000658E7 /* ZipArchive.framework in Embed Frameworks */,
+				CFBF5AE31C07FE7E00E5A9DD /* RadioButton.framework in Embed Frameworks */,
 				CFC404371BEE4350000658E7 /* Crypto.framework in Embed Frameworks */,
 				CFC404391BEE4350000658E7 /* SWXMLHash.framework in Embed Frameworks */,
 			);
@@ -152,6 +155,7 @@
 			files = (
 				CFC404311BEE4319000658E7 /* UsbongKit.framework in Frameworks */,
 				CFC4043A1BEE4350000658E7 /* ZipArchive.framework in Frameworks */,
+				CFBF5AE21C07FE7E00E5A9DD /* RadioButton.framework in Frameworks */,
 				CFC404361BEE4350000658E7 /* Crypto.framework in Frameworks */,
 				CFC404381BEE4350000658E7 /* SWXMLHash.framework in Frameworks */,
 			);
