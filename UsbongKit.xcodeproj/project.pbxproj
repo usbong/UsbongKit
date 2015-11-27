@@ -39,8 +39,6 @@
 		DFA6340A1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633EF1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift */; };
 		DFA6340B1BDBD19000C079B2 /* UsbongFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F11BDBD19000C079B2 /* UsbongFileManager.swift */; };
 		DFA6340F1BDBD19000C079B2 /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633F61BDBD19000C079B2 /* LanguagesTableViewController.swift */; };
-		DFA634121BDBD19000C079B2 /* CommunityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633FC1BDBD19000C079B2 /* CommunityTableViewCell.swift */; };
-		DFA634131BDBD19000C079B2 /* CommunityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFA633FD1BDBD19000C079B2 /* CommunityTableViewCell.xib */; };
 		DFA634141BDBD19000C079B2 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633FF1BDBD19000C079B2 /* ImageTableViewCell.swift */; };
 		DFA634151BDBD19000C079B2 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFA634001BDBD19000C079B2 /* ImageTableViewCell.xib */; };
 		DFA634161BDBD19000C079B2 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA634021BDBD19000C079B2 /* TextTableViewCell.swift */; };
@@ -132,8 +130,6 @@
 		DFA633EF1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextImageDisplayTaskNode.swift; sourceTree = "<group>"; };
 		DFA633F11BDBD19000C079B2 /* UsbongFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongFileManager.swift; sourceTree = "<group>"; };
 		DFA633F61BDBD19000C079B2 /* LanguagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewController.swift; sourceTree = "<group>"; };
-		DFA633FC1BDBD19000C079B2 /* CommunityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityTableViewCell.swift; sourceTree = "<group>"; };
-		DFA633FD1BDBD19000C079B2 /* CommunityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityTableViewCell.xib; sourceTree = "<group>"; };
 		DFA633FF1BDBD19000C079B2 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		DFA634001BDBD19000C079B2 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
 		DFA634021BDBD19000C079B2 /* TextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
@@ -322,20 +318,10 @@
 		DFA633FA1BDBD19000C079B2 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				DFA633FB1BDBD19000C079B2 /* CommunityTableViewCell */,
 				DFA633FE1BDBD19000C079B2 /* ImageTableViewCell */,
 				DFA634011BDBD19000C079B2 /* TextTableViewCell */,
 			);
 			path = TableViewCells;
-			sourceTree = "<group>";
-		};
-		DFA633FB1BDBD19000C079B2 /* CommunityTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				DFA633FC1BDBD19000C079B2 /* CommunityTableViewCell.swift */,
-				DFA633FD1BDBD19000C079B2 /* CommunityTableViewCell.xib */,
-			);
-			path = CommunityTableViewCell;
 			sourceTree = "<group>";
 		};
 		DFA633FE1BDBD19000C079B2 /* ImageTableViewCell */ = {
@@ -552,7 +538,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFA634131BDBD19000C079B2 /* CommunityTableViewCell.xib in Resources */,
 				DFA634151BDBD19000C079B2 /* ImageTableViewCell.xib in Resources */,
 				DFA634171BDBD19000C079B2 /* TextTableViewCell.xib in Resources */,
 			);
@@ -603,7 +588,6 @@
 				DFA6340F1BDBD19000C079B2 /* LanguagesTableViewController.swift in Sources */,
 				DFA634061BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift in Sources */,
 				CFC4042A1BEE3EC4000658E7 /* TaskNodeView.swift in Sources */,
-				DFA634121BDBD19000C079B2 /* CommunityTableViewCell.swift in Sources */,
 				DFA634081BDBD19000C079B2 /* TaskNodeModule.swift in Sources */,
 				DFA634091BDBD19000C079B2 /* TextDisplayTaskNode.swift in Sources */,
 				DFA6340A1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift in Sources */,
