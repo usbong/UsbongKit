@@ -12,6 +12,7 @@
 		CF8DCA351BFC78D100894489 /* UsbongTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8DCA341BFC78D100894489 /* UsbongTree.swift */; };
 		CFBF5ADA1C07F06600E5A9DD /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF5AD81C07F06600E5A9DD /* LinkTableViewCell.swift */; };
 		CFBF5ADB1C07F06600E5A9DD /* LinkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBF5AD91C07F06600E5A9DD /* LinkTableViewCell.xib */; };
+		CFBF5ADE1C07FA7500E5A9DD /* RadioButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBF5ADD1C07FA7500E5A9DD /* RadioButton.framework */; };
 		CFC4042A1BEE3EC4000658E7 /* TaskNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC404291BEE3EC4000658E7 /* TaskNodeView.swift */; };
 		CFC404311BEE4319000658E7 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
 		CFC404321BEE4319000658E7 /* UsbongKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -104,6 +105,7 @@
 		CF8DCA341BFC78D100894489 /* UsbongTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongTree.swift; sourceTree = "<group>"; };
 		CFBF5AD81C07F06600E5A9DD /* LinkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkTableViewCell.swift; path = LinkTableViewCell/LinkTableViewCell.swift; sourceTree = "<group>"; };
 		CFBF5AD91C07F06600E5A9DD /* LinkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LinkTableViewCell.xib; path = LinkTableViewCell/LinkTableViewCell.xib; sourceTree = "<group>"; };
+		CFBF5ADD1C07FA7500E5A9DD /* RadioButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RadioButton.framework; path = Carthage/Build/iOS/RadioButton.framework; sourceTree = "<group>"; };
 		CFC404291BEE3EC4000658E7 /* TaskNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNodeView.swift; sourceTree = "<group>"; };
 		CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Usbong iOS.utree"; sourceTree = "<group>"; };
 		CFC4043E1BEE474E000658E7 /* UsbongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				DFA6341C1BDBD1F800C079B2 /* Crypto.framework in Frameworks */,
 				DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */,
 				DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */,
+				CFBF5ADE1C07FA7500E5A9DD /* RadioButton.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +362,7 @@
 		DFA6341F1BDBD1FF00C079B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CFBF5ADD1C07FA7500E5A9DD /* RadioButton.framework */,
 				DFA634191BDBD1F800C079B2 /* Crypto.framework */,
 				DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */,
 				DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */,
