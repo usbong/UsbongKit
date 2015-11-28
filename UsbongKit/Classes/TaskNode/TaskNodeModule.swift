@@ -21,7 +21,7 @@
 import Foundation
 
 public class TaskNodeModule {
-    public private(set) var content: [String: NSObject]
+    public internal(set) var content: [String: NSObject]
     
     public init(content: [String: NSObject]) {
         self.content = content

@@ -96,6 +96,8 @@ public class TaskNodeView: UIView {
                 taskNodeTableView.registerNib(UINib(nibName: "TextTableViewCell", bundle: NSBundle(forClass: TextTableViewCell.self)), forCellReuseIdentifier: "Text")
             case is ImageTaskNodeModule:
                 taskNodeTableView.registerNib(UINib(nibName: "ImageTableViewCell", bundle: NSBundle(forClass: ImageTableViewCell.self)), forCellReuseIdentifier: "Image")
+            case is LinkTaskNodeModule:
+                taskNodeTableView.registerNib(UINib(nibName: "LinkTableViewCell", bundle: NSBundle(forClass: LinkTableViewCell.self)), forCellReuseIdentifier: "Link")
             default:
                 break
             }
@@ -164,6 +166,12 @@ extension TaskNodeView: UITableViewDataSource {
             imageCell.customImageView.image = UIImage(contentsOfFile: imageModule.imageFilePath)
             
             cell = imageCell
+        case let linkModule as LinkTaskNodeModule:
+            let linkCell = tableView.dequeueReusableCellWithIdentifier("Link", forIndexPath: indexPath) as! LinkTableViewCell
+            
+            print(linkModule.content)
+            
+            cell = linkCell
         default:
             cell = UITableViewCell(style: .Default, reuseIdentifier: "unknownModule")
             cell.textLabel?.text = "Unkown"

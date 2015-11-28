@@ -27,9 +27,35 @@ public class LinkTaskNode: TaskNode {
         
         // Test tasks
         for task in tasks {
-            currentModules.append(TextTaskNodeModule(text: task.value))
+            currentModules.append(LinkTaskNodeModule(task: task))
         }
         
         super.init(modules: currentModules)
     }
+}
+
+public class LinkTaskNodeModule: TaskNodeModule {
+    public init(task: LinkTaskNodeTask) {
+        super.init(content: ["taskValue": NSString(string: task.value), "taskIdentifier": NSString(string: task.identifier)])
+    }
+    
+    public var taskValue: String {
+        get {
+            return (content["taskValue"] as? NSString ?? "") as String
+        }
+        set {
+            content["taskValue"] = NSString(string: newValue)
+        }
+    }
+    
+    public var taskIdentifier: String {
+        get {
+            return (content["taskIdentifier"] as? NSString ?? "") as String
+        }
+        set {
+            content["taskIdentifier"] = NSString(string: newValue)
+        }
+    }
+    
+    
 }
