@@ -40,7 +40,6 @@ public class LinkTaskNode: TaskNode {
         var currentModules = [TaskNodeModule]()
         currentModules.append(TextTaskNodeModule(text: text))
         
-        // Test tasks
         for task in tasks {
             currentModules.append(LinkTaskNodeModule(task: task))
         }
