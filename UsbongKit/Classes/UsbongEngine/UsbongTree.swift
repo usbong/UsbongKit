@@ -527,4 +527,14 @@ public class UsbongTree {
     public var previousTaskNodeIsAvailable: Bool {
         return taskNodeNames.count > 1
     }
+    
+    public var noSelection: Bool {
+        if let linkTaskNode = currentTaskNode as? LinkTaskNode {
+            if linkTaskNode.currentSelectedIndex < 0 {
+                return true
+            }
+            return false
+        }
+        return false
+    }
 }
