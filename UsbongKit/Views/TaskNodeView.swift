@@ -176,10 +176,8 @@ extension TaskNodeView: UITableViewDataSource {
             
             var selected = false
             if let linkTaskNode = taskNode as? LinkTaskNode {
-                if linkTaskNode.currentSelectedIndex >= 0 {
-                    if indexPath.row == linkTaskNode.currentSelectedIndex + linkTaskNode.indexOffset {
-                        selected = true
-                    }
+                if indexPath.row == linkTaskNode.trueIndex {
+                    selected = true
                 }
             }
             linkCell.radioButtonSelected = selected
