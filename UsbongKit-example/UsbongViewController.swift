@@ -169,7 +169,9 @@ class UsbongViewController: UIViewController {
                 }
             } else {
                 // Next transition
-                if currentTree.currentTaskNode is EndStateTaskNode || !currentTree.nextTaskNodeIsAvailable {
+                if currentTree.noSelection {
+                    print("NO SELECTION")
+                } else if currentTree.currentTaskNode is EndStateTaskNode || !currentTree.nextTaskNodeIsAvailable {
                     dismissViewControllerAnimated(true, completion: nil)
                     return
                 } else {
