@@ -14,6 +14,7 @@ private struct UsbongXMLIdentifier {
     static let startState = "start-state"
     static let endState = "end-state"
     static let taskNode = "task-node"
+    static let decision = "decision"
     static let transition = "transition"
     static let task = "task"
     static let to = "to"
@@ -341,7 +342,7 @@ public class UsbongTree {
                 let finalText = parseText(translatedText)
                 
                 // Temporary transition info to be used by link and decision task nodes
-                var fetchedTransitionInfo = [String: String]()
+                var fetchedTransitionInfo: [String: String] = [:]
                 
                 switch taskNodeType {
                 case .TextDisplay:
@@ -353,7 +354,7 @@ public class UsbongTree {
                 case .ImageTextDisplay:
                     taskNode = ImageTextDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "", text: finalText)
                 case .Link:
-                    var tasks = [LinkTaskNodeTask]()
+                    var tasks: [LinkTaskNodeTask] = []
                     // Fetch transition info from task elements
                     let taskXMLIndexers = taskNodeXMLIndexer[UsbongXMLIdentifier.task].all
                     for taskXMLIndexer in taskXMLIndexers {
@@ -407,6 +408,44 @@ public class UsbongTree {
         } else if (try? processDefinition[UsbongXMLIdentifier.endState].withAttr(UsbongXMLIdentifier.name, name)) != nil {
             // Find end-state node if task-node not found
             taskNode =  EndStateTaskNode(text: "You've now reached the end")
+        } else if let decisionXMLIndexer = try? processDefinition[UsbongXMLIdentifier.decision].withAttr(UsbongXMLIdentifier.name, name) {
+            // Decision Node
+            let nameComponents = UsbongXMLName(name: name, language: currentLanguage)
+            
+            // Translate text if current language is not base language
+            let translatedText = currentLanguage != baseLanguage ? translateText(nameComponents.text) : nameComponents.text
+            
+            // Parse text
+            let finalText = parseText(translatedText)
+            
+            // Temporary transition info to be used by link and decision task nodes
+            var fetchedTransitionInfo: [String: String] = [:]
+            var tasks: [LinkTaskNodeTask] = []
+            
+            // Fetch transition info from transition elements
+            let transitionElements = decisionXMLIndexer[UsbongXMLIdentifier.transition].all
+            for transitionElement in transitionElements {
+                if let attributes = transitionElement.element?.attributes {
+                    // Get values of attributes name and to, add to taskNode object
+                    let key = attributes[UsbongXMLIdentifier.name] ?? "Any" // Default is Any if no name found
+                    let translatedKey = key
+                    
+                    tasks.append(LinkTaskNodeTask(identifier: key, value: translatedKey))
+                    
+                    // Save transition info
+                    fetchedTransitionInfo[key] = attributes[UsbongXMLIdentifier.to] ?? ""
+                }
+            }
+            transitionInfo = fetchedTransitionInfo
+            
+            taskNode = LinkTaskNode(text: finalText, tasks: tasks)
+            
+            // Background Path
+            taskNode?.backgroundImageFilePath = nameComponents.backgroundImagePathUsingXMLURL(treeRootURL)
+            
+            // Audio Paths
+            taskNode?.backgroundAudioFilePath = nameComponents.backgroundAudioPathUsingXMLURL(treeRootURL)
+            taskNode?.audioFilePath = nameComponents.audioPathUsingXMLURL(treeRootURL)
         }
         
         return taskNode
@@ -424,6 +463,12 @@ public class UsbongTree {
     // MARK: Convenience
     private func taskNodeXMLIndexerWithName(name: String) -> XMLIndexer? {
         return try? processDefinition[UsbongXMLIdentifier.taskNode].withAttr(UsbongXMLIdentifier.name, name)
+    }
+    private func endStateXMLIndexerWithName(name: String) -> XMLIndexer? {
+        return try? processDefinition[UsbongXMLIdentifier.endState].withAttr(UsbongXMLIdentifier.name, name)
+    }
+    private func decisionXMLIndexerWithName(name: String) -> XMLIndexer? {
+        return try? processDefinition[UsbongXMLIdentifier.decision].withAttr(UsbongXMLIdentifier.name, name)
     }
     
     private var nextTaskNodeName: String? {
@@ -520,7 +565,7 @@ public class UsbongTree {
     // MARK: Availability check
     public var nextTaskNodeIsAvailable: Bool {
         if let name = nextTaskNodeName {
-            return taskNodeXMLIndexerWithName(name) != nil
+            return (taskNodeXMLIndexerWithName(name) != nil || decisionXMLIndexerWithName(name) != nil || endStateXMLIndexerWithName(name) != nil)
         }
         return false
     }
