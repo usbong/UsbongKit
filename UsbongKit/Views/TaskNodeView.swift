@@ -106,7 +106,12 @@ public class TaskNodeView: UIView {
 }
 
 extension TaskNodeView: UITableViewDelegate {
-    
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let linkTaskNode = taskNode as? LinkTaskNode {
+            linkTaskNode.currentSelectedIndex = indexPath.row - linkTaskNode.indexOffset
+            tableView.reloadData()
+        }
+    }
 }
 
 extension TaskNodeView: UITableViewDataSource {
@@ -167,9 +172,19 @@ extension TaskNodeView: UITableViewDataSource {
             
             cell = imageCell
         case let linkModule as LinkTaskNodeModule:
-            let linkCell = tableView.dequeueReusableCellWithIdentifier("Link", forIndexPath: indexPath) as! LinkTableViewCell
+            let linkCell = tableView.dequeueReusableCellWithIdentifier("Link") as! LinkTableViewCell
             
-            print(linkModule.content)
+            var selected = false
+            if let linkTaskNode = taskNode as? LinkTaskNode {
+                if linkTaskNode.currentSelectedIndex >= 0 {
+                    if indexPath.row == linkTaskNode.currentSelectedIndex + linkTaskNode.indexOffset {
+                        selected = true
+                    }
+                }
+            }
+            linkCell.radioButtonSelected = selected
+            
+            linkCell.titleLabel.text = linkModule.taskValue
             
             cell = linkCell
         default:

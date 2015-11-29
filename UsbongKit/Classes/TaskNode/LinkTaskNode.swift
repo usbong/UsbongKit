@@ -19,6 +19,7 @@ public struct LinkTaskNodeTask {
 }
 
 public class LinkTaskNode: TaskNode {
+    public var indexOffset: Int = 1
     public var currentSelectedIndex: Int = -1 // -1 means none
     
     public init(text: String, tasks: [LinkTaskNodeTask]) {
