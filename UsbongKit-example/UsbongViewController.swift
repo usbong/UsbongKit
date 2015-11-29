@@ -231,9 +231,8 @@ class UsbongViewController: UIViewController {
     func startTextToSpeechInTaskNode(taskNode: TaskNode) {
         let modules = taskNode.modules
         for module in modules {
-            if let textModule = module as? TextTaskNodeModule {
-                print("\(textModule.text)")
-                let utterance = AVSpeechUtterance(string: textModule.text)
+            if let speakableModule = module as? SpeakableModule {
+                let utterance = AVSpeechUtterance(string: speakableModule.speakableText)
                 
                 utterance.voice = AVSpeechSynthesisVoice(language: tree?.currentLanguageCode ?? "en-EN")
                 
