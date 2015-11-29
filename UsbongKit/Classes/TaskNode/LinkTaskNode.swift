@@ -71,6 +71,10 @@ public class LinkTaskNodeModule: TaskNodeModule {
             content["taskIdentifier"] = NSString(string: newValue)
         }
     }
-    
-    
+}
+
+extension LinkTaskNodeModule: SpeakableModule {
+    public var speakableText: String {
+        return taskValue
+    }
 }
