@@ -64,6 +64,10 @@ class UsbongViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        stopVoiceOver()
+    }
+    
     // MARK: - Actions
     
     @IBAction func didPressExit(sender: AnyObject) {
@@ -199,7 +203,7 @@ class UsbongViewController: UIViewController {
             }
             
             // Change next button title to exit if transitioned node is end state
-            if currentTree.currentTaskNode is EndStateTaskNode || !currentTree.nextTaskNodeIsAvailable {
+            if (currentTree.currentTaskNode is EndStateTaskNode || !currentTree.nextTaskNodeIsAvailable) && !(currentTree.currentTaskNode is LinkTaskNode) {
                 nextButton.setTitle("Exit", forState: .Normal)
             } else {
                 nextButton.setTitle("Next", forState: .Normal)
