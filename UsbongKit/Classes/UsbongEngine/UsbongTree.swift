@@ -246,7 +246,21 @@ public class UsbongTree {
     
     public private(set) var currentTaskNode: TaskNode?
     
-    public var currentTargetTransitionName: String = "Any"
+    public var currentTargetTransitionName: String {
+        get {
+            if let taskNode = currentTaskNode {
+                switch taskNode {
+                case let linkTaskNode as LinkTaskNode:
+                    if let linkModule = linkTaskNode.currentSelectedModule {
+                        return linkModule.taskIdentifier
+                    }
+                default:
+                    break
+                }
+            }
+            return "Any"
+        }
+    }
     public var transitionInfo: [String: String] = [String: String]()
     
     private let languageXMLURLs: [NSURL]

@@ -21,6 +21,20 @@ public struct LinkTaskNodeTask {
 public class LinkTaskNode: TaskNode {
     public var indexOffset: Int = 1
     public var currentSelectedIndex: Int = -1 // -1 means none
+    public var trueIndex: Int {
+        if currentSelectedIndex >= 0 {
+            return indexOffset + currentSelectedIndex
+        } else {
+            return -1
+        }
+    }
+    public var currentSelectedModule: LinkTaskNodeModule? {
+        let index = trueIndex
+        if index >= 0 && index < modules.count {
+            return modules[index] as? LinkTaskNodeModule
+        }
+        return nil
+    }
     
     public init(text: String, tasks: [LinkTaskNodeTask]) {
         var currentModules = [TaskNodeModule]()
