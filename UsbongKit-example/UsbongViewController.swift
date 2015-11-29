@@ -156,6 +156,17 @@ class UsbongViewController: UIViewController {
     
     private func transitionWithDirection(direction: TransitionDirection) {
         if let currentTree = tree {
+            // Special case for no selection
+            guard !(currentTree.noSelection && direction == .Forward) else {
+                // Present no selection alert
+                let alertController = UIAlertController(title: "No Selection", message: "Please select one of the choices", preferredStyle: .Alert)
+                let okayAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alertController.addAction(okayAction)
+                
+                presentViewController(alertController, animated: true, completion: nil)
+                return
+            }
+            
             // Before transition
             stopVoiceOver()
             
@@ -169,15 +180,7 @@ class UsbongViewController: UIViewController {
                 }
             } else {
                 // Next transition
-                if currentTree.noSelection {
-                    // Present no selection alert
-                    let alertController = UIAlertController(title: "No Selection", message: "Please select one of the choices", preferredStyle: .Alert)
-                    let okayAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                    alertController.addAction(okayAction)
-                    
-                    presentViewController(alertController, animated: true, completion: nil)
-                    return
-                } else if currentTree.currentTaskNode is EndStateTaskNode || !currentTree.nextTaskNodeIsAvailable {
+                if currentTree.currentTaskNode is EndStateTaskNode || !currentTree.nextTaskNodeIsAvailable {
                     dismissViewControllerAnimated(true, completion: nil)
                     return
                 } else {
