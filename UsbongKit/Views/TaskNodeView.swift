@@ -148,7 +148,7 @@ extension TaskNodeView: UITableViewDataSource {
         let module = taskNode.modules[indexPath.row]
         switch module {
         case let textModule as TextTaskNodeModule:
-            let textCell = tableView.dequeueReusableCellWithIdentifier("Text", forIndexPath: indexPath) as! TextTableViewCell
+            let textCell = tableView.dequeueReusableCellWithIdentifier("Text") as! TextTableViewCell
             
             // Add hints if available
             let attributedText = NSMutableAttributedString(string: textModule.text)
@@ -166,7 +166,7 @@ extension TaskNodeView: UITableViewDataSource {
             
             cell = textCell
         case let imageModule as ImageTaskNodeModule:
-            let imageCell = tableView.dequeueReusableCellWithIdentifier("Image", forIndexPath: indexPath) as! ImageTableViewCell
+            let imageCell = tableView.dequeueReusableCellWithIdentifier("Image") as! ImageTableViewCell
             
             imageCell.customImageView.image = UIImage(contentsOfFile: imageModule.imageFilePath)
             
@@ -186,7 +186,11 @@ extension TaskNodeView: UITableViewDataSource {
             
             cell = linkCell
         default:
-            cell = UITableViewCell(style: .Default, reuseIdentifier: "unknownModule")
+            if let reusedCell = tableView.dequeueReusableCellWithIdentifier("unknownModule") {
+                cell = reusedCell
+            } else {
+                cell = UITableViewCell(style: .Default, reuseIdentifier: "unknownModule")
+            }
             cell.textLabel?.text = "Unkown"
         }
         
