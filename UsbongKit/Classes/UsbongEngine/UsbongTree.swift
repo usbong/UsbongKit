@@ -165,6 +165,7 @@ private enum TaskNodeType: String {
     case TextImageDisplay = "textImageDisplay"
     case ImageTextDisplay = "imageTextDisplay"
     case Link = "link"
+    case RadioButtons = "radioButtons"
 }
 
 private func languageCodeOfLanguage(language: String) -> String {
@@ -246,10 +247,12 @@ public class UsbongTree {
     private let processDefinition: XMLIndexer
     
     public private(set) var currentTaskNode: TaskNode?
+    private var currentTaskNodeType: TaskNodeType = .TextDisplay
     
     public var currentTargetTransitionName: String {
         get {
-            if let taskNode = currentTaskNode {
+            // If current task node type is radio buttons, ignore selected module (transition to any)
+            if let taskNode = currentTaskNode where currentTaskNodeType != .RadioButtons {
                 switch taskNode {
                 case let linkTaskNode as LinkTaskNode:
                     if let linkModule = linkTaskNode.currentSelectedModule {
@@ -344,6 +347,7 @@ public class UsbongTree {
                 // Temporary transition info to be used by link and decision task nodes
                 var fetchedTransitionInfo: [String: String] = [:]
                 
+                currentTaskNodeType = taskNodeType
                 switch taskNodeType {
                 case .TextDisplay:
                     taskNode =  TextDisplayTaskNode(text: finalText)
@@ -353,20 +357,26 @@ public class UsbongTree {
                     taskNode = TextImageDisplayTaskNode(text: finalText, imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "")
                 case .ImageTextDisplay:
                     taskNode = ImageTextDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "", text: finalText)
-                case .Link:
+                case .Link, .RadioButtons:
                     var tasks: [LinkTaskNodeTask] = []
-                    // Fetch transition info from task elements
+                    // Fetch tasks (and transition info from task elements if link)
                     let taskXMLIndexers = taskNodeXMLIndexer[UsbongXMLIdentifier.task].all
                     for taskXMLIndexer in taskXMLIndexers {
                         if let name = taskXMLIndexer.element?.attributes[UsbongXMLIdentifier.name] {
                             var nameComponents = name.componentsSeparatedByString("~")
-                            if nameComponents.count > 1 {
+                            
+                            // Link type need to have more than one component
+                            let minimumCount = taskNodeType == .Link ? 1 : 0
+                            if nameComponents.count > minimumCount {
                                 let key = nameComponents.removeLast()
                                 let translatedKey = key
                                 tasks.append(LinkTaskNodeTask(identifier: key, value: translatedKey))
                                 
-                                let value = nameComponents.joinWithSeparator("~")
-                                fetchedTransitionInfo[key] = value
+                                // Add transition info only if link type
+                                if taskNodeType == .Link {
+                                    let value = nameComponents.joinWithSeparator("~")
+                                    fetchedTransitionInfo[key] = value
+                                }
                             }
                         }
                     }
