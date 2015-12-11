@@ -153,7 +153,14 @@ extension TaskNodeView: UITableViewDataSource {
             // Add hints if available
             let attributedText = NSMutableAttributedString(string: textModule.text)
             
-            let font = UIFont.systemFontOfSize(21)
+            let fontSize: CGFloat
+            if traitCollection.horizontalSizeClass == .Regular && traitCollection.verticalSizeClass == .Regular {
+                fontSize = 42
+            } else {
+                fontSize = 21
+            }
+            
+            let font = UIFont.systemFontOfSize(fontSize)
             let textColor = UIColor.blackColor()
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .Center
