@@ -20,8 +20,12 @@
 
 import Foundation
 
+public protocol SpeakableModule {
+    var speakableText: String { get }
+}
+
 public class TaskNodeModule {
-    public private(set) var content: [String: NSObject]
+    public internal(set) var content: [String: NSObject]
     
     public init(content: [String: NSObject]) {
         self.content = content
@@ -45,6 +49,12 @@ public class TextTaskNodeModule: TaskNodeModule {
         set {
             content["text"] = NSString(string: newValue)
         }
+    }
+}
+
+extension TextTaskNodeModule: SpeakableModule {
+    public var speakableText: String {
+        return self.text
     }
 }
 

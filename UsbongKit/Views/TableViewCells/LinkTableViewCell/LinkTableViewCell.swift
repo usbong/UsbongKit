@@ -7,15 +7,32 @@
 //
 
 import UIKit
+import RadioButton
 
-class LinkTableViewCell: UITableViewCell {
+public class LinkTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
+    @IBOutlet weak var radioButton: RadioButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    public var radioButtonSelected: Bool {
+        get {
+            return radioButton.selected
+        }
+        set {
+            radioButton.selected = newValue
+        }
+    }
+    
+    override public func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
+        radioButton.fillCircleColor = UIColor.darkGrayColor()
+        radioButton.circleColor = UIColor.blackColor()
+        radioButton.circleLineWidth = 1.0
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override public func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

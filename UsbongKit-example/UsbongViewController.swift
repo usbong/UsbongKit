@@ -64,6 +64,10 @@ class UsbongViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        stopVoiceOver()
+    }
+    
     // MARK: - Actions
     
     @IBAction func didPressExit(sender: AnyObject) {
@@ -156,6 +160,17 @@ class UsbongViewController: UIViewController {
     
     private func transitionWithDirection(direction: TransitionDirection) {
         if let currentTree = tree {
+            // Special case for no selection
+            guard !(currentTree.noSelection && direction == .Forward) else {
+                // Present no selection alert
+                let alertController = UIAlertController(title: "No Selection", message: "Please select one of the choices", preferredStyle: .Alert)
+                let okayAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alertController.addAction(okayAction)
+                
+                presentViewController(alertController, animated: true, completion: nil)
+                return
+            }
+            
             // Before transition
             stopVoiceOver()
             
@@ -188,7 +203,7 @@ class UsbongViewController: UIViewController {
             }
             
             // Change next button title to exit if transitioned node is end state
-            if currentTree.currentTaskNode is EndStateTaskNode || !currentTree.nextTaskNodeIsAvailable {
+            if (currentTree.currentTaskNode is EndStateTaskNode || !currentTree.nextTaskNodeIsAvailable) && !(currentTree.currentTaskNode is LinkTaskNode) {
                 nextButton.setTitle("Exit", forState: .Normal)
             } else {
                 nextButton.setTitle("Next", forState: .Normal)
@@ -231,9 +246,8 @@ class UsbongViewController: UIViewController {
     func startTextToSpeechInTaskNode(taskNode: TaskNode) {
         let modules = taskNode.modules
         for module in modules {
-            if let textModule = module as? TextTaskNodeModule {
-                print("\(textModule.text)")
-                let utterance = AVSpeechUtterance(string: textModule.text)
+            if let speakableModule = module as? SpeakableModule {
+                let utterance = AVSpeechUtterance(string: speakableModule.speakableText)
                 
                 utterance.voice = AVSpeechSynthesisVoice(language: tree?.currentLanguageCode ?? "en-EN")
                 

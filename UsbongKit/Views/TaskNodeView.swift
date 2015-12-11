@@ -96,6 +96,8 @@ public class TaskNodeView: UIView {
                 taskNodeTableView.registerNib(UINib(nibName: "TextTableViewCell", bundle: NSBundle(forClass: TextTableViewCell.self)), forCellReuseIdentifier: "Text")
             case is ImageTaskNodeModule:
                 taskNodeTableView.registerNib(UINib(nibName: "ImageTableViewCell", bundle: NSBundle(forClass: ImageTableViewCell.self)), forCellReuseIdentifier: "Image")
+            case is LinkTaskNodeModule:
+                taskNodeTableView.registerNib(UINib(nibName: "LinkTableViewCell", bundle: NSBundle(forClass: LinkTableViewCell.self)), forCellReuseIdentifier: "Link")
             default:
                 break
             }
@@ -104,7 +106,12 @@ public class TaskNodeView: UIView {
 }
 
 extension TaskNodeView: UITableViewDelegate {
-    
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let linkTaskNode = taskNode as? LinkTaskNode {
+            linkTaskNode.currentSelectedIndex = indexPath.row - linkTaskNode.indexOffset
+            tableView.reloadData()
+        }
+    }
 }
 
 extension TaskNodeView: UITableViewDataSource {
@@ -141,7 +148,7 @@ extension TaskNodeView: UITableViewDataSource {
         let module = taskNode.modules[indexPath.row]
         switch module {
         case let textModule as TextTaskNodeModule:
-            let textCell = tableView.dequeueReusableCellWithIdentifier("Text", forIndexPath: indexPath) as! TextTableViewCell
+            let textCell = tableView.dequeueReusableCellWithIdentifier("Text") as! TextTableViewCell
             
             // Add hints if available
             let attributedText = NSMutableAttributedString(string: textModule.text)
@@ -159,13 +166,31 @@ extension TaskNodeView: UITableViewDataSource {
             
             cell = textCell
         case let imageModule as ImageTaskNodeModule:
-            let imageCell = tableView.dequeueReusableCellWithIdentifier("Image", forIndexPath: indexPath) as! ImageTableViewCell
+            let imageCell = tableView.dequeueReusableCellWithIdentifier("Image") as! ImageTableViewCell
             
             imageCell.customImageView.image = UIImage(contentsOfFile: imageModule.imageFilePath)
             
             cell = imageCell
+        case let linkModule as LinkTaskNodeModule:
+            let linkCell = tableView.dequeueReusableCellWithIdentifier("Link") as! LinkTableViewCell
+            
+            var selected = false
+            if let linkTaskNode = taskNode as? LinkTaskNode {
+                if indexPath.row == linkTaskNode.trueIndex {
+                    selected = true
+                }
+            }
+            linkCell.radioButtonSelected = selected
+            
+            linkCell.titleLabel.text = linkModule.taskValue
+            
+            cell = linkCell
         default:
-            cell = UITableViewCell(style: .Default, reuseIdentifier: "unknownModule")
+            if let reusedCell = tableView.dequeueReusableCellWithIdentifier("unknownModule") {
+                cell = reusedCell
+            } else {
+                cell = UITableViewCell(style: .Default, reuseIdentifier: "unknownModule")
+            }
             cell.textLabel?.text = "Unkown"
         }
         

@@ -14,6 +14,7 @@ private struct UsbongXMLIdentifier {
     static let startState = "start-state"
     static let endState = "end-state"
     static let taskNode = "task-node"
+    static let decision = "decision"
     static let transition = "transition"
     static let task = "task"
     static let to = "to"
@@ -164,6 +165,7 @@ private enum TaskNodeType: String {
     case TextImageDisplay = "textImageDisplay"
     case ImageTextDisplay = "imageTextDisplay"
     case Link = "link"
+    case RadioButtons = "radioButtons"
 }
 
 private func languageCodeOfLanguage(language: String) -> String {
@@ -245,8 +247,24 @@ public class UsbongTree {
     private let processDefinition: XMLIndexer
     
     public private(set) var currentTaskNode: TaskNode?
+    private var currentTaskNodeType: TaskNodeType = .TextDisplay
     
-    public var currentTargetTransitionName: String = "Any"
+    public var currentTargetTransitionName: String {
+        get {
+            // If current task node type is radio buttons, ignore selected module (transition to any)
+            if let taskNode = currentTaskNode where currentTaskNodeType != .RadioButtons {
+                switch taskNode {
+                case let linkTaskNode as LinkTaskNode:
+                    if let linkModule = linkTaskNode.currentSelectedModule {
+                        return linkModule.taskIdentifier
+                    }
+                default:
+                    break
+                }
+            }
+            return "Any"
+        }
+    }
     public var transitionInfo: [String: String] = [String: String]()
     
     private let languageXMLURLs: [NSURL]
@@ -327,8 +345,9 @@ public class UsbongTree {
                 let finalText = parseText(translatedText)
                 
                 // Temporary transition info to be used by link and decision task nodes
-                var fetchedTransitionInfo = [String: String]()
+                var fetchedTransitionInfo: [String: String] = [:]
                 
+                currentTaskNodeType = taskNodeType
                 switch taskNodeType {
                 case .TextDisplay:
                     taskNode =  TextDisplayTaskNode(text: finalText)
@@ -338,20 +357,26 @@ public class UsbongTree {
                     taskNode = TextImageDisplayTaskNode(text: finalText, imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "")
                 case .ImageTextDisplay:
                     taskNode = ImageTextDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "", text: finalText)
-                case .Link:
-                    var tasks = [LinkTaskNodeTask]()
-                    // Fetch transition info from task elements
+                case .Link, .RadioButtons:
+                    var tasks: [LinkTaskNodeTask] = []
+                    // Fetch tasks (and transition info from task elements if link)
                     let taskXMLIndexers = taskNodeXMLIndexer[UsbongXMLIdentifier.task].all
                     for taskXMLIndexer in taskXMLIndexers {
                         if let name = taskXMLIndexer.element?.attributes[UsbongXMLIdentifier.name] {
                             var nameComponents = name.componentsSeparatedByString("~")
-                            if nameComponents.count > 1 {
+                            
+                            // Link type need to have more than one component
+                            let minimumCount = taskNodeType == .Link ? 1 : 0
+                            if nameComponents.count > minimumCount {
                                 let key = nameComponents.removeLast()
                                 let translatedKey = key
                                 tasks.append(LinkTaskNodeTask(identifier: key, value: translatedKey))
                                 
-                                let value = nameComponents.joinWithSeparator("~")
-                                fetchedTransitionInfo[key] = value
+                                // Add transition info only if link type
+                                if taskNodeType == .Link {
+                                    let value = nameComponents.joinWithSeparator("~")
+                                    fetchedTransitionInfo[key] = value
+                                }
                             }
                         }
                     }
@@ -393,6 +418,44 @@ public class UsbongTree {
         } else if (try? processDefinition[UsbongXMLIdentifier.endState].withAttr(UsbongXMLIdentifier.name, name)) != nil {
             // Find end-state node if task-node not found
             taskNode =  EndStateTaskNode(text: "You've now reached the end")
+        } else if let decisionXMLIndexer = try? processDefinition[UsbongXMLIdentifier.decision].withAttr(UsbongXMLIdentifier.name, name) {
+            // Decision Node
+            let nameComponents = UsbongXMLName(name: name, language: currentLanguage)
+            
+            // Translate text if current language is not base language
+            let translatedText = currentLanguage != baseLanguage ? translateText(nameComponents.text) : nameComponents.text
+            
+            // Parse text
+            let finalText = parseText(translatedText)
+            
+            // Temporary transition info to be used by link and decision task nodes
+            var fetchedTransitionInfo: [String: String] = [:]
+            var tasks: [LinkTaskNodeTask] = []
+            
+            // Fetch transition info from transition elements
+            let transitionElements = decisionXMLIndexer[UsbongXMLIdentifier.transition].all
+            for transitionElement in transitionElements {
+                if let attributes = transitionElement.element?.attributes {
+                    // Get values of attributes name and to, add to taskNode object
+                    let key = attributes[UsbongXMLIdentifier.name] ?? "Any" // Default is Any if no name found
+                    let translatedKey = key
+                    
+                    tasks.append(LinkTaskNodeTask(identifier: key, value: translatedKey))
+                    
+                    // Save transition info
+                    fetchedTransitionInfo[key] = attributes[UsbongXMLIdentifier.to] ?? ""
+                }
+            }
+            transitionInfo = fetchedTransitionInfo
+            
+            taskNode = LinkTaskNode(text: finalText, tasks: tasks)
+            
+            // Background Path
+            taskNode?.backgroundImageFilePath = nameComponents.backgroundImagePathUsingXMLURL(treeRootURL)
+            
+            // Audio Paths
+            taskNode?.backgroundAudioFilePath = nameComponents.backgroundAudioPathUsingXMLURL(treeRootURL)
+            taskNode?.audioFilePath = nameComponents.audioPathUsingXMLURL(treeRootURL)
         }
         
         return taskNode
@@ -410,6 +473,12 @@ public class UsbongTree {
     // MARK: Convenience
     private func taskNodeXMLIndexerWithName(name: String) -> XMLIndexer? {
         return try? processDefinition[UsbongXMLIdentifier.taskNode].withAttr(UsbongXMLIdentifier.name, name)
+    }
+    private func endStateXMLIndexerWithName(name: String) -> XMLIndexer? {
+        return try? processDefinition[UsbongXMLIdentifier.endState].withAttr(UsbongXMLIdentifier.name, name)
+    }
+    private func decisionXMLIndexerWithName(name: String) -> XMLIndexer? {
+        return try? processDefinition[UsbongXMLIdentifier.decision].withAttr(UsbongXMLIdentifier.name, name)
     }
     
     private var nextTaskNodeName: String? {
@@ -506,11 +575,21 @@ public class UsbongTree {
     // MARK: Availability check
     public var nextTaskNodeIsAvailable: Bool {
         if let name = nextTaskNodeName {
-            return taskNodeXMLIndexerWithName(name) != nil
+            return (taskNodeXMLIndexerWithName(name) != nil || decisionXMLIndexerWithName(name) != nil || endStateXMLIndexerWithName(name) != nil)
         }
         return false
     }
     public var previousTaskNodeIsAvailable: Bool {
         return taskNodeNames.count > 1
+    }
+    
+    public var noSelection: Bool {
+        if let linkTaskNode = currentTaskNode as? LinkTaskNode {
+            if linkTaskNode.currentSelectedIndex < 0 {
+                return true
+            }
+            return false
+        }
+        return false
     }
 }
