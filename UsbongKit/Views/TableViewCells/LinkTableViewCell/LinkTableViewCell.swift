@@ -11,8 +11,8 @@ import RadioButton
 
 public class LinkTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var radioButton: RadioButton!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet public weak var radioButton: RadioButton!
+    @IBOutlet public weak var titleLabel: UILabel!
     
     public var radioButtonSelected: Bool {
         get {
