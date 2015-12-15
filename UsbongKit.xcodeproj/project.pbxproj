@@ -51,6 +51,9 @@
 		DFA6341C1BDBD1F800C079B2 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA634191BDBD1F800C079B2 /* Crypto.framework */; };
 		DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
 		DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
+		DFB7475F1C200B040006A429 /* CheckboxButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB7475E1C200B040006A429 /* CheckboxButton.framework */; };
+		DFB747641C200B680006A429 /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB747621C200B680006A429 /* CheckboxTableViewCell.swift */; };
+		DFB747651C200B680006A429 /* CheckboxTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFB747631C200B680006A429 /* CheckboxTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +149,9 @@
 		DFA634191BDBD1F800C079B2 /* Crypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crypto.framework; path = Carthage/Build/iOS/Crypto.framework; sourceTree = "<group>"; };
 		DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
+		DFB7475E1C200B040006A429 /* CheckboxButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CheckboxButton.framework; path = Carthage/Build/iOS/CheckboxButton.framework; sourceTree = "<group>"; };
+		DFB747621C200B680006A429 /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckboxTableViewCell.swift; path = CheckboxTableViewCell/CheckboxTableViewCell.swift; sourceTree = "<group>"; };
+		DFB747631C200B680006A429 /* CheckboxTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CheckboxTableViewCell.xib; path = CheckboxTableViewCell/CheckboxTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,7 @@
 				DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */,
 				DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */,
 				CFBF5ADE1C07FA7500E5A9DD /* RadioButton.framework in Frameworks */,
+				DFB7475F1C200B040006A429 /* CheckboxButton.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +348,7 @@
 				DFA633FE1BDBD19000C079B2 /* ImageTableViewCell */,
 				DFA634011BDBD19000C079B2 /* TextTableViewCell */,
 				CFBF5ADC1C07F06C00E5A9DD /* LinkTableViewCell */,
+				DFB747661C200B6C0006A429 /* CheckboxTableViewCell */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -366,12 +374,22 @@
 		DFA6341F1BDBD1FF00C079B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DFB7475E1C200B040006A429 /* CheckboxButton.framework */,
 				CFBF5ADD1C07FA7500E5A9DD /* RadioButton.framework */,
 				DFA634191BDBD1F800C079B2 /* Crypto.framework */,
 				DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */,
 				DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFB747661C200B6C0006A429 /* CheckboxTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DFB747621C200B680006A429 /* CheckboxTableViewCell.swift */,
+				DFB747631C200B680006A429 /* CheckboxTableViewCell.xib */,
+			);
+			name = CheckboxTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -560,6 +578,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFB747651C200B680006A429 /* CheckboxTableViewCell.xib in Resources */,
 				CFBF5ADB1C07F06600E5A9DD /* LinkTableViewCell.xib in Resources */,
 				DFA634151BDBD19000C079B2 /* ImageTableViewCell.xib in Resources */,
 				DFA634171BDBD19000C079B2 /* TextTableViewCell.xib in Resources */,
@@ -606,6 +625,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFB747641C200B680006A429 /* CheckboxTableViewCell.swift in Sources */,
 				DFA634071BDBD19000C079B2 /* TaskNode.swift in Sources */,
 				CF8DCA351BFC78D100894489 /* UsbongTree.swift in Sources */,
 				DFA6340F1BDBD19000C079B2 /* LanguagesTableViewController.swift in Sources */,
