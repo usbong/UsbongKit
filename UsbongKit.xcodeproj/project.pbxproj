@@ -51,6 +51,8 @@
 		DFA6341C1BDBD1F800C079B2 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA634191BDBD1F800C079B2 /* Crypto.framework */; };
 		DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
 		DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
+		DFAF36B91C203823009AE4A5 /* CheckboxButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB7475E1C200B040006A429 /* CheckboxButton.framework */; };
+		DFAF36BA1C203823009AE4A5 /* CheckboxButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFB7475E1C200B040006A429 /* CheckboxButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DFB7475F1C200B040006A429 /* CheckboxButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB7475E1C200B040006A429 /* CheckboxButton.framework */; };
 		DFB747641C200B680006A429 /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB747621C200B680006A429 /* CheckboxTableViewCell.swift */; };
 		DFB747651C200B680006A429 /* CheckboxTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFB747631C200B680006A429 /* CheckboxTableViewCell.xib */; };
@@ -100,6 +102,7 @@
 				CFBF5AE31C07FE7E00E5A9DD /* RadioButton.framework in Embed Frameworks */,
 				CFC404371BEE4350000658E7 /* Crypto.framework in Embed Frameworks */,
 				CFC404391BEE4350000658E7 /* SWXMLHash.framework in Embed Frameworks */,
+				DFAF36BA1C203823009AE4A5 /* CheckboxButton.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +169,7 @@
 				CFBF5AE21C07FE7E00E5A9DD /* RadioButton.framework in Frameworks */,
 				CFC404361BEE4350000658E7 /* Crypto.framework in Frameworks */,
 				CFC404381BEE4350000658E7 /* SWXMLHash.framework in Frameworks */,
+				DFAF36B91C203823009AE4A5 /* CheckboxButton.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

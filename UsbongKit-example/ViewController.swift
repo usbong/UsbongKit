@@ -16,20 +16,20 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 //        print(UsbongFileManager.defaultManager().rootURL)
         
-        treeZipURL = NSBundle.mainBundle().URLForResource("Usbong iOS", withExtension: "utree")
-        
-        if let zipURL = treeZipURL {
-            if let treeRootURL = UsbongFileManager.defaultManager().unpackTreeToCacheDirectoryWithTreeURL(zipURL) {
-                let tree = UsbongTree(treeRootURL: treeRootURL)
-                print("Root: \(tree.treeRootURL)\nXML: \(tree.xmlURL)")
-                print("Title: \(tree.title)")
-                tree.transitionToNextTaskNode()
-                print("TaskNodeNames: \(tree.taskNodeNames)")
-                let currentTaskNode = tree.currentTaskNode
-                print("TaskNode: \(currentTaskNode)")
-                print("TransitionInfo: \(tree.transitionInfo)")
-            }
-        }
+//        treeZipURL = NSBundle.mainBundle().URLForResource("Usbong iOS", withExtension: "utree")
+//        
+//        if let zipURL = treeZipURL {
+//            if let treeRootURL = UsbongFileManager.defaultManager().unpackTreeToCacheDirectoryWithTreeURL(zipURL) {
+//                let tree = UsbongTree(treeRootURL: treeRootURL)
+//                print("Root: \(tree.treeRootURL)\nXML: \(tree.xmlURL)")
+//                print("Title: \(tree.title)")
+//                tree.transitionToNextTaskNode()
+//                print("TaskNodeNames: \(tree.taskNodeNames)")
+//                let currentTaskNode = tree.currentTaskNode
+//                print("TaskNode: \(currentTaskNode)")
+//                print("TransitionInfo: \(tree.transitionInfo)")
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {
