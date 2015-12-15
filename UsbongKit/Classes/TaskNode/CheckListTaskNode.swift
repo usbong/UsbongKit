@@ -9,8 +9,13 @@
 import Foundation
 
 public class CheckListTaskNode: TaskNode {
-    public var indexOffset: Int = 1
-    public var targetNumberOfChoices = 0
+    public let indexOffset: Int = 1
+    public let targetNumberOfChoices: Int
+    public var reachedTarget: Bool {
+        let selectedCount = selectedIndices.count
+        return selectedCount >= targetNumberOfChoices
+    }
+    
     public private(set) var selectedIndices: [Int] = []
     public var trueSelectedIndices: [Int] {
         var indices: [Int] = []
@@ -22,6 +27,14 @@ public class CheckListTaskNode: TaskNode {
         }
         
         return indices
+    }
+    
+    public func toggleIndex(index: Int) {
+        if selectedIndices.contains(index) {
+            deselectIndex(index)
+        } else {
+            selectIndex(index)
+        }
     }
     
     public func selectIndex(index: Int) {
@@ -39,12 +52,14 @@ public class CheckListTaskNode: TaskNode {
         }
     }
     
-    public init(text: String, tasks: [LinkTaskNodeTask]) {
-        var currentModules = [TaskNodeModule]()
+    public init(text: String, tasks: [LinkTaskNodeTask], targetNumberOfChoices: Int) {
+        self.targetNumberOfChoices = targetNumberOfChoices
+        
+        var currentModules: [TaskNodeModule] = []
         currentModules.append(TextTaskNodeModule(text: text))
         
         for task in tasks {
-            currentModules.append(LinkTaskNodeModule(task: task))
+            currentModules.append(CheckListTaskNodeModule(task: task))
         }
         
         super.init(modules: currentModules)

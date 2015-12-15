@@ -98,6 +98,8 @@ public class TaskNodeView: UIView {
                 taskNodeTableView.registerNib(UINib(nibName: "ImageTableViewCell", bundle: NSBundle(forClass: ImageTableViewCell.self)), forCellReuseIdentifier: "Image")
             case is LinkTaskNodeModule:
                 taskNodeTableView.registerNib(UINib(nibName: "LinkTableViewCell", bundle: NSBundle(forClass: LinkTableViewCell.self)), forCellReuseIdentifier: "Link")
+            case is CheckListTaskNodeModule:
+                taskNodeTableView.registerNib(UINib(nibName: "CheckboxTableViewCell", bundle: NSBundle(forClass: CheckboxTableViewCell.self)), forCellReuseIdentifier: "Check")
             default:
                 break
             }
@@ -108,7 +110,12 @@ public class TaskNodeView: UIView {
 extension TaskNodeView: UITableViewDelegate {
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let linkTaskNode = taskNode as? LinkTaskNode {
+            // Select option
             linkTaskNode.currentSelectedIndex = indexPath.row - linkTaskNode.indexOffset
+            tableView.reloadData()
+        } else if let checkListTaskNode = taskNode as? CheckListTaskNode {
+            // Toggle checkbox
+            checkListTaskNode.toggleIndex(indexPath.row - checkListTaskNode.indexOffset)
             tableView.reloadData()
         }
     }
@@ -192,6 +199,22 @@ extension TaskNodeView: UITableViewDataSource {
             linkCell.titleLabel.text = linkModule.taskValue
             
             cell = linkCell
+        case let checkListModule as CheckListTaskNodeModule:
+            let checkListCell = tableView.dequeueReusableCellWithIdentifier("Check") as! CheckboxTableViewCell
+            
+            var selected = false
+            if let checkListTaskNode = taskNode as? CheckListTaskNode {
+                let trueSelectedIndices = checkListTaskNode.trueSelectedIndices
+                if trueSelectedIndices.contains(indexPath.row) {
+                    selected = true
+                }
+            }
+            
+            checkListCell.checkboxButtonSelected = selected
+            
+            checkListCell.titleLabel.text = checkListModule.taskValue
+            
+            cell = checkListCell
         default:
             if let reusedCell = tableView.dequeueReusableCellWithIdentifier("unknownModule") {
                 cell = reusedCell

@@ -55,6 +55,13 @@ private struct UsbongXMLName {
         }
         return components[1]
     }
+    var targetNumberOfChoices: Int {
+        guard TaskNodeType(rawValue: type) == .CheckList && components.count >= 2 else {
+            return 0
+        }
+        
+        return NSString(string: components[1]).integerValue
+    }
     
     func imagePathUsingTreeURL(url: NSURL) -> String? {
         // Make sure imageFileName is nil, else, return nil
@@ -166,6 +173,7 @@ private enum TaskNodeType: String {
     case ImageTextDisplay = "imageTextDisplay"
     case Link = "link"
     case RadioButtons = "radioButtons"
+    case CheckList = "checkList"
 }
 
 private func languageCodeOfLanguage(language: String) -> String {
@@ -257,6 +265,12 @@ public class UsbongTree {
                 case let linkTaskNode as LinkTaskNode:
                     if let linkModule = linkTaskNode.currentSelectedModule {
                         return linkModule.taskIdentifier
+                    }
+                case let checkListTaskNode as CheckListTaskNode:
+                    if checkListTaskNode.reachedTarget {
+                        return "Yes"
+                    } else {
+                        return "No"
                     }
                 default:
                     break
@@ -357,7 +371,7 @@ public class UsbongTree {
                     taskNode = TextImageDisplayTaskNode(text: finalText, imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "")
                 case .ImageTextDisplay:
                     taskNode = ImageTextDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "", text: finalText)
-                case .Link, .RadioButtons:
+                case .Link, .RadioButtons, .CheckList:
                     var tasks: [LinkTaskNodeTask] = []
                     // Fetch tasks (and transition info from task elements if link)
                     let taskXMLIndexers = taskNodeXMLIndexer[UsbongXMLIdentifier.task].all
@@ -369,6 +383,8 @@ public class UsbongTree {
                             let minimumCount = taskNodeType == .Link ? 1 : 0
                             if nameComponents.count > minimumCount {
                                 let key = nameComponents.removeLast()
+                                
+                                // TODO: Translate here
                                 let translatedKey = key
                                 tasks.append(LinkTaskNodeTask(identifier: key, value: translatedKey))
                                 
@@ -381,8 +397,13 @@ public class UsbongTree {
                         }
                     }
                     
-                    // Create link task node
-                    taskNode = LinkTaskNode(text: finalText, tasks: tasks)
+                    if taskNodeType == .CheckList {
+                        // Create check list task node
+                        taskNode = CheckListTaskNode(text: finalText, tasks: tasks, targetNumberOfChoices: nameComponents.targetNumberOfChoices)
+                    } else {
+                        // Create link task node
+                        taskNode = LinkTaskNode(text: finalText, tasks: tasks)
+                    }
                 }
                 
                 // Fetch transition info from transition elements
@@ -438,6 +459,8 @@ public class UsbongTree {
                 if let attributes = transitionElement.element?.attributes {
                     // Get values of attributes name and to, add to taskNode object
                     let key = attributes[UsbongXMLIdentifier.name] ?? "Any" // Default is Any if no name found
+                    
+                    // TODO: Translate here
                     let translatedKey = key
                     
                     tasks.append(LinkTaskNodeTask(identifier: key, value: translatedKey))
