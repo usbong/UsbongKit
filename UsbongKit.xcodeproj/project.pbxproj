@@ -54,6 +54,7 @@
 		DFB7475F1C200B040006A429 /* CheckboxButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB7475E1C200B040006A429 /* CheckboxButton.framework */; };
 		DFB747641C200B680006A429 /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB747621C200B680006A429 /* CheckboxTableViewCell.swift */; };
 		DFB747651C200B680006A429 /* CheckboxTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFB747631C200B680006A429 /* CheckboxTableViewCell.xib */; };
+		DFB747681C20105E0006A429 /* CheckListTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB747671C20105E0006A429 /* CheckListTaskNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,7 @@
 		DFB7475E1C200B040006A429 /* CheckboxButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CheckboxButton.framework; path = Carthage/Build/iOS/CheckboxButton.framework; sourceTree = "<group>"; };
 		DFB747621C200B680006A429 /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckboxTableViewCell.swift; path = CheckboxTableViewCell/CheckboxTableViewCell.swift; sourceTree = "<group>"; };
 		DFB747631C200B680006A429 /* CheckboxTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CheckboxTableViewCell.xib; path = CheckboxTableViewCell/CheckboxTableViewCell.xib; sourceTree = "<group>"; };
+		DFB747671C20105E0006A429 /* CheckListTaskNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckListTaskNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +309,7 @@
 				DFA633EA1BDBD19000C079B2 /* ImageDisplayTaskNode.swift */,
 				DFA633EB1BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift */,
 				CF8DCA321BFC59DD00894489 /* LinkTaskNode.swift */,
+				DFB747671C20105E0006A429 /* CheckListTaskNode.swift */,
 				DFA633EC1BDBD19000C079B2 /* TaskNode.swift */,
 				DFA633ED1BDBD19000C079B2 /* TaskNodeModule.swift */,
 				DFA633EE1BDBD19000C079B2 /* TextDisplayTaskNode.swift */,
@@ -637,6 +640,7 @@
 				DFA6340A1BDBD19000C079B2 /* TextImageDisplayTaskNode.swift in Sources */,
 				CF8DCA331BFC59DD00894489 /* LinkTaskNode.swift in Sources */,
 				DFA634051BDBD19000C079B2 /* ImageDisplayTaskNode.swift in Sources */,
+				DFB747681C20105E0006A429 /* CheckListTaskNode.swift in Sources */,
 				DFA634161BDBD19000C079B2 /* TextTableViewCell.swift in Sources */,
 				CF8848DF1BE449BB008E2658 /* HintsTextView.swift in Sources */,
 				DFA634141BDBD19000C079B2 /* ImageTableViewCell.swift in Sources */,
