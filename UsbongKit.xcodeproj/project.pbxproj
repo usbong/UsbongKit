@@ -51,6 +51,7 @@
 		DFA6341C1BDBD1F800C079B2 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA634191BDBD1F800C079B2 /* Crypto.framework */; };
 		DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
 		DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
+		DFADE8FA1C215C9A004132E4 /* ClassificationTaskNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFADE8F91C215C9A004132E4 /* ClassificationTaskNode.swift */; };
 		DFAF36B91C203823009AE4A5 /* CheckboxButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB7475E1C200B040006A429 /* CheckboxButton.framework */; };
 		DFAF36BA1C203823009AE4A5 /* CheckboxButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFB7475E1C200B040006A429 /* CheckboxButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DFB7475F1C200B040006A429 /* CheckboxButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB7475E1C200B040006A429 /* CheckboxButton.framework */; };
@@ -153,6 +154,7 @@
 		DFA634191BDBD1F800C079B2 /* Crypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crypto.framework; path = Carthage/Build/iOS/Crypto.framework; sourceTree = "<group>"; };
 		DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
+		DFADE8F91C215C9A004132E4 /* ClassificationTaskNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationTaskNode.swift; sourceTree = "<group>"; };
 		DFB7475E1C200B040006A429 /* CheckboxButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CheckboxButton.framework; path = Carthage/Build/iOS/CheckboxButton.framework; sourceTree = "<group>"; };
 		DFB747621C200B680006A429 /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckboxTableViewCell.swift; path = CheckboxTableViewCell/CheckboxTableViewCell.swift; sourceTree = "<group>"; };
 		DFB747631C200B680006A429 /* CheckboxTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CheckboxTableViewCell.xib; path = CheckboxTableViewCell/CheckboxTableViewCell.xib; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				DFA633EB1BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift */,
 				CF8DCA321BFC59DD00894489 /* LinkTaskNode.swift */,
 				DFB747671C20105E0006A429 /* CheckListTaskNode.swift */,
+				DFADE8F91C215C9A004132E4 /* ClassificationTaskNode.swift */,
 				DFA633EC1BDBD19000C079B2 /* TaskNode.swift */,
 				DFA633ED1BDBD19000C079B2 /* TaskNodeModule.swift */,
 				DFA633EE1BDBD19000C079B2 /* TextDisplayTaskNode.swift */,
@@ -634,6 +637,7 @@
 			files = (
 				DFB747641C200B680006A429 /* CheckboxTableViewCell.swift in Sources */,
 				DFA634071BDBD19000C079B2 /* TaskNode.swift in Sources */,
+				DFADE8FA1C215C9A004132E4 /* ClassificationTaskNode.swift in Sources */,
 				CF8DCA351BFC78D100894489 /* UsbongTree.swift in Sources */,
 				DFA6340F1BDBD19000C079B2 /* LanguagesTableViewController.swift in Sources */,
 				DFA634061BDBD19000C079B2 /* ImageTextDisplayTaskNode.swift in Sources */,

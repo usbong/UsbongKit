@@ -41,7 +41,12 @@ private struct UsbongXMLName {
     }
     
     var type: String {
-        return components.first ?? ""
+        if components.count > 1 {
+            return components.first ?? ""
+        } else {
+            // Only one component, probably classification
+            return "classification"
+        }
     }
     
     var text: String {
@@ -174,6 +179,7 @@ private enum TaskNodeType: String {
     case Link = "link"
     case RadioButtons = "radioButtons"
     case CheckList = "checkList"
+    case Classification = "classification"
 }
 
 private func languageCodeOfLanguage(language: String) -> String {
@@ -371,7 +377,7 @@ public class UsbongTree {
                     taskNode = TextImageDisplayTaskNode(text: finalText, imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "")
                 case .ImageTextDisplay:
                     taskNode = ImageTextDisplayTaskNode(imageFilePath: nameComponents.imagePathUsingTreeURL(treeRootURL) ?? "", text: finalText)
-                case .Link, .RadioButtons, .CheckList:
+                case .Link, .RadioButtons, .CheckList, .Classification:
                     var tasks: [LinkTaskNodeTask] = []
                     // Fetch tasks (and transition info from task elements if link)
                     let taskXMLIndexers = taskNodeXMLIndexer[UsbongXMLIdentifier.task].all
@@ -397,10 +403,14 @@ public class UsbongTree {
                         }
                     }
                     
-                    if taskNodeType == .CheckList {
+                    switch taskNodeType {
+                    case .CheckList:
                         // Create check list task node
                         taskNode = CheckListTaskNode(text: finalText, tasks: tasks, targetNumberOfChoices: nameComponents.targetNumberOfChoices)
-                    } else {
+                    case .Classification:
+                        // Create classification task node
+                        taskNode = ClassificationTaskNode(text: finalText, tasks: tasks)
+                    default:
                         // Create link task node
                         taskNode = LinkTaskNode(text: finalText, tasks: tasks)
                     }

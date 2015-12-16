@@ -154,11 +154,21 @@ extension TaskNodeView: UITableViewDataSource {
         // Figures out what type of TaskNodeModule, and loads the appropriate cell (text = text cell, image = image cell, etc.)
         let module = taskNode.modules[indexPath.row]
         switch module {
-        case let textModule as TextTaskNodeModule:
+        case is TextTaskNodeModule, is ClassificationTaskNodeModule:
+            let text: String
+            
+            if let textModule = module as? TextTaskNodeModule {
+                text = textModule.text
+            } else if let classificationModule = module as? ClassificationTaskNodeModule {
+                text = classificationModule.taskValue
+            } else {
+                text = "Unknown"
+            }
+            
             let textCell = tableView.dequeueReusableCellWithIdentifier("Text") as! TextTableViewCell
             
             // Add hints if available
-            let attributedText = NSMutableAttributedString(string: textModule.text)
+            let attributedText = NSMutableAttributedString(string: text)
             
             let fontSize: CGFloat
             if traitCollection.horizontalSizeClass == .Regular && traitCollection.verticalSizeClass == .Regular {
@@ -170,7 +180,7 @@ extension TaskNodeView: UITableViewDataSource {
             let font = UIFont.systemFontOfSize(fontSize)
             let textColor = UIColor.blackColor()
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = .Center
+            paragraphStyle.alignment = module is TextTaskNodeModule ? .Center : .Left
             
             let textAttributes: [String: AnyObject] = [NSForegroundColorAttributeName: textColor, NSFontAttributeName: font, NSParagraphStyleAttributeName: paragraphStyle]
             attributedText.addAttributes(textAttributes, range: NSRange(location: 0, length: attributedText.length))
