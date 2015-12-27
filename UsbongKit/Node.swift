@@ -1,0 +1,103 @@
+import UIKit
+
+// MARK: - Nodes
+
+//  - Nodes are collections of modules that provide convenient creation of common module coombinations
+//  - order of modules matter
+public class Node {
+    public let modules: [Module]
+    
+    public init(modules: [Module]) {
+        self.modules = modules
+    }
+}
+
+// MARK: - HasSelectionModule
+//   - node that supports selection
+public protocol HasSelectionModule {
+    var selectionModule: HasSelection { get }
+}
+
+// MARK: - textDisplay
+public class TextNode: Node {
+    public init(text: String) {
+        super.init(modules: [TextModule(text: text)])
+    }
+}
+
+// MARK: - imageDisplay
+public class ImageNode: Node {
+    public init(image: UIImage?) {
+        super.init(modules: [ImageModule(image: image)])
+    }
+}
+
+// MARK: - textImageDisplay
+//   - displays a text, then image below
+public class TextImageNode: Node {
+    public init(text: String, image: UIImage?) {
+        super.init(modules: [
+            TextModule(text: text),
+            ImageModule(image: image)
+            ])
+    }
+}
+
+// MARK: - imageTextDisplay
+//   - displays an image, then text below
+public class ImageTextNode: Node {
+    public init(image: UIImage?, text: String) {
+        super.init(modules: [
+            ImageModule(image: image),
+            TextModule(text: text)
+            ])
+    }
+}
+
+// MARK: - classification 
+//   - numbered list
+public class ClassificationNode: Node {
+    public init(text: String, list: [String]) {
+        super.init(modules: [
+            TextModule(text: text),
+            ListModule(options: list)
+            ])
+    }
+}
+
+// MARK: - checkList
+public class ChecklistNode: Node {
+    public init(text: String, options: [String], selectedIndices: [Int] = []) {
+        super.init(modules: [
+            TextModule(text: text),
+            CheckboxesModule(options: options, selectedIndices: selectedIndices)
+            ])
+    }
+}
+
+extension ChecklistNode: HasSelectionModule {
+    public var selectionModule: HasSelection {
+        return modules[1] as! HasSelection
+    }
+}
+
+// MARK: - radioButtons
+// MARK: link
+//   - options will link to other nodes
+// MARK: decision
+//   - similar to link but with yes or no options only
+// view sees it all as the same things, only node generator/provider will know what's what
+public class RadioButtonsNode: Node {
+    public init(text: String, options: [String], selectedIndex: Int? = nil) {
+        super.init(modules: [
+            TextModule(text: text),
+            RadioButtonsModule(options: options, selectedIndex: selectedIndex)
+            ])
+    }
+}
+
+extension RadioButtonsNode: HasSelectionModule {
+    public var selectionModule: HasSelection {
+        return modules[1] as! HasSelection
+    }
+}

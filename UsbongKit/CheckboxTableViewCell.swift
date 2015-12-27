@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CheckboxButton
 
 public class CheckboxTableViewCell: UITableViewCell {
     @IBOutlet public weak var checkboxButton: CheckboxButton!

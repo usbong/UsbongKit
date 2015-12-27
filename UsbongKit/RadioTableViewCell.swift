@@ -1,5 +1,5 @@
 //
-//  LinkTableViewCell.swift
+//  RadioTableViewCell.swift
 //  UsbongKit
 //
 //  Created by Joe Amanse on 27/11/2015.
@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import RadioButton
 
-public class LinkTableViewCell: UITableViewCell {
+public class RadioTableViewCell: UITableViewCell {
 
     @IBOutlet public weak var radioButton: RadioButton!
     @IBOutlet public weak var titleLabel: UILabel!
@@ -38,4 +37,10 @@ public class LinkTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public override func prepareForReuse() {
+//        let oldValue = radioButton.selected
+        radioButton.selected = false
+        
+        super.prepareForReuse()
+    }
 }
