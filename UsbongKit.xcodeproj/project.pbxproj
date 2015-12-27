@@ -189,8 +189,8 @@
 			children = (
 				DF10097A1C2FDA22003A9BDA /* Module.swift */,
 				DF10097B1C2FDA22003A9BDA /* Node.swift */,
-				DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */,
 				DF10097D1C2FDA22003A9BDA /* NodeView.swift */,
+				DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";

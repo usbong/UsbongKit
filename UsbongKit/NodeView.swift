@@ -168,7 +168,7 @@ extension NodeView: UITableViewDataSource {
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let modules = node.modules
-        if let listModule = modules[section] as? HasOptions {
+        if let listModule = modules[section] as? OptionsTypeModule {
             return listModule.options.count
         }
         
@@ -197,7 +197,7 @@ extension NodeView: UITableViewDataSource {
 
 extension NodeView: UITableViewDelegate {
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let selectionModule = node.modules[indexPath.section] as? HasSelection {
+        if let selectionModule = node.modules[indexPath.section] as? SelectionTypeModule {
             selectionModule.toggleIndex(indexPath.row)
             
             tableView.reloadData()

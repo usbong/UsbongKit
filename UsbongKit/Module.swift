@@ -6,13 +6,13 @@ public protocol Module {}
 
 // MARK: - HasOptions
 // Protocol for list type
-public protocol HasOptions: Module {
+public protocol OptionsTypeModule: Module {
     var options: [String] { get set }
 }
 
 // MARK: - HasSelection
 // Protocol for selection type
-public protocol HasSelection: Module {
+public protocol SelectionTypeModule: Module {
     var selectedIndices: [Int] { get }
     func selectIndex(index: Int)
     func deselectIndex(index: Int)
@@ -38,7 +38,7 @@ public class ImageModule: Module {
 }
 
 // MARK: - List
-public class ListModule: HasOptions {
+public class ListModule: OptionsTypeModule {
     public var options: [String] = []
     
     public init(options: [String]) {
@@ -47,7 +47,7 @@ public class ListModule: HasOptions {
 }
 
 // MARK: - Radio buttons
-public class RadioButtonsModule: ListModule, HasSelection {
+public class RadioButtonsModule: ListModule, SelectionTypeModule {
     public var selectedIndex: Int? = nil
     
     public init(options: [String], selectedIndex: Int? = nil) {
@@ -55,7 +55,7 @@ public class RadioButtonsModule: ListModule, HasSelection {
         self.selectedIndex = selectedIndex
     }
     
-    // MARK: Selection module
+    // MARK: Selection type module
     public var selectedIndices: [Int] {
         if let index = selectedIndex {
             return [index]
@@ -81,13 +81,13 @@ public class RadioButtonsModule: ListModule, HasSelection {
 }
 
 // MARK: - Checkboxes
-public class CheckboxesModule: ListModule, HasSelection {
+public class CheckboxesModule: ListModule, SelectionTypeModule {
     public init(options: [String], selectedIndices: [Int] = []) {
         super.init(options: options)
         self.selectedIndices = selectedIndices
     }
     
-    // MARK: Selection module
+    // MARK: Selection type module
     public private(set) var selectedIndices: [Int] = []
     
     public func selectIndex(index: Int) {

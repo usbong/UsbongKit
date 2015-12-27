@@ -12,10 +12,21 @@ public protocol NodeProvider {
     var currentNode: Node { get }
     var nextNodeIsAvailable: Bool { get }
     var previousNodeIsAvailable: Bool { get }
+    
     var nothingSelected: Bool { get }
+    var currentNodeIsSelectionType: Bool { get }
 }
 
-//public extension NodeProvider {
-//    public var nothingSelected: Bool {
-//    }
-//}
+public extension NodeProvider {
+    public var nothingSelected: Bool {
+        if let selectionNode = currentNode as? SelectionTypeNode {
+            return selectionNode.selectionModule.selectedIndices.count == 0
+        }
+        
+        return true
+    }
+    
+    public var currentNodeIsSelectionType: Bool {
+        return currentNode is SelectionTypeNode
+    }
+}

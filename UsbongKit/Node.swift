@@ -14,8 +14,8 @@ public class Node {
 
 // MARK: - HasSelectionModule
 //   - node that supports selection
-public protocol HasSelectionModule {
-    var selectionModule: HasSelection { get }
+public protocol SelectionTypeNode {
+    var selectionModule: SelectionTypeModule { get }
 }
 
 // MARK: - textDisplay
@@ -75,9 +75,9 @@ public class ChecklistNode: Node {
     }
 }
 
-extension ChecklistNode: HasSelectionModule {
-    public var selectionModule: HasSelection {
-        return modules[1] as! HasSelection
+extension ChecklistNode: SelectionTypeNode {
+    public var selectionModule: SelectionTypeModule {
+        return modules[1] as! SelectionTypeModule
     }
 }
 
@@ -96,8 +96,8 @@ public class RadioButtonsNode: Node {
     }
 }
 
-extension RadioButtonsNode: HasSelectionModule {
-    public var selectionModule: HasSelection {
-        return modules[1] as! HasSelection
+extension RadioButtonsNode: SelectionTypeNode {
+    public var selectionModule: SelectionTypeModule {
+        return modules[1] as! SelectionTypeModule
     }
 }
