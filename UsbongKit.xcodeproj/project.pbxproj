@@ -47,6 +47,7 @@
 		DFA6341C1BDBD1F800C079B2 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA634191BDBD1F800C079B2 /* Crypto.framework */; };
 		DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
 		DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
+		DFF51A641C30B4F3005F670F /* TreesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,7 @@
 		DFA634191BDBD1F800C079B2 /* Crypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crypto.framework; path = Carthage/Build/iOS/Crypto.framework; sourceTree = "<group>"; };
 		DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
+		DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */,
 				DF1009691C2FD9C7003A9BDA /* NodesTableViewController.swift */,
 				DF10096A1C2FD9C7003A9BDA /* NodeViewController.swift */,
+				DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */,
 				DF10096B1C2FD9C7003A9BDA /* Main.storyboard */,
 				DF452B4C1BDE0AFD003EB5C3 /* Assets.xcassets */,
 				DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */,
@@ -525,6 +528,7 @@
 				DF10096D1C2FD9C7003A9BDA /* NodeViewController.swift in Sources */,
 				DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */,
 				DF10096C1C2FD9C7003A9BDA /* NodesTableViewController.swift in Sources */,
+				DFF51A641C30B4F3005F670F /* TreesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

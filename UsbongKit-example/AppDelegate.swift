@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UsbongKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let rootURL = UsbongFileManager.defaultManager().rootURL
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        let didCopySampleTreeKey = "didCopySampleTree"
+        if !userDefaults.boolForKey(didCopySampleTreeKey) {
+            if let sampleTreeURL = NSBundle.mainBundle().URLForResource("Usbong iOS", withExtension: "utree") {
+                let destinationURL = rootURL.URLByAppendingPathComponent("Usbong iOS.utree")
+                do {
+                    try NSFileManager.defaultManager().copyItemAtURL(sampleTreeURL, toURL: destinationURL)
+                    userDefaults.setBool(true, forKey: didCopySampleTreeKey)
+                } catch let error {
+                    print("Sample tree:\n - Failed to copy: \(error)")
+                }
+            }
+        }
+        
+        
         return true
     }
 
