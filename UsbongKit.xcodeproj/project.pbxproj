@@ -17,7 +17,7 @@
 		CFC4043B1BEE4350000658E7 /* ZipArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFC4043D1BEE440B000658E7 /* Usbong iOS.utree in Resources */ = {isa = PBXBuildFile; fileRef = CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */; };
 		DF10096C1C2FD9C7003A9BDA /* NodesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1009691C2FD9C7003A9BDA /* NodesTableViewController.swift */; };
-		DF10096D1C2FD9C7003A9BDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10096A1C2FD9C7003A9BDA /* ViewController.swift */; };
+		DF10096D1C2FD9C7003A9BDA /* NodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10096A1C2FD9C7003A9BDA /* NodeViewController.swift */; };
 		DF10096E1C2FD9C7003A9BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF10096B1C2FD9C7003A9BDA /* Main.storyboard */; };
 		DF10097E1C2FDA22003A9BDA /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10096F1C2FDA22003A9BDA /* CheckboxButton.swift */; };
 		DF10097F1C2FDA22003A9BDA /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1009701C2FDA22003A9BDA /* RadioButton.swift */; };
@@ -100,7 +100,7 @@
 /* Begin PBXFileReference section */
 		CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Usbong iOS.utree"; sourceTree = "<group>"; };
 		DF1009691C2FD9C7003A9BDA /* NodesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesTableViewController.swift; sourceTree = "<group>"; };
-		DF10096A1C2FD9C7003A9BDA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DF10096A1C2FD9C7003A9BDA /* NodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeViewController.swift; sourceTree = "<group>"; };
 		DF10096B1C2FD9C7003A9BDA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DF10096F1C2FDA22003A9BDA /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		DF1009701C2FDA22003A9BDA /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 			children = (
 				DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */,
 				DF1009691C2FD9C7003A9BDA /* NodesTableViewController.swift */,
-				DF10096A1C2FD9C7003A9BDA /* ViewController.swift */,
+				DF10096A1C2FD9C7003A9BDA /* NodeViewController.swift */,
 				DF10096B1C2FD9C7003A9BDA /* Main.storyboard */,
 				DF452B4C1BDE0AFD003EB5C3 /* Assets.xcassets */,
 				DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */,
@@ -522,7 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF10096D1C2FD9C7003A9BDA /* ViewController.swift in Sources */,
+				DF10096D1C2FD9C7003A9BDA /* NodeViewController.swift in Sources */,
 				DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */,
 				DF10096C1C2FD9C7003A9BDA /* NodesTableViewController.swift in Sources */,
 			);

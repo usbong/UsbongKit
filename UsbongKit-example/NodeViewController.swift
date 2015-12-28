@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NodeViewController.swift
 //  NodeKit
 //
 //  Created by Chris Amanse on 12/24/15.
@@ -9,7 +9,7 @@
 import UIKit
 import UsbongKit
 
-class ViewController: UIViewController {
+class NodeViewController: UIViewController {
     var node: Node = TextNode(text: "No Node")
     
     @IBOutlet weak var nodeView: NodeView!

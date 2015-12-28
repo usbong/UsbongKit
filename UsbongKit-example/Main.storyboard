@@ -8,7 +8,7 @@
         <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UsbongKit_example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="NodeViewController" customModule="UsbongKit_example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFf-VE-vyk" customClass="NodeView" customModule="UsbongKit">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -101,26 +101,6 @@
             </objects>
             <point key="canvasLocation" x="1057" y="971"/>
         </scene>
-        <!--Tree-->
-        <scene sceneID="bvX-hh-lHg">
-            <objects>
-                <viewController id="ZeJ-gg-tV1" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wMP-Kt-dNr"/>
-                        <viewControllerLayoutGuide type="bottom" id="GTR-Gq-1fq"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xgr-8K-3RL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Tree" id="Vkq-xy-P0f"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U67-cu-Ahe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1474" y="1646"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DjT-sq-nXO">
             <objects>
@@ -140,11 +120,11 @@
             </objects>
             <point key="canvasLocation" x="571" y="1247"/>
         </scene>
-        <!--Tree-->
+        <!--Trees-->
         <scene sceneID="gKq-pR-kGM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oLT-v0-eHM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tree" id="bvc-QE-Hx8"/>
+                    <tabBarItem key="tabBarItem" title="Trees" id="bvc-QE-Hx8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RtM-Bk-B03">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -152,12 +132,42 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ZeJ-gg-tV1" kind="relationship" relationship="rootViewController" id="ha9-1Q-H8I"/>
+                        <segue destination="1Sg-XS-rgh" kind="relationship" relationship="rootViewController" id="rWs-I4-7ye"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvP-eb-vUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1057" y="1646"/>
+        </scene>
+        <!--Trees-->
+        <scene sceneID="f84-HD-m5e">
+            <objects>
+                <tableViewController id="1Sg-XS-rgh" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7NY-eY-2Vj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="ter-Sz-KvX">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ter-Sz-KvX" id="z7y-sc-XDm">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1Sg-XS-rgh" id="BNP-bY-ucx"/>
+                            <outlet property="delegate" destination="1Sg-XS-rgh" id="LQo-mu-L0F"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Trees" id="VTN-uz-7y5"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cTE-LC-BcS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1484" y="1646"/>
         </scene>
     </scenes>
 </document>

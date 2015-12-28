@@ -89,7 +89,7 @@ class NodesTableViewController: UITableViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 let selectedNode = nodes[selectedIndexPath.row]
                 
-                if let vc = segue.destinationViewController as? ViewController {
+                if let vc = segue.destinationViewController as? NodeViewController {
                     vc.navigationItem.title = titleForNode(selectedNode)
                     vc.node = selectedNode
                 }
