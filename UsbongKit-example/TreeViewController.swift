@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import UsbongKit
 
 class TreeViewController: UIViewController {
     
     var treeURL: NSURL?
+    var treeRootURL: NSURL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(treeURL)
+        if let url = treeURL {
+            treeRootURL = UsbongFileManager.defaultManager().unpackTreeToCacheDirectoryWithTreeURL(url)
+            print(treeRootURL)
+        }
     }
 
     override func didReceiveMemoryWarning() {
