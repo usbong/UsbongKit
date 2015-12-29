@@ -41,6 +41,7 @@
 		DF452B501BDE0AFD003EB5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */; };
 		DF452B5B1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B5A1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift */; };
 		DF452B661BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */; };
+		DF63E5A51C324D3A0017B745 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF63E5A41C324D3A0017B745 /* TreeViewController.swift */; };
 		DFA633D21BDBD17C00C079B2 /* UsbongKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA633D11BDBD17C00C079B2 /* UsbongKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFA633D91BDBD17C00C079B2 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
 		DFA633DE1BDBD17C00C079B2 /* UsbongKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */; };
@@ -131,6 +132,7 @@
 		DF452B611BDE0AFD003EB5C3 /* UsbongKit-exampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UsbongKit-exampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbongKit_exampleUITests.swift; sourceTree = "<group>"; };
 		DF452B671BDE0AFD003EB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF63E5A41C324D3A0017B745 /* TreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
 		DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UsbongKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA633D11BDBD17C00C079B2 /* UsbongKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsbongKit.h; sourceTree = "<group>"; };
 		DFA633D31BDBD17C00C079B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				DF1009691C2FD9C7003A9BDA /* NodesTableViewController.swift */,
 				DF10096A1C2FD9C7003A9BDA /* NodeViewController.swift */,
 				DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */,
+				DF63E5A41C324D3A0017B745 /* TreeViewController.swift */,
 				DF10096B1C2FD9C7003A9BDA /* Main.storyboard */,
 				DF452B4C1BDE0AFD003EB5C3 /* Assets.xcassets */,
 				DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */,
@@ -527,6 +530,7 @@
 			files = (
 				DF10096D1C2FD9C7003A9BDA /* NodeViewController.swift in Sources */,
 				DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */,
+				DF63E5A51C324D3A0017B745 /* TreeViewController.swift in Sources */,
 				DF10096C1C2FD9C7003A9BDA /* NodesTableViewController.swift in Sources */,
 				DFF51A641C30B4F3005F670F /* TreesTableViewController.swift in Sources */,
 			);

@@ -184,7 +184,7 @@
         <!--Untitled-->
         <scene sceneID="3ZE-xf-TzQ">
             <objects>
-                <viewController id="uQx-96-DHw" sceneMemberID="viewController">
+                <viewController id="uQx-96-DHw" customClass="TreeViewController" customModule="UsbongKit_example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IER-x9-2gl"/>
                         <viewControllerLayoutGuide type="bottom" id="q89-SG-r9Q"/>
@@ -195,7 +195,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Untitled" id="gAP-K6-oP7">
-                        <barButtonItem key="leftBarButtonItem" title="Exit" id="E8C-Gi-lqq"/>
+                        <barButtonItem key="leftBarButtonItem" title="Exit" id="E8C-Gi-lqq">
+                            <connections>
+                                <action selector="didPressExit:" destination="uQx-96-DHw" id="bUP-L7-clP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
