@@ -9,11 +9,13 @@
 import UIKit
 
 class TreeViewController: UIViewController {
-
+    
+    var treeURL: NSURL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        print(treeURL)
     }
 
     override func didReceiveMemoryWarning() {
