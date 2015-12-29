@@ -164,6 +164,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="MV3-xB-VdI" kind="presentation" identifier="presentTree" id="hKo-an-CN9"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -177,6 +180,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTE-LC-BcS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1484" y="1646"/>
+        </scene>
+        <!--Untitled-->
+        <scene sceneID="3ZE-xf-TzQ">
+            <objects>
+                <viewController id="uQx-96-DHw" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IER-x9-2gl"/>
+                        <viewControllerLayoutGuide type="bottom" id="q89-SG-r9Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XL0-Je-aql">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Untitled" id="gAP-K6-oP7">
+                        <barButtonItem key="leftBarButtonItem" title="Exit" id="E8C-Gi-lqq"/>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXM-yX-0JZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2272" y="1646"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dCV-CR-cWP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MV3-xB-VdI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ng8-aS-Xi9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uQx-96-DHw" kind="relationship" relationship="rootViewController" id="XuO-3X-nR9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KYC-mU-ccS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1887" y="1646"/>
         </scene>
     </scenes>
 </document>
