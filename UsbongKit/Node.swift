@@ -12,7 +12,7 @@ public class Node {
     }
 }
 
-// MARK: - HasSelectionModule
+// MARK: - SelectionTypeNode
 //   - node that supports selection
 public protocol SelectionTypeNode {
     var selectionModule: SelectionTypeModule { get }

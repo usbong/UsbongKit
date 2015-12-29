@@ -4,13 +4,13 @@ import UIKit
 // Dummy protocol where all modules should conform too
 public protocol Module {}
 
-// MARK: - HasOptions
+// MARK: - OptionsTypeModule
 // Protocol for list type
 public protocol OptionsTypeModule: Module {
     var options: [String] { get set }
 }
 
-// MARK: - HasSelection
+// MARK: - SelectionTypeModule
 // Protocol for selection type
 public protocol SelectionTypeModule: Module {
     var selectedIndices: [Int] { get }
