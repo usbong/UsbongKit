@@ -7,9 +7,94 @@
 //
 
 import Foundation
+import SWXMLHash
 
 public class UsbongTree {
+    public let treeRootURL: NSURL
     
+    public let title: String
+    public let baseLanguage: String
+    public let currentLanguage: String
+    public let availableLanguages: [String]
+    
+    internal var taskNodeNames: [String] = []
+    
+    private var transitionInfo: [String: String] = [:]
+    private let languageXMLURLs: [NSURL]
+    private let hintsXMLURLs: [NSURL]
+    
+    private let treeXMLIndexer: XMLIndexer
+    
+    private var processDefinitionIndexer: XMLIndexer {
+        return treeXMLIndexer[XMLIdentifier.processDefinition]
+    }
+    
+    public private(set) var currentNode: Node?
+    
+    init(treeRootURL: NSURL) {
+        let fileManager = NSFileManager.defaultManager()
+        
+        self.treeRootURL = treeRootURL
+        
+        // Fetch main XML URL
+        let fileName = treeRootURL.URLByDeletingPathExtension?.lastPathComponent ?? ""
+        let XMLURL = treeRootURL.URLByAppendingPathComponent(fileName).URLByAppendingPathExtension("xml")
+        let XMLData = NSData(contentsOfURL: XMLURL) ?? NSData()
+        
+        // Set title, if blank, set to "Untitled"
+        let title: String
+        if fileName.stringByReplacingOccurrencesOfString(" ", withString: "").characters.count == 0 {
+            title = "Untitled"
+        } else {
+            title = fileName
+        }
+        self.title = title
+        
+        // Set property
+        treeXMLIndexer = SWXMLHash.parse(XMLData)
+        
+        // Set base and current language
+        let processDefinitionIndexer = treeXMLIndexer[XMLIdentifier.processDefinition]
+        baseLanguage = processDefinitionIndexer.element?.attributes[XMLIdentifier.lang] ?? "Unknown"
+        currentLanguage = baseLanguage
+        
+        // Fetch URLs for language XMLs
+        let transURL = treeRootURL.URLByAppendingPathComponent("trans", isDirectory: true)
+        self.languageXMLURLs = (try? fileManager.contentsOfDirectoryAtURL(transURL,
+                includingPropertiesForKeys: nil, options: .SkipsSubdirectoryDescendants)) ?? []
+        
+        // Set available languages and also include base language
+        var availableLanguages: [String] = []
+        languageXMLURLs.forEach { url in
+            let language = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
+            availableLanguages.append(language)
+        }
+        
+        if !availableLanguages.contains(baseLanguage) {
+            availableLanguages.append(baseLanguage)
+        }
+        availableLanguages.sortInPlace()
+        
+        self.availableLanguages = availableLanguages
+        
+        // Fetch URLs for hints XMLs
+        let hintsURL = treeRootURL.URLByAppendingPathComponent("hints", isDirectory: true)
+        self.hintsXMLURLs = (try? fileManager.contentsOfDirectoryAtURL(hintsURL,
+                includingPropertiesForKeys: nil, options: .SkipsSubdirectoryDescendants)) ?? []
+        
+        
+        // Fetch starting task node
+        if let element = processDefinitionIndexer[XMLIdentifier.startState][XMLIdentifier.transition].element {
+            if let startName = element.attributes[XMLIdentifier.to] {
+                taskNodeNames.append(startName)
+                currentNode = nodeWithName(startName)
+            }
+        }
+    }
+    
+    private func nodeWithName(taskNodeName: String) -> Node {
+        return Node(modules: [TextModule(text: "Unknown Node")])
+    }
 }
 
 // MARK: - XMLIdentifier
@@ -67,7 +152,7 @@ private struct XMLName {
     }
     
     var targetNumberOfChoices: Int {
-        guard TaskNodeType(rawValue: type) == .CheckList && components.count >= 2 else {
+        guard NodeIdentifier(rawValue: type) == .CheckList && components.count >= 2 else {
             return 0
         }
         
@@ -179,7 +264,7 @@ private struct XMLName {
     }
 }
 
-private enum TaskNodeType: String {
+private enum NodeIdentifier: String {
     case TextDisplay = "textDisplay"
     case ImageDisplay = "imageDisplay"
     case TextImageDisplay = "textImageDisplay"
@@ -187,5 +272,4 @@ private enum TaskNodeType: String {
     case Link = "link"
     case RadioButtons = "radioButtons"
     case CheckList = "checkList"
-    case Classification = "classification"
 }
