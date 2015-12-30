@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Title-->
@@ -192,7 +193,29 @@
                     <view key="view" contentMode="scaleToFill" id="XL0-Je-aql">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gr3-4W-Da3" customClass="NodeView" customModule="UsbongKit">
+                                <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Elg-JY-QNl">
+                                <rect key="frame" x="16" y="532" width="288" height="29"/>
+                                <segments>
+                                    <segment title="PREVIOUS"/>
+                                    <segment title="NEXT"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Gr3-4W-Da3" secondAttribute="trailing" id="3dV-oF-8iy"/>
+                            <constraint firstItem="q89-SG-r9Q" firstAttribute="top" secondItem="Elg-JY-QNl" secondAttribute="bottom" constant="8" id="7A0-bA-ekf"/>
+                            <constraint firstItem="Gr3-4W-Da3" firstAttribute="leading" secondItem="XL0-Je-aql" secondAttribute="leading" id="gre-8y-V1m"/>
+                            <constraint firstItem="Elg-JY-QNl" firstAttribute="trailing" secondItem="XL0-Je-aql" secondAttribute="trailingMargin" id="qIb-53-Dkb"/>
+                            <constraint firstItem="Elg-JY-QNl" firstAttribute="top" secondItem="Gr3-4W-Da3" secondAttribute="bottom" constant="8" id="w4f-y9-1tP"/>
+                            <constraint firstItem="Elg-JY-QNl" firstAttribute="leading" secondItem="XL0-Je-aql" secondAttribute="leadingMargin" id="yKs-Im-V8O"/>
+                            <constraint firstItem="Gr3-4W-Da3" firstAttribute="top" secondItem="IER-x9-2gl" secondAttribute="bottom" id="zQu-bx-vVS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Untitled" id="gAP-K6-oP7">
                         <barButtonItem key="leftBarButtonItem" title="Exit" id="E8C-Gi-lqq">
@@ -202,6 +225,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="nodeView" destination="Gr3-4W-Da3" id="wEr-rh-oTG"/>
+                        <outlet property="previousNextSegmentedControl" destination="Elg-JY-QNl" id="fIJ-cD-eN3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXM-yX-0JZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

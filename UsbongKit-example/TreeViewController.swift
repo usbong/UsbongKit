@@ -14,6 +14,9 @@ class TreeViewController: UIViewController {
     var treeURL: NSURL?
     var treeRootURL: NSURL?
     
+    @IBOutlet weak var nodeView: NodeView!
+    @IBOutlet weak var previousNextSegmentedControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
