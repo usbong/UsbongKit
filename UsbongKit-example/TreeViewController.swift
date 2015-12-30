@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import UsbongKit
+@testable import UsbongKit
 
 class TreeViewController: UIViewController {
     
@@ -21,8 +21,14 @@ class TreeViewController: UIViewController {
         super.viewDidLoad()
         
         if let url = treeURL {
-            treeRootURL = UsbongFileManager.defaultManager().unpackTreeToCacheDirectoryWithTreeURL(url)
-            print(treeRootURL)
+            if let treeRootURL = UsbongFileManager.defaultManager().unpackTreeToCacheDirectoryWithTreeURL(url) {
+                self.treeRootURL = treeRootURL
+                print(treeRootURL)
+                
+                let tree = UsbongTree(treeRootURL: treeRootURL)
+                print(tree.taskNodeNames)
+            }
+            
         }
     }
 

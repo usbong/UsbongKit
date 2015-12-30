@@ -17,11 +17,11 @@ public class UsbongTree {
     public let currentLanguage: String
     public let availableLanguages: [String]
     
-    internal var taskNodeNames: [String] = []
+    internal private(set) var taskNodeNames: [String] = []
     
-    private var transitionInfo: [String: String] = [:]
-    private let languageXMLURLs: [NSURL]
-    private let hintsXMLURLs: [NSURL]
+    internal private(set) var transitionInfo: [String: String] = [:]
+    internal let languageXMLURLs: [NSURL]
+    internal let hintsXMLURLs: [NSURL]
     
     private let treeXMLIndexer: XMLIndexer
     
@@ -31,7 +31,7 @@ public class UsbongTree {
     
     public private(set) var currentNode: Node?
     
-    init(treeRootURL: NSURL) {
+    public init(treeRootURL: NSURL) {
         let fileManager = NSFileManager.defaultManager()
         
         self.treeRootURL = treeRootURL
