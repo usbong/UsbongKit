@@ -27,8 +27,10 @@ class TreeViewController: UIViewController {
                 
                 let tree = UsbongTree(treeRootURL: treeRootURL)
                 print(tree.taskNodeNames)
+                if let startingNode = tree.currentNode {
+                    nodeView.node = startingNode
+                }
             }
-            
         }
     }
 

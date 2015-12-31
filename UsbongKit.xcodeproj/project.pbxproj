@@ -48,6 +48,7 @@
 		DFA6341C1BDBD1F800C079B2 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA634191BDBD1F800C079B2 /* Crypto.framework */; };
 		DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
 		DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
+		DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */; };
 		DFF51A641C30B4F3005F670F /* TreesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +143,7 @@
 		DFA634191BDBD1F800C079B2 /* Crypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crypto.framework; path = Carthage/Build/iOS/Crypto.framework; sourceTree = "<group>"; };
 		DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
+		DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLNameInfo.swift; sourceTree = "<group>"; };
 		DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +228,7 @@
 			children = (
 				DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */,
 				DF350AD11C2FEECE00A1956E /* UsbongTree.swift */,
+				DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */,
 			);
 			name = Usbong;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				DF350AD41C2FEEDB00A1956E /* UsbongFileManager.swift in Sources */,
 				DF10097F1C2FDA22003A9BDA /* RadioButton.swift in Sources */,
 				DF10097E1C2FDA22003A9BDA /* CheckboxButton.swift in Sources */,
+				DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */,
 				DF1009891C2FDA22003A9BDA /* Module.swift in Sources */,
 				DF10098C1C2FDA22003A9BDA /* NodeView.swift in Sources */,
 				DF10098B1C2FDA22003A9BDA /* NodeProvider.swift in Sources */,
