@@ -14,7 +14,11 @@ public class UsbongTree {
     
     public let title: String
     public let baseLanguage: String
-    public var currentLanguage: String
+    public var currentLanguage: String {
+        didSet {
+            reloadCurrentTaskNode()
+        }
+    }
     public let availableLanguages: [String]
     
     internal private(set) var taskNodeNames: [String] = []
@@ -92,6 +96,12 @@ public class UsbongTree {
         }
     }
     
+    private func reloadCurrentTaskNode() {
+        if let currentTaskNodeName = taskNodeNames.last {
+            currentNode = nodeWithName(currentTaskNodeName)
+        }
+    }
+    
     private func nodeWithName(taskNodeName: String) -> Node? {
         var node: Node? = nil
         if let (indexer, type) = nodeIndexerWithName(taskNodeName) {
@@ -106,8 +116,8 @@ public class UsbongTree {
                 
                 switch taskNodeType {
                 case .TextDisplay:
-                    let text = nameInfo.text
-                    node = TextNode(text: text)
+                    let finalText = translateText(nameInfo.text)
+                    node = TextNode(text: finalText)
                 default:
                     node = TextNode(text: "Unknown Node")
                 }
@@ -153,6 +163,35 @@ public class UsbongTree {
         } else {
             return nil
         }
+    }
+    
+    // MARK: Language
+    
+    private var currentLanguageXMLURL: NSURL? {
+        for url in languageXMLURLs {
+            // Check if file name is equal to language
+            let name = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
+            if currentLanguage == name {
+                return url
+            }
+        }
+        return nil
+    }
+    
+    private func translateText(text: String) -> String {
+        var translatedText = text
+        
+        // Fetch translation from XML
+        if let languageXMLURL = currentLanguageXMLURL {
+            let languageXML = SWXMLHash.parse(NSData(contentsOfURL: languageXMLURL) ?? NSData())
+            let resources = languageXML[XMLIdentifier.resources]
+            
+            if let stringElement = try? resources[XMLIdentifier.string].withAttr(XMLIdentifier.name, text) {
+                translatedText = stringElement.element?.text ?? text
+            }
+        }
+        
+        return translatedText
     }
 }
 

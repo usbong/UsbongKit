@@ -13,7 +13,7 @@ class LanguagesTableViewController: UITableViewController {
     var languages: [String] = []
     var selectedLanguage: String = ""
     
-    var didSelectLanguageCompletion: (() -> Void)?
+    var didSelectLanguageCompletion: ((selectedLanguage: String) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +60,8 @@ class LanguagesTableViewController: UITableViewController {
         
         tableView.reloadData()
         
-        dismissViewControllerAnimated(true, completion: didSelectLanguageCompletion)
+        dismissViewControllerAnimated(true) {
+            self.didSelectLanguageCompletion?(selectedLanguage: self.selectedLanguage)
+        }
     }
 }
