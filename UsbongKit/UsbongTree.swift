@@ -14,7 +14,7 @@ public class UsbongTree {
     
     public let title: String
     public let baseLanguage: String
-    public let currentLanguage: String
+    public var currentLanguage: String
     public let availableLanguages: [String]
     
     internal private(set) var taskNodeNames: [String] = []

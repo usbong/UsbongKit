@@ -113,6 +113,19 @@ class TreeViewController: UIViewController {
         switch identifier {
         case "presentLanguages":
             print(tree?.availableLanguages ?? [])
+            
+            if let languagesTableVC = (segue.destinationViewController as? UINavigationController)?.topViewController as? LanguagesTableViewController {
+                if let tree = self.tree {
+                    languagesTableVC.languages = tree.availableLanguages
+                    languagesTableVC.selectedLanguage = tree.currentLanguage
+                    languagesTableVC.didSelectLanguageCompletion = {
+                        tree.currentLanguage = languagesTableVC.selectedLanguage
+                        if let node = tree.currentNode {
+                            self.nodeView.node = node
+                        }
+                    }
+                }
+            }
         default:
             break
         }

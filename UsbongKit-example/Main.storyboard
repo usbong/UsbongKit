@@ -243,7 +243,7 @@
         <!--Languages-->
         <scene sceneID="Hbc-v3-iLh">
             <objects>
-                <tableViewController id="YXf-W3-H40" sceneMemberID="viewController">
+                <tableViewController id="YXf-W3-H40" customClass="LanguagesTableViewController" customModule="UsbongKit_example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="K0W-SV-fed">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

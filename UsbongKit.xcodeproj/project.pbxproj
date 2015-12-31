@@ -34,6 +34,7 @@
 		DF10098A1C2FDA22003A9BDA /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10097B1C2FDA22003A9BDA /* Node.swift */; };
 		DF10098B1C2FDA22003A9BDA /* NodeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */; };
 		DF10098C1C2FDA22003A9BDA /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10097D1C2FDA22003A9BDA /* NodeView.swift */; };
+		DF1C1DE81C3501AE006C0A7A /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1C1DE71C3501AE006C0A7A /* LanguagesTableViewController.swift */; };
 		DF350AD21C2FEECE00A1956E /* UsbongTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF350AD11C2FEECE00A1956E /* UsbongTree.swift */; };
 		DF350AD41C2FEEDB00A1956E /* UsbongFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */; };
 		DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */; };
@@ -120,6 +121,7 @@
 		DF10097B1C2FDA22003A9BDA /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeProvider.swift; sourceTree = "<group>"; };
 		DF10097D1C2FDA22003A9BDA /* NodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
+		DF1C1DE71C3501AE006C0A7A /* LanguagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewController.swift; sourceTree = "<group>"; };
 		DF350AD11C2FEECE00A1956E /* UsbongTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongTree.swift; sourceTree = "<group>"; };
 		DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongFileManager.swift; sourceTree = "<group>"; };
 		DF452B431BDE0AFD003EB5C3 /* UsbongKit-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UsbongKit-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,6 +243,7 @@
 				DF10096A1C2FD9C7003A9BDA /* NodeViewController.swift */,
 				DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */,
 				DF63E5A41C324D3A0017B745 /* TreeViewController.swift */,
+				DF1C1DE71C3501AE006C0A7A /* LanguagesTableViewController.swift */,
 				DF10096B1C2FD9C7003A9BDA /* Main.storyboard */,
 				DF452B4C1BDE0AFD003EB5C3 /* Assets.xcassets */,
 				DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */,
@@ -532,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF10096D1C2FD9C7003A9BDA /* NodeViewController.swift in Sources */,
+				DF1C1DE81C3501AE006C0A7A /* LanguagesTableViewController.swift in Sources */,
 				DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */,
 				DF63E5A51C324D3A0017B745 /* TreeViewController.swift in Sources */,
 				DF10096C1C2FD9C7003A9BDA /* NodesTableViewController.swift in Sources */,
