@@ -204,6 +204,9 @@
                                     <segment title="PREVIOUS"/>
                                     <segment title="NEXT"/>
                                 </segments>
+                                <connections>
+                                    <action selector="didChangeSegmentedControllerValue:" destination="uQx-96-DHw" eventType="valueChanged" id="Skk-KG-mky"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

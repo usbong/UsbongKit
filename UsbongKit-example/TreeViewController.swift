@@ -100,6 +100,19 @@ class TreeViewController: UIViewController {
         
         presentViewController(actionController, animated: true, completion: nil)
     }
+    @IBAction func didChangeSegmentedControllerValue(sender: AnyObject?) {
+        if let segmentedControl = sender as? UISegmentedControl {
+            let index = segmentedControl.selectedSegmentIndex
+            switch index {
+            case 0:
+                transitionToPreviousNode()
+            case 1:
+                transitionToNextNode()
+            default:
+                break
+            }
+        }
+    }
     
     // MARK: Functions
     
@@ -113,6 +126,8 @@ class TreeViewController: UIViewController {
         }
         
         if let node = tree.currentNode {
+            stopVoiceOver()
+            
             nodeView.node = node
             
             // Background image
@@ -140,6 +155,35 @@ class TreeViewController: UIViewController {
                 startVoiceOverInTree(tree)
             }
         }
+    }
+    
+    // MARK: Transitioning nodes
+    func transitionToPreviousNode() {
+        guard let tree = self.tree else {
+            return
+        }
+        
+        tree.transitionToPreviousNode()
+        reloadNode()
+    }
+    
+    func transitionToNextNode() {
+        guard let tree = self.tree else {
+            return
+        }
+        
+        if tree.currentNodeIsSelectionType && tree.nothingSelected {
+            // Present no selection alert
+            let alertController = UIAlertController(title: "No Selection", message: "Please select one of the choices", preferredStyle: .Alert)
+            let okayAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertController.addAction(okayAction)
+            
+            presentViewController(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        tree.transitionToNextNode()
+        reloadNode()
     }
     
     // MARK: Background audio

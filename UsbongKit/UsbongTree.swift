@@ -28,9 +28,45 @@ public class UsbongTree {
     public private(set) var backgroundAudioURL: NSURL?
     public private(set) var currentVoiceOverAudioURL: NSURL?
     
-    internal private(set) var taskNodeNames: [String] = []
+    internal var taskNodeNames: [String] = []
     
-    internal private(set) var transitionInfo: [String: String] = [:]
+    internal private(set) var checklistTargetNumberOfTicks = 0
+    internal private(set) var currentTransitionInfo: [String: String] = [:]
+    internal var currentTargetTransitionName: String {
+        get {
+            // If current task node type is radio buttons, ignore selected module (transition to any)
+            switch currentNode {
+            case let checklistNode as ChecklistNode:
+                if checklistNode.selectionModule.selectedIndices.count == checklistTargetNumberOfTicks {
+                    return "Yes"
+                } else {
+                    return "No"
+                }
+            default:
+                return "Any"
+            }
+//            if let node = currentNode as? RadioButtonsNode {
+//                switch node {
+//                case let linkNode as RadioButtonsNode:
+//                    if let linkModule = linkTaskNode.currentSelectedModule {
+//                        return linkModule.taskIdentifier
+//                    }
+//                case let checkListTaskNode as CheckListTaskNode:
+//                    if checkListTaskNode.reachedTarget {
+//                        return "Yes"
+//                    } else {
+//                        return "No"
+//                    }
+//                default:
+//                    break
+//                }
+//            }
+        }
+    }
+    internal var nextTaskNodeName: String? {
+        return currentTransitionInfo[currentTargetTransitionName]
+    }
+    
     internal let languageXMLURLs: [NSURL]
     internal let hintsXMLURLs: [NSURL]
     
@@ -40,7 +76,7 @@ public class UsbongTree {
         return treeXMLIndexer[XMLIdentifier.processDefinition]
     }
     
-    public private(set) var currentNode: Node?
+    public var currentNode: Node?
     
     public init(treeRootURL: NSURL) {
         let fileManager = NSFileManager.defaultManager()
@@ -103,15 +139,15 @@ public class UsbongTree {
         }
     }
     
-    private func reloadCurrentTaskNode() {
+    internal func reloadCurrentTaskNode() {
         if let currentTaskNodeName = taskNodeNames.last {
             currentNode = nodeWithName(currentTaskNodeName)
         }
     }
     
-    private func nodeWithName(taskNodeName: String) -> Node? {
+    internal func nodeWithName(taskNodeName: String) -> Node? {
         var node: Node? = nil
-        if let (indexer, type) = nodeIndexerWithName(taskNodeName) {
+        if let (indexer, type) = nodeIndexerAndTypeWithName(taskNodeName) {
             switch type {
             case .TaskNode, .Decision:
                 let nameInfo = XMLNameInfo(name: taskNodeName, language: currentLanguage, treeRootURL: treeRootURL)
@@ -126,19 +162,50 @@ public class UsbongTree {
                     break
                 }
                 
+                let finalText = translateText(nameInfo.text)
                 switch taskNodeType {
                 case .TextDisplay:
-                    let finalText = translateText(nameInfo.text)
                     node = TextNode(text: finalText)
                 default:
                     node = TextNode(text: "Unknown Node")
                 }
+                
+                // Fetch transition info
+                currentTransitionInfo = transitionInfoFromTransitionIndexers(indexer[XMLIdentifier.transition].all, andTaskNodeType: taskNodeType)
             case .EndState:
                 node = TextNode(text: "You've now reached the end")
             }
         }
         
         return node
+    }
+    
+    // MARK: Get transition info from transition elements
+    private func transitionInfoFromTransitionIndexers(transitionIndexers: [XMLIndexer], andTaskNodeType type: TaskNodeType) -> [String: String]{
+        var transitionInfo: [String: String] = [:]
+        
+        for indexer in transitionIndexers {
+            guard let attributes = indexer.element?.attributes else {
+                continue
+            }
+            
+            // Get value of name
+            let name = attributes[XMLIdentifier.name] ?? "Any"
+            
+            // Get value of to
+            var to = attributes[XMLIdentifier.to] ?? ""
+            
+            // Remove identifier for link transition
+            if type == .Link {
+                var components = to.componentsSeparatedByString("~")
+                components.removeLast()
+                to = components.joinWithSeparator("~")
+            }
+            
+            transitionInfo[name] = to
+        }
+        
+        return transitionInfo
     }
     
     // MARK: Get XML Indexer of task nodes
@@ -151,7 +218,7 @@ public class UsbongTree {
     private func decisionIndexerWithName(name: String) -> XMLIndexer? {
         return try? processDefinitionIndexer[XMLIdentifier.decision].withAttr(XMLIdentifier.name, name)
     }
-    private func nodeIndexerWithName(name: String) -> (indexer: XMLIndexer, type: NodeType)? {
+    internal func nodeIndexerAndTypeWithName(name: String) -> (indexer: XMLIndexer, type: NodeType)? {
         var indexer: XMLIndexer?
         var type = NodeType.TaskNode
         
