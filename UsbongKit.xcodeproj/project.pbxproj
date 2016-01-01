@@ -16,6 +16,7 @@
 		CFC4043A1BEE4350000658E7 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
 		CFC4043B1BEE4350000658E7 /* ZipArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFC4043D1BEE440B000658E7 /* Usbong iOS.utree in Resources */ = {isa = PBXBuildFile; fileRef = CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */; };
+		DF0D9AD01C36B1570048B8DF /* UsbongLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0D9ACF1C36B1570048B8DF /* UsbongLanguage.swift */; };
 		DF10096C1C2FD9C7003A9BDA /* NodesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1009691C2FD9C7003A9BDA /* NodesTableViewController.swift */; };
 		DF10096D1C2FD9C7003A9BDA /* NodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10096A1C2FD9C7003A9BDA /* NodeViewController.swift */; };
 		DF10096E1C2FD9C7003A9BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF10096B1C2FD9C7003A9BDA /* Main.storyboard */; };
@@ -104,6 +105,7 @@
 
 /* Begin PBXFileReference section */
 		CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Usbong iOS.utree"; sourceTree = "<group>"; };
+		DF0D9ACF1C36B1570048B8DF /* UsbongLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongLanguage.swift; sourceTree = "<group>"; };
 		DF1009691C2FD9C7003A9BDA /* NodesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesTableViewController.swift; sourceTree = "<group>"; };
 		DF10096A1C2FD9C7003A9BDA /* NodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeViewController.swift; sourceTree = "<group>"; };
 		DF10096B1C2FD9C7003A9BDA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */,
 				DF350AD11C2FEECE00A1956E /* UsbongTree.swift */,
+				DF0D9ACF1C36B1570048B8DF /* UsbongLanguage.swift */,
 				DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */,
 			);
 			name = Usbong;
@@ -567,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF1009851C2FDA22003A9BDA /* RadioTableViewCell.swift in Sources */,
+				DF0D9AD01C36B1570048B8DF /* UsbongLanguage.swift in Sources */,
 				DF1009811C2FDA22003A9BDA /* ImageTableViewCell.swift in Sources */,
 				DF10098A1C2FDA22003A9BDA /* Node.swift in Sources */,
 				DF1009831C2FDA22003A9BDA /* TextTableViewCell.swift in Sources */,

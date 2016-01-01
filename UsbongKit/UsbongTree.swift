@@ -19,6 +19,9 @@ public class UsbongTree {
             reloadCurrentTaskNode()
         }
     }
+    public var currentLanguageCode: String {
+        return UsbongLanguage(language: currentLanguage).languageCode
+    }
     public let availableLanguages: [String]
     
     public private(set) var backgroundImageURL: NSURL?
@@ -113,6 +116,7 @@ public class UsbongTree {
             case .TaskNode, .Decision:
                 let nameInfo = XMLNameInfo(name: taskNodeName, language: currentLanguage, treeRootURL: treeRootURL)
                 
+                // Get urls for assets
                 backgroundAudioURL = nameInfo.backgroundAudioURL
                 backgroundImageURL = nameInfo.backgroundImageURL
                 currentVoiceOverAudioURL = nameInfo.audioURL
