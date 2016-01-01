@@ -30,6 +30,7 @@ public class NodeView: UIView {
         backgroundImageView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         backgroundImageView.backgroundColor = UIColor.clearColor()
         backgroundImageView.contentMode = .ScaleAspectFill
+        backgroundImageView.clipsToBounds = true
         
         addSubview(backgroundImageView)
         
