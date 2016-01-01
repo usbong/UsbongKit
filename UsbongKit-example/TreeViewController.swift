@@ -115,29 +115,29 @@ class TreeViewController: UIViewController {
         if let node = tree.currentNode {
             nodeView.node = node
             
+            // Background image
             if let backgroundImagePath = tree.backgroundImageURL?.path {
-                // Background image
                 nodeView.backgroundImage = UIImage(contentsOfFile: backgroundImagePath)
-                
-                // Background audio - change only if not empty and different
-                if let currentURL = backgroundAudioPlayer?.url {
-                    if let newURL = tree.backgroundAudioURL {
-                        if newURL != currentURL {
-                            backgroundAudioPlayer?.stop()
-                            backgroundAudioPlayer = nil
-                            
-                            loadBackgroundAudioInTree(tree)
-                        }
+            }
+            
+            // Background audio - change only if not empty and different
+            if let currentURL = backgroundAudioPlayer?.url {
+                if let newURL = tree.backgroundAudioURL {
+                    if newURL != currentURL {
+                        backgroundAudioPlayer?.stop()
+                        backgroundAudioPlayer = nil
+                        
+                        loadBackgroundAudioInTree(tree)
                     }
-                } else {
-                    // If current URL is empty, attempt load
-                    loadBackgroundAudioInTree(tree)
                 }
-                
-                // Voice-over
-                if voiceOverOn {
-                    startVoiceOverInTree(tree)
-                }
+            } else {
+                // If current URL is empty, attempt load
+                loadBackgroundAudioInTree(tree)
+            }
+            
+            // Voice-over
+            if voiceOverOn {
+                startVoiceOverInTree(tree)
             }
         }
     }
@@ -205,6 +205,7 @@ class TreeViewController: UIViewController {
     
     func startTextToSpeechInTree(tree: UsbongTree) {
         guard let text = (tree.currentNode as? ReadableTextTypeNode)?.readableText else {
+            print("No readable text")
             return
         }
         
