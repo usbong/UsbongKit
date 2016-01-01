@@ -25,11 +25,7 @@ extension UsbongTree: NodeProvider {
             return false
         }
         
-        guard let node = nodeWithName(name) else {
-            return false
-        }
-        
-        currentNode = node
+        currentNode = nodeWithName(name)
         taskNodeNames.append(name)
         
         return true

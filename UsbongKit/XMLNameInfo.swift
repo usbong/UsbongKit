@@ -68,7 +68,7 @@ internal struct XMLNameInfo {
     }
     
     var targetNumberOfChoices: Int {
-        guard TaskNodeType(rawValue: typeIdentifier) == .CheckList && components.count >= 2 else {
+        guard TaskNodeType(rawValue: typeIdentifier) == .Checklist && components.count >= 2 else {
             return 0
         }
         
@@ -97,6 +97,12 @@ internal struct XMLNameInfo {
         }
         
         return nil
+    }
+    var image: UIImage? {
+        guard let path = imageURL?.path else {
+            return nil
+        }
+        return UIImage(contentsOfFile: path)
     }
     
     // MARK: Fetch value of identifier
@@ -193,6 +199,6 @@ internal enum TaskNodeType: String {
     case ImageTextDisplay = "imageTextDisplay"
     case Link = "link"
     case RadioButtons = "radioButtons"
-    case CheckList = "checkList"
+    case Checklist = "checkList"
     case Classification = "classification"
 }

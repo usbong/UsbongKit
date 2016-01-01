@@ -163,6 +163,11 @@ class TreeViewController: UIViewController {
             return
         }
         
+        if !tree.previousNodeIsAvailable {
+            dismissViewControllerAnimated(true, completion: nil)
+            return
+        }
+        
         tree.transitionToPreviousNode()
         reloadNode()
     }
@@ -172,13 +177,16 @@ class TreeViewController: UIViewController {
             return
         }
         
-        if tree.currentNodeIsSelectionType && tree.nothingSelected {
+        if !(tree.currentNode is ChecklistNode) && tree.currentNodeIsSelectionType && tree.nothingSelected {
             // Present no selection alert
             let alertController = UIAlertController(title: "No Selection", message: "Please select one of the choices", preferredStyle: .Alert)
             let okayAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alertController.addAction(okayAction)
             
             presentViewController(alertController, animated: true, completion: nil)
+            return
+        } else if !tree.nextNodeIsAvailable {
+            dismissViewControllerAnimated(true, completion: nil)
             return
         }
         
