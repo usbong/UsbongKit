@@ -21,6 +21,10 @@ public class UsbongTree {
     }
     public let availableLanguages: [String]
     
+    public private(set) var backgroundImageURL: NSURL?
+    public private(set) var backgroundAudioURL: NSURL?
+    public private(set) var currentVoiceOverAudioURL: NSURL?
+    
     internal private(set) var taskNodeNames: [String] = []
     
     internal private(set) var transitionInfo: [String: String] = [:]
@@ -108,8 +112,12 @@ public class UsbongTree {
             switch type {
             case .TaskNode, .Decision:
                 let nameInfo = XMLNameInfo(name: taskNodeName, language: currentLanguage, treeRootURL: treeRootURL)
-                print(nameInfo.type)
                 
+                backgroundAudioURL = nameInfo.backgroundAudioURL
+                backgroundImageURL = nameInfo.backgroundImageURL
+                currentVoiceOverAudioURL = nameInfo.audioURL
+                
+                print(nameInfo.type)
                 guard let taskNodeType = nameInfo.type else {
                     break
                 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 @testable import UsbongKit
 
 class TreeViewController: UIViewController {
@@ -31,6 +32,9 @@ class TreeViewController: UIViewController {
             NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "SpeechOn")
         }
     }
+    lazy var speechSynthesizer = AVSpeechSynthesizer()
+    var backgroundAudioPlayer: AVAudioPlayer?
+    var voiceOverAudioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +44,9 @@ class TreeViewController: UIViewController {
                 self.treeRootURL = treeRootURL
                 print(treeRootURL)
                 
-                let tree = UsbongTree(treeRootURL: treeRootURL)
-                self.tree = tree
+                tree = UsbongTree(treeRootURL: treeRootURL)
                 
-                if let startingNode = tree.currentNode {
-                    nodeView.node = startingNode
-                }
+                reloadNode()
             }
         }
     }
@@ -53,6 +54,10 @@ class TreeViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        stopVoiceOver()
     }
     
     // MARK: - Actions
@@ -102,6 +107,83 @@ class TreeViewController: UIViewController {
         performSegueWithIdentifier("presentLanguages", sender: self)
     }
     
+    func reloadNode() {
+        guard let tree = self.tree else {
+            return
+        }
+        
+        if let node = tree.currentNode {
+            nodeView.node = node
+            
+            if let backgroundImagePath = tree.backgroundImageURL?.path {
+                nodeView.backgroundImage = UIImage(contentsOfFile: backgroundImagePath)
+                
+                startVoiceOverInTree(tree)
+            }
+        }
+    }
+    
+    // MARK: Voice-over
+    func startVoiceOverInTree(tree: UsbongTree) {
+        // Attempt to play speech from audio file, if failed, resort to text-to-speech
+        if !startVoiceOverAudioInTree(tree) {
+            // Start text-to-speech instead
+            startTextToSpeechInTree(tree)
+        }
+    }
+    func stopVoiceOver() {
+        stopVoiceOver()
+        stopTextToSpeech()
+    }
+    
+    func startVoiceOverAudioInTree(tree: UsbongTree) -> Bool {
+        guard let voiceOverAudioURL = tree.currentVoiceOverAudioURL else {
+            return false
+        }
+        
+        do {
+            let audioPlayer = try AVAudioPlayer(contentsOfURL: voiceOverAudioURL)
+            audioPlayer.prepareToPlay()
+            audioPlayer.play()
+            print("Playing voice-over audio...")
+            
+            voiceOverAudioPlayer = audioPlayer
+            return true
+        } catch let error {
+            print("Error loading voice-over audio: \(error)")
+            return false
+        }
+    }
+    
+    func stopVoiceOverAudio() {
+        guard let audioPlayer = voiceOverAudioPlayer else {
+            return
+        }
+        
+        if audioPlayer.playing {
+            audioPlayer.stop()
+        }
+    }
+    
+    func startTextToSpeechInTree(tree: UsbongTree) {
+        guard let text = (tree.currentNode as? ReadableTextTypeNode)?.readableText else {
+            return
+        }
+        
+        let utterance = AVSpeechUtterance(string: text)
+        
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-EN")
+        
+        // Speak
+        speechSynthesizer.speakUtterance(utterance)
+    }
+    func stopTextToSpeech() {
+        if speechSynthesizer.speaking {
+            speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
+        }
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -118,9 +200,8 @@ class TreeViewController: UIViewController {
                     languagesTableVC.selectedLanguage = tree.currentLanguage
                     languagesTableVC.didSelectLanguageCompletion = { selectedLanguage in
                         tree.currentLanguage = selectedLanguage
-                        if let node = tree.currentNode {
-                            self.nodeView.node = node
-                        }
+                        
+                        self.reloadNode()
                     }
                 }
             }
