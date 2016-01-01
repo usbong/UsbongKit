@@ -204,17 +204,22 @@ class TreeViewController: UIViewController {
     }
     
     func startTextToSpeechInTree(tree: UsbongTree) {
-        guard let text = (tree.currentNode as? ReadableTextTypeNode)?.readableText else {
-            print("No readable text")
+        guard let node = tree.currentNode else {
             return
         }
         
-        let utterance = AVSpeechUtterance(string: text)
-        
-        utterance.voice = AVSpeechSynthesisVoice(language: tree.currentLanguageCode)
-        
-        // Speak
-        speechSynthesizer.speakUtterance(utterance)
+        for module in node.modules where module is SpeakableTextTypeModule {
+            let texts = (module as! SpeakableTextTypeModule).speakableTexts
+            
+            for text in texts {
+                let utterance = AVSpeechUtterance(string: text)
+                
+                utterance.voice = AVSpeechSynthesisVoice(language: "en-EN")
+                
+                // Speak
+                speechSynthesizer.speakUtterance(utterance)
+            }
+        }
     }
     func stopTextToSpeech() {
         if speechSynthesizer.speaking {

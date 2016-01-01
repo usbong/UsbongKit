@@ -17,7 +17,7 @@ class NodesTableViewController: UITableViewController {
         ImageTextNode(image: UIImage(named: "Test"), text: "This is an ImageTextNode"),
         RadioButtonsNode(text: "This is a RadioButtonsNode", options: ["Option 1", "Option 2", "Option 3"]),
         ChecklistNode(text: "This is a ChecklistNode", options: ["Option 1", "Option 2", "Option 3"]),
-        ClassificationNode(text: "This is a ClassificationNode", list: ["Item 1", "Item 2", "Item 3", "Item 4"])
+        ClassificationNode(text: "This is a ClassificationNode", list: ["1) Item 1", "2) Item 2", "3) Item 3", "4) Item 4"])
     ]
     
     override func viewDidLoad() {

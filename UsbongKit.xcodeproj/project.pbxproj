@@ -51,7 +51,7 @@
 		DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
 		DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
 		DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */; };
-		DFD396E21C363A2A00D56326 /* ReadableTextTypeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD396E11C363A2A00D56326 /* ReadableTextTypeNode.swift */; };
+		DFD396E21C363A2A00D56326 /* SpeakableTextTypeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */; };
 		DFF51A641C30B4F3005F670F /* TreesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -149,7 +149,7 @@
 		DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
 		DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLNameInfo.swift; sourceTree = "<group>"; };
-		DFD396E11C363A2A00D56326 /* ReadableTextTypeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadableTextTypeNode.swift; sourceTree = "<group>"; };
+		DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakableTextTypeModule.swift; sourceTree = "<group>"; };
 		DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,9 +203,9 @@
 		DF10098D1C2FDA29003A9BDA /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				DF10097A1C2FDA22003A9BDA /* Module.swift */,
 				DF10097B1C2FDA22003A9BDA /* Node.swift */,
-				DFD396E11C363A2A00D56326 /* ReadableTextTypeNode.swift */,
+				DF10097A1C2FDA22003A9BDA /* Module.swift */,
+				DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */,
 				DF10097D1C2FDA22003A9BDA /* NodeView.swift */,
 				DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */,
 			);
@@ -578,7 +578,7 @@
 				DF350AD21C2FEECE00A1956E /* UsbongTree.swift in Sources */,
 				DF1009871C2FDA22003A9BDA /* CheckboxTableViewCell.swift in Sources */,
 				DF350AD41C2FEEDB00A1956E /* UsbongFileManager.swift in Sources */,
-				DFD396E21C363A2A00D56326 /* ReadableTextTypeNode.swift in Sources */,
+				DFD396E21C363A2A00D56326 /* SpeakableTextTypeModule.swift in Sources */,
 				DF10097F1C2FDA22003A9BDA /* RadioButton.swift in Sources */,
 				DF10097E1C2FDA22003A9BDA /* CheckboxButton.swift in Sources */,
 				DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */,

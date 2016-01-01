@@ -128,7 +128,7 @@ public class NodeView: UIView {
             }
         case let listModule as ListModule:
             if let reusedCell = tableView.dequeueReusableCellWithIdentifier("Text") as? TextTableViewCell {
-                let attributedText = NSMutableAttributedString(string: "\(row + 1)) \(listModule.options[row])")
+                let attributedText = NSMutableAttributedString(string: listModule.options[row])
                 
                 attributedText.addAttributes(textAttributesForModule(listModule), range: NSRange(location: 0, length: attributedText.length))
                 
