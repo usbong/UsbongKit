@@ -119,7 +119,41 @@ class TreeViewController: UIViewController {
                 nodeView.backgroundImage = UIImage(contentsOfFile: backgroundImagePath)
                 
                 startVoiceOverInTree(tree)
+                
+                // Background audio - change only if not empty and different
+                if let currentURL = backgroundAudioPlayer?.url {
+                    if let newURL = tree.backgroundAudioURL {
+                        if newURL != currentURL {
+                            backgroundAudioPlayer?.stop()
+                            backgroundAudioPlayer = nil
+                            
+                            loadBackgroundAudioInTree(tree)
+                        }
+                    }
+                } else {
+                    // If current URL is empty, attempt load
+                    loadBackgroundAudioInTree(tree)
+                }
             }
+        }
+    }
+    
+    // MARK: Background audio
+    func loadBackgroundAudioInTree(tree: UsbongTree) {
+        guard let url = tree.backgroundAudioURL else {
+            return
+        }
+        
+        do {
+            let audioPlayer = try AVAudioPlayer(contentsOfURL: url)
+            audioPlayer.numberOfLoops = -1
+            audioPlayer.prepareToPlay()
+            audioPlayer.play()
+            audioPlayer.volume = 0.4
+            
+            backgroundAudioPlayer = audioPlayer
+        } catch let error {
+            print("Error loading background audio: \(error)")
         }
     }
     
@@ -132,7 +166,7 @@ class TreeViewController: UIViewController {
         }
     }
     func stopVoiceOver() {
-        stopVoiceOver()
+        stopVoiceOverAudio()
         stopTextToSpeech()
     }
     
