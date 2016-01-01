@@ -75,11 +75,11 @@ class TreeViewController: UIViewController {
             
             // If toggled to on, start voice-over
             if turnOn {
-                print("Start voice-over")
-//                self.startVoiceOver()
+                if let tree = self.tree {
+                    self.startVoiceOverAudioInTree(tree)
+                }
             } else {
-                print("Stop voice-over")
-//                self.stopVoiceOver()
+                self.stopVoiceOver()
             }
             
             self.voiceOverOn = turnOn
@@ -116,9 +116,8 @@ class TreeViewController: UIViewController {
             nodeView.node = node
             
             if let backgroundImagePath = tree.backgroundImageURL?.path {
+                // Background image
                 nodeView.backgroundImage = UIImage(contentsOfFile: backgroundImagePath)
-                
-                startVoiceOverInTree(tree)
                 
                 // Background audio - change only if not empty and different
                 if let currentURL = backgroundAudioPlayer?.url {
@@ -133,6 +132,11 @@ class TreeViewController: UIViewController {
                 } else {
                     // If current URL is empty, attempt load
                     loadBackgroundAudioInTree(tree)
+                }
+                
+                // Voice-over
+                if voiceOverOn {
+                    startVoiceOverInTree(tree)
                 }
             }
         }
