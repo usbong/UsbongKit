@@ -123,17 +123,21 @@ internal struct XMLNameInfo {
     }
     var backgroundImageURL: NSURL? {
         let resURL = treeRootURL.URLByAppendingPathComponent("res")
-        let imageURLWithoutExtension = resURL.URLByAppendingPathComponent(backgroundImageFileName)
         
         // Check for images with supported image formats
         let fileManager = NSFileManager.defaultManager()
-        let supportedImageFormats = XMLNameInfo.supportedImageFormats
-        for format in supportedImageFormats {
-            let url = imageURLWithoutExtension.URLByAppendingPathExtension(format)
-            if let path = url.path {
-                if fileManager.fileExistsAtPath(path) {
-                    return url
-                }
+        guard let contents = try? fileManager.contentsOfDirectoryAtURL(resURL,
+            includingPropertiesForKeys: nil, options: .SkipsSubdirectoryDescendants) else {
+                return nil
+        }
+        for content in contents {
+            guard let fileName = content.URLByDeletingPathExtension?.lastPathComponent else {
+                continue
+            }
+            
+            if fileName.compare(backgroundImageFileName, options: .CaseInsensitiveSearch,
+                range: nil, locale: nil) == .OrderedSame {
+                    return content
             }
         }
         
