@@ -238,6 +238,7 @@ public class UsbongTree {
                 }
             case .EndState:
                 node = TextNode(text: "You've now reached the end")
+                currentTransitionInfo = [:]
             }
         }
         
@@ -374,6 +375,35 @@ public class UsbongTree {
                 break
             }
         }
+    }
+    
+    // MARK: End state
+    
+    public var currentNodeIsEndState: Bool {
+        guard let name = taskNodeNames.last else {
+            return true
+        }
+        guard let (_, type) = nodeIndexerAndTypeWithName(name) else {
+            return true
+        }
+        
+        return type == .EndState
+    }
+    public var nextNodeIsEndState: Bool {
+        guard let name = nextTaskNodeName else {
+            return true
+        }
+        guard let (_, type) = nodeIndexerAndTypeWithName(name) else {
+            return true
+        }
+        
+        return type == .EndState
+    }
+    
+    // MARK: Prevent next
+    
+    public var shouldPreventTransitionToNextTaskNode: Bool {
+        return !(currentNode is ChecklistNode) && currentNodeIsSelectionType && nothingSelected
     }
 }
 

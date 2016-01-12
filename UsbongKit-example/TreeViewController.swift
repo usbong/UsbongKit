@@ -180,7 +180,7 @@ class TreeViewController: UIViewController {
             return
         }
         
-        if !(tree.currentNode is ChecklistNode) && tree.currentNodeIsSelectionType && tree.nothingSelected {
+        if tree.shouldPreventTransitionToNextTaskNode {
             // Present no selection alert
             let alertController = UIAlertController(title: "No Selection", message: "Please select one of the choices", preferredStyle: .Alert)
             let okayAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
