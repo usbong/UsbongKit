@@ -172,7 +172,7 @@ public class UsbongTree {
                 }
                 
                 var fetchedTransitionInfo: [String: String] = [:]
-                let finalText = translateText(nameInfo.text)
+                let finalText = parseText(translateText(nameInfo.text))
                 switch taskNodeType {
                 case .TextDisplay:
                     node = TextNode(text: finalText)
@@ -339,6 +339,14 @@ public class UsbongTree {
         }
         
         return translatedText
+    }
+    
+    private func parseText(text: String) -> String {
+        guard text.characters.count > 0 else {
+            return ""
+        }
+        
+        return text.stringByReplacingOccurrencesOfString("{br}", withString: "\n", options: .CaseInsensitiveSearch, range: nil)
     }
     
     // MARK: Hints
