@@ -45,6 +45,7 @@
 		DF452B5B1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B5A1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift */; };
 		DF452B661BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */; };
 		DF63E5A51C324D3A0017B745 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF63E5A41C324D3A0017B745 /* TreeViewController.swift */; };
+		DF9992B61C44D5B900536F2E /* PlayableTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9992B51C44D5B900536F2E /* PlayableTree.swift */; };
 		DFA633D21BDBD17C00C079B2 /* UsbongKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA633D11BDBD17C00C079B2 /* UsbongKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFA633D91BDBD17C00C079B2 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
 		DFA633DE1BDBD17C00C079B2 /* UsbongKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */; };
@@ -141,6 +142,7 @@
 		DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbongKit_exampleUITests.swift; sourceTree = "<group>"; };
 		DF452B671BDE0AFD003EB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF63E5A41C324D3A0017B745 /* TreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
+		DF9992B51C44D5B900536F2E /* PlayableTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayableTree.swift; sourceTree = "<group>"; };
 		DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UsbongKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA633D11BDBD17C00C079B2 /* UsbongKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsbongKit.h; sourceTree = "<group>"; };
 		DFA633D31BDBD17C00C079B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */,
 				DF350AD11C2FEECE00A1956E /* UsbongTree.swift */,
 				DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */,
+				DF9992B51C44D5B900536F2E /* PlayableTree.swift */,
 				DF0D9ACF1C36B1570048B8DF /* UsbongLanguage.swift */,
 				DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */,
 			);
@@ -585,6 +588,7 @@
 				DFD396E21C363A2A00D56326 /* SpeakableTextTypeModule.swift in Sources */,
 				DF10097F1C2FDA22003A9BDA /* RadioButton.swift in Sources */,
 				DF10097E1C2FDA22003A9BDA /* CheckboxButton.swift in Sources */,
+				DF9992B61C44D5B900536F2E /* PlayableTree.swift in Sources */,
 				DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */,
 				DF1009891C2FDA22003A9BDA /* Module.swift in Sources */,
 				DF10098C1C2FDA22003A9BDA /* NodeView.swift in Sources */,

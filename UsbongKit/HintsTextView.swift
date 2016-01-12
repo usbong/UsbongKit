@@ -13,6 +13,17 @@ private let ContainsHintKey = "ContainsHintKey"
 public protocol HintsTextViewDelegate: UITextViewDelegate {
     func hintsTextView(textView: HintsTextView, didTapString: String, withHint hint: String)
 }
+public extension HintsTextViewDelegate where Self: UIViewController {
+    public func hintsTextView(textView: HintsTextView, didTapString: String, withHint hint: String) {
+        let alertController = UIAlertController(title: "Word Hint", message: hint, preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        alertController.addAction(okAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+}
 
 public class HintsTextView: UITextView {
     weak public var hintsTextViewDelegate: HintsTextViewDelegate?

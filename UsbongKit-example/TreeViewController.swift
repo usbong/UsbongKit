@@ -10,28 +10,16 @@ import UIKit
 import AVFoundation
 import UsbongKit
 
-class TreeViewController: UIViewController {
+class TreeViewController: UIViewController, PlayableTree, HintsTextViewDelegate {
+    
+    @IBOutlet weak var previousNextSegmentedControl: UISegmentedControl!
     
     @IBOutlet weak var nodeView: NodeView!
-    @IBOutlet weak var previousNextSegmentedControl: UISegmentedControl!
+    var tree: UsbongTree?
     
     var treeURL: NSURL?
     var treeRootURL: NSURL?
-    var tree: UsbongTree?
     
-    var voiceOverOn: Bool {
-        get {
-            // Default to true if not yet set
-            let standardUserDefaults = NSUserDefaults.standardUserDefaults()
-            if standardUserDefaults.objectForKey("SpeechOn") == nil {
-                standardUserDefaults.setBool(true, forKey: "SpeechOn")
-            }
-            return standardUserDefaults.boolForKey("SpeechOn")
-        }
-        set {
-            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "SpeechOn")
-        }
-    }
     lazy var speechSynthesizer = AVSpeechSynthesizer()
     var backgroundAudioPlayer: AVAudioPlayer?
     var voiceOverAudioPlayer: AVAudioPlayer?
@@ -67,38 +55,7 @@ class TreeViewController: UIViewController {
     }
     
     @IBAction func didPressMore(sender: AnyObject) {
-        let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        
-        let onOrOffText = voiceOverOn ? "Off" : "On"
-        let speechAction = UIAlertAction(title: "Speech \(onOrOffText)", style: .Default) { (action) -> Void in
-            let turnOn = !self.voiceOverOn
-            
-            // If toggled to on, start voice-over
-            if turnOn {
-                if let tree = self.tree {
-                    self.startVoiceOverAudioInTree(tree)
-                }
-            } else {
-                self.stopVoiceOver()
-            }
-            
-            self.voiceOverOn = turnOn
-        }
-        let setLanguageAction = UIAlertAction(title: "Set Language", style: .Default) { (action) -> Void in
-            self.showChooseLanguageScreen()
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        
-        actionController.addAction(speechAction)
-        actionController.addAction(setLanguageAction)
-        actionController.addAction(cancelAction)
-        
-        // For iPad action sheet behavior (similar to a popover)
-        if let popover = actionController.popoverPresentationController, let barButtonItem = sender as? UIBarButtonItem {
-            popover.barButtonItem = barButtonItem
-        }
-        
-        presentViewController(actionController, animated: true, completion: nil)
+        showAvailableActions(sender)
     }
     @IBAction func didChangeSegmentedControllerValue(sender: AnyObject?) {
         if let segmentedControl = sender as? UISegmentedControl {
@@ -119,169 +76,6 @@ class TreeViewController: UIViewController {
     func showChooseLanguageScreen() {
         performSegueWithIdentifier("presentLanguages", sender: self)
     }
-    
-    func reloadNode() {
-        guard let tree = self.tree else {
-            return
-        }
-        guard let node = tree.currentNode else {
-            return
-        }
-        
-        stopVoiceOver()
-        
-        nodeView.node = node
-        nodeView.hintsDictionary = tree.hintsDictionary
-        nodeView.hintsTextViewDelegate = self
-        
-        // Background image
-        if let backgroundImagePath = tree.backgroundImageURL?.path {
-            nodeView.backgroundImage = UIImage(contentsOfFile: backgroundImagePath)
-        }
-        
-        // Background audio - change only if not empty and different
-        if let currentURL = backgroundAudioPlayer?.url {
-            if let newURL = tree.backgroundAudioURL {
-                if newURL != currentURL {
-                    backgroundAudioPlayer?.stop()
-                    backgroundAudioPlayer = nil
-                    
-                    loadBackgroundAudioInTree(tree)
-                }
-            }
-        } else {
-            // If current URL is empty, attempt load
-            loadBackgroundAudioInTree(tree)
-        }
-        
-        // Voice-over
-        if voiceOverOn {
-            startVoiceOverInTree(tree)
-        }
-    }
-    
-    // MARK: Transitioning nodes
-    func transitionToPreviousNode() {
-        guard let tree = self.tree else {
-            return
-        }
-        
-        if !tree.previousNodeIsAvailable {
-            dismissViewControllerAnimated(true, completion: nil)
-            return
-        }
-        
-        tree.transitionToPreviousNode()
-        reloadNode()
-    }
-    
-    func transitionToNextNode() {
-        guard let tree = self.tree else {
-            return
-        }
-        
-        if tree.shouldPreventTransitionToNextTaskNode {
-            // Present no selection alert
-            let alertController = UIAlertController(title: "No Selection", message: "Please select one of the choices", preferredStyle: .Alert)
-            let okayAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alertController.addAction(okayAction)
-            
-            presentViewController(alertController, animated: true, completion: nil)
-            return
-        } else if !tree.nextNodeIsAvailable {
-            dismissViewControllerAnimated(true, completion: nil)
-            return
-        }
-        
-        tree.transitionToNextNode()
-        reloadNode()
-    }
-    
-    // MARK: Background audio
-    func loadBackgroundAudioInTree(tree: UsbongTree) {
-        guard let url = tree.backgroundAudioURL else {
-            return
-        }
-        
-        do {
-            let audioPlayer = try AVAudioPlayer(contentsOfURL: url)
-            audioPlayer.numberOfLoops = -1
-            audioPlayer.prepareToPlay()
-            audioPlayer.play()
-            audioPlayer.volume = 0.4
-            
-            backgroundAudioPlayer = audioPlayer
-        } catch let error {
-            print("Error loading background audio: \(error)")
-        }
-    }
-    
-    // MARK: Voice-over
-    func startVoiceOverInTree(tree: UsbongTree) {
-        // Attempt to play speech from audio file, if failed, resort to text-to-speech
-        if !startVoiceOverAudioInTree(tree) {
-            // Start text-to-speech instead
-            startTextToSpeechInTree(tree)
-        }
-    }
-    func stopVoiceOver() {
-        stopVoiceOverAudio()
-        stopTextToSpeech()
-    }
-    
-    func startVoiceOverAudioInTree(tree: UsbongTree) -> Bool {
-        guard let voiceOverAudioURL = tree.currentVoiceOverAudioURL else {
-            return false
-        }
-        
-        do {
-            let audioPlayer = try AVAudioPlayer(contentsOfURL: voiceOverAudioURL)
-            audioPlayer.prepareToPlay()
-            audioPlayer.play()
-            print("Playing voice-over audio...")
-            
-            voiceOverAudioPlayer = audioPlayer
-            return true
-        } catch let error {
-            print("Error loading voice-over audio: \(error)")
-            return false
-        }
-    }
-    
-    func stopVoiceOverAudio() {
-        guard let audioPlayer = voiceOverAudioPlayer else {
-            return
-        }
-        
-        if audioPlayer.playing {
-            audioPlayer.stop()
-        }
-    }
-    
-    func startTextToSpeechInTree(tree: UsbongTree) {
-        guard let node = tree.currentNode else {
-            return
-        }
-        
-        for module in node.modules where module is SpeakableTextTypeModule {
-            let texts = (module as! SpeakableTextTypeModule).speakableTexts
-            
-            for text in texts {
-                let utterance = AVSpeechUtterance(string: text)
-                
-                utterance.voice = AVSpeechSynthesisVoice(language: "en-EN")
-                
-                // Speak
-                speechSynthesizer.speakUtterance(utterance)
-            }
-        }
-    }
-    func stopTextToSpeech() {
-        if speechSynthesizer.speaking {
-            speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
-        }
-    }
-    
     
     // MARK: - Navigation
 
@@ -307,17 +101,5 @@ class TreeViewController: UIViewController {
         default:
             break
         }
-    }
-}
-
-extension TreeViewController: HintsTextViewDelegate {
-    func hintsTextView(textView: HintsTextView, didTapString: String, withHint hint: String) {
-        let alertController = UIAlertController(title: "Word Hint", message: hint, preferredStyle: .Alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        
-        alertController.addAction(okAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)
     }
 }
