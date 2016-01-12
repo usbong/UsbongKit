@@ -124,36 +124,39 @@ class TreeViewController: UIViewController {
         guard let tree = self.tree else {
             return
         }
+        guard let node = tree.currentNode else {
+            return
+        }
         
-        if let node = tree.currentNode {
-            stopVoiceOver()
-            
-            nodeView.node = node
-            
-            // Background image
-            if let backgroundImagePath = tree.backgroundImageURL?.path {
-                nodeView.backgroundImage = UIImage(contentsOfFile: backgroundImagePath)
-            }
-            
-            // Background audio - change only if not empty and different
-            if let currentURL = backgroundAudioPlayer?.url {
-                if let newURL = tree.backgroundAudioURL {
-                    if newURL != currentURL {
-                        backgroundAudioPlayer?.stop()
-                        backgroundAudioPlayer = nil
-                        
-                        loadBackgroundAudioInTree(tree)
-                    }
+        stopVoiceOver()
+        
+        nodeView.node = node
+        nodeView.hintsDictionary = tree.hintsDictionary
+        nodeView.hintsTextViewDelegate = self
+        
+        // Background image
+        if let backgroundImagePath = tree.backgroundImageURL?.path {
+            nodeView.backgroundImage = UIImage(contentsOfFile: backgroundImagePath)
+        }
+        
+        // Background audio - change only if not empty and different
+        if let currentURL = backgroundAudioPlayer?.url {
+            if let newURL = tree.backgroundAudioURL {
+                if newURL != currentURL {
+                    backgroundAudioPlayer?.stop()
+                    backgroundAudioPlayer = nil
+                    
+                    loadBackgroundAudioInTree(tree)
                 }
-            } else {
-                // If current URL is empty, attempt load
-                loadBackgroundAudioInTree(tree)
             }
-            
-            // Voice-over
-            if voiceOverOn {
-                startVoiceOverInTree(tree)
-            }
+        } else {
+            // If current URL is empty, attempt load
+            loadBackgroundAudioInTree(tree)
+        }
+        
+        // Voice-over
+        if voiceOverOn {
+            startVoiceOverInTree(tree)
         }
     }
     
@@ -304,5 +307,17 @@ class TreeViewController: UIViewController {
         default:
             break
         }
+    }
+}
+
+extension TreeViewController: HintsTextViewDelegate {
+    func hintsTextView(textView: HintsTextView, didTapString: String, withHint hint: String) {
+        let alertController = UIAlertController(title: "Word Hint", message: hint, preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        alertController.addAction(okAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
 }

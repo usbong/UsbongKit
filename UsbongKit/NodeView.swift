@@ -69,6 +69,11 @@ public class NodeView: UIView {
         }
     }
     
+    // MARK: Hints dictionary
+    public var hintsDictionary: [String: String] = [:]
+    public var hintsColor = UIColor(red: 0.6, green: 0.56, blue: 0.36, alpha: 1)
+    public weak var hintsTextViewDelegate: HintsTextViewDelegate?
+    
     // MARK: Background image
     public var backgroundImage: UIImage? {
         get {
@@ -90,7 +95,8 @@ public class NodeView: UIView {
                
                 attributedText.addAttributes(textAttributesForModule(textModule), range: NSRange(location: 0, length: attributedText.length))
                 
-                reusedCell.titleTextView.attributedText = attributedText
+                reusedCell.titleTextView.attributedText = attributedText.attributedStringWithHints(hintsDictionary, withColor: hintsColor)
+                reusedCell.titleTextView.hintsTextViewDelegate = hintsTextViewDelegate
                 
                 cell = reusedCell
             }

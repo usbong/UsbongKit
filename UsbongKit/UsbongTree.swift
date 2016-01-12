@@ -17,6 +17,7 @@ public class UsbongTree {
     public var currentLanguage: String {
         didSet {
             reloadCurrentTaskNode()
+            loadHintsDictionary()
         }
     }
     public var currentLanguageCode: String {
@@ -70,6 +71,7 @@ public class UsbongTree {
     
     internal let languageXMLURLs: [NSURL]
     internal let hintsXMLURLs: [NSURL]
+    public private(set) var hintsDictionary: [String: String] = [:]
     
     private let treeXMLIndexer: XMLIndexer
     
@@ -108,7 +110,7 @@ public class UsbongTree {
         
         // Fetch URLs for language XMLs
         let transURL = treeRootURL.URLByAppendingPathComponent("trans", isDirectory: true)
-        self.languageXMLURLs = (try? fileManager.contentsOfDirectoryAtURL(transURL,
+        languageXMLURLs = (try? fileManager.contentsOfDirectoryAtURL(transURL,
                 includingPropertiesForKeys: nil, options: .SkipsSubdirectoryDescendants)) ?? []
         
         // Set available languages and also include base language
@@ -127,9 +129,9 @@ public class UsbongTree {
         
         // Fetch URLs for hints XMLs
         let hintsURL = treeRootURL.URLByAppendingPathComponent("hints", isDirectory: true)
-        self.hintsXMLURLs = (try? fileManager.contentsOfDirectoryAtURL(hintsURL,
+        hintsXMLURLs = (try? fileManager.contentsOfDirectoryAtURL(hintsURL,
                 includingPropertiesForKeys: nil, options: .SkipsSubdirectoryDescendants)) ?? []
-        
+        loadHintsDictionary()
         
         // Fetch starting task node
         if let element = processDefinitionIndexer[XMLIdentifier.startState][XMLIdentifier.transition].element {
@@ -337,6 +339,33 @@ public class UsbongTree {
         }
         
         return translatedText
+    }
+    
+    // MARK: Hints
+    
+    private func loadHintsDictionary() {
+        hintsDictionary.removeAll()
+        for url in hintsXMLURLs {
+            // Check if file name is equal to language
+            let name = url.URLByDeletingPathExtension?.lastPathComponent ?? "Unknown"
+            if currentLanguage == name {
+                var hints = [String: String]()
+                
+                // Fetch hints from XML
+                let hintsXML = SWXMLHash.parse(NSData(contentsOfURL: url) ?? NSData())
+                let resources = hintsXML[XMLIdentifier.resources]
+                
+                let stringXMLIndexers = resources[XMLIdentifier.string].all
+                for stringXMLIndexer in stringXMLIndexers {
+                    if let key = stringXMLIndexer.element?.attributes[XMLIdentifier.name], let value = stringXMLIndexer.element?.text {
+                        hints[key] = value
+                    }
+                }
+                
+                hintsDictionary = hints
+                break
+            }
+        }
     }
 }
 
