@@ -113,6 +113,24 @@ public extension PlayableTree where Self: UIViewController {
         
         presentViewController(actionController, animated: true, completion: nil)
     }
+    
+    func showChooseLanguageScreen() {
+        if let tree = self.tree {
+            let languagesTableVC = LanguagesTableViewController()
+            let navVC = UINavigationController(rootViewController: languagesTableVC)
+            
+            languagesTableVC.languages = tree.availableLanguages
+            languagesTableVC.selectedLanguage = tree.currentLanguage
+            languagesTableVC.didSelectLanguageCompletion = { selectedLanguage in
+                tree.currentLanguage = selectedLanguage
+                
+                self.reloadNode()
+            }
+            
+            navVC.modalPresentationStyle = .FormSheet
+            presentViewController(navVC, animated: true, completion: nil)
+        }
+    }
 }
 
 public extension PlayableTree {

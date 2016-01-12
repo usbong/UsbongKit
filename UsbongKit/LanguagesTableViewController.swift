@@ -23,13 +23,18 @@ class LanguagesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: Selector("dismiss:"))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func dismiss(sender: AnyObject?) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -41,7 +46,12 @@ class LanguagesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell: UITableViewCell
+        if let reusedCell = tableView.dequeueReusableCellWithIdentifier("defaultCell") {
+            cell = reusedCell
+        } else {
+            cell = UITableViewCell(style: .Default, reuseIdentifier: "defaultCell")
+        }
         
         let language = languages[indexPath.row]
         cell.textLabel?.text = language

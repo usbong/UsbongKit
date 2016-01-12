@@ -70,36 +70,4 @@ class TreeViewController: UIViewController, PlayableTree, HintsTextViewDelegate 
             }
         }
     }
-    
-    // MARK: Functions
-    
-    func showChooseLanguageScreen() {
-        performSegueWithIdentifier("presentLanguages", sender: self)
-    }
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let identifier = segue.identifier else {
-            return
-        }
-        
-        switch identifier {
-        case "presentLanguages":
-            if let languagesTableVC = (segue.destinationViewController as? UINavigationController)?.topViewController as? LanguagesTableViewController {
-                if let tree = self.tree {
-                    languagesTableVC.languages = tree.availableLanguages
-                    languagesTableVC.selectedLanguage = tree.currentLanguage
-                    languagesTableVC.didSelectLanguageCompletion = { selectedLanguage in
-                        tree.currentLanguage = selectedLanguage
-                        
-                        self.reloadNode()
-                    }
-                }
-            }
-        default:
-            break
-        }
-    }
 }
