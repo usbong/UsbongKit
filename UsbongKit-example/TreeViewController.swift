@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-@testable import UsbongKit
+import UsbongKit
 
 class TreeViewController: UIViewController {
     
