@@ -53,7 +53,7 @@ public class UsbongTree {
                         guard let selectedIndex = module.selectedIndex else {
                             break
                         }
-                        print(module.options[selectedIndex])
+                        
                         return module.options[selectedIndex]
                     default:
                         break
@@ -153,7 +153,6 @@ public class UsbongTree {
         var node: Node = TextNode(text: "Unknown Node")
         if let (nodeIndexer, type) = nodeIndexerAndTypeWithName(taskNodeName) {
             let nameInfo = XMLNameInfo(name: taskNodeName, language: currentLanguage, treeRootURL: treeRootURL)
-            print(nameInfo.type)
             
             // Get urls for assets
             backgroundAudioURL = nameInfo.backgroundAudioURL

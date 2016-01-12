@@ -214,7 +214,6 @@ public extension PlayableTree {
             let audioPlayer = try AVAudioPlayer(contentsOfURL: voiceOverAudioURL)
             audioPlayer.prepareToPlay()
             audioPlayer.play()
-            print("Playing voice-over audio...")
             
             voiceOverAudioPlayer = audioPlayer
             return true
