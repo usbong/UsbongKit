@@ -1,7 +1,7 @@
 import UIKit
 
 public class NodeView: UIView {
-    private let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.Plain)
+    public let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.Plain)
     private let backgroundImageView = UIImageView(frame: CGRect.zero)
     
     public var node: Node = TextNode(text: "No Node") {
