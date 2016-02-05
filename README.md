@@ -5,11 +5,14 @@ UsbongKit is a framework that contains the main components for Usbong.
 
 # To-do
 
-- [ ] Create example app using a sample `.utree` file
+- [x] Create example app using a sample `.utree` file
+- [ ] Add documentation
+- [ ] CocoaPods support
+- [ ] Possibly separate Nodes into a separate framework (NodeKit)
 
 # License
 
-   Copyright 2015 Usbong Social Systems, Inc.
+   Copyright 2016 Usbong Social Systems, Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
