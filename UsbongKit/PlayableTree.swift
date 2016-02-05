@@ -37,6 +37,10 @@ public protocol PlayableTree: class {
     func stopVoiceOverAudio()
     func startTextToSpeech()
     func stopTextToSpeech()
+    
+    // Dismiss
+    /// If `true`, receiver is dismissed if next node is end state, otherwise, it shows end state.
+    var shouldDismissWhenNextNodeIsEndState: Bool { get }
 }
 
 public extension PlayableTree where Self: UIViewController {
@@ -60,6 +64,7 @@ public extension PlayableTree where Self: UIViewController {
             return
         }
         
+        // Do not transition if tree prevents it
         if tree.shouldPreventTransitionToNextTaskNode {
             // Present no selection alert
             let alertController = UIAlertController(title: "No Selection", message: "Please select one of the choices", preferredStyle: .Alert)
@@ -68,7 +73,16 @@ public extension PlayableTree where Self: UIViewController {
             
             presentViewController(alertController, animated: true, completion: nil)
             return
-        } else if !tree.nextNodeIsAvailable {
+        }
+        
+        // Dismiss if next node is end state and if PlayableTree says it should dismiss when next node is end state
+        if tree.nextNodeIsEndState && shouldDismissWhenNextNodeIsEndState {
+            dismissViewControllerAnimated(true, completion: nil)
+            return
+        }
+        
+        // Dismiss if next node is not available
+        if !tree.nextNodeIsAvailable {
             dismissViewControllerAnimated(true, completion: nil)
             return
         }
@@ -273,5 +287,9 @@ public extension PlayableTree {
         if speechSynthesizer.speaking {
             speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
         }
+    }
+    
+    var shouldDismissWhenNextNodeIsEndState: Bool {
+        return true
     }
 }
