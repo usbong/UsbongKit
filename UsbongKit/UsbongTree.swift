@@ -33,6 +33,7 @@ public class UsbongTree {
     
     internal private(set) var checklistTargetNumberOfTicks = 0
     internal private(set) var currentTransitionInfo: [String: String] = [:]
+    internal var transitionNames: [String] = []
     internal var currentTargetTransitionName: String {
         get {
             // If current task node type is radio buttons, ignore selected module (transition to any)
@@ -79,6 +80,7 @@ public class UsbongTree {
         return treeXMLIndexer[XMLIdentifier.processDefinition]
     }
     
+    // Current node is stored so that it isn't computed/fetched everytime it's being accessed
     public internal(set) var currentNode: Node?
     
     public init(treeRootURL: NSURL) {

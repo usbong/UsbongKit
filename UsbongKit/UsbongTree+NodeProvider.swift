@@ -21,18 +21,31 @@ extension UsbongTree: NodeProvider {
     }
     
     public func transitionToNextNode() -> Bool {
-        guard let name = nextTaskNodeName else {
+        let transitionName = currentTargetTransitionName
+        guard let nextTaskNodeName = currentTransitionInfo[transitionName] else {
             return false
         }
         
-        currentNode = nodeWithName(name)
-        taskNodeNames.append(name)
+        // Make current node to next task node
+        currentNode = nodeWithName(nextTaskNodeName)
+        
+        // Append task node name to array
+        taskNodeNames.append(nextTaskNodeName)
+        
+        // Append transition name to array
+        transitionNames.append(transitionName)
         
         return true
     }
     public func transitionToPreviousNode() -> Bool {
         if previousNodeIsAvailable {
+            // Remove last transition name from array
+            transitionNames.removeLast()
+            
+            // Remove last task node name from array
             taskNodeNames.removeLast()
+            
+            // Reload current task node based on taskNodeNames array
             reloadCurrentTaskNode()
             
             return true
