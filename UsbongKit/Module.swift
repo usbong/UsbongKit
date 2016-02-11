@@ -114,23 +114,6 @@ public class TextInputModule: Module {
     public var textInput: String
     public var multipleLine: Bool // true: TextArea
     
-    public var unit: String? // Not nil: with unit
-    
-    private var _numerical: Bool = false
-    public var numerical: Bool {
-        get {
-            if unit == nil {
-                return _numerical
-            } else {
-                // Always return true when unit is not empty (always numerical when there is a unit provided
-                return true
-            }
-        }
-        set {
-            _numerical = newValue
-        }
-    }
-    
     /// Create `TextInputModule` with specified `mulitpleLine`
     public init(textInput: String = "", multipleLine: Bool) {
         self.textInput = textInput
@@ -140,11 +123,5 @@ public class TextInputModule: Module {
     /// Create single line `TextInputModule`
     public convenience init(textInput: String = "") {
         self.init(textInput: textInput, multipleLine: false)
-    }
-    
-    /// Create single line `TextInputModule` with unit
-    public convenience init(textInput: String = "", unit: String) {
-        self.init(textInput: textInput)
-        self.unit = unit
     }
 }
