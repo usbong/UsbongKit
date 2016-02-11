@@ -20,7 +20,7 @@
 
 import UIKit
 
-public class TextTableViewCell: UITableViewCell {
+public class TextTableViewCell: UITableViewCell, NibReusable {
 
     @IBOutlet public weak var titleTextView: HintsTextView!
     override public func awakeFromNib() {

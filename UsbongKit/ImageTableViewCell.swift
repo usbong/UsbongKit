@@ -20,7 +20,7 @@
 
 import UIKit
 
-public class ImageTableViewCell: UITableViewCell {
+public class ImageTableViewCell: UITableViewCell, NibReusable {
 
     @IBOutlet public weak var customImageView: UIImageView!
     

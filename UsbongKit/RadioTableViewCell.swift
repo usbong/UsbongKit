@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class RadioTableViewCell: UITableViewCell {
+public class RadioTableViewCell: UITableViewCell, NibReusable {
 
     @IBOutlet public weak var radioButton: RadioButton!
     @IBOutlet public weak var titleLabel: UILabel!

@@ -49,13 +49,10 @@ public class NodeView: UIView {
         
         addSubview(tableView)
         
-        let nibsWithIdentifiers = [
-            "Text": UINib(nibName: "TextTableViewCell", bundle: NSBundle(forClass: TextTableViewCell.self)),
-            "Image": UINib(nibName: "ImageTableViewCell", bundle: NSBundle(forClass: ImageTableViewCell.self)),
-            "Radio": UINib(nibName: "RadioTableViewCell", bundle: NSBundle(forClass: RadioTableViewCell.self)),
-            "Checkbox": UINib(nibName: "CheckboxTableViewCell", bundle: NSBundle(forClass: CheckboxTableViewCell.self))
-        ]
-        registerNibsWithIdentifiers(nibsWithIdentifiers)
+        tableView.registerReusableCell(TextTableViewCell)
+        tableView.registerReusableCell(ImageTableViewCell)
+        tableView.registerReusableCell(RadioTableViewCell)
+        tableView.registerReusableCell(CheckboxTableViewCell)
     }
     
     // MARK: Reusable Nibs
@@ -82,73 +79,6 @@ public class NodeView: UIView {
         set {
             backgroundImageView.image = newValue
         }
-    }
-    
-    // MARK: Cells
-    public func tableView(tableView: UITableView, cellForModule module: Module, andRow row: Int) -> UITableViewCell? {
-        var cell: UITableViewCell? = nil
-        switch module {
-        case let textModule as TextModule:
-            if let reusedCell = tableView.dequeueReusableCellWithIdentifier("Text") as? TextTableViewCell {
-                
-                let attributedText = NSMutableAttributedString(string: textModule.text)
-               
-                attributedText.addAttributes(textAttributesForModule(textModule), range: NSRange(location: 0, length: attributedText.length))
-                
-                reusedCell.titleTextView.attributedText = attributedText.attributedStringWithHints(hintsDictionary, withColor: hintsColor)
-                reusedCell.titleTextView.hintsTextViewDelegate = hintsTextViewDelegate
-                
-                cell = reusedCell
-            }
-        case let imageModule as ImageModule:
-            if let reusedCell = tableView.dequeueReusableCellWithIdentifier("Image") as? ImageTableViewCell {
-                reusedCell.customImageView.image = imageModule.image
-                
-                cell = reusedCell
-            }
-        case let radioButtonsModule as RadioButtonsModule:
-            let radioCell = UINib(nibName: "RadioTableViewCell", bundle: NSBundle(forClass: RadioTableViewCell.self)).instantiateWithOwner(nil, options: nil).first as! RadioTableViewCell
-            
-            radioCell.titleLabel.text = radioButtonsModule.options[row]
-            radioCell.radioButtonSelected = (row == radioButtonsModule.selectedIndex)
-            
-            cell = radioCell
-            
-            // Reuse causes selection state to be reused
-            /*
-            if let reusedCell = tableView.dequeueReusableCellWithIdentifier("Radio") as? RadioTableViewCell {
-                reusedCell.titleLabel.text = radioButtonsModule.options[row]
-                
-                reusedCell.radioButtonSelected = (row == radioButtonsModule.selectedIndex)
-                
-                cell = reusedCell
-            }
-            */
-        case let checkboxesModule as CheckboxesModule:
-            if let reusedCell = tableView.dequeueReusableCellWithIdentifier("Checkbox") as? CheckboxTableViewCell {
-                reusedCell.titleLabel.text = checkboxesModule.options[row]
-                
-                reusedCell.checkboxButtonSelected = checkboxesModule.selectedIndices.contains(row)
-                
-                cell = reusedCell
-            }
-        case let listModule as ListModule:
-            if let reusedCell = tableView.dequeueReusableCellWithIdentifier("Text") as? TextTableViewCell {
-                let attributedText = NSMutableAttributedString(string: listModule.options[row])
-                
-                attributedText.addAttributes(textAttributesForModule(listModule), range: NSRange(location: 0, length: attributedText.length))
-                
-                reusedCell.titleTextView.attributedText = attributedText
-                
-                cell = reusedCell
-            }
-        default:
-            break
-        }
-        
-        cell?.backgroundColor = UIColor.clearColor()
-        
-        return cell
     }
     
     func textAttributesForModule(module: Module) -> [String: AnyObject] {
@@ -183,20 +113,59 @@ extension NodeView: UITableViewDataSource {
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        guard let cell = self.tableView(tableView, cellForModule: node.modules[indexPath.section], andRow: indexPath.row) else {
-            // Default cell
-            let defaultCell: UITableViewCell
+        let module = node.modules[indexPath.section]
+        
+        let cell: UITableViewCell
+        
+        switch module {
+        case let textModule as TextModule:
+            let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as TextTableViewCell
+            
+            let attributedText = NSMutableAttributedString(string: textModule.text)
+            attributedText.addAttributes(textAttributesForModule(textModule), range: NSRange(location: 0, length: attributedText.length))
+            
+            reusedCell.titleTextView.attributedText = attributedText.attributedStringWithHints(hintsDictionary, withColor: hintsColor)
+            reusedCell.titleTextView.hintsTextViewDelegate = hintsTextViewDelegate
+            
+            cell = reusedCell
+        case let imageModule as ImageModule:
+            let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as ImageTableViewCell
+            reusedCell.customImageView.image = imageModule.image
+            
+            cell = reusedCell
+        case let radioButtonsModule as RadioButtonsModule:
+            let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as RadioTableViewCell
+            
+            reusedCell.titleLabel.text = radioButtonsModule.options[indexPath.row]
+            reusedCell.radioButtonSelected = (indexPath.row == radioButtonsModule.selectedIndex)
+            
+            cell = reusedCell
+        case let checkboxesModule as CheckboxesModule:
+            let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as CheckboxTableViewCell
+            reusedCell.titleLabel.text = checkboxesModule.options[indexPath.row]
+            reusedCell.checkboxButtonSelected = checkboxesModule.selectedIndices.contains(indexPath.row)
+            
+            cell = reusedCell
+        case let listModule as ListModule:
+            let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as TextTableViewCell
+
+            let attributedText = NSMutableAttributedString(string: listModule.options[indexPath.row])
+            attributedText.addAttributes(textAttributesForModule(listModule), range: NSRange(location: 0, length: attributedText.length))
+            
+            reusedCell.titleTextView.attributedText = attributedText
+            
+            cell = reusedCell
+        default:
             if let reusedCell = tableView.dequeueReusableCellWithIdentifier("defaultCell") {
-                defaultCell = reusedCell
+                cell = reusedCell
             } else {
-                defaultCell = UITableViewCell(style: .Default, reuseIdentifier: "defaultCell")
+                cell = UITableViewCell(style: .Default, reuseIdentifier: "defaultCell")
             }
             
-            defaultCell.textLabel?.text = "Unknown"
-            defaultCell.backgroundColor = UIColor.clearColor()
-            
-            return defaultCell
+            cell.textLabel?.text = "Unknown Module"
         }
+        
+        cell.backgroundColor = UIColor.clearColor()
         
         return cell
     }

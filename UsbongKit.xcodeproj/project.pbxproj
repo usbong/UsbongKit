@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CFA624D21C6C49BD0071301D /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA624D11C6C49BD0071301D /* Reusable.swift */; };
 		CFC404311BEE4319000658E7 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
 		CFC404321BEE4319000658E7 /* UsbongKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFC404361BEE4350000658E7 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA634191BDBD1F800C079B2 /* Crypto.framework */; };
@@ -106,6 +107,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CFA624D11C6C49BD0071301D /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Usbong iOS.utree"; sourceTree = "<group>"; };
 		DF0D9ACF1C36B1570048B8DF /* UsbongLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongLanguage.swift; sourceTree = "<group>"; };
 		DF1009691C2FD9C7003A9BDA /* NodesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesTableViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		DF10098E1C2FDA30003A9BDA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CFA624D11C6C49BD0071301D /* Reusable.swift */,
 				DF10096F1C2FDA22003A9BDA /* CheckboxButton.swift */,
 				DF1009701C2FDA22003A9BDA /* RadioButton.swift */,
 				DF1009711C2FDA22003A9BDA /* HintsTextView.swift */,
@@ -586,6 +589,7 @@
 				DF0D9AD01C36B1570048B8DF /* UsbongLanguage.swift in Sources */,
 				DF1009811C2FDA22003A9BDA /* ImageTableViewCell.swift in Sources */,
 				DF10098A1C2FDA22003A9BDA /* Node.swift in Sources */,
+				CFA624D21C6C49BD0071301D /* Reusable.swift in Sources */,
 				DF1009831C2FDA22003A9BDA /* TextTableViewCell.swift in Sources */,
 				DF1009801C2FDA22003A9BDA /* HintsTextView.swift in Sources */,
 				DF25EC6C1C36C554002593EA /* UsbongTree+NodeProvider.swift in Sources */,

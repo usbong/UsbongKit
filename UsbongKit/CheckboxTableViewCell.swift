@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class CheckboxTableViewCell: UITableViewCell {
+public class CheckboxTableViewCell: UITableViewCell, NibReusable {
     @IBOutlet public weak var checkboxButton: CheckboxButton!
     @IBOutlet public weak var titleLabel: UILabel!
     
