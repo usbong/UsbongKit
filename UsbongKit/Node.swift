@@ -101,3 +101,33 @@ extension RadioButtonsNode: SelectionTypeNode {
         return modules[1] as! SelectionTypeModule
     }
 }
+
+public class TextFieldNode: Node {
+    public var numerical: Bool = false
+    
+    /// Create `TextFieldNode` that's not numerical
+    public init(text: String, textInput: String = "") {
+        super.init(modules: [
+            TextModule(text: text),
+            TextInputModule(textInput: textInput)
+            ])
+    }
+    
+    /// Create `TextFieldNode` specifying if numerical
+    public convenience init(text: String, textInput: String = "", numerical: Bool) {
+        self.init(text: text, textInput: textInput)
+        self.numerical = numerical
+    }
+}
+
+public class TextFieldWithUnitNode: Node {
+    public init(text: String, textInput: String = "", unit: String) {
+        super.init(modules: [
+            TextModule(text: text),
+            TextInputModule(textInput: textInput),
+            TextModule(text: unit)
+            ])
+    }
+}
+
+
