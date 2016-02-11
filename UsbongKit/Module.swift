@@ -141,4 +141,10 @@ public class TextInputModule: Module {
     public convenience init(textInput: String = "") {
         self.init(textInput: textInput, multipleLine: false)
     }
+    
+    /// Create single line `TextInputModule` with unit
+    public convenience init(textInput: String = "", unit: String) {
+        self.init(textInput: textInput)
+        self.unit = unit
+    }
 }
