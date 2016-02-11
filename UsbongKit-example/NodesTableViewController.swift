@@ -54,27 +54,7 @@ class NodesTableViewController: UITableViewController {
     }
     
     func titleForNode(node: Node) -> String {
-        let title: String
-        switch node {
-        case is TextNode:
-            title = "TextNode"
-        case is ImageNode:
-            title = "ImageNode"
-        case is TextImageNode:
-            title = "TextImageNode"
-        case is ImageTextNode:
-            title = "ImageTextNode"
-        case is RadioButtonsNode:
-            title = "RadioButtonsNode"
-        case is ChecklistNode:
-            title = "ChecklistNode"
-        case is ClassificationNode:
-            title = "ClassificationNode"
-        default:
-            title = "Custom"
-        }
-        
-        return title
+        return String(node.dynamicType)
     }
     // MARK: - Navigation
 
