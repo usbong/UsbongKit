@@ -109,53 +109,36 @@ public class CheckboxesModule: ListModule, SelectionTypeModule {
     }
 }
 
-public protocol TextInputModule: Module {
-    var textInput: String { get set }
-}
-
-// MARK: - TextField
-public class TextFieldModule: TextInputModule {
-    public var textInput: String = ""
-    public var multiLine: Bool {
-        return false
-    }
+// MARK: - TextInputModule
+public class TextInputModule: Module {
+    public var textInput: String
+    public var multipleLine: Bool // true: TextArea
     
-    public init(textInput: String) {
-        self.textInput = textInput
-    }
-}
-
-// MARK: - TextArea
-public class TextAreaModule: TextFieldModule {
-    override public var multiLine: Bool {
-        return true
-    }
-}
-
-// MARK: - TextField - Numerical
-public class TextFieldNumericalModule: TextInputModule {
-    public var numericInput: Double = 0
+    public var unit: String? // Not nil: with unit
     
-    public init(numericInput: Double) {
-        self.numericInput = numericInput
-    }
-    
-    public var textInput: String {
+    private var _numerical: Bool = false
+    public var numerical: Bool {
         get {
-            return "\(numericInput)"
+            if unit == nil {
+                return _numerical
+            } else {
+                // Always return true when unit is not empty (always numerical when there is a unit provided
+                return true
+            }
         }
         set {
-            numericInput = NSString(string: newValue).doubleValue
+            _numerical = newValue
         }
     }
-}
-
-// MARK: - TextField - with Unit
-public class TextFieldWithUnitModule: TextFieldNumericalModule {
-    public var unit: String = ""
     
-    public init(numericInput: Double, unit: String = "") {
-        super.init(numericInput: numericInput)
-        self.unit = unit
+    /// Create `TextInputModule` with specified `mulitpleLine`
+    public init(textInput: String = "", multipleLine: Bool) {
+        self.textInput = textInput
+        self.multipleLine = multipleLine
+    }
+    
+    /// Create single line `TextInputModule`
+    public convenience init(textInput: String = "") {
+        self.init(textInput: textInput, multipleLine: false)
     }
 }
