@@ -9,7 +9,11 @@
 import UIKit
 
 public class TextFieldTableViewCell: UITableViewCell, NibReusable {
-    @IBOutlet public weak var textField: UITextField!
+    @IBOutlet public weak var textField: UITextField! {
+        didSet {
+            textField.delegate = self
+        }
+    }
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -22,4 +26,15 @@ public class TextFieldTableViewCell: UITableViewCell, NibReusable {
         // Configure the view for the selected state
     }
     
+}
+
+extension TextFieldTableViewCell: UITextFieldDelegate {
+    public func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.textField {
+            textField.resignFirstResponder()
+            return false
+        }
+        
+        return true
+    }
 }
