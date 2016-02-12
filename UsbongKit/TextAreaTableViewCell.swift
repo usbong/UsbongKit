@@ -9,12 +9,13 @@
 import UIKit
 
 public class TextAreaTableViewCell: UITableViewCell, NibReusable {
-
+    @IBOutlet weak var textView: UITextView!
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override public func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

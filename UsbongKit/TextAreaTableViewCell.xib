@@ -28,6 +28,9 @@
                     <constraint firstAttribute="trailing" secondItem="NLE-Hh-h93" secondAttribute="trailing" constant="8" id="kxg-rF-XXY"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="textView" destination="NLE-Hh-h93" id="V8p-HS-Bex"/>
+            </connections>
             <point key="canvasLocation" x="487" y="375.5"/>
         </tableViewCell>
     </objects>
