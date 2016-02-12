@@ -229,7 +229,8 @@ public class UsbongTree {
                 default:
                     break
                 }
-                
+            case .TextField:
+                node = TextFieldNode(text: finalText)
             default:
                 break
             }
