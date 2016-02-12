@@ -153,94 +153,96 @@ public class UsbongTree {
     internal var currentTaskNodeType: TaskNodeType?
     internal func nodeWithName(taskNodeName: String) -> Node {
         var node: Node = TextNode(text: "Unknown Node")
-        if let (nodeIndexer, type) = nodeIndexerAndTypeWithName(taskNodeName) {
-            let nameInfo = XMLNameInfo(name: taskNodeName, language: currentLanguage, treeRootURL: treeRootURL)
+        guard let (nodeIndexer, type) = nodeIndexerAndTypeWithName(taskNodeName) else {
+            return node
+        }
+        
+        let nameInfo = XMLNameInfo(name: taskNodeName, language: currentLanguage, treeRootURL: treeRootURL)
+        
+        // Get urls for assets
+        backgroundAudioURL = nameInfo.backgroundAudioURL
+        backgroundImageURL = nameInfo.backgroundImageURL
+        currentVoiceOverAudioURL = nameInfo.audioURL
+        
+        switch type {
+        case .TaskNode, .Decision:
+            guard let taskNodeType = nameInfo.type else {
+                break
+            }
+            if type == .Decision {
+                currentTaskNodeType = .Link // Decision type is same as link
+            } else {
+                currentTaskNodeType = taskNodeType
+            }
             
-            // Get urls for assets
-            backgroundAudioURL = nameInfo.backgroundAudioURL
-            backgroundImageURL = nameInfo.backgroundImageURL
-            currentVoiceOverAudioURL = nameInfo.audioURL
-            
-            switch type {
-            case .TaskNode, .Decision:
-                guard let taskNodeType = nameInfo.type else {
-                    break
-                }
-                if type == .Decision {
-                    currentTaskNodeType = .Link // Decision type is same as link
-                } else {
-                    currentTaskNodeType = taskNodeType
-                }
+            var fetchedTransitionInfo: [String: String] = [:]
+            let finalText = parseText(translateText(nameInfo.text))
+            switch taskNodeType {
+            case .TextDisplay:
+                node = TextNode(text: finalText)
+            case .ImageDisplay:
+                node = ImageNode(image: nameInfo.image)
+            case .TextImageDisplay:
+                node = TextImageNode(text: finalText, image: nameInfo.image)
+            case .ImageTextDisplay:
+                node = ImageTextNode(image: nameInfo.image, text: finalText)
+            case _ where type == .Decision, .Link, .RadioButtons, .Checklist, .Classification:
+                var tasks: [String] = []
                 
-                var fetchedTransitionInfo: [String: String] = [:]
-                let finalText = parseText(translateText(nameInfo.text))
-                switch taskNodeType {
-                case .TextDisplay:
-                    node = TextNode(text: finalText)
-                case .ImageDisplay:
-                    node = ImageNode(image: nameInfo.image)
-                case .TextImageDisplay:
-                    node = TextImageNode(text: finalText, image: nameInfo.image)
-                case .ImageTextDisplay:
-                    node = ImageTextNode(image: nameInfo.image, text: finalText)
-                case _ where type == .Decision, .Link, .RadioButtons, .Checklist, .Classification:
-                    var tasks: [String] = []
+                // Fetch tasks (and transition info from task elements if link)
+                let taskIndexers = nodeIndexer[XMLIdentifier.task].all
+                taskIndexers.forEach({ taskIndexer in
+                    guard let name = taskIndexer.element?.attributes[XMLIdentifier.name] else {
+                        return
+                    }
+                    var nameComponents = name.componentsSeparatedByString("~")
+                    let key = nameComponents.removeLast()
                     
-                    // Fetch tasks (and transition info from task elements if link)
-                    let taskIndexers = nodeIndexer[XMLIdentifier.task].all
-                    taskIndexers.forEach({ taskIndexer in
-                        guard let name = taskIndexer.element?.attributes[XMLIdentifier.name] else {
-                            return
-                        }
-                        var nameComponents = name.componentsSeparatedByString("~")
-                        let key = nameComponents.removeLast()
-                        
-                        let value = nameComponents.joinWithSeparator("~")
-                        tasks.append(key)
-                        
-                        // Link type need to have more than one component
-                        if taskNodeType == .Link && nameComponents.count > 1 {
-                            
-                            // Add transition info
-                            fetchedTransitionInfo[key] = value
-                        }
-                        
-                    })
+                    let value = nameComponents.joinWithSeparator("~")
+                    tasks.append(key)
                     
-                    // Create node
-                    switch taskNodeType {
-                    case .Checklist:
-                        node = ChecklistNode(text: finalText, options: tasks)
-                        checklistTargetNumberOfTicks = nameInfo.targetNumberOfChoices
-                    case .Classification:
-                        // Add indices
-                        var options: [String] = []
-                        let count = tasks.count
-                        for i in 0..<count {
-                            options.append("\(i+1)) \(tasks[i])")
-                        }
+                    // Link type need to have more than one component
+                    if taskNodeType == .Link && nameComponents.count > 1 {
                         
-                        node = ClassificationNode(text: finalText, list: options)
-                    case _ where type == .Decision, .Link, .RadioButtons:
-                        node = RadioButtonsNode(text: finalText, options: tasks)
-                    default:
-                        break
+                        // Add transition info
+                        fetchedTransitionInfo[key] = value
                     }
                     
+                })
+                
+                // Create node
+                switch taskNodeType {
+                case .Checklist:
+                    node = ChecklistNode(text: finalText, options: tasks)
+                    checklistTargetNumberOfTicks = nameInfo.targetNumberOfChoices
+                case .Classification:
+                    // Add indices
+                    var options: [String] = []
+                    let count = tasks.count
+                    for i in 0..<count {
+                        options.append("\(i+1)) \(tasks[i])")
+                    }
+                    
+                    node = ClassificationNode(text: finalText, list: options)
+                case _ where type == .Decision, .Link, .RadioButtons:
+                    node = RadioButtonsNode(text: finalText, options: tasks)
                 default:
                     break
                 }
                 
-                // Get transition info
-                currentTransitionInfo = fetchedTransitionInfo
-                let additionalTransitionInfo = transitionInfoFromTransitionIndexers(nodeIndexer[XMLIdentifier.transition].all, andTaskNodeType: taskNodeType)
-                for (key, value) in additionalTransitionInfo {
-                    currentTransitionInfo[key] = value
-                }
-            case .EndState:
-                node = TextNode(text: "You've now reached the end")
-                currentTransitionInfo = [:]
+            default:
+                break
             }
+            
+            // Get transition info
+            currentTransitionInfo = fetchedTransitionInfo
+            let additionalTransitionInfo = transitionInfoFromTransitionIndexers(nodeIndexer[XMLIdentifier.transition].all, andTaskNodeType: taskNodeType)
+            for (key, value) in additionalTransitionInfo {
+                currentTransitionInfo[key] = value
+            }
+        case .EndState:
+            node = TextNode(text: "You've now reached the end")
+            currentTransitionInfo = [:]
         }
         
         return node
