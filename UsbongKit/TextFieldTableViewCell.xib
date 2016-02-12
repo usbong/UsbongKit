@@ -17,7 +17,7 @@
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vtV-DY-cof">
                         <rect key="frame" x="8" y="8" width="304" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                     </textField>
                 </subviews>
                 <constraints>
