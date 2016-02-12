@@ -130,4 +130,11 @@ public class TextFieldWithUnitNode: Node {
     }
 }
 
-
+public class TextAreaNode: Node {
+    public init(text: String, textInput: String = "") {
+        super.init(modules: [
+            TextModule(text: text),
+            TextInputModule(textInput: textInput, multipleLine: true)
+            ])
+    }
+}
