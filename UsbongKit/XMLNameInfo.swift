@@ -205,4 +205,5 @@ internal enum TaskNodeType: String {
     case RadioButtons = "radioButtons"
     case Checklist = "checkList"
     case Classification = "classification"
+    case TextField = "textField"
 }
