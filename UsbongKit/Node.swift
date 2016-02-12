@@ -111,6 +111,15 @@ public class TextFieldNode: Node {
     }
 }
 
+public class TextFieldNumericalNode: Node {
+    public init(text: String, textInput: String = "") {
+        super.init(modules: [
+            TextModule(text: text),
+            TextInputModule(textInput: textInput, numerical: true)
+            ])
+    }
+}
+
 public class TextFieldWithUnitNode: Node {
     public init(text: String, textInput: String = "", unit: String) {
         super.init(modules: [
