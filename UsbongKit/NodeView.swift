@@ -53,6 +53,7 @@ public class NodeView: UIView {
         tableView.registerReusableCell(ImageTableViewCell)
         tableView.registerReusableCell(RadioTableViewCell)
         tableView.registerReusableCell(CheckboxTableViewCell)
+        tableView.registerReusableCell(TextFieldTableViewCell)
     }
     
     // MARK: Reusable Nibs
@@ -153,6 +154,15 @@ extension NodeView: UITableViewDataSource {
             attributedText.addAttributes(textAttributesForModule(listModule), range: NSRange(location: 0, length: attributedText.length))
             
             reusedCell.titleTextView.attributedText = attributedText
+            
+            cell = reusedCell
+        case let textInputModule as TextInputModule:
+            let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as TextFieldTableViewCell
+            
+            let attributedText = NSMutableAttributedString(string: textInputModule.textInput)
+            attributedText.addAttributes(textAttributesForModule(textInputModule), range: NSRange(location: 0, length: attributedText.length))
+            
+            reusedCell.textField.attributedText = attributedText
             
             cell = reusedCell
         default:
