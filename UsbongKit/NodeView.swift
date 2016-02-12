@@ -164,6 +164,10 @@ extension NodeView: UITableViewDataSource {
             
             reusedCell.textField.attributedText = attributedText
             
+            if node is TextFieldWithUnitNode {
+                reusedCell.textField.keyboardType = .DecimalPad
+            }
+            
             cell = reusedCell
         default:
             if let reusedCell = tableView.dequeueReusableCellWithIdentifier("defaultCell") {
