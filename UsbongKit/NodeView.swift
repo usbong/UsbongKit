@@ -164,7 +164,7 @@ extension NodeView: UITableViewDataSource {
             
             reusedCell.textField.attributedText = attributedText
             
-            if node is TextFieldWithUnitNode {
+            if textInputModule.numerical {
                 reusedCell.textField.keyboardType = .DecimalPad
             }
             

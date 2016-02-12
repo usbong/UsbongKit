@@ -113,6 +113,7 @@ public class CheckboxesModule: ListModule, SelectionTypeModule {
 public class TextInputModule: Module {
     public var textInput: String
     public var multipleLine: Bool // true: TextArea
+    public var numerical: Bool = false
     
     /// Create `TextInputModule` with specified `mulitpleLine`
     public init(textInput: String = "", multipleLine: Bool) {
@@ -123,5 +124,11 @@ public class TextInputModule: Module {
     /// Create single line `TextInputModule`
     public convenience init(textInput: String = "") {
         self.init(textInput: textInput, multipleLine: false)
+    }
+    
+    /// Create single line `TextInputModule` with specified `numerical`
+    public convenience init(textInput: String = "", numerical: Bool) {
+        self.init(textInput: textInput)
+        self.numerical = numerical
     }
 }
