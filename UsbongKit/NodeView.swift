@@ -54,6 +54,7 @@ public class NodeView: UIView {
         tableView.registerReusableCell(RadioTableViewCell)
         tableView.registerReusableCell(CheckboxTableViewCell)
         tableView.registerReusableCell(TextFieldTableViewCell)
+        tableView.registerReusableCell(TextAreaTableViewCell)
     }
     
     // MARK: Reusable Nibs
@@ -157,18 +158,28 @@ extension NodeView: UITableViewDataSource {
             
             cell = reusedCell
         case let textInputModule as TextInputModule:
-            let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as TextFieldTableViewCell
-            
+            let type = textInputModule.type
             let attributedText = NSMutableAttributedString(string: textInputModule.textInput)
             attributedText.addAttributes(textAttributesForModule(textInputModule), range: NSRange(location: 0, length: attributedText.length))
             
-            reusedCell.textField.attributedText = attributedText
-            
-            if textInputModule.numerical {
-                reusedCell.textField.keyboardType = .DecimalPad
+            switch type {
+            case .SingleLine, .SingleLineNumerical:
+                let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as TextFieldTableViewCell
+                
+                reusedCell.textField.attributedText = attributedText
+                
+                if type == .SingleLineNumerical {
+                    reusedCell.textField.keyboardType = .DecimalPad
+                }
+                
+                cell = reusedCell
+            case .MultipleLine:
+                let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as TextAreaTableViewCell
+                
+                reusedCell.textView.attributedText = attributedText
+                
+                cell = reusedCell
             }
-            
-            cell = reusedCell
         default:
             if let reusedCell = tableView.dequeueReusableCellWithIdentifier("defaultCell") {
                 cell = reusedCell

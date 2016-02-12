@@ -110,25 +110,29 @@ public class CheckboxesModule: ListModule, SelectionTypeModule {
 }
 
 // MARK: - TextInputModule
+public enum TextInputModuleType {
+    case SingleLine
+    case SingleLineNumerical
+    case MultipleLine
+}
+
 public class TextInputModule: Module {
     public var textInput: String
-    public var multipleLine: Bool // true: TextArea
-    public var numerical: Bool = false
+    public var type: TextInputModuleType
     
-    /// Create `TextInputModule` with specified `mulitpleLine`
-    public init(textInput: String = "", multipleLine: Bool) {
+    /// Create `TextInputModule` with specified type
+    public init(textInput: String, type: TextInputModuleType = .SingleLine) {
         self.textInput = textInput
-        self.multipleLine = multipleLine
+        self.type = type
     }
     
-    /// Create single line `TextInputModule`
-    public convenience init(textInput: String = "") {
-        self.init(textInput: textInput, multipleLine: false)
+    /// Create `TextInputModule` with empty text and specified type
+    public convenience init(type: TextInputModuleType) {
+        self.init(textInput: "", type: type)
     }
     
-    /// Create single line `TextInputModule` with specified `numerical`
-    public convenience init(textInput: String = "", numerical: Bool) {
-        self.init(textInput: textInput)
-        self.numerical = numerical
+    /// Create `TextInputModule` with empty text and `.SingleLine` type
+    public convenience init() {
+        self.init(textInput: "")
     }
 }
