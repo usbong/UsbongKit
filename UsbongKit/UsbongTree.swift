@@ -231,6 +231,8 @@ public class UsbongTree {
                 }
             case .TextField:
                 node = TextFieldNode(text: finalText)
+            case .TextFieldWithUnit:
+                node = TextFieldWithUnitNode(text: finalText, unit: nameInfo.unit ?? "")
             default:
                 break
             }

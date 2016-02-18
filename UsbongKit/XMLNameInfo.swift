@@ -194,6 +194,15 @@ internal struct XMLNameInfo {
         
         return nil
     }
+    
+    // MARK: TextField
+    
+    var unit: String? {
+        guard components.count >= 2 else {
+            return nil
+        }
+        return components[1]
+    }
 }
 
 internal enum TaskNodeType: String {
@@ -206,4 +215,5 @@ internal enum TaskNodeType: String {
     case Checklist = "checkList"
     case Classification = "classification"
     case TextField = "textField"
+    case TextFieldWithUnit = "textFieldWithUnit"
 }
