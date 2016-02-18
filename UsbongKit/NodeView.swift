@@ -159,6 +159,10 @@ extension NodeView: UITableViewDataSource {
                 
                 if type == .SingleLineNumerical {
                     reusedCell.textField.keyboardType = .DecimalPad
+                    reusedCell.textField.inputAccessoryView = reusedCell.keyboardAccessoryView
+                } else {
+                    reusedCell.textField.keyboardType = .Default
+                    reusedCell.textField.inputAccessoryView = nil
                 }
                 
                 cell = reusedCell

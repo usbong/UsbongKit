@@ -15,6 +15,28 @@ public class TextFieldTableViewCell: UITableViewCell, NibReusable {
         }
     }
     
+    private static let accessoryViewHeight: CGFloat = 44
+    private lazy var _keyboardAccessoryView: UIView? = {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: self.dynamicType.accessoryViewHeight))
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: Selector("didPressDone:"))
+        
+        toolbar.items = [flexibleSpace, doneBarButton]
+        
+        return toolbar
+    }()
+    
+    public var keyboardAccessoryView: UIView? {
+        get {
+            return _keyboardAccessoryView
+        }
+        set {
+            _keyboardAccessoryView = newValue
+            textField.inputAccessoryView = _keyboardAccessoryView
+        }
+    }
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,6 +48,14 @@ public class TextFieldTableViewCell: UITableViewCell, NibReusable {
         // Configure the view for the selected state
     }
     
+    public func didPressDone(sender: AnyObject?) {
+        // Ask delegate if should return
+        let shouldReturn: Bool = textField.delegate?.textFieldShouldEndEditing?(textField) ?? true
+        
+        if shouldReturn {
+            textField.resignFirstResponder()
+        }
+    }
 }
 
 extension TextFieldTableViewCell: UITextFieldDelegate {
