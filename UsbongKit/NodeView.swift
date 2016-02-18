@@ -57,17 +57,6 @@ public class NodeView: UIView {
         tableView.registerReusableCell(TextAreaTableViewCell)
     }
     
-    // MARK: Reusable Nibs
-    private func registerNib(nib: UINib?, forCellReuseIdentifier identifier: String) {
-        tableView.registerNib(nib, forCellReuseIdentifier: identifier)
-    }
-    
-    private func registerNibsWithIdentifiers(nibsWithIdentifiers: [String: UINib?]) {
-        for (identifier, nib) in nibsWithIdentifiers {
-            registerNib(nib, forCellReuseIdentifier: identifier)
-        }
-    }
-    
     // MARK: Hints dictionary
     public var hintsDictionary: [String: String] = [:]
     public var hintsColor = UIColor(red: 0.6, green: 0.56, blue: 0.36, alpha: 1)
