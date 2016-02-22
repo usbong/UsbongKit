@@ -102,25 +102,47 @@ extension RadioButtonsNode: SelectionTypeNode {
     }
 }
 
-public class TextFieldNode: Node {
+public protocol TextInputTypeNode {
+    var textInput: String { get set }
+}
+
+public class TextFieldNode: Node, TextInputTypeNode {
     public init(text: String, textInput: String = "") {
         super.init(modules: [
             TextModule(text: text),
             TextInputModule(textInput: textInput)
             ])
     }
+    
+    public var textInput: String {
+        get {
+            return (modules[1] as! TextInputModule).textInput
+        }
+        set {
+            (modules[1] as! TextInputModule).textInput = newValue
+        }
+    }
 }
 
-public class TextFieldNumericalNode: Node {
+public class TextFieldNumericalNode: Node, TextInputTypeNode {
     public init(text: String, textInput: String = "") {
         super.init(modules: [
             TextModule(text: text),
             TextInputModule(textInput: textInput, type: .SingleLineNumerical)
             ])
     }
+    
+    public var textInput: String {
+        get {
+            return (modules[1] as! TextInputModule).textInput
+        }
+        set {
+            (modules[1] as! TextInputModule).textInput = newValue
+        }
+    }
 }
 
-public class TextFieldWithUnitNode: Node {
+public class TextFieldWithUnitNode: Node, TextInputTypeNode {
     public init(text: String, textInput: String = "", unit: String) {
         super.init(modules: [
             TextModule(text: text),
@@ -128,13 +150,31 @@ public class TextFieldWithUnitNode: Node {
             TextModule(text: unit)
             ])
     }
+    
+    public var textInput: String {
+        get {
+            return (modules[1] as! TextInputModule).textInput
+        }
+        set {
+            (modules[1] as! TextInputModule).textInput = newValue
+        }
+    }
 }
 
-public class TextAreaNode: Node {
+public class TextAreaNode: Node, TextInputTypeNode {
     public init(text: String, textInput: String = "") {
         super.init(modules: [
             TextModule(text: text),
             TextInputModule(textInput: textInput, type: .MultipleLine)
             ])
+    }
+    
+    public var textInput: String {
+        get {
+            return (modules[1] as! TextInputModule).textInput
+        }
+        set {
+            (modules[1] as! TextInputModule).textInput = newValue
+        }
     }
 }
