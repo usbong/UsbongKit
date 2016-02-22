@@ -9,11 +9,7 @@
 import UIKit
 
 public class TextFieldTableViewCell: UITableViewCell, NibReusable {
-    @IBOutlet public weak var textField: UITextField! {
-        didSet {
-            textField.delegate = self
-        }
-    }
+    @IBOutlet public weak var textField: UITextField!
     
     private static let accessoryViewHeight: CGFloat = 44
     private lazy var _keyboardAccessoryView: UIView? = {
@@ -55,16 +51,5 @@ public class TextFieldTableViewCell: UITableViewCell, NibReusable {
         if shouldReturn {
             textField.resignFirstResponder()
         }
-    }
-}
-
-extension TextFieldTableViewCell: UITextFieldDelegate {
-    public func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == self.textField {
-            textField.resignFirstResponder()
-            return false
-        }
-        
-        return true
     }
 }

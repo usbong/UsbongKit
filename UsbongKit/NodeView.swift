@@ -156,6 +156,7 @@ extension NodeView: UITableViewDataSource {
                 let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as TextFieldTableViewCell
                 
                 reusedCell.textField.attributedText = attributedText
+                reusedCell.textField.delegate = self
                 
                 if type == .SingleLineNumerical {
                     reusedCell.textField.keyboardType = .DecimalPad
@@ -215,5 +216,12 @@ extension NodeView: UITableViewDelegate {
         default:
             return UITableViewAutomaticDimension
         }
+    }
+}
+
+extension NodeView: UITextFieldDelegate {
+    public func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 }
