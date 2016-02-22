@@ -171,6 +171,7 @@ extension NodeView: UITableViewDataSource {
                 let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as TextAreaTableViewCell
                 
                 reusedCell.textView.attributedText = attributedText
+                reusedCell.textView.delegate = self
                 
                 cell = reusedCell
             }
@@ -237,5 +238,22 @@ extension NodeView: UITextFieldDelegate {
     public func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
+    }
+}
+
+extension NodeView: UITextViewDelegate {
+    public func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        guard let currentNode = node as? TextInputTypeNode else {
+            return true
+        }
+        guard let currentText = textView.text else {
+            return true
+        }
+        
+        // Update text input of current node
+        let finalText = NSString(string: currentText).stringByReplacingCharactersInRange(range, withString: text)
+        currentNode.textInput = finalText
+        
+        return true
     }
 }
