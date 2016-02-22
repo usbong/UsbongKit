@@ -218,4 +218,6 @@ internal enum TaskNodeType: String {
     case TextFieldNumerical = "textFieldNumerical"
     case TextFieldWithUnit = "textFieldWithUnit"
     case TextArea = "textArea"
+    case TextFieldWithAnswer = "textFieldWithAnswer"
+    case TextAreaWithAnswer = "textAreaWithAnswer"
 }
