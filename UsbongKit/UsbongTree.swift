@@ -66,6 +66,16 @@ public class UsbongTree {
             }
         }
     }
+    internal var currentTextInput: String? {
+        get {
+            switch currentNode {
+            case let textInputTypeNode as TextInputTypeNode:
+                return textInputTypeNode.textInput
+            default:
+                return nil
+            }
+        }
+    }
     internal var nextTaskNodeName: String? {
         return currentTransitionInfo[currentTargetTransitionName]
     }
