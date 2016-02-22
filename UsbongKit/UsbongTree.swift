@@ -61,6 +61,23 @@ public class UsbongTree {
                     }
                 }
                 return "Any"
+            case let textInputTypeNode as TextInputTypeNode:
+                guard let taskNodeType = currentTaskNodeType else {
+                    return "Any"
+                }
+                
+                switch taskNodeType {
+                case .TextFieldWithAnswer, .TextAreaWithAnswer:
+                    // Return Yes or No if with answer
+                    if textInputTypeNode.textInput == currentTargetTextInput {
+                        return "Yes"
+                    } else {
+                        return "No"
+                    }
+                default:
+                    // If doesn't have answer, return any
+                    return "Any"
+                }
             default:
                 return "Any"
             }
@@ -76,6 +93,7 @@ public class UsbongTree {
             }
         }
     }
+    internal var currentTargetTextInput: String?
     internal var nextTaskNodeName: String? {
         return currentTransitionInfo[currentTargetTransitionName]
     }
@@ -247,6 +265,19 @@ public class UsbongTree {
                 node = TextFieldWithUnitNode(text: finalText, unit: nameInfo.unit ?? "")
             case .TextArea:
                 node = TextAreaNode(text: finalText)
+            case .TextFieldWithAnswer:
+                let separator = "Answer="
+                var components = finalText.componentsSeparatedByString(separator)
+                
+                // Get answer
+                if components.count > 1 {
+                    currentTargetTextInput = components.removeLast()
+                }
+                
+                // Rejoin
+                let text: String = components.joinWithSeparator(separator)
+                
+                node = TextFieldNode(text: text)
             default:
                 break
             }
