@@ -220,6 +220,20 @@ extension NodeView: UITableViewDelegate {
 }
 
 extension NodeView: UITextFieldDelegate {
+    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        guard let currentNode = node as? TextInputTypeNode else {
+            return true
+        }
+        guard let currentText = textField.text else {
+            return true
+        }
+        
+        // Update text input of current node
+        let finalText = NSString(string: currentText).stringByReplacingCharactersInRange(range, withString: string)
+        currentNode.textInput = finalText
+        
+        return true
+    }
     public func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
