@@ -102,7 +102,7 @@ extension RadioButtonsNode: SelectionTypeNode {
     }
 }
 
-public protocol TextInputTypeNode {
+public protocol TextInputTypeNode: class {
     var textInput: String { get set }
 }
 
