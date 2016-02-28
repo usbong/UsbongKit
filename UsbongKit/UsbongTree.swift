@@ -265,7 +265,7 @@ public class UsbongTree {
                 node = TextFieldWithUnitNode(text: finalText, unit: nameInfo.unit ?? "")
             case .TextArea:
                 node = TextAreaNode(text: finalText)
-            case .TextFieldWithAnswer:
+            case .TextFieldWithAnswer, .TextAreaWithAnswer:
                 let separator = "Answer="
                 var components = finalText.componentsSeparatedByString(separator)
                 
@@ -277,7 +277,8 @@ public class UsbongTree {
                 // Rejoin
                 let text: String = components.joinWithSeparator(separator)
                 
-                node = TextFieldNode(text: text)
+                // Create TextField or TextArea depending on taskNodeType
+                node = (taskNodeType == .TextFieldWithAnswer) ? TextFieldNode(text: text) : TextAreaNode(text: text)
             default:
                 break
             }
