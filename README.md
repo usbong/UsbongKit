@@ -5,10 +5,27 @@ UsbongKit is a framework that contains the main components for Usbong.
 
 # To-do
 
-- [x] Create example app using a sample `.utree` file
 - [ ] Add documentation
 - [ ] CocoaPods support
 - [ ] Possibly separate Nodes into a separate framework (NodeKit)
+
+# Running the Example App
+
+- Make sure you have [carthage](https://github.com/Carthage/Carthage) installed
+- Run `carthage update` in the project
+- Build and run the `UsbongKit-example` target
+
+# Installation
+
+This project can be installed in different ways:
+  - Manual
+    1. Drag-and-drop `UsbongKit.xcodeproj` as sub-project
+    2. Link `UsbongKit.framework` in your project
+  - Framework
+    1. Build the `UsbongKit` framework
+    2. Drag-and-drop `UsbongKit.framework` in your project
+  - [Carthage](https://github.com/carthage/carthage)
+    1. Add `github "usbong/UsbongKit"` in your `Cartfile`
 
 # License
 
