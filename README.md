@@ -17,7 +17,8 @@ UsbongKit is a framework that contains the main components for Usbong.
 
 # Installation
 
-This project can be installed in different ways:
+You can integrate `UsbongKit` in your project in different ways:
+
   - Manual
     1. Drag-and-drop `UsbongKit.xcodeproj` as sub-project
     2. Link `UsbongKit.framework` in your project
