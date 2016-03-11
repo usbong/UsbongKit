@@ -14,6 +14,15 @@ public protocol UsbongAnswersGenerator {
     
     @warn_unused_result
     func generateOutput() -> OutputType
+    
+    @warn_unused_result
+    func generateOutputData() -> NSData?
+}
+
+extension UsbongAnswersGenerator {
+    func generateOutputData() -> NSData? {
+        return nil
+    }
 }
 
 public class UsbongAnswersGeneratorDefaultCSVString: UsbongAnswersGenerator {
@@ -73,11 +82,35 @@ public class UsbongAnswersGeneratorDefaultCSVString: UsbongAnswersGenerator {
         
         return finalString
     }
+    
+    public func generateOutputData() -> NSData? {
+        let string = generateOutput()
+        
+        return string.dataUsingEncoding(NSUTF8StringEncoding)
+    }
 }
 
 public extension UsbongTree {
-    
     func generateOutput<T: UsbongAnswersGenerator>(generatorType: T.Type) -> T.OutputType {
         return generatorType.init(states: usbongNodeStates).generateOutput()
+    }
+    
+    func generateOutputData<T: UsbongAnswersGenerator>(generatorType: T.Type) -> NSData? {
+        return generatorType.init(states: usbongNodeStates).generateOutputData()
+    }
+    
+    func writeOutputData<T: UsbongAnswersGenerator>(generatorType: T.Type, toFilePath path: String, completion: ((success: Bool) -> Void)?) {
+        guard let data = generateOutputData(generatorType) else {
+            completion?(success: false)
+            return
+        }
+        
+        let backgroundQueue = dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)
+        dispatch_async(backgroundQueue) {
+            let writeSuccess = NSFileManager.defaultManager().createFileAtPath(path, contents: data, attributes: nil)
+            dispatch_async(dispatch_get_main_queue()) {
+                completion?(success: writeSuccess)
+            }
+        }
     }
 }
