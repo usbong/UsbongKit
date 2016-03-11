@@ -33,7 +33,7 @@ public class UsbongTree {
     
     internal private(set) var checklistTargetNumberOfTicks = 0
     internal private(set) var currentTransitionInfo: [String: String] = [:]
-    internal var transitionNames: [String] = []
+    internal var usbongNodeStates: [UsbongNodeState] = []
     internal var currentTargetTransitionName: String {
         get {
             // If current task node type is radio buttons, ignore selected module (transition to any)

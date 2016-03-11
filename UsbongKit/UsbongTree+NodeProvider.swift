@@ -26,21 +26,24 @@ extension UsbongTree: NodeProvider {
             return false
         }
         
+        // Create UsbongNodeState (before generating a new node)
+        let state = UsbongNodeState(transitionName: transitionName, node: currentNode, type: currentTaskNodeType)
+        
         // Make current node to next task node
         currentNode = nodeWithName(nextTaskNodeName)
         
         // Append task node name to array
         taskNodeNames.append(nextTaskNodeName)
         
-        // Append transition name to array
-        transitionNames.append(transitionName)
+        // Append state to array
+        usbongNodeStates.append(state)
         
         return true
     }
     public func transitionToPreviousNode() -> Bool {
         if previousNodeIsAvailable {
-            // Remove last transition name from array
-            transitionNames.removeLast()
+            // Remove last state from array
+            usbongNodeStates.removeLast()
             
             // Remove last task node name from array
             taskNodeNames.removeLast()
