@@ -38,7 +38,7 @@ class TreeViewController: UIViewController, PlayableTree, HintsTextViewDelegate 
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,6 +46,11 @@ class TreeViewController: UIViewController, PlayableTree, HintsTextViewDelegate 
     
     deinit {
         stopVoiceOver()
+        
+        // Save csv on exit
+        tree?.saveOutputData(UsbongAnswersGeneratorDefaultCSVString.self) { (success, filePath) in
+            print("Answers saved to \(filePath): \(success)")
+        }
     }
     
     // MARK: - Actions
