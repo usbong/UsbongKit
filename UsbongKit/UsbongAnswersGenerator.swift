@@ -113,4 +113,36 @@ public extension UsbongTree {
             }
         }
     }
+    
+    func saveOutputData<T: UsbongAnswersGenerator>(generatorType: T.Type, completion: ((success: Bool, filePath: String) -> Void)?) {
+        let fileManager = NSFileManager.defaultManager()
+        let urls = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let documentsURL = urls[urls.count - 1]
+        let answersURL = documentsURL.URLByAppendingPathComponent("Answers", isDirectory: true)
+        
+        var isDirectory: ObjCBool = false
+        let fileExists = fileManager.fileExistsAtPath(answersURL.path ?? "", isDirectory: &isDirectory)
+        
+        // If Answers directory doesn't exist (or it exists but not a directory), create directory
+        if !fileExists || (fileExists && !isDirectory.boolValue) {
+            do {
+                try fileManager.createDirectoryAtURL(answersURL, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print("Failed to create Answers directory")
+            }
+        }
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        let fileName = dateFormatter.stringFromDate(NSDate()) + ".csv"
+        
+        guard let targetFilePath = answersURL.URLByAppendingPathComponent(fileName).path else {
+            return
+        }
+        
+        writeOutputData(generatorType, toFilePath: targetFilePath) { (success) -> Void in
+            completion?(success: success, filePath: targetFilePath)
+        }
+    }
 }
