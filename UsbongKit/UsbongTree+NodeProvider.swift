@@ -38,6 +38,10 @@ extension UsbongTree: NodeProvider {
         // Append state to array
         usbongNodeStates.append(state)
         
+        // TODO: Remove debug output
+        // Debug output
+        print(generateOutput(UsbongAnswersGeneratorDefaultCSVString))
+        
         return true
     }
     public func transitionToPreviousNode() -> Bool {
