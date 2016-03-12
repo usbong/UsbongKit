@@ -21,7 +21,8 @@ class NodesTableViewController: UITableViewController {
         TextFieldNode(text: "This is a TextFieldNode"),
         TextFieldNumericalNode(text: "This is a TextFieldNumericalNode"),
         TextFieldWithUnitNode(text: "This is a TextFieldWithUnitNode", unit: "meter(s)"),
-        TextAreaNode(text: "This is a TextAreaNode")
+        TextAreaNode(text: "This is a TextAreaNode"),
+        TimestampNode(text: "This is a time stamp node")
     ]
     
     override func viewDidLoad() {
@@ -75,6 +76,11 @@ class NodesTableViewController: UITableViewController {
                 
                 if let vc = segue.destinationViewController as? NodeViewController {
                     vc.navigationItem.title = titleForNode(selectedNode)
+                    
+                    if let timeStampNode = selectedNode as? TimestampNode {
+                        timeStampNode.date = NSDate()
+                    }
+                    
                     vc.node = selectedNode
                 }
             }
