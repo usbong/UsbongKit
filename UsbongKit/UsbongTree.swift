@@ -279,6 +279,8 @@ public class UsbongTree {
                 
                 // Create TextField or TextArea depending on taskNodeType
                 node = (taskNodeType == .TextFieldWithAnswer) ? TextFieldNode(text: text) : TextAreaNode(text: text)
+            case .TimestampDisplay:
+                node = TimestampNode(text: finalText)
             default:
                 break
             }

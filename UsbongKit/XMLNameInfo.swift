@@ -220,4 +220,5 @@ internal enum TaskNodeType: String {
     case TextArea = "textArea"
     case TextFieldWithAnswer = "textFieldWithAnswer"
     case TextAreaWithAnswer = "textAreaWithAnswer"
+    case TimestampDisplay = "timestampDisplay"
 }
