@@ -8,19 +8,18 @@
 
 import UIKit
 
-class DateTableViewCell: UITableViewCell, NibReusable {
+public class DateTableViewCell: UITableViewCell, NibReusable {
 
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet public weak var datePicker: UIDatePicker!
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override public func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    
 }
