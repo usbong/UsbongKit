@@ -47,6 +47,10 @@ class TreeViewController: UIViewController, PlayableTree, HintsTextViewDelegate 
     deinit {
         stopVoiceOver()
         
+        // Print output
+        let output: String = tree?.generateOutput(UsbongAnswersGeneratorDefaultCSVString.self) ?? ""
+        print("Output: \(output)")
+        
         // Save csv on exit
         tree?.saveOutputData(UsbongAnswersGeneratorDefaultCSVString.self) { (success, filePath) in
             print("Answers saved to \(filePath): \(success)")
