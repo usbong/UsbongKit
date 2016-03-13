@@ -136,3 +136,12 @@ public class TextInputModule: Module {
         self.init(textInput: "")
     }
 }
+
+// MARK: - DateModule
+public class DateModule: Module {
+    public var date: NSDate
+    
+    public init(date: NSDate = NSDate()) {
+        self.date = date
+    }
+}
