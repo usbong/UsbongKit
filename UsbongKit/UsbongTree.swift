@@ -194,14 +194,13 @@ public class UsbongTree {
         
         switch type {
         case .TaskNode, .Decision:
-            guard let taskNodeType = nameInfo.type else {
+            guard var taskNodeType = nameInfo.type else {
                 break
             }
             if type == .Decision {
-                currentTaskNodeType = .Link // Decision type is same as link
-            } else {
-                currentTaskNodeType = taskNodeType
+                taskNodeType = .Link // Decision type is same as link
             }
+            currentTaskNodeType = taskNodeType
             
             var fetchedTransitionInfo: [String: String] = [:]
             let finalText = parseText(translateText(nameInfo.text))
@@ -214,7 +213,28 @@ public class UsbongTree {
                 node = TextImageNode(text: finalText, image: nameInfo.image)
             case .ImageTextDisplay:
                 node = ImageTextNode(image: nameInfo.image, text: finalText)
-            case _ where type == .Decision, .Link, .RadioButtons, .Checklist, .Classification:
+            case .Link where type == .Decision:
+                var tasks: [String] = []
+                
+                let transitionIndexers = nodeIndexer[XMLIdentifier.transition].all
+                
+                // Fetch transition info (which are the same as tasks)
+                for indexer in transitionIndexers {
+                    guard let attributes = indexer.element?.attributes else { continue }
+                    
+                    // Get value of name
+                    let name = attributes[XMLIdentifier.name] ?? "Any"
+                    
+                    // Get value of to
+                    let to = attributes[XMLIdentifier.to] ?? ""
+                    
+                    tasks.append(name)
+                    
+                    fetchedTransitionInfo[name] = to
+                }
+                
+                node = RadioButtonsNode(text: finalText, options: tasks)
+            case .Link, .RadioButtons, .Checklist, .Classification:
                 var tasks: [String] = []
                 
                 // Fetch tasks (and transition info from task elements if link)
@@ -235,7 +255,6 @@ public class UsbongTree {
                         // Add transition info
                         fetchedTransitionInfo[key] = value
                     }
-                    
                 })
                 
                 // Create node
@@ -252,7 +271,7 @@ public class UsbongTree {
                     }
                     
                     node = ClassificationNode(text: finalText, list: options)
-                case _ where type == .Decision, .Link, .RadioButtons:
+                case .Link, .RadioButtons:
                     node = RadioButtonsNode(text: finalText, options: tasks)
                 default:
                     break
@@ -283,15 +302,18 @@ public class UsbongTree {
                 node = TimestampNode(text: finalText)
             case .Date:
                 node = DateNode(text: finalText)
-            default:
-                break
             }
             
             // Get transition info
             currentTransitionInfo = fetchedTransitionInfo
-            let additionalTransitionInfo = transitionInfoFromTransitionIndexers(nodeIndexer[XMLIdentifier.transition].all, andTaskNodeType: taskNodeType)
-            for (key, value) in additionalTransitionInfo {
-                currentTransitionInfo[key] = value
+            
+            // Get additional transition info if not Decision
+            // Decision's transitions were already added in fetchedTransitionInfo
+            if type != .Decision {
+                let additionalTransitionInfo = transitionInfoFromTransitionIndexers(nodeIndexer[XMLIdentifier.transition].all, andTaskNodeType: taskNodeType)
+                for (key, value) in additionalTransitionInfo {
+                    currentTransitionInfo[key] = value
+                }
             }
         case .EndState:
             node = TextNode(text: "You've now reached the end")
