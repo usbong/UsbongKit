@@ -213,3 +213,22 @@ public class TimestampNode: Node {
         }
     }
 }
+
+public class DateNode: Node {
+    public init(text: String, date: NSDate = NSDate()) {
+        
+        super.init(modules: [
+            TextModule(text: text),
+            DateModule(date: date)
+            ])
+    }
+    
+    public var date: NSDate {
+        get {
+            return (modules[1] as! DateModule).date
+        }
+        set {
+            (modules[1] as! DateModule).date = newValue
+        }
+    }
+}
