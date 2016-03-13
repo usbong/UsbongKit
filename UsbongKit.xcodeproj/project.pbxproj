@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CF348C4D1C6D84EF0091BDF7 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF348C4B1C6D84EF0091BDF7 /* TextFieldTableViewCell.swift */; };
 		CF348C4E1C6D84EF0091BDF7 /* TextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF348C4C1C6D84EF0091BDF7 /* TextFieldTableViewCell.xib */; };
+		CF435EFC1C94F22400CEBB6B /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF435EFA1C94F22400CEBB6B /* DateTableViewCell.swift */; };
+		CF435EFD1C94F22400CEBB6B /* DateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF435EFB1C94F22400CEBB6B /* DateTableViewCell.xib */; };
 		CFA298021C932EDF005D127C /* UsbongNodeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA298011C932EDF005D127C /* UsbongNodeState.swift */; };
 		CFA298041C9333A7005D127C /* UsbongAnswersGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA298031C9333A7005D127C /* UsbongAnswersGenerator.swift */; };
 		CFA624D21C6C49BD0071301D /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA624D11C6C49BD0071301D /* Reusable.swift */; };
@@ -115,6 +117,8 @@
 /* Begin PBXFileReference section */
 		CF348C4B1C6D84EF0091BDF7 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		CF348C4C1C6D84EF0091BDF7 /* TextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		CF435EFA1C94F22400CEBB6B /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
+		CF435EFB1C94F22400CEBB6B /* DateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateTableViewCell.xib; sourceTree = "<group>"; };
 		CFA298011C932EDF005D127C /* UsbongNodeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongNodeState.swift; sourceTree = "<group>"; };
 		CFA298031C9333A7005D127C /* UsbongAnswersGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongAnswersGenerator.swift; sourceTree = "<group>"; };
 		CFA624D11C6C49BD0071301D /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -263,6 +267,15 @@
 			name = TextFieldTableViewCell;
 			sourceTree = "<group>";
 		};
+		CF435EFE1C94F22800CEBB6B /* DateTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CF435EFA1C94F22400CEBB6B /* DateTableViewCell.swift */,
+				CF435EFB1C94F22400CEBB6B /* DateTableViewCell.xib */,
+			);
+			name = DateTableViewCell;
+			sourceTree = "<group>";
+		};
 		CFD8EC211C6DCBD400E629CE /* TextAreaTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +304,7 @@
 				DF10096F1C2FDA22003A9BDA /* CheckboxButton.swift */,
 				DF1009701C2FDA22003A9BDA /* RadioButton.swift */,
 				DF1009711C2FDA22003A9BDA /* HintsTextView.swift */,
+				CF435EFE1C94F22800CEBB6B /* DateTableViewCell */,
 				CF348C4A1C6D84CF0091BDF7 /* TextFieldTableViewCell */,
 				CFD8EC211C6DCBD400E629CE /* TextAreaTableViewCell */,
 				CF348C461C6D84AE0091BDF7 /* ImageTableViewCell */,
@@ -603,6 +617,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF1009881C2FDA22003A9BDA /* CheckboxTableViewCell.xib in Resources */,
+				CF435EFD1C94F22400CEBB6B /* DateTableViewCell.xib in Resources */,
 				CFD8EC201C6DCBCF00E629CE /* TextAreaTableViewCell.xib in Resources */,
 				DF1009841C2FDA22003A9BDA /* TextTableViewCell.xib in Resources */,
 				CF348C4E1C6D84EF0091BDF7 /* TextFieldTableViewCell.xib in Resources */,
@@ -673,6 +688,7 @@
 				DF9992B61C44D5B900536F2E /* PlayableTree.swift in Sources */,
 				DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */,
 				DF35E1FB1C44FFC7004E5178 /* LanguagesTableViewController.swift in Sources */,
+				CF435EFC1C94F22400CEBB6B /* DateTableViewCell.swift in Sources */,
 				DF1009891C2FDA22003A9BDA /* Module.swift in Sources */,
 				CFD8EC1F1C6DCBCF00E629CE /* TextAreaTableViewCell.swift in Sources */,
 				DF10098C1C2FDA22003A9BDA /* NodeView.swift in Sources */,
