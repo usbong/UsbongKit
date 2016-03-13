@@ -22,7 +22,8 @@ class NodesTableViewController: UITableViewController {
         TextFieldNumericalNode(text: "This is a TextFieldNumericalNode"),
         TextFieldWithUnitNode(text: "This is a TextFieldWithUnitNode", unit: "meter(s)"),
         TextAreaNode(text: "This is a TextAreaNode"),
-        TimestampNode(text: "This is a time stamp node")
+        TimestampNode(text: "This is a time stamp node"),
+        DateNode(text: "This is a date node")
     ]
     
     override func viewDidLoad() {
