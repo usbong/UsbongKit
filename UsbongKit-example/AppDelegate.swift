@@ -18,21 +18,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         let rootURL = UsbongFileManager.defaultManager().rootURL
-        let userDefaults = NSUserDefaults.standardUserDefaults()
         
-        let didCopySampleTreeKey = "didCopySampleTree"
-        if !userDefaults.boolForKey(didCopySampleTreeKey) {
-            if let sampleTreeURL = NSBundle.mainBundle().URLForResource("Usbong iOS", withExtension: "utree") {
-                let destinationURL = rootURL.URLByAppendingPathComponent("Usbong iOS.utree")
-                do {
-                    try NSFileManager.defaultManager().copyItemAtURL(sampleTreeURL, toURL: destinationURL)
-                    userDefaults.setBool(true, forKey: didCopySampleTreeKey)
-                } catch let error {
-                    print("Sample tree:\n - Failed to copy: \(error)")
+        if let sampleTreeURL = NSBundle.mainBundle().URLForResource("Usbong iOS", withExtension: "utree") {
+            let destinationURL = rootURL.URLByAppendingPathComponent("Usbong iOS.utree")
+            do {
+                try NSFileManager.defaultManager().copyItemAtURL(sampleTreeURL, toURL: destinationURL)
+                print("Successfully copied sample tree")
+            } catch {
+                print("Failed to copy sample tree, attempting to replace")
+                
+                let success = NSData(contentsOfURL: sampleTreeURL)?.writeToURL(destinationURL, atomically: false) ?? false
+                
+                if success {
+                    print("Successfully replaced sample tree")
+                } else {
+                    print("Failed to replaced sample tree ")
                 }
             }
         }
-        
         
         return true
     }
