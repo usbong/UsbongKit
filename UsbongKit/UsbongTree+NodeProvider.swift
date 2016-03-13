@@ -20,6 +20,11 @@ extension UsbongTree: NodeProvider {
         return taskNodeNames.count > 1
     }
     
+    public func saveStateOfLastNode() {
+        let state = UsbongNodeState(transitionName: currentTargetTransitionName, node: currentNode, type: currentTaskNodeType)
+        usbongNodeStates.append(state)
+    }
+    
     public func transitionToNextNode() -> Bool {
         let transitionName = currentTargetTransitionName
         guard let nextTaskNodeName = currentTransitionInfo[transitionName] else {

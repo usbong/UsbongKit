@@ -77,12 +77,18 @@ public extension PlayableTree where Self: UIViewController {
         
         // Dismiss if next node is end state and if PlayableTree says it should dismiss when next node is end state
         if tree.nextNodeIsEndState && shouldDismissWhenNextNodeIsEndState {
+            // Save state of last node
+            tree.saveStateOfLastNode()
+            
             dismissViewControllerAnimated(true, completion: nil)
             return
         }
         
         // Dismiss if next node is not available
         if !tree.nextNodeIsAvailable {
+            // Save state of last node
+            tree.saveStateOfLastNode()
+            
             dismissViewControllerAnimated(true, completion: nil)
             return
         }
