@@ -281,6 +281,8 @@ public class UsbongTree {
                 node = (taskNodeType == .TextFieldWithAnswer) ? TextFieldNode(text: text) : TextAreaNode(text: text)
             case .TimestampDisplay:
                 node = TimestampNode(text: finalText)
+            case .Date:
+                node = DateNode(text: finalText)
             default:
                 break
             }
