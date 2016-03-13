@@ -71,6 +71,13 @@ public class UsbongAnswersGeneratorDefaultCSVString: UsbongAnswersGenerator {
                     let textInput = (state.fields["textInput"] as? String) ?? ""
                     
                     currentEntry += "," + textInput
+                case .Date:
+                    let date = (state.fields["date"] as? NSDate) ?? NSDate()
+                    
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                    
+                    currentEntry += "," + dateFormatter.stringFromDate(date)
                 default:
                     break
                 }

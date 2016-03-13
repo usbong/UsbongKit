@@ -28,5 +28,9 @@ public struct UsbongNodeState {
         if let node = node as? TextInputTypeNode {
             fields["textInput"] = node.textInput
         }
+        
+        if let dateNode = node as? DateNode {
+            fields["date"] = dateNode.date
+        }
     }
 }
