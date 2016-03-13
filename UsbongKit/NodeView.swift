@@ -55,6 +55,7 @@ public class NodeView: UIView {
         tableView.registerReusableCell(CheckboxTableViewCell)
         tableView.registerReusableCell(TextFieldTableViewCell)
         tableView.registerReusableCell(TextAreaTableViewCell)
+        tableView.registerReusableCell(DateTableViewCell)
     }
     
     // MARK: Hints dictionary
@@ -86,6 +87,12 @@ public class NodeView: UIView {
         paragraphStyle.alignment = module is TextModule ? .Center : .Left
         
         return [NSForegroundColorAttributeName: textColor, NSFontAttributeName: font, NSParagraphStyleAttributeName: paragraphStyle]
+    }
+    
+    func didUpdateDatePicker(sender: UIDatePicker) {
+        guard let dateNode = node as? DateNode else { return }
+        
+        dateNode.date = sender.date
     }
 }
 
@@ -175,6 +182,13 @@ extension NodeView: UITableViewDataSource {
                 
                 cell = reusedCell
             }
+        case let dateModule as DateModule:
+            let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as DateTableViewCell
+            
+            reusedCell.datePicker.date = dateModule.date
+            reusedCell.datePicker.addTarget(self, action: Selector("didUpdateDatePicker:"), forControlEvents: .ValueChanged)
+            
+            cell = reusedCell
         default:
             if let reusedCell = tableView.dequeueReusableCellWithIdentifier("defaultCell") {
                 cell = reusedCell
