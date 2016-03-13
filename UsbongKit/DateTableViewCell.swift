@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DateTableViewCell: UITableViewCell {
+class DateTableViewCell: UITableViewCell, NibReusable {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     
