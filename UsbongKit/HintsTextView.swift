@@ -58,7 +58,7 @@ public class HintsTextView: UITextView {
         loadHintTapRecognizer()
     }
     private func loadHintTapRecognizer() {
-        let hintTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("didTapTextView:"))
+        let hintTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(HintsTextView.didTapTextView(_:)))
         self.addGestureRecognizer(hintTapRecognizer)
     }
     

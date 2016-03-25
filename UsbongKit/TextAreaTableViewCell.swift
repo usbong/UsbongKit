@@ -20,7 +20,7 @@ public class TextAreaTableViewCell: UITableViewCell, NibReusable {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: self.dynamicType.accessoryViewHeight))
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: Selector("didPressDone:"))
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(TextAreaTableViewCell.didPressDone(_:)))
         
         toolbar.items = [flexibleSpace, doneBarButton]
         

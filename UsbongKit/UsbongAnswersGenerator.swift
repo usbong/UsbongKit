@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol UsbongAnswersGenerator {
-    typealias OutputType
+    associatedtype OutputType
     init(states: [UsbongNodeState])
     
     @warn_unused_result

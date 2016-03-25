@@ -186,7 +186,7 @@ extension NodeView: UITableViewDataSource {
             let reusedCell = tableView.dequeueReusableCell(indexPath: indexPath) as DateTableViewCell
             
             reusedCell.datePicker.date = dateModule.date
-            reusedCell.datePicker.addTarget(self, action: Selector("didUpdateDatePicker:"), forControlEvents: .ValueChanged)
+            reusedCell.datePicker.addTarget(self, action: #selector(NodeView.didUpdateDatePicker(_:)), forControlEvents: .ValueChanged)
             
             cell = reusedCell
         default:
