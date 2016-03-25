@@ -26,8 +26,6 @@ extension UsbongAnswersGenerator {
 }
 
 public class UsbongAnswersGeneratorDefaultCSVString: UsbongAnswersGenerator {
-    public typealias OutputType = String
-    
     let states: [UsbongNodeState]
     
     public required init(states: [UsbongNodeState]) {
