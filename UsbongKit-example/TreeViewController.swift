@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import UsbongKit
 
-class TreeViewController: UIViewController, PlayableTree, HintsTextViewDelegate {
+class TreeViewController: UIViewController, PlayableTree, AutoPlayableTree, HintsTextViewDelegate {
     
     @IBOutlet weak var previousNextSegmentedControl: UISegmentedControl!
     
@@ -23,6 +23,8 @@ class TreeViewController: UIViewController, PlayableTree, HintsTextViewDelegate 
     lazy var speechSynthesizer = AVSpeechSynthesizer()
     var backgroundAudioPlayer: AVAudioPlayer?
     var voiceOverAudioPlayer: AVAudioPlayer?
+    
+    var lastSpeechUtterance: AVSpeechUtterance?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +79,14 @@ class TreeViewController: UIViewController, PlayableTree, HintsTextViewDelegate 
             default:
                 break
             }
+        }
+    }
+}
+
+extension TreeViewController: AVSpeechSynthesizerDelegate {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
+        if autoPlay && lastSpeechUtterance == utterance {
+            transitionToNextNode()
         }
     }
 }

@@ -276,6 +276,10 @@ public extension PlayableTree {
             return
         }
         
+        let autoPlayableTree = self as? AutoPlayableTree
+        
+        speechSynthesizer.delegate = autoPlayableTree
+        
         for module in node.modules where module is SpeakableTextTypeModule {
             let texts = (module as! SpeakableTextTypeModule).speakableTexts
             
@@ -283,6 +287,8 @@ public extension PlayableTree {
                 let utterance = AVSpeechUtterance(string: text)
                 
                 utterance.voice = AVSpeechSynthesisVoice(language: "en-EN")
+                
+                autoPlayableTree?.lastSpeechUtterance = utterance
                 
                 // Speak
                 speechSynthesizer.speakUtterance(utterance)

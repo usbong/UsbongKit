@@ -45,6 +45,7 @@
 		DF10098B1C2FDA22003A9BDA /* NodeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */; };
 		DF10098C1C2FDA22003A9BDA /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10097D1C2FDA22003A9BDA /* NodeView.swift */; };
 		DF25EC6C1C36C554002593EA /* UsbongTree+NodeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */; };
+		DF28C9711CA6B34B0074776B /* AutoPlayableTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28C9701CA6B34B0074776B /* AutoPlayableTree.swift */; };
 		DF350AD21C2FEECE00A1956E /* UsbongTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF350AD11C2FEECE00A1956E /* UsbongTree.swift */; };
 		DF350AD41C2FEEDB00A1956E /* UsbongFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */; };
 		DF35E1FB1C44FFC7004E5178 /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35E1FA1C44FFC7004E5178 /* LanguagesTableViewController.swift */; };
@@ -145,6 +146,7 @@
 		DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeProvider.swift; sourceTree = "<group>"; };
 		DF10097D1C2FDA22003A9BDA /* NodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
 		DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsbongTree+NodeProvider.swift"; sourceTree = "<group>"; };
+		DF28C9701CA6B34B0074776B /* AutoPlayableTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPlayableTree.swift; sourceTree = "<group>"; };
 		DF350AD11C2FEECE00A1956E /* UsbongTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongTree.swift; sourceTree = "<group>"; };
 		DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongFileManager.swift; sourceTree = "<group>"; };
 		DF35E1FA1C44FFC7004E5178 /* LanguagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewController.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				DF350AD11C2FEECE00A1956E /* UsbongTree.swift */,
 				DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */,
 				DF9992B51C44D5B900536F2E /* PlayableTree.swift */,
+				DF28C9701CA6B34B0074776B /* AutoPlayableTree.swift */,
 				DF0D9ACF1C36B1570048B8DF /* UsbongLanguage.swift */,
 				DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */,
 			);
@@ -686,6 +689,7 @@
 				DF10097F1C2FDA22003A9BDA /* RadioButton.swift in Sources */,
 				DF10097E1C2FDA22003A9BDA /* CheckboxButton.swift in Sources */,
 				DF9992B61C44D5B900536F2E /* PlayableTree.swift in Sources */,
+				DF28C9711CA6B34B0074776B /* AutoPlayableTree.swift in Sources */,
 				DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */,
 				DF35E1FB1C44FFC7004E5178 /* LanguagesTableViewController.swift in Sources */,
 				CF435EFC1C94F22400CEBB6B /* DateTableViewCell.swift in Sources */,
