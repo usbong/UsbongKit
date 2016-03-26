@@ -19,6 +19,14 @@
         <task name="radioButtons"></task>
         <task name="checkList"></task>
         <task name="classification"></task>
+        <task name="textField"></task>
+        <task name="textFieldWithUnit"></task>
+        <task name="textFieldNumerical"></task>
+        <task name="textArea"></task>
+        <task name="textFieldWithAnswer"></task>
+        <task name="textAreaWithAnswer"></task>
+        <task name="timestampDisplay"></task>
+        <task name="date"></task>
         <transition to="radioButtons~I love to play games" name="Any"></transition>
     </task-node>
     
