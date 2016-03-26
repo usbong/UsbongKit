@@ -106,7 +106,7 @@ public extension PlayableTree where Self: UIViewController {
             
             // If toggled to on, start voice-over
             if turnOn {
-                self.startVoiceOverAudio()
+                self.startVoiceOver()
             } else {
                 self.stopVoiceOver()
             }
