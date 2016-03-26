@@ -39,6 +39,17 @@ extension VoiceOverCoordinator: AVSpeechSynthesizerDelegate {
     }
 }
 
+extension VoiceOverCoordinator: AVAudioPlayerDelegate {
+    public func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        guard let tree = playableTree else { return }
+        
+        // If auto-play and is on audio player finished successfully, and is voice over audio player
+        if tree.voiceOverAudioPlayer == player && tree.autoPlay && flag {
+            delegate?.voiceOverCoordinatorDidFinish(self)
+        }
+    }
+}
+
 public protocol VoiceOverCoordinatorDelegate: class {
     func voiceOverCoordinatorDidFinish(coordinator: VoiceOverCoordinator)
 }

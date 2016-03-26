@@ -262,8 +262,18 @@ public extension PlayableTree {
         
         do {
             let audioPlayer = try AVAudioPlayer(contentsOfURL: voiceOverAudioURL)
+            
+            // Get coordingator if playable
+            let coordinator = (self as? AutoPlayableTree)?.voiceOverCoordinator
+            coordinator?.delegate = self as? VoiceOverCoordinatorDelegate
+            
+            // Set audio player delegate
+            audioPlayer.delegate = coordinator
+            
+            // Play
             audioPlayer.prepareToPlay()
             audioPlayer.play()
+            
             
             voiceOverAudioPlayer = audioPlayer
             return true
