@@ -29,20 +29,19 @@ class TreeViewController: UIViewController, PlayableTree, HintsTextViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let url = treeURL {
-            if let treeRootURL = UsbongFileManager.defaultManager().unpackTreeToCacheDirectoryWithTreeURL(url) {
-                self.treeRootURL = treeRootURL
-                print(treeRootURL)
-                
-                tree = UsbongTree(treeRootURL: treeRootURL)
-                
-                navigationItem.title = tree?.title
-                
-                reloadNode()
-            }
-        }
+        guard let url = treeURL else { return }
+        guard let treeRootURL = UsbongFileManager.defaultManager().unpackTreeToCacheDirectoryWithTreeURL(url) else { return }
+        
+        self.treeRootURL = treeRootURL
+        print(treeRootURL)
+        
+        tree = UsbongTree(treeRootURL: treeRootURL)
+        
+        navigationItem.title = tree?.title
+        
+        reloadNode()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
