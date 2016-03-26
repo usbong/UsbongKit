@@ -122,6 +122,7 @@
 		CF435EFA1C94F22400CEBB6B /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		CF435EFB1C94F22400CEBB6B /* DateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateTableViewCell.xib; sourceTree = "<group>"; };
 		CF45F6DD1CA6DD74009F4B62 /* VoiceOverCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceOverCoordinator.swift; sourceTree = "<group>"; };
+		CF45F6E21CA6F2C7009F4B62 /* Usbong iOS.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Usbong iOS.xml"; sourceTree = "<group>"; };
 		CFA298011C932EDF005D127C /* UsbongNodeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongNodeState.swift; sourceTree = "<group>"; };
 		CFA298031C9333A7005D127C /* UsbongAnswersGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongAnswersGenerator.swift; sourceTree = "<group>"; };
 		CFA624D11C6C49BD0071301D /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -280,6 +281,22 @@
 			name = DateTableViewCell;
 			sourceTree = "<group>";
 		};
+		CF45F6DF1CA6F09D009F4B62 /* Tree Contents */ = {
+			isa = PBXGroup;
+			children = (
+				CF45F6E11CA6F2C7009F4B62 /* Usbong iOS.utree */,
+			);
+			path = "Tree Contents";
+			sourceTree = "<group>";
+		};
+		CF45F6E11CA6F2C7009F4B62 /* Usbong iOS.utree */ = {
+			isa = PBXGroup;
+			children = (
+				CF45F6E21CA6F2C7009F4B62 /* Usbong iOS.xml */,
+			);
+			path = "Usbong iOS.utree";
+			sourceTree = "<group>";
+		};
 		CFD8EC211C6DCBD400E629CE /* TextAreaTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +374,7 @@
 				DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */,
 				DF452B511BDE0AFD003EB5C3 /* Info.plist */,
 				CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */,
+				CF45F6DF1CA6F09D009F4B62 /* Tree Contents */,
 			);
 			path = "UsbongKit-example";
 			sourceTree = "<group>";
@@ -458,6 +476,7 @@
 				DF452B401BDE0AFD003EB5C3 /* Frameworks */,
 				DF452B411BDE0AFD003EB5C3 /* Resources */,
 				CFC404351BEE4319000658E7 /* Embed Frameworks */,
+				CF45F6E01CA6F224009F4B62 /* Compress Sample Tree */,
 			);
 			buildRules = (
 			);
@@ -640,6 +659,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CF45F6E01CA6F224009F4B62 /* Compress Sample Tree */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Compress Sample Tree";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "zip -X -r UsbongKit-example/Usbong\\ iOS.utree UsbongKit-example/Tree\\ Contents/Usbong\\ iOS.utree/";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DF452B3F1BDE0AFD003EB5C3 /* Sources */ = {
