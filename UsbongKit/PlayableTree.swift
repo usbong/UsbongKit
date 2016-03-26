@@ -100,26 +100,31 @@ public extension PlayableTree where Self: UIViewController {
     func showAvailableActions(sender: AnyObject?) {
         let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
-        let onOrOffText = voiceOverOn ? "Off" : "On"
-        let speechAction = UIAlertAction(title: "Speech \(onOrOffText)", style: .Default) { (action) -> Void in
-            let turnOn = !self.voiceOverOn
-            
-            // If toggled to on, start voice-over
-            if turnOn {
-                self.startVoiceOver()
-            } else {
-                self.stopVoiceOver()
-            }
-            
-            self.voiceOverOn = turnOn
+        // Voice-over
+        let speechText = "Speech " + (voiceOverOn ? "Off" : "On")
+        let speechAction = UIAlertAction(title: speechText, style: .Default) { (action) -> Void in
+            self.voiceOverOn = !self.voiceOverOn
         }
+        actionController.addAction(speechAction)
+        
+        // Auto-play
+        if let autoPlayableTree = self as? AutoPlayableTree {
+            let autoPlayText = "Auto-play " + (autoPlayableTree.autoPlay ? "Off" : "On")
+            
+            let autoPlayAction = UIAlertAction(title: autoPlayText, style: .Default, handler: { action in
+                autoPlayableTree.autoPlay = !autoPlayableTree.autoPlay
+            })
+            actionController.addAction(autoPlayAction)
+        }
+        
+        // Set Language
         let setLanguageAction = UIAlertAction(title: "Set Language", style: .Default) { (action) -> Void in
             self.showChooseLanguageScreen()
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        
-        actionController.addAction(speechAction)
         actionController.addAction(setLanguageAction)
+        
+        // Cancel
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         actionController.addAction(cancelAction)
         
         // For iPad action sheet behavior (similar to a popover)
@@ -165,6 +170,13 @@ public extension PlayableTree {
         }
         set {
             NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "SpeechOn")
+            
+            // If toggled to on, start voice-over, else, stop
+            if newValue {
+                self.startVoiceOver()
+            } else {
+                self.stopVoiceOver()
+            }
         }
     }
     

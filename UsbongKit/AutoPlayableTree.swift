@@ -23,10 +23,16 @@ public extension AutoPlayableTree {
             if standardUserDefaults.objectForKey("UsbongKit.AutoPlayableTree.autoPlay") == nil {
                 standardUserDefaults.setBool(false, forKey: "UsbongKit.AutoPlayableTree.autoPlay")
             }
+            
             return standardUserDefaults.boolForKey("UsbongKit.AutoPlayableTree.autoPlay")
         }
         set {
             NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "UsbongKit.AutoPlayableTree.autoPlay")
+            
+            // If set to on/true, also turn on voice-over
+            if newValue {
+                voiceOverOn = true
+            }
         }
     }
 }
