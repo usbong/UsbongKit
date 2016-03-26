@@ -474,9 +474,9 @@
 			buildPhases = (
 				DF452B3F1BDE0AFD003EB5C3 /* Sources */,
 				DF452B401BDE0AFD003EB5C3 /* Frameworks */,
+				CF45F6E01CA6F224009F4B62 /* Compress Sample Tree */,
 				DF452B411BDE0AFD003EB5C3 /* Resources */,
 				CFC404351BEE4319000658E7 /* Embed Frameworks */,
-				CF45F6E01CA6F224009F4B62 /* Compress Sample Tree */,
 			);
 			buildRules = (
 			);
@@ -673,7 +673,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "zip -X -r UsbongKit-example/Usbong\\ iOS.utree UsbongKit-example/Tree\\ Contents/Usbong\\ iOS.utree/";
+			shellScript = "cd UsbongKit-example/Tree\\ Contents/\nzip -X -r ../Usbong\\ iOS.utree Usbong\\ iOS.utree/\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
