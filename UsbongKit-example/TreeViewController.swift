@@ -36,6 +36,8 @@ class TreeViewController: UIViewController, PlayableTree, HintsTextViewDelegate,
                 
                 tree = UsbongTree(treeRootURL: treeRootURL)
                 
+                navigationItem.title = tree?.title
+                
                 reloadNode()
             }
         }
