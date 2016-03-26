@@ -1,117 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <process-definition xmlns="" name="Usbong iOS">
-   <start-state name="start-state1">
-      <transition to="textDisplay~Hi! This is an example tree built for Usbong iOS app"></transition>
-   </start-state>
-   
-   <task-node name="textDisplay~Hi! This is an example tree built for Usbong iOS app">
-      <transition to="These are the current implemented features.{br}(Press next to see some samples)" name="Any"></transition>
-   </task-node>
-   
-   <task-node name="These are the current implemented features.{br}(Press next to see some samples)">
-       <task name="textDisplay"></task>
-       <task name="imageDisplay"></task>
-       <task name="textImageDisplay"></task>
-       <task name="imageTextDisplay"></task>
-       <task name="link"></task>
-       <task name="decision"></task>
-       <task name="radioButtons"></task>
-       <task name="checkList"></task>
-       <task name="classification"></task>
-       <transition to="radioButtons~I love to play games" name="Any"></transition>
-   </task-node>
-   
-   <task-node name="radioButtons~I love to play games">
-       <task name="Strongly Disagree"></task>
-       <task name="Moderately Disagree"></task>
-       <task name="Slightly Disagree"></task>
-       <task name="Slightly Agree"></task>
-       <task name="Moderately Agree"></task>
-       <task name="Strongly Agree"></task>
-       <transition to="checkList~1~Choose all that apply:" name="Any"></transition>
-   </task-node>
-   
-   <task-node name="checkList~1~Choose all that apply:">
-       <task name="I like RPG"></task>
-       <task name="I know the game Zork"></task>
-       <task name="Morrowind is one of the best games I played"></task>
-       <task name="I don't like games with a linear story"></task>
-       <transition to="I see you like non-linear games too. Do you want to see the rest of the demo of Usbong's features?" name="Yes"></transition>
-       <transition to="Okay, maybe you don't like non-linear games. Do you want to see the rest of the demo of Usbong's features?" name="No"></transition>
-   </task-node>
-   
-   <decision name="I see you like non-linear games too. Do you want to see the rest of the demo of Usbong's features?">
-       <transition to="link~Choose your class:" name="Yes"></transition>
-       <transition to="textDisplay~Ok. Bye!" name="No"></transition>
-   </decision>
-   
-   <decision name="Okay, maybe you don't like non-linear games. Do you want to see the rest of the demo of Usbong's features?">
-       <transition to="link~Choose your class:" name="Yes"></transition>
-       <transition to="textDisplay~Ok. Bye!" name="No"></transition>
-   </decision>
-   
-   <task-node name="textDisplay~Ok. Bye!">
-       <transition to="end-state1" name="No"></transition>
-   </task-node>
-   
-   <task-node name="link~Choose your class:">
-      <task name="textDisplay~You have chosen to be a warrior. You specialize in Strength.~Warrior"></task>
-      <task name="textDisplay~You have chosen to be a Rogue. You specialize in Stealth.~Rogue"></task>
-      <task name="textDisplay~You have chosen to be a Mage. You specialize in Magic.~Mage"></task>
-      <transition to="textDisplay~You have chosen to be a Mage. You specialize in Magic.~Mage" name="Any"></transition>
-   </task-node>
-
-   <task-node name="textDisplay~You have chosen to be a warrior. You specialize in Strength.">
-      <transition to="textField~What's your name?" name="Any"></transition>
-   </task-node>
-
-   <task-node name="textDisplay~You have chosen to be a Rogue. You specialize in Stealth.">
-      <transition to="textField~What's your name?" name="Any"></transition>
-   </task-node>
-
-   <task-node name="textDisplay~You have chosen to be a Mage. You specialize in Magic.">
-      <transition to="textField~What's your name?" name="Any"></transition>
-   </task-node>
-
-   <task-node name="textField~What's your name?">
-       <transition to="textFieldNumerical~How old are you?" name="Any"></transition>
-   </task-node>
-
-   <task-node name="textFieldNumerical~How old are you?">
-       <transition to="textFieldWithUnit~centimeters~What's your height?" name="Any"></transition>
-   </task-node>
-
+    <start-state name="start-state1">
+        <transition to="textDisplay~Hi! This is an example tree built for Usbong iOS app"></transition>
+    </start-state>
+    
+    <task-node name="textDisplay~Hi! This is an example tree built for Usbong iOS app">
+        <transition to="These are the current implemented features.{br}(Press next to see some samples)" name="Any"></transition>
+    </task-node>
+    
+    <task-node name="These are the current implemented features.{br}(Press next to see some samples)">
+        <task name="textDisplay"></task>
+        <task name="imageDisplay"></task>
+        <task name="textImageDisplay"></task>
+        <task name="imageTextDisplay"></task>
+        <task name="link"></task>
+        <task name="decision"></task>
+        <task name="radioButtons"></task>
+        <task name="checkList"></task>
+        <task name="classification"></task>
+        <transition to="radioButtons~I love to play games" name="Any"></transition>
+    </task-node>
+    
+    <task-node name="radioButtons~I love to play games">
+        <task name="Strongly Disagree"></task>
+        <task name="Moderately Disagree"></task>
+        <task name="Slightly Disagree"></task>
+        <task name="Slightly Agree"></task>
+        <task name="Moderately Agree"></task>
+        <task name="Strongly Agree"></task>
+        <transition to="checkList~1~Choose all that apply:" name="Any"></transition>
+    </task-node>
+    
+    <task-node name="checkList~1~Choose all that apply:">
+        <task name="I like RPG"></task>
+        <task name="I know the game Zork"></task>
+        <task name="Morrowind is one of the best games I played"></task>
+        <task name="I don't like games with a linear story"></task>
+        <transition to="I see you like non-linear games too. Do you want to see the rest of the demo of Usbong's features?" name="Yes"></transition>
+        <transition to="Okay, maybe you don't like non-linear games. Do you want to see the rest of the demo of Usbong's features?" name="No"></transition>
+    </task-node>
+    
+    <decision name="I see you like non-linear games too. Do you want to see the rest of the demo of Usbong's features?">
+        <transition to="link~Choose your class:" name="Yes"></transition>
+        <transition to="textDisplay~Ok. Bye!" name="No"></transition>
+    </decision>
+    
+    <decision name="Okay, maybe you don't like non-linear games. Do you want to see the rest of the demo of Usbong's features?">
+        <transition to="link~Choose your class:" name="Yes"></transition>
+        <transition to="textDisplay~Ok. Bye!" name="No"></transition>
+    </decision>
+    
+    <task-node name="textDisplay~Ok. Bye!">
+        <transition to="end-state1" name="No"></transition>
+    </task-node>
+    
+    <task-node name="link~Choose your class:">
+        <task name="textDisplay~You have chosen to be a warrior. You specialize in Strength.~Warrior"></task>
+        <task name="textDisplay~You have chosen to be a Rogue. You specialize in Stealth.~Rogue"></task>
+        <task name="textDisplay~You have chosen to be a Mage. You specialize in Magic.~Mage"></task>
+        <transition to="textDisplay~You have chosen to be a Mage. You specialize in Magic.~Mage" name="Any"></transition>
+    </task-node>
+    
+    <task-node name="textDisplay~You have chosen to be a warrior. You specialize in Strength.">
+        <transition to="textField~What's your name?" name="Any"></transition>
+    </task-node>
+    
+    <task-node name="textDisplay~You have chosen to be a Rogue. You specialize in Stealth.">
+        <transition to="textField~What's your name?" name="Any"></transition>
+    </task-node>
+    
+    <task-node name="textDisplay~You have chosen to be a Mage. You specialize in Magic.">
+        <transition to="textField~What's your name?" name="Any"></transition>
+    </task-node>
+    
+    <task-node name="textField~What's your name?">
+        <transition to="textFieldNumerical~How old are you?" name="Any"></transition>
+    </task-node>
+    
+    <task-node name="textFieldNumerical~How old are you?">
+        <transition to="textFieldWithUnit~centimeters~What's your height?" name="Any"></transition>
+    </task-node>
+    
     <task-node name="textFieldWithUnit~centimeters~What's your height?">
         <transition to="textArea~Write a short description about yourself." name="Any"></transition>
     </task-node>
-
+    
     <task-node name="textArea~Write a short description about yourself.">
         <transition to="textFieldWithAnswer~What's 1+1?Answer=2" name="Any"></transition>
     </task-node>
-
+    
     <task-node name="textFieldWithAnswer~What's 1+1?Answer=2">
         <transition to="textDisplay~Correct!" name="Yes"></transition>
         <transition to="textDisplay~Incorrect!" name="No"></transition>
     </task-node>
-
+    
     <task-node name="textDisplay~Correct!">
         <transition to="textAreaWithAnswer~Type Hello in the first line, then World in the second.Answer=Hello{br}World" name="Any"></transition>
     </task-node>
-
+    
     <task-node name="textDisplay~Incorrect!">
         <transition to="textAreaWithAnswer~Type Hello in the first line, then World in the second.Answer=Hello{br}World" name="Any"></transition>
     </task-node>
-
+    
     <task-node name="textAreaWithAnswer~Type Hello in the first line, then World in the second.Answer=Hello{br}World">
         <transition to="textDisplay~You did it!" name="Yes"></transition>
         <transition to="textDisplay~There's something wrong with your input." name="No"></transition>
     </task-node>
-
+    
     <task-node name="textDisplay~You did it!">
         <transition to="timestampDisplay~Current time is now:" name="Any"></transition>
     </task-node>
-
+    
     <task-node name="textDisplay~There's something wrong with your input.">
         <transition to="timestampDisplay~Current time is now:" name="Any"></transition>
     </task-node>
@@ -123,6 +123,6 @@
     <task-node name="date~Today's date is:">
         <transition to="end-state1" name="Any"></transition>
     </task-node>
-
-   <end-state name="end-state1"></end-state>
+    
+    <end-state name="end-state1"></end-state>
 </process-definition>
