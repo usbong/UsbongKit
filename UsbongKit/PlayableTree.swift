@@ -276,9 +276,12 @@ public extension PlayableTree {
             return
         }
         
-        let autoPlayableTree = self as? AutoPlayableTree
+        // Get coordinator if AutoPlayable
+        let coordinator = (self as? AutoPlayableTree)?.voiceOverCoordinator
+        coordinator?.delegate = self as? VoiceOverCoordinatorDelegate
         
-        speechSynthesizer.delegate = autoPlayableTree
+        // Set speech synthesizer delegate to coordinator
+        speechSynthesizer.delegate = coordinator
         
         for module in node.modules where module is SpeakableTextTypeModule {
             let texts = (module as! SpeakableTextTypeModule).speakableTexts
@@ -288,7 +291,7 @@ public extension PlayableTree {
                 
                 utterance.voice = AVSpeechSynthesisVoice(language: "en-EN")
                 
-                autoPlayableTree?.lastSpeechUtterance = utterance
+                coordinator?.lastSpeechUtterance = utterance
                 
                 // Speak
                 speechSynthesizer.speakUtterance(utterance)

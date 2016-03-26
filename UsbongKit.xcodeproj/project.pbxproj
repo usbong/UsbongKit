@@ -11,6 +11,7 @@
 		CF348C4E1C6D84EF0091BDF7 /* TextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF348C4C1C6D84EF0091BDF7 /* TextFieldTableViewCell.xib */; };
 		CF435EFC1C94F22400CEBB6B /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF435EFA1C94F22400CEBB6B /* DateTableViewCell.swift */; };
 		CF435EFD1C94F22400CEBB6B /* DateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF435EFB1C94F22400CEBB6B /* DateTableViewCell.xib */; };
+		CF45F6DE1CA6DD74009F4B62 /* VoiceOverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45F6DD1CA6DD74009F4B62 /* VoiceOverCoordinator.swift */; };
 		CFA298021C932EDF005D127C /* UsbongNodeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA298011C932EDF005D127C /* UsbongNodeState.swift */; };
 		CFA298041C9333A7005D127C /* UsbongAnswersGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA298031C9333A7005D127C /* UsbongAnswersGenerator.swift */; };
 		CFA624D21C6C49BD0071301D /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA624D11C6C49BD0071301D /* Reusable.swift */; };
@@ -120,6 +121,7 @@
 		CF348C4C1C6D84EF0091BDF7 /* TextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		CF435EFA1C94F22400CEBB6B /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		CF435EFB1C94F22400CEBB6B /* DateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateTableViewCell.xib; sourceTree = "<group>"; };
+		CF45F6DD1CA6DD74009F4B62 /* VoiceOverCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceOverCoordinator.swift; sourceTree = "<group>"; };
 		CFA298011C932EDF005D127C /* UsbongNodeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongNodeState.swift; sourceTree = "<group>"; };
 		CFA298031C9333A7005D127C /* UsbongAnswersGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongAnswersGenerator.swift; sourceTree = "<group>"; };
 		CFA624D11C6C49BD0071301D /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				DF350AD11C2FEECE00A1956E /* UsbongTree.swift */,
 				DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */,
 				DF9992B51C44D5B900536F2E /* PlayableTree.swift */,
+				CF45F6DD1CA6DD74009F4B62 /* VoiceOverCoordinator.swift */,
 				DF28C9701CA6B34B0074776B /* AutoPlayableTree.swift */,
 				DF0D9ACF1C36B1570048B8DF /* UsbongLanguage.swift */,
 				DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */,
@@ -677,6 +680,7 @@
 				DF10098A1C2FDA22003A9BDA /* Node.swift in Sources */,
 				CFA624D21C6C49BD0071301D /* Reusable.swift in Sources */,
 				CFA298021C932EDF005D127C /* UsbongNodeState.swift in Sources */,
+				CF45F6DE1CA6DD74009F4B62 /* VoiceOverCoordinator.swift in Sources */,
 				DF1009831C2FDA22003A9BDA /* TextTableViewCell.swift in Sources */,
 				CFA298041C9333A7005D127C /* UsbongAnswersGenerator.swift in Sources */,
 				DF1009801C2FDA22003A9BDA /* HintsTextView.swift in Sources */,

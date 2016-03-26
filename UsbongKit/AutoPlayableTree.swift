@@ -9,9 +9,10 @@
 import Foundation
 import AVFoundation
 
-public protocol AutoPlayableTree: PlayableTree, AVSpeechSynthesizerDelegate {
+public protocol AutoPlayableTree: PlayableTree, VoiceOverCoordinatorDelegate {
     var autoPlay: Bool { get set }
-    var lastSpeechUtterance: AVSpeechUtterance? { get set }
+    
+    var voiceOverCoordinator: VoiceOverCoordinator { get set }
 }
 
 public extension AutoPlayableTree {
@@ -20,7 +21,7 @@ public extension AutoPlayableTree {
             // Default to true if not yet set
             let standardUserDefaults = NSUserDefaults.standardUserDefaults()
             if standardUserDefaults.objectForKey("UsbongKit.AutoPlayableTree.autoPlay") == nil {
-                standardUserDefaults.setBool(true, forKey: "UsbongKit.AutoPlayableTree.autoPlay")
+                standardUserDefaults.setBool(false, forKey: "UsbongKit.AutoPlayableTree.autoPlay")
             }
             return standardUserDefaults.boolForKey("UsbongKit.AutoPlayableTree.autoPlay")
         }
