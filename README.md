@@ -1,5 +1,6 @@
 # UsbongKit
 [![License](https://img.shields.io/badge/license-ALv2-blue.svg)](./LICENSE)
+[![GitHub Release](https://img.shields.io/github/release/usbong/usbongkit.svg)](https://github.com/usbong/UsbongKit/releases)
 
 UsbongKit is a framework that contains the main components for Usbong.
 
