@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<process-definition xmlns="" name="Usbong iOS">
+<process-definition lang="English" xmlns="" name="Usbong iOS">
     <start-state name="start-state1">
         <transition to="textDisplay~Hi! This is an example tree built for Usbong iOS app"></transition>
     </start-state>
