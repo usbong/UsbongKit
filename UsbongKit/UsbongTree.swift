@@ -9,6 +9,10 @@
 import Foundation
 import SWXMLHash
 
+private enum Defaults: String {
+    case BaseLanguage = "English"
+}
+
 public class UsbongTree {
     public let treeRootURL: NSURL
     
@@ -135,7 +139,7 @@ public class UsbongTree {
         
         // Set base and current language
         let processDefinitionIndexer = treeXMLIndexer[XMLIdentifier.processDefinition]
-        baseLanguage = processDefinitionIndexer.element?.attributes[XMLIdentifier.lang] ?? "Unknown"
+        baseLanguage = processDefinitionIndexer.element?.attributes[XMLIdentifier.lang] ?? Defaults.BaseLanguage.rawValue
         currentLanguage = baseLanguage
         
         // Fetch URLs for language XMLs
