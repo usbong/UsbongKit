@@ -144,8 +144,13 @@ public class UsbongTree {
         
         // Fetch URLs for language XMLs
         let transURL = treeRootURL.URLByAppendingPathComponent("trans", isDirectory: true)
-        languageXMLURLs = (try? fileManager.contentsOfDirectoryAtURL(transURL,
+        var languageXMLURLs = (try? fileManager.contentsOfDirectoryAtURL(transURL,
                 includingPropertiesForKeys: nil, options: .SkipsSubdirectoryDescendants)) ?? []
+        
+        // Filter URLs - allow only .xml files
+        languageXMLURLs = languageXMLURLs.filter { $0.pathExtension?.caseInsensitiveCompare("xml") == .OrderedSame }
+        
+        self.languageXMLURLs = languageXMLURLs
         
         // Set available languages and also include base language
         var availableLanguages: [String] = []
