@@ -19,7 +19,6 @@
 //
 
 import Foundation
-import Crypto
 import ZipArchive
 
 public class UsbongFileManager {
@@ -93,15 +92,11 @@ public class UsbongFileManager {
     }
     
     public func unpackTreeToCacheDirectoryWithTreeURL(treeURL: NSURL) -> NSURL? {
-        guard let data = NSData(contentsOfURL: treeURL) else {
-            return nil
-        }
-        
-        // Get MD5 hash of data
-        let md5Hash = getMD5HashOfData(data)
+        // Generate unique string to ensure unpack to new clean directory
+        let uniqueId = NSUUID().UUIDString
         
         // Create Unpack directory URL
-        let unpackDirectoryURL = cacheDirectoryURL.URLByAppendingPathComponent("\(md5Hash)", isDirectory: true)
+        let unpackDirectoryURL = cacheDirectoryURL.URLByAppendingPathComponent("\(uniqueId)", isDirectory: true)
         
         // TODO: If temporary directory has lots of unpacked trees, delete all first
         
@@ -115,27 +110,5 @@ public class UsbongFileManager {
         print("UsbongFileManager:\nUnpack directory URL: \(unpackDirectoryURL.path)")
         
         return unpackTreeWithURL(treeURL, toDestinationURL: unpackDirectoryURL)
-    }
-    
-    private func getMD5HashOfData(data: NSData) -> String {
-        let md5Data = data.MD5
-        
-        let buf = UnsafePointer<UInt8>(md5Data.bytes)
-        let charA = UInt8(UnicodeScalar("a").value)
-        let char0 = UInt8(UnicodeScalar("0").value)
-        
-        func itoh(i: UInt8) -> UInt8 {
-            return (i > 9) ? (charA + i - 10) : (char0 + i)
-        }
-        
-        let dataLength = md5Data.length
-        let p = UnsafeMutablePointer<UInt8>.alloc(dataLength * 2)
-        
-        for i in 0..<dataLength {
-            p[i*2] = itoh((buf[i] >> 4) & 0xF)
-            p[i*2+1] = itoh(buf[i] & 0xF)
-        }
-        
-        return NSString(bytesNoCopy: p, length: dataLength*2, encoding: NSUTF8StringEncoding, freeWhenDone: true) as! String
     }
 }
