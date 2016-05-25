@@ -321,11 +321,10 @@
 			isa = PBXGroup;
 			children = (
 				DF10097B1C2FDA22003A9BDA /* Node.swift */,
-				DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */,
 				DF10097D1C2FDA22003A9BDA /* NodeView.swift */,
 				DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */,
 			);
-			name = Nodes;
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 		DF10098E1C2FDA30003A9BDA /* Views */ = {
@@ -426,6 +425,7 @@
 		DF66433F1CF66F1400373BBE /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */,
 				DF66433B1CF66EA200373BBE /* OptionsTypeModule.swift */,
 				DF66433D1CF66EF600373BBE /* SelectionTypeModule.swift */,
 			);
