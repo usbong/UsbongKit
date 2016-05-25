@@ -54,6 +54,15 @@
 		DF452B5B1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B5A1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift */; };
 		DF452B661BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */; };
 		DF63E5A51C324D3A0017B745 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF63E5A41C324D3A0017B745 /* TreeViewController.swift */; };
+		DF66433C1CF66EA200373BBE /* OptionsTypeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66433B1CF66EA200373BBE /* OptionsTypeModule.swift */; };
+		DF66433E1CF66EF600373BBE /* SelectionTypeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66433D1CF66EF600373BBE /* SelectionTypeModule.swift */; };
+		DF6643411CF66F2600373BBE /* TextModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643401CF66F2600373BBE /* TextModule.swift */; };
+		DF6643481CF6708C00373BBE /* CheckboxesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643421CF6708C00373BBE /* CheckboxesModule.swift */; };
+		DF6643491CF6708C00373BBE /* DateModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643431CF6708C00373BBE /* DateModule.swift */; };
+		DF66434A1CF6708C00373BBE /* ImageModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643441CF6708C00373BBE /* ImageModule.swift */; };
+		DF66434B1CF6708C00373BBE /* ListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643451CF6708C00373BBE /* ListModule.swift */; };
+		DF66434C1CF6708C00373BBE /* RadioButtonsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643461CF6708C00373BBE /* RadioButtonsModule.swift */; };
+		DF66434D1CF6708C00373BBE /* TextInputModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643471CF6708C00373BBE /* TextInputModule.swift */; };
 		DF9992B61C44D5B900536F2E /* PlayableTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9992B51C44D5B900536F2E /* PlayableTree.swift */; };
 		DFA633D21BDBD17C00C079B2 /* UsbongKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA633D11BDBD17C00C079B2 /* UsbongKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFA633D91BDBD17C00C079B2 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
@@ -161,6 +170,15 @@
 		DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbongKit_exampleUITests.swift; sourceTree = "<group>"; };
 		DF452B671BDE0AFD003EB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF63E5A41C324D3A0017B745 /* TreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
+		DF66433B1CF66EA200373BBE /* OptionsTypeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTypeModule.swift; sourceTree = "<group>"; };
+		DF66433D1CF66EF600373BBE /* SelectionTypeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTypeModule.swift; sourceTree = "<group>"; };
+		DF6643401CF66F2600373BBE /* TextModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextModule.swift; sourceTree = "<group>"; };
+		DF6643421CF6708C00373BBE /* CheckboxesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxesModule.swift; sourceTree = "<group>"; };
+		DF6643431CF6708C00373BBE /* DateModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateModule.swift; sourceTree = "<group>"; };
+		DF6643441CF6708C00373BBE /* ImageModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageModule.swift; sourceTree = "<group>"; };
+		DF6643451CF6708C00373BBE /* ListModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListModule.swift; sourceTree = "<group>"; };
+		DF6643461CF6708C00373BBE /* RadioButtonsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonsModule.swift; sourceTree = "<group>"; };
+		DF6643471CF6708C00373BBE /* TextInputModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputModule.swift; sourceTree = "<group>"; };
 		DF9992B51C44D5B900536F2E /* PlayableTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayableTree.swift; sourceTree = "<group>"; };
 		DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UsbongKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA633D11BDBD17C00C079B2 /* UsbongKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsbongKit.h; sourceTree = "<group>"; };
@@ -303,7 +321,6 @@
 			isa = PBXGroup;
 			children = (
 				DF10097B1C2FDA22003A9BDA /* Node.swift */,
-				DF10097A1C2FDA22003A9BDA /* Module.swift */,
 				DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */,
 				DF10097D1C2FDA22003A9BDA /* NodeView.swift */,
 				DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */,
@@ -390,6 +407,31 @@
 			path = "UsbongKit-exampleUITests";
 			sourceTree = "<group>";
 		};
+		DF66433A1CF66E7000373BBE /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				DF10097A1C2FDA22003A9BDA /* Module.swift */,
+				DF6643401CF66F2600373BBE /* TextModule.swift */,
+				DF6643421CF6708C00373BBE /* CheckboxesModule.swift */,
+				DF6643431CF6708C00373BBE /* DateModule.swift */,
+				DF6643441CF6708C00373BBE /* ImageModule.swift */,
+				DF6643451CF6708C00373BBE /* ListModule.swift */,
+				DF6643461CF6708C00373BBE /* RadioButtonsModule.swift */,
+				DF6643471CF6708C00373BBE /* TextInputModule.swift */,
+				DF66433F1CF66F1400373BBE /* Protocols */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		DF66433F1CF66F1400373BBE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DF66433B1CF66EA200373BBE /* OptionsTypeModule.swift */,
+				DF66433D1CF66EF600373BBE /* SelectionTypeModule.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		DFA633C41BDBD17B00C079B2 = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +462,7 @@
 			children = (
 				DFA633D11BDBD17C00C079B2 /* UsbongKit.h */,
 				DFA633D31BDBD17C00C079B2 /* Info.plist */,
+				DF66433A1CF66E7000373BBE /* Modules */,
 				DF35E1F81C44FF09004E5178 /* ViewControllers */,
 				DF10098E1C2FDA30003A9BDA /* Views */,
 				DF10098D1C2FDA29003A9BDA /* Nodes */,
@@ -704,10 +747,12 @@
 			files = (
 				DF1009851C2FDA22003A9BDA /* RadioTableViewCell.swift in Sources */,
 				DF0D9AD01C36B1570048B8DF /* UsbongLanguage.swift in Sources */,
+				DF6643481CF6708C00373BBE /* CheckboxesModule.swift in Sources */,
 				DF1009811C2FDA22003A9BDA /* ImageTableViewCell.swift in Sources */,
 				DF10098A1C2FDA22003A9BDA /* Node.swift in Sources */,
 				CFA624D21C6C49BD0071301D /* Reusable.swift in Sources */,
 				CFA298021C932EDF005D127C /* UsbongNodeState.swift in Sources */,
+				DF6643411CF66F2600373BBE /* TextModule.swift in Sources */,
 				CF45F6DE1CA6DD74009F4B62 /* VoiceOverCoordinator.swift in Sources */,
 				DF1009831C2FDA22003A9BDA /* TextTableViewCell.swift in Sources */,
 				CFA298041C9333A7005D127C /* UsbongAnswersGenerator.swift in Sources */,
@@ -715,11 +760,16 @@
 				DF25EC6C1C36C554002593EA /* UsbongTree+NodeProvider.swift in Sources */,
 				DF350AD21C2FEECE00A1956E /* UsbongTree.swift in Sources */,
 				CF348C4D1C6D84EF0091BDF7 /* TextFieldTableViewCell.swift in Sources */,
+				DF66434D1CF6708C00373BBE /* TextInputModule.swift in Sources */,
+				DF6643491CF6708C00373BBE /* DateModule.swift in Sources */,
 				DF1009871C2FDA22003A9BDA /* CheckboxTableViewCell.swift in Sources */,
 				DF350AD41C2FEEDB00A1956E /* UsbongFileManager.swift in Sources */,
+				DF66433E1CF66EF600373BBE /* SelectionTypeModule.swift in Sources */,
 				DFD396E21C363A2A00D56326 /* SpeakableTextTypeModule.swift in Sources */,
 				DF10097F1C2FDA22003A9BDA /* RadioButton.swift in Sources */,
 				DF10097E1C2FDA22003A9BDA /* CheckboxButton.swift in Sources */,
+				DF66433C1CF66EA200373BBE /* OptionsTypeModule.swift in Sources */,
+				DF66434B1CF6708C00373BBE /* ListModule.swift in Sources */,
 				DF9992B61C44D5B900536F2E /* PlayableTree.swift in Sources */,
 				DF28C9711CA6B34B0074776B /* AutoPlayableTree.swift in Sources */,
 				DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */,
@@ -729,6 +779,8 @@
 				CFD8EC1F1C6DCBCF00E629CE /* TextAreaTableViewCell.swift in Sources */,
 				DF10098C1C2FDA22003A9BDA /* NodeView.swift in Sources */,
 				DF10098B1C2FDA22003A9BDA /* NodeProvider.swift in Sources */,
+				DF66434A1CF6708C00373BBE /* ImageModule.swift in Sources */,
+				DF66434C1CF6708C00373BBE /* RadioButtonsModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
