@@ -9,31 +9,55 @@
 import Foundation
 import SWXMLHash
 
+/// An `UsbongTree` object parses utree files, and tracks its current location and states.
 public class UsbongTree {
+    /// The URL for the .utree folder inside the unpacked tree
     public let treeRootURL: NSURL
     
+    /// Title derived from the folder
     public let title: String
+    
+    /// Base language of the utree. Default is "English"
     public let baseLanguage: String
+    
+    /// Current set language of utree
     public var currentLanguage: String {
         didSet {
             reloadCurrentTaskNode()
             loadHintsDictionary()
         }
     }
+    
+    /// The language code for the current language
     public var currentLanguageCode: String {
         return UsbongLanguage(language: currentLanguage).languageCode
     }
+    
+    /// Available languages of the utree
     public let availableLanguages: [String]
     
+    /// Current background image URL
     public private(set) var backgroundImageURL: NSURL?
+    
+    /// Current background audio URL
     public private(set) var backgroundAudioURL: NSURL?
+    
+    /// Current voice-over audio URL
     public private(set) var currentVoiceOverAudioURL: NSURL?
     
+    /// A collection of task node names from start to current
     internal var taskNodeNames: [String] = []
     
+    /// The target number of ticks for a checklist
     internal private(set) var checklistTargetNumberOfTicks = 0
+    
+    /// The current transition info
     internal private(set) var currentTransitionInfo: [String: String] = [:]
+    
+    /// Usbong node states. This is for generating the answers
     internal var usbongNodeStates: [UsbongNodeState] = []
+    
+    /// Current target transition name based on the state of the current task node
     internal var currentTargetTransitionName: String {
         get {
             // If current task node type is radio buttons, ignore selected module (transition to any)
@@ -83,6 +107,8 @@ public class UsbongTree {
             }
         }
     }
+    
+    /// Current text input if any
     internal var currentTextInput: String? {
         get {
             switch currentNode {
@@ -93,24 +119,41 @@ public class UsbongTree {
             }
         }
     }
+    
+    /// Current target text input (for nodes with current answers)
     internal var currentTargetTextInput: String?
+    
+    /// The next task node name
     internal var nextTaskNodeName: String? {
         return currentTransitionInfo[currentTargetTransitionName]
     }
     
+    /// URLs for language XML files
     internal let languageXMLURLs: [NSURL]
+    
+    /// URLs for hints XML files
     internal let hintsXMLURLs: [NSURL]
+    
+    /// Dictionary for hints
     public private(set) var hintsDictionary: [String: String] = [:]
     
+    /// XMLIndexer for tree
     private let treeXMLIndexer: XMLIndexer
     
+    /// XMLIndexer for "process-definition"
     private var processDefinitionIndexer: XMLIndexer {
         return treeXMLIndexer[XMLIdentifier.processDefinition]
     }
     
     // Current node is stored so that it isn't computed/fetched everytime it's being accessed
+    /// The current node
     public internal(set) var currentNode: Node?
     
+    /**
+     Creates an instance of `UsbongTree`
+     
+     - parameter treeRootURL: The URL for the .utree folder inside the unpacked tree
+    */
     public init(treeRootURL: NSURL) {
         let fileManager = NSFileManager.defaultManager()
         
@@ -177,13 +220,23 @@ public class UsbongTree {
         }
     }
     
+    /// Reloads or refetchs the current task node
     internal func reloadCurrentTaskNode() {
         if let currentTaskNodeName = taskNodeNames.last {
             currentNode = nodeWithName(currentTaskNodeName)
         }
     }
     
+    /// The current `TaskNodeType`
     internal var currentTaskNodeType: TaskNodeType?
+    
+    /**
+     Creates a node based on the task node name
+     
+     - parameter taskNodeName: The task node name
+     
+     - returns: The created `Node` object
+    */
     internal func nodeWithName(taskNodeName: String) -> Node {
         var node: Node = TextNode(text: "Unknown Node")
         guard let (nodeIndexer, type) = nodeIndexerAndTypeWithName(taskNodeName) else {
@@ -328,8 +381,21 @@ public class UsbongTree {
         return node
     }
     
-    // MARK: Get transition info from transition elements
-    private func transitionInfoFromTransitionIndexers(transitionIndexers: [XMLIndexer], andTaskNodeType type: TaskNodeType) -> [String: String]{
+    /**
+     Gets the transition info from transition indexers. E.g.:
+     
+     ```
+     <transition to="textField~Correct!" name="Yes"></transition>
+     <transition to="textField~Incorrect." name="No"></transition>
+     ```
+     
+     - parameters:
+       - transitionIndexers: The transition indexers ("transition" XML tags)
+       - type: The task node type
+     
+     - returns: Dictionary of type `[String: String]` which contains task node name and key pairs
+    */
+    private func transitionInfoFromTransitionIndexers(transitionIndexers: [XMLIndexer], andTaskNodeType type: TaskNodeType) -> [String: String] {
         var transitionInfo: [String: String] = [:]
         
         for indexer in transitionIndexers {
@@ -356,16 +422,48 @@ public class UsbongTree {
         return transitionInfo
     }
     
-    // MARK: Get XML Indexer of task nodes
+    // MARK: XML Indexers of task nodes
+    
+    /**
+     Find task-node XML tag with name
+     
+     - parameter name: value of 'name' in XML tag
+     
+     - returns: XMLIndexer for the XML tag
+    */
     private func taskNodeIndexerWithName(name: String) -> XMLIndexer? {
         return try? processDefinitionIndexer[XMLIdentifier.taskNode].withAttr(XMLIdentifier.name, name)
     }
+    
+    /**
+     Find end-state XML tag with name
+     
+     - parameter name: value of 'name' in XML tag
+     
+     - returns: XMLIndexer for the XML tag
+    */
     private func endStateIndexerWithName(name: String) -> XMLIndexer? {
         return try? processDefinitionIndexer[XMLIdentifier.endState].withAttr(XMLIdentifier.name, name)
     }
+    
+    /**
+     Find decision XML tag with name
+     
+     - parameter name: value of 'name' in XML tag
+     
+     - returns: XMLIndexer for the XML tag
+    */
     private func decisionIndexerWithName(name: String) -> XMLIndexer? {
         return try? processDefinitionIndexer[XMLIdentifier.decision].withAttr(XMLIdentifier.name, name)
     }
+    
+    /**
+     Get node indexer and type with name
+     
+     - parameter name: value of 'name' in XML tag
+     
+     - returns: An XMLIndexer for the XML tag with the `NodeType`
+    */
     internal func nodeIndexerAndTypeWithName(name: String) -> (indexer: XMLIndexer, type: NodeType)? {
         var indexer: XMLIndexer?
         var type = NodeType.TaskNode
@@ -394,6 +492,7 @@ public class UsbongTree {
     
     // MARK: Language
     
+    /// XML URL for current language
     private var currentLanguageXMLURL: NSURL? {
         for url in languageXMLURLs {
             // Check if file name is equal to language
@@ -405,6 +504,13 @@ public class UsbongTree {
         return nil
     }
     
+    /**
+     Translates a text
+     
+     - parameter text: The text to be translated
+     
+     - returns: The translated text
+    */
     private func translateText(text: String) -> String {
         guard text.characters.count > 0 else {
             return ""
@@ -425,6 +531,13 @@ public class UsbongTree {
         return translatedText
     }
     
+    /**
+     Parses a text which contains custom tags
+     
+     - parameter text: The text to be translated
+     
+     - returns: The translated text
+    */
     private func parseText(text: String) -> String {
         guard text.characters.count > 0 else {
             return ""
@@ -435,6 +548,7 @@ public class UsbongTree {
     
     // MARK: Hints
     
+    /// Loads the hints dictionary based on the hints XML for the current language
     private func loadHintsDictionary() {
         hintsDictionary.removeAll()
         for url in hintsXMLURLs {
@@ -462,6 +576,7 @@ public class UsbongTree {
     
     // MARK: End state
     
+    /// Checks if current node is an end state node
     public var currentNodeIsEndState: Bool {
         guard let name = taskNodeNames.last else {
             return true
@@ -472,6 +587,8 @@ public class UsbongTree {
         
         return type == .EndState
     }
+    
+    /// Checks if next node is an end state node
     public var nextNodeIsEndState: Bool {
         guard let name = nextTaskNodeName else {
             return true
@@ -485,6 +602,7 @@ public class UsbongTree {
     
     // MARK: Prevent next
     
+    /// Checks if node can transition to next node. For example, if checklist node has nothing selected, prevent transition.
     public var shouldPreventTransitionToNextTaskNode: Bool {
         return !(currentNode is ChecklistNode) && currentNodeIsSelectionType && nothingSelected
     }
