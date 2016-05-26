@@ -409,7 +409,7 @@
 				DF0D9ACF1C36B1570048B8DF /* UsbongLanguage.swift */,
 				DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */,
 			);
-			name = Usbong;
+			path = Usbong;
 			sourceTree = "<group>";
 		};
 		DF35E1F81C44FF09004E5178 /* ViewControllers */ = {
