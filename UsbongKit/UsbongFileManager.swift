@@ -19,10 +19,14 @@
 //
 
 import Foundation
-import ZipArchive
+import Zip
 
 public class UsbongFileManager {
-    private init() {} // Make sure it can't be initialized
+    // Make sure it can't be initialized
+    private init() {
+        // Set custom file extension for Zip
+        Zip.addCustomFileExtension("utree")
+    }
     
     private static var _defaultManager = UsbongFileManager()
     public static func defaultManager() -> UsbongFileManager {
@@ -74,21 +78,16 @@ public class UsbongFileManager {
     }
     
     public func unpackTreeWithURL(url: NSURL, toDestinationURL destinationURL: NSURL) -> NSURL? {
-        // Unpack
-        guard let zipPath = url.path, let destinationPath = destinationURL.path else {
-            // If paths are nil, return nil
-            print("UsbongFileManager: Paths are nil")
-            return nil
-        }
-        
         // Attempt to unzip
-        guard Main.unzipFileAtPath(zipPath, toDestination: destinationPath) else {
-            print("UsbongFileManager: Failed to unzip")
+        do {
+            try Zip.unzipFile(url, destination: destinationURL, overwrite: true, password: nil, progress: nil)
+            
+            // Return first tree in unpacked directory
+            return firstTreeInURL(destinationURL)
+        } catch let error {
+            print("[UsbongKit, Zip] Failed to unzip: \(error)")
             return nil
         }
-        
-        // Return first tree in unpacked directory
-        return firstTreeInURL(destinationURL)
     }
     
     public func unpackTreeToCacheDirectoryWithTreeURL(treeURL: NSURL) -> NSURL? {

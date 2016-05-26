@@ -19,8 +19,6 @@
 		CFC404321BEE4319000658E7 /* UsbongKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFC404381BEE4350000658E7 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
 		CFC404391BEE4350000658E7 /* SWXMLHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CFC4043A1BEE4350000658E7 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
-		CFC4043B1BEE4350000658E7 /* ZipArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFC4043D1BEE440B000658E7 /* Usbong iOS.utree in Resources */ = {isa = PBXBuildFile; fileRef = CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */; };
 		CFD8EC1F1C6DCBCF00E629CE /* TextAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD8EC1D1C6DCBCF00E629CE /* TextAreaTableViewCell.swift */; };
 		CFD8EC201C6DCBCF00E629CE /* TextAreaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD8EC1E1C6DCBCF00E629CE /* TextAreaTableViewCell.xib */; };
@@ -78,12 +76,14 @@
 		DF6643671CF674A700373BBE /* TimestampNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66435B1CF674A700373BBE /* TimestampNode.swift */; };
 		DF66436A1CF677ED00373BBE /* SelectionTypeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643691CF677ED00373BBE /* SelectionTypeNode.swift */; };
 		DF66436C1CF678B900373BBE /* TextInputTypeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66436B1CF678B900373BBE /* TextInputTypeNode.swift */; };
+		DF66436E1CF6804100373BBE /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF66436D1CF6804100373BBE /* Zip.framework */; };
+		DF66436F1CF6808700373BBE /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF66436D1CF6804100373BBE /* Zip.framework */; };
+		DF6643701CF6808700373BBE /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF66436D1CF6804100373BBE /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF9992B61C44D5B900536F2E /* PlayableTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9992B51C44D5B900536F2E /* PlayableTree.swift */; };
 		DFA633D21BDBD17C00C079B2 /* UsbongKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA633D11BDBD17C00C079B2 /* UsbongKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFA633D91BDBD17C00C079B2 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
 		DFA633DE1BDBD17C00C079B2 /* UsbongKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */; };
 		DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
-		DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */; };
 		DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */; };
 		DFD396E21C363A2A00D56326 /* SpeakableTextTypeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */; };
 		DFF51A641C30B4F3005F670F /* TreesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */; };
@@ -128,7 +128,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				CFC404321BEE4319000658E7 /* UsbongKit.framework in Embed Frameworks */,
-				CFC4043B1BEE4350000658E7 /* ZipArchive.framework in Embed Frameworks */,
+				DF6643701CF6808700373BBE /* Zip.framework in Embed Frameworks */,
 				CFC404391BEE4350000658E7 /* SWXMLHash.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -209,6 +209,7 @@
 		DF66435B1CF674A700373BBE /* TimestampNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimestampNode.swift; sourceTree = "<group>"; };
 		DF6643691CF677ED00373BBE /* SelectionTypeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTypeNode.swift; sourceTree = "<group>"; };
 		DF66436B1CF678B900373BBE /* TextInputTypeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputTypeNode.swift; sourceTree = "<group>"; };
+		DF66436D1CF6804100373BBE /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
 		DF9992B51C44D5B900536F2E /* PlayableTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayableTree.swift; sourceTree = "<group>"; };
 		DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UsbongKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA633D11BDBD17C00C079B2 /* UsbongKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsbongKit.h; sourceTree = "<group>"; };
@@ -217,7 +218,6 @@
 		DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbongKitTests.swift; sourceTree = "<group>"; };
 		DFA633DF1BDBD17C00C079B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
-		DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZipArchive.framework; path = Carthage/Build/iOS/ZipArchive.framework; sourceTree = "<group>"; };
 		DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLNameInfo.swift; sourceTree = "<group>"; };
 		DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakableTextTypeModule.swift; sourceTree = "<group>"; };
 		DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreesTableViewController.swift; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFC404311BEE4319000658E7 /* UsbongKit.framework in Frameworks */,
-				CFC4043A1BEE4350000658E7 /* ZipArchive.framework in Frameworks */,
+				DF66436F1CF6808700373BBE /* Zip.framework in Frameworks */,
 				CFC404381BEE4350000658E7 /* SWXMLHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,7 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */,
-				DFA6341E1BDBD1F800C079B2 /* ZipArchive.framework in Frameworks */,
+				DF66436E1CF6804100373BBE /* Zip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,8 +536,8 @@
 		DFA6341F1BDBD1FF00C079B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DF66436D1CF6804100373BBE /* Zip.framework */,
 				DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */,
-				DFA6341B1BDBD1F800C079B2 /* ZipArchive.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
