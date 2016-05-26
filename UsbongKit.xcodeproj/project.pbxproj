@@ -63,6 +63,21 @@
 		DF66434B1CF6708C00373BBE /* ListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643451CF6708C00373BBE /* ListModule.swift */; };
 		DF66434C1CF6708C00373BBE /* RadioButtonsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643461CF6708C00373BBE /* RadioButtonsModule.swift */; };
 		DF66434D1CF6708C00373BBE /* TextInputModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643471CF6708C00373BBE /* TextInputModule.swift */; };
+		DF66434F1CF6735B00373BBE /* TextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66434E1CF6735B00373BBE /* TextNode.swift */; };
+		DF66435C1CF674A700373BBE /* ChecklistNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643501CF674A700373BBE /* ChecklistNode.swift */; };
+		DF66435D1CF674A700373BBE /* ClassificationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643511CF674A700373BBE /* ClassificationNode.swift */; };
+		DF66435E1CF674A700373BBE /* DateNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643521CF674A700373BBE /* DateNode.swift */; };
+		DF66435F1CF674A700373BBE /* ImageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643531CF674A700373BBE /* ImageNode.swift */; };
+		DF6643601CF674A700373BBE /* ImageTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643541CF674A700373BBE /* ImageTextNode.swift */; };
+		DF6643611CF674A700373BBE /* RadioButtonsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643551CF674A700373BBE /* RadioButtonsNode.swift */; };
+		DF6643621CF674A700373BBE /* TextAreaNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643561CF674A700373BBE /* TextAreaNode.swift */; };
+		DF6643631CF674A700373BBE /* TextFieldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643571CF674A700373BBE /* TextFieldNode.swift */; };
+		DF6643641CF674A700373BBE /* TextFieldNumericalNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643581CF674A700373BBE /* TextFieldNumericalNode.swift */; };
+		DF6643651CF674A700373BBE /* TextFieldWithUnitNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643591CF674A700373BBE /* TextFieldWithUnitNode.swift */; };
+		DF6643661CF674A700373BBE /* TextImageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66435A1CF674A700373BBE /* TextImageNode.swift */; };
+		DF6643671CF674A700373BBE /* TimestampNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66435B1CF674A700373BBE /* TimestampNode.swift */; };
+		DF66436A1CF677ED00373BBE /* SelectionTypeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643691CF677ED00373BBE /* SelectionTypeNode.swift */; };
+		DF66436C1CF678B900373BBE /* TextInputTypeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66436B1CF678B900373BBE /* TextInputTypeNode.swift */; };
 		DF9992B61C44D5B900536F2E /* PlayableTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9992B51C44D5B900536F2E /* PlayableTree.swift */; };
 		DFA633D21BDBD17C00C079B2 /* UsbongKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA633D11BDBD17C00C079B2 /* UsbongKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFA633D91BDBD17C00C079B2 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
@@ -179,6 +194,21 @@
 		DF6643451CF6708C00373BBE /* ListModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListModule.swift; sourceTree = "<group>"; };
 		DF6643461CF6708C00373BBE /* RadioButtonsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonsModule.swift; sourceTree = "<group>"; };
 		DF6643471CF6708C00373BBE /* TextInputModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputModule.swift; sourceTree = "<group>"; };
+		DF66434E1CF6735B00373BBE /* TextNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNode.swift; sourceTree = "<group>"; };
+		DF6643501CF674A700373BBE /* ChecklistNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistNode.swift; sourceTree = "<group>"; };
+		DF6643511CF674A700373BBE /* ClassificationNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationNode.swift; sourceTree = "<group>"; };
+		DF6643521CF674A700373BBE /* DateNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateNode.swift; sourceTree = "<group>"; };
+		DF6643531CF674A700373BBE /* ImageNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageNode.swift; sourceTree = "<group>"; };
+		DF6643541CF674A700373BBE /* ImageTextNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTextNode.swift; sourceTree = "<group>"; };
+		DF6643551CF674A700373BBE /* RadioButtonsNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonsNode.swift; sourceTree = "<group>"; };
+		DF6643561CF674A700373BBE /* TextAreaNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAreaNode.swift; sourceTree = "<group>"; };
+		DF6643571CF674A700373BBE /* TextFieldNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldNode.swift; sourceTree = "<group>"; };
+		DF6643581CF674A700373BBE /* TextFieldNumericalNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldNumericalNode.swift; sourceTree = "<group>"; };
+		DF6643591CF674A700373BBE /* TextFieldWithUnitNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldWithUnitNode.swift; sourceTree = "<group>"; };
+		DF66435A1CF674A700373BBE /* TextImageNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextImageNode.swift; sourceTree = "<group>"; };
+		DF66435B1CF674A700373BBE /* TimestampNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimestampNode.swift; sourceTree = "<group>"; };
+		DF6643691CF677ED00373BBE /* SelectionTypeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTypeNode.swift; sourceTree = "<group>"; };
+		DF66436B1CF678B900373BBE /* TextInputTypeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputTypeNode.swift; sourceTree = "<group>"; };
 		DF9992B51C44D5B900536F2E /* PlayableTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayableTree.swift; sourceTree = "<group>"; };
 		DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UsbongKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA633D11BDBD17C00C079B2 /* UsbongKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsbongKit.h; sourceTree = "<group>"; };
@@ -321,8 +351,22 @@
 			isa = PBXGroup;
 			children = (
 				DF10097B1C2FDA22003A9BDA /* Node.swift */,
+				DF6643501CF674A700373BBE /* ChecklistNode.swift */,
+				DF6643511CF674A700373BBE /* ClassificationNode.swift */,
+				DF6643521CF674A700373BBE /* DateNode.swift */,
+				DF6643531CF674A700373BBE /* ImageNode.swift */,
+				DF6643541CF674A700373BBE /* ImageTextNode.swift */,
+				DF6643551CF674A700373BBE /* RadioButtonsNode.swift */,
+				DF6643561CF674A700373BBE /* TextAreaNode.swift */,
+				DF6643571CF674A700373BBE /* TextFieldNode.swift */,
+				DF6643581CF674A700373BBE /* TextFieldNumericalNode.swift */,
+				DF6643591CF674A700373BBE /* TextFieldWithUnitNode.swift */,
+				DF66435A1CF674A700373BBE /* TextImageNode.swift */,
+				DF66434E1CF6735B00373BBE /* TextNode.swift */,
+				DF66435B1CF674A700373BBE /* TimestampNode.swift */,
 				DF10097D1C2FDA22003A9BDA /* NodeView.swift */,
 				DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */,
+				DF6643681CF677DF00373BBE /* Protocols */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -428,6 +472,15 @@
 				DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */,
 				DF66433B1CF66EA200373BBE /* OptionsTypeModule.swift */,
 				DF66433D1CF66EF600373BBE /* SelectionTypeModule.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DF6643681CF677DF00373BBE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DF6643691CF677ED00373BBE /* SelectionTypeNode.swift */,
+				DF66436B1CF678B900373BBE /* TextInputTypeNode.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -747,15 +800,25 @@
 			files = (
 				DF1009851C2FDA22003A9BDA /* RadioTableViewCell.swift in Sources */,
 				DF0D9AD01C36B1570048B8DF /* UsbongLanguage.swift in Sources */,
+				DF66436A1CF677ED00373BBE /* SelectionTypeNode.swift in Sources */,
+				DF66434F1CF6735B00373BBE /* TextNode.swift in Sources */,
 				DF6643481CF6708C00373BBE /* CheckboxesModule.swift in Sources */,
 				DF1009811C2FDA22003A9BDA /* ImageTableViewCell.swift in Sources */,
 				DF10098A1C2FDA22003A9BDA /* Node.swift in Sources */,
+				DF6643641CF674A700373BBE /* TextFieldNumericalNode.swift in Sources */,
 				CFA624D21C6C49BD0071301D /* Reusable.swift in Sources */,
+				DF6643651CF674A700373BBE /* TextFieldWithUnitNode.swift in Sources */,
 				CFA298021C932EDF005D127C /* UsbongNodeState.swift in Sources */,
+				DF66435D1CF674A700373BBE /* ClassificationNode.swift in Sources */,
+				DF66435F1CF674A700373BBE /* ImageNode.swift in Sources */,
+				DF6643661CF674A700373BBE /* TextImageNode.swift in Sources */,
 				DF6643411CF66F2600373BBE /* TextModule.swift in Sources */,
+				DF6643671CF674A700373BBE /* TimestampNode.swift in Sources */,
 				CF45F6DE1CA6DD74009F4B62 /* VoiceOverCoordinator.swift in Sources */,
 				DF1009831C2FDA22003A9BDA /* TextTableViewCell.swift in Sources */,
 				CFA298041C9333A7005D127C /* UsbongAnswersGenerator.swift in Sources */,
+				DF6643601CF674A700373BBE /* ImageTextNode.swift in Sources */,
+				DF66435E1CF674A700373BBE /* DateNode.swift in Sources */,
 				DF1009801C2FDA22003A9BDA /* HintsTextView.swift in Sources */,
 				DF25EC6C1C36C554002593EA /* UsbongTree+NodeProvider.swift in Sources */,
 				DF350AD21C2FEECE00A1956E /* UsbongTree.swift in Sources */,
@@ -764,12 +827,17 @@
 				DF6643491CF6708C00373BBE /* DateModule.swift in Sources */,
 				DF1009871C2FDA22003A9BDA /* CheckboxTableViewCell.swift in Sources */,
 				DF350AD41C2FEEDB00A1956E /* UsbongFileManager.swift in Sources */,
+				DF6643631CF674A700373BBE /* TextFieldNode.swift in Sources */,
+				DF66435C1CF674A700373BBE /* ChecklistNode.swift in Sources */,
+				DF66436C1CF678B900373BBE /* TextInputTypeNode.swift in Sources */,
 				DF66433E1CF66EF600373BBE /* SelectionTypeModule.swift in Sources */,
 				DFD396E21C363A2A00D56326 /* SpeakableTextTypeModule.swift in Sources */,
 				DF10097F1C2FDA22003A9BDA /* RadioButton.swift in Sources */,
 				DF10097E1C2FDA22003A9BDA /* CheckboxButton.swift in Sources */,
+				DF6643621CF674A700373BBE /* TextAreaNode.swift in Sources */,
 				DF66433C1CF66EA200373BBE /* OptionsTypeModule.swift in Sources */,
 				DF66434B1CF6708C00373BBE /* ListModule.swift in Sources */,
+				DF6643611CF674A700373BBE /* RadioButtonsNode.swift in Sources */,
 				DF9992B61C44D5B900536F2E /* PlayableTree.swift in Sources */,
 				DF28C9711CA6B34B0074776B /* AutoPlayableTree.swift in Sources */,
 				DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */,
