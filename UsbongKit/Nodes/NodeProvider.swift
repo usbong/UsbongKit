@@ -8,16 +8,28 @@
 
 import Foundation
 
+/// `NodeProvider` protocol defines set of methods for providing nodes
 public protocol NodeProvider {
+    /// Current node
     var currentNode: Node? { get }
+    
+    /// Boolean value indicating whether a next node is available
     var nextNodeIsAvailable: Bool { get }
+    
+    /// Boolean value indicating whether a previous node is available
     var previousNodeIsAvailable: Bool { get }
     
+    /// Transition to next node
+    /// - returns: A Boolean value indicating whether a transition occurred
     func transitionToNextNode() -> Bool
+    
+    /// Transition to previous node
+    /// - returns: A Boolean value indicating whether a transition occurred
     func transitionToPreviousNode() -> Bool
 }
 
 public extension NodeProvider {
+    /// A Boolean value indicating whether the current node has nothing selected
     public var nothingSelected: Bool {
         if let selectionNode = currentNode as? SelectionTypeNode {
             return selectionNode.selectionModule.selectedIndices.count == 0
@@ -26,21 +38,21 @@ public extension NodeProvider {
         return true
     }
     
+    /// A Boolean value indicating whether the node is a selection type
     public var currentNodeIsSelectionType: Bool {
         return currentNode is SelectionTypeNode
     }
 }
 
-public class NodeCollection {
+/// A simple collection of nodes which conforms to `NodeProvider`
+public class NodeCollection: NodeProvider {
     private var currentIndex: Int = 0
     public var nodes: [Node] = []
     
     public init(nodes: [Node]) {
         self.nodes = nodes
     }
-}
-
-extension NodeCollection: NodeProvider {
+    
     public var currentNode: Node? {
         if nodes.count > 0 {
             return nodes[currentIndex]
