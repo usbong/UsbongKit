@@ -9,10 +9,6 @@
 import Foundation
 import SWXMLHash
 
-private enum Defaults: String {
-    case BaseLanguage = "English"
-}
-
 public class UsbongTree {
     public let treeRootURL: NSURL
     
@@ -492,11 +488,4 @@ public class UsbongTree {
     public var shouldPreventTransitionToNextTaskNode: Bool {
         return !(currentNode is ChecklistNode) && currentNodeIsSelectionType && nothingSelected
     }
-}
-
-// MARK: - NodeType
-internal enum NodeType {
-    case TaskNode
-    case EndState
-    case Decision
 }
