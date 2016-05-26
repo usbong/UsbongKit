@@ -10,22 +10,36 @@ import Foundation
 
 /// Decomposes a task node name into components
 internal struct XMLNameInfo {
+    /// Background image identifier
     static let backgroundImageIdentifier = "bg"
+    
+    /// Background audio identifier
     static let backgroundAudioIdentifier = "bgAudioName"
+    
+    /// Audio identifier
     static let audioIdentifier = "audioName"
     
+    /// Supported image formats
     static let supportedImageFormats = ["jpg", "jpeg", "png", "gif", "bmp", "tiff", "tif", "ico", "cur", "BMPf", "xbm"]
     
+    /// Components of string (separated by "~")
     let components: [String]
+    
+    /// Target language
     let language: String
+    
+    
+    /// Tree root URL. Used for getting resources.
     let treeRootURL: NSURL
     
+    /// Creates an `XMLNameInfo` from `name`, `language`, and `treeRootURL`
     init(name: String, language: String, treeRootURL: NSURL) {
         self.components = name.componentsSeparatedByString("~")
         self.language = language
         self.treeRootURL = treeRootURL
     }
     
+    /// The type identifier for the task node. It is usually the first component. For `classification` type task node, there is no type identifier.
     var typeIdentifier: String {
         if components.count > 1 {
             return components.first ?? ""
@@ -35,14 +49,17 @@ internal struct XMLNameInfo {
         }
     }
     
+    /// The `TaskNodeType`, which is based on the type identifier
     var type: TaskNodeType? {
         return TaskNodeType(rawValue: typeIdentifier)
     }
     
+    /// The text for the task node
     var text: String {
         return components.last ?? ""
     }
     
+    /// The image file name
     var imageFileName: String? {
         guard components.count >= 2 else {
             return nil
@@ -50,6 +67,7 @@ internal struct XMLNameInfo {
         return components[1]
     }
     
+    /// The target number of choices
     var targetNumberOfChoices: Int {
         guard TaskNodeType(rawValue: typeIdentifier) == .Checklist && components.count >= 2 else {
             return 0
@@ -58,6 +76,7 @@ internal struct XMLNameInfo {
         return NSString(string: components[1]).integerValue
     }
     
+    /// The URL for the image
     var imageURL: NSURL? {
         // Make sure imageFileName is nil, else, return nil
         guard let fileName = imageFileName else {
@@ -81,6 +100,8 @@ internal struct XMLNameInfo {
         
         return nil
     }
+    
+    /// The image object
     var image: UIImage? {
         guard let path = imageURL?.path else {
             return nil
@@ -89,6 +110,8 @@ internal struct XMLNameInfo {
     }
     
     // MARK: Fetch value of identifier
+    
+    /// Get the value for an identifier
     func valueOfIdentifer(identifier: String) -> String? {
         for component in components {
             if component.hasPrefix(identifier) {
@@ -100,10 +123,14 @@ internal struct XMLNameInfo {
     }
     
     // MARK: Background image
+    
+    /// The file name for the background image
     var backgroundImageFileName: String {
         let fullIdentifier = "@" + XMLNameInfo.backgroundImageIdentifier + "="
         return valueOfIdentifer(fullIdentifier) ?? "bg"
     }
+    
+    /// The background image URL
     var backgroundImageURL: NSURL? {
         let resURL = treeRootURL.URLByAppendingPathComponent("res")
         
@@ -128,10 +155,14 @@ internal struct XMLNameInfo {
     }
     
     // MARK: Background audio
+    
+    /// The file name for the background audio
     var backgroundAudioFileName: String? {
         let fullIdentifier = "@" + XMLNameInfo.backgroundAudioIdentifier + "="
         return valueOfIdentifer(fullIdentifier)
     }
+    
+    /// The URL for the background audio
     var backgroundAudioURL: NSURL? {
         let audioURL = treeRootURL.URLByAppendingPathComponent("audio")
         let targetFileName = backgroundAudioFileName ?? ""
@@ -153,10 +184,14 @@ internal struct XMLNameInfo {
     }
     
     // MARK: Audio
+    
+    /// The file name for the audio
     var audioFileName: String? {
         let fullIdentifier = "@" + XMLNameInfo.audioIdentifier + "="
         return valueOfIdentifer(fullIdentifier)
     }
+    
+    /// The URL for the audio
     var audioURL: NSURL? {
         let audioURL = treeRootURL.URLByAppendingPathComponent("audio")
         let audioLanguageURL = audioURL.URLByAppendingPathComponent(language)
@@ -180,6 +215,7 @@ internal struct XMLNameInfo {
     
     // MARK: TextField
     
+    /// The unit for a text field
     var unit: String? {
         guard components.count >= 2 else {
             return nil
