@@ -170,9 +170,9 @@
 		DF10097B1C2FDA22003A9BDA /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeProvider.swift; sourceTree = "<group>"; };
 		DF10097D1C2FDA22003A9BDA /* NodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
-		DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UsbongTree+NodeProvider.swift"; sourceTree = "<group>"; };
+		DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UsbongTree+NodeProvider.swift"; path = "UsbongKit/Usbong/UsbongTree/UsbongTree+NodeProvider.swift"; sourceTree = SOURCE_ROOT; };
 		DF28C9701CA6B34B0074776B /* AutoPlayableTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPlayableTree.swift; sourceTree = "<group>"; };
-		DF350AD11C2FEECE00A1956E /* UsbongTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongTree.swift; sourceTree = "<group>"; };
+		DF350AD11C2FEECE00A1956E /* UsbongTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsbongTree.swift; path = UsbongKit/Usbong/UsbongTree/UsbongTree.swift; sourceTree = SOURCE_ROOT; };
 		DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongFileManager.swift; sourceTree = "<group>"; };
 		DF35E1FA1C44FFC7004E5178 /* LanguagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewController.swift; sourceTree = "<group>"; };
 		DF452B431BDE0AFD003EB5C3 /* UsbongKit-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UsbongKit-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -396,13 +396,12 @@
 		DF350AD01C2FEE7700A1956E /* Usbong */ = {
 			isa = PBXGroup;
 			children = (
+				DFDE966E1CF6FA70003F373A /* UsbongTree */,
 				DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */,
 				CFA298011C932EDF005D127C /* UsbongNodeState.swift */,
 				CFA298031C9333A7005D127C /* UsbongAnswersGenerator.swift */,
-				DF350AD11C2FEECE00A1956E /* UsbongTree.swift */,
 				DFDE96691CF6EEB5003F373A /* Defaults.swift */,
 				DFDE966C1CF6EF08003F373A /* NodeType.swift */,
-				DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */,
 				DF9992B51C44D5B900536F2E /* PlayableTree.swift */,
 				CF45F6DD1CA6DD74009F4B62 /* VoiceOverCoordinator.swift */,
 				DF28C9701CA6B34B0074776B /* AutoPlayableTree.swift */,
@@ -546,6 +545,15 @@
 				DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFDE966E1CF6FA70003F373A /* UsbongTree */ = {
+			isa = PBXGroup;
+			children = (
+				DF350AD11C2FEECE00A1956E /* UsbongTree.swift */,
+				DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */,
+			);
+			path = UsbongTree;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
