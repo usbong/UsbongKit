@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Conform `UsbongTree` to `NodeProvider`
 extension UsbongTree: NodeProvider {
     public var nextNodeIsAvailable: Bool {
         guard let name = nextTaskNodeName else {
@@ -18,11 +19,6 @@ extension UsbongTree: NodeProvider {
     }
     public var previousNodeIsAvailable: Bool {
         return taskNodeNames.count > 1
-    }
-    
-    public func saveStateOfLastNode() {
-        let state = UsbongNodeState(transitionName: currentTargetTransitionName, node: currentNode, type: currentTaskNodeType)
-        usbongNodeStates.append(state)
     }
     
     public func transitionToNextNode() -> Bool {
@@ -42,9 +38,6 @@ extension UsbongTree: NodeProvider {
         
         // Append state to array
         usbongNodeStates.append(state)
-        
-        // Debug output
-//        print(generateOutput(UsbongAnswersGeneratorDefaultCSVString))
         
         return true
     }

@@ -606,4 +606,11 @@ public class UsbongTree {
     public var shouldPreventTransitionToNextTaskNode: Bool {
         return !(currentNode is ChecklistNode) && currentNodeIsSelectionType && nothingSelected
     }
+    
+    // MARK: Save state of last node
+    
+    public func saveStateOfLastNode() {
+        let state = UsbongNodeState(transitionName: currentTargetTransitionName, node: currentNode, type: currentTaskNodeType)
+        usbongNodeStates.append(state)
+    }
 }
