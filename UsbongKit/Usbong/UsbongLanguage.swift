@@ -8,11 +8,16 @@
 
 import Foundation
 
+/// `UsbongLanguage` converts language string to language code
 internal struct UsbongLanguage {
     internal init(language: String) {
         self.language = language
     }
+    
+    /// Language
     internal let language: String
+    
+    /// Get the language code based on the `language`. Default is "en-EN".
     internal var languageCode: String {
         switch language {
         case "English":
