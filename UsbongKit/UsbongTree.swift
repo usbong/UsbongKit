@@ -178,7 +178,7 @@ public class UsbongTree {
         
         // Set base and current language
         let processDefinitionIndexer = treeXMLIndexer[XMLIdentifier.processDefinition]
-        baseLanguage = processDefinitionIndexer.element?.attributes[XMLIdentifier.lang] ?? Defaults.BaseLanguage.rawValue
+        baseLanguage = processDefinitionIndexer.element?.attributes[XMLIdentifier.lang] ?? Defaults.BaseLanguage
         currentLanguage = baseLanguage
         
         // Fetch URLs for language XMLs

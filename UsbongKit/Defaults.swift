@@ -8,6 +8,7 @@
 
 import Foundation
 
-internal enum Defaults: String {
-    case BaseLanguage = "English"
+/// Default values
+internal struct Defaults {
+    static var BaseLanguage = "English"
 }
