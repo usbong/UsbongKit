@@ -8,24 +8,7 @@
 
 import Foundation
 
-// MARK: - XMLIdentifier
-internal struct XMLIdentifier {
-    static let processDefinition = "process-definition"
-    static let startState = "start-state"
-    static let endState = "end-state"
-    static let taskNode = "task-node"
-    static let decision = "decision"
-    static let transition = "transition"
-    static let task = "task"
-    static let to = "to"
-    static let name = "name"
-    
-    static let resources = "resources"
-    static let string = "string"
-    static let lang = "lang"
-}
-
-// MARK: - XMLName
+/// Decomposes a task node name into components
 internal struct XMLNameInfo {
     static let backgroundImageIdentifier = "bg"
     static let backgroundAudioIdentifier = "bgAudioName"
@@ -203,23 +186,4 @@ internal struct XMLNameInfo {
         }
         return components[1]
     }
-}
-
-internal enum TaskNodeType: String {
-    case TextDisplay = "textDisplay"
-    case ImageDisplay = "imageDisplay"
-    case TextImageDisplay = "textImageDisplay"
-    case ImageTextDisplay = "imageTextDisplay"
-    case Link = "link"
-    case RadioButtons = "radioButtons"
-    case Checklist = "checkList"
-    case Classification = "classification"
-    case TextField = "textField"
-    case TextFieldNumerical = "textFieldNumerical"
-    case TextFieldWithUnit = "textFieldWithUnit"
-    case TextArea = "textArea"
-    case TextFieldWithAnswer = "textFieldWithAnswer"
-    case TextAreaWithAnswer = "textAreaWithAnswer"
-    case TimestampDisplay = "timestampDisplay"
-    case Date = "date"
 }

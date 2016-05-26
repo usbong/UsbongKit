@@ -88,6 +88,8 @@
 		DFD396E21C363A2A00D56326 /* SpeakableTextTypeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */; };
 		DFDE966A1CF6EEB5003F373A /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDE96691CF6EEB5003F373A /* Defaults.swift */; };
 		DFDE966D1CF6EF08003F373A /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDE966C1CF6EF08003F373A /* NodeType.swift */; };
+		DFDE96711CF70325003F373A /* XMLIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDE96701CF70325003F373A /* XMLIdentifier.swift */; };
+		DFDE96731CF70396003F373A /* TaskNodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDE96721CF70396003F373A /* TaskNodeType.swift */; };
 		DFF51A641C30B4F3005F670F /* TreesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -224,6 +226,8 @@
 		DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakableTextTypeModule.swift; sourceTree = "<group>"; };
 		DFDE96691CF6EEB5003F373A /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		DFDE966C1CF6EF08003F373A /* NodeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
+		DFDE96701CF70325003F373A /* XMLIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLIdentifier.swift; sourceTree = "<group>"; };
+		DFDE96721CF70396003F373A /* TaskNodeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNodeType.swift; sourceTree = "<group>"; };
 		DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -396,6 +400,7 @@
 		DF350AD01C2FEE7700A1956E /* Usbong */ = {
 			isa = PBXGroup;
 			children = (
+				DFDE966F1CF70317003F373A /* XML */,
 				DFDE966E1CF6FA70003F373A /* UsbongTree */,
 				DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */,
 				CFA298011C932EDF005D127C /* UsbongNodeState.swift */,
@@ -406,7 +411,6 @@
 				CF45F6DD1CA6DD74009F4B62 /* VoiceOverCoordinator.swift */,
 				DF28C9701CA6B34B0074776B /* AutoPlayableTree.swift */,
 				DF0D9ACF1C36B1570048B8DF /* UsbongLanguage.swift */,
-				DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */,
 			);
 			path = Usbong;
 			sourceTree = "<group>";
@@ -554,6 +558,16 @@
 				DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */,
 			);
 			path = UsbongTree;
+			sourceTree = "<group>";
+		};
+		DFDE966F1CF70317003F373A /* XML */ = {
+			isa = PBXGroup;
+			children = (
+				DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */,
+				DFDE96701CF70325003F373A /* XMLIdentifier.swift */,
+				DFDE96721CF70396003F373A /* TaskNodeType.swift */,
+			);
+			path = XML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -840,6 +854,8 @@
 				DF350AD21C2FEECE00A1956E /* UsbongTree.swift in Sources */,
 				CF348C4D1C6D84EF0091BDF7 /* TextFieldTableViewCell.swift in Sources */,
 				DF66434D1CF6708C00373BBE /* TextInputModule.swift in Sources */,
+				DFDE96711CF70325003F373A /* XMLIdentifier.swift in Sources */,
+				DFDE96731CF70396003F373A /* TaskNodeType.swift in Sources */,
 				DF6643491CF6708C00373BBE /* DateModule.swift in Sources */,
 				DF1009871C2FDA22003A9BDA /* CheckboxTableViewCell.swift in Sources */,
 				DF350AD41C2FEEDB00A1956E /* UsbongFileManager.swift in Sources */,
