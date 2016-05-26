@@ -8,13 +8,20 @@
 
 import Foundation
 
+/// Generate answers based on `UsbongNodeState`s
 public protocol UsbongAnswersGenerator {
     associatedtype OutputType
+    
+    var states: [UsbongNodeState] { get }
+    
+    /// Create an instance of `UsbongAnswersGenerator` type
     init(states: [UsbongNodeState])
     
+    /// Generate output of type `OutputType`
     @warn_unused_result
     func generateOutput() -> OutputType
     
+    /// Generate output of type `NSData`
     @warn_unused_result
     func generateOutputData() -> NSData?
 }
@@ -25,13 +32,17 @@ extension UsbongAnswersGenerator {
     }
 }
 
+/// Generate answers to default CSV format
 public class UsbongAnswersGeneratorDefaultCSVString: UsbongAnswersGenerator {
-    let states: [UsbongNodeState]
+    /// A collection of `UsbongNodeState`s that the output will be based upon
+    public let states: [UsbongNodeState]
     
+    /// Create an instance of `UsbongAnswersGeneratorDefaultCSVString`
     public required init(states: [UsbongNodeState]) {
         self.states = states
     }
     
+    /// Generate an output of type `String`
     public func generateOutput() -> String {
         var finalString = ""
         
@@ -88,6 +99,7 @@ public class UsbongAnswersGeneratorDefaultCSVString: UsbongAnswersGenerator {
         return finalString
     }
     
+    /// Generate an output of type `NSData`
     public func generateOutputData() -> NSData? {
         let string = generateOutput()
         
@@ -95,15 +107,38 @@ public class UsbongAnswersGeneratorDefaultCSVString: UsbongAnswersGenerator {
     }
 }
 
+// Extend functionality of UsbongTree
 public extension UsbongTree {
+    /**
+     Generate output of current `UsbongNodeState`s
+     
+     - parameter generatorType: Type of an `UsbongAnswersGenerator`
+     
+     - returns: Generated answers of type `OutputType`
+    */
     func generateOutput<T: UsbongAnswersGenerator>(generatorType: T.Type) -> T.OutputType {
         return generatorType.init(states: usbongNodeStates).generateOutput()
     }
     
+    /**
+     Generate output of current `UsbongNodeState`s
+     
+     - parameter generatorType: Type of an `UsbongAnswersGenerator`
+     
+     - returns: Generated answers of type `NSData`
+     */
     func generateOutputData<T: UsbongAnswersGenerator>(generatorType: T.Type) -> NSData? {
         return generatorType.init(states: usbongNodeStates).generateOutputData()
     }
     
+    /**
+     Write output of current `UsbongNodeState`s to file
+     
+     - parameters:
+       - generatorType: Type of an `UsbongAnswersGenerator`
+       - path: Where the output will be written
+       - completion: Handler for when the writing completes, whether successful or not
+    */
     func writeOutputData<T: UsbongAnswersGenerator>(generatorType: T.Type, toFilePath path: String, completion: ((success: Bool) -> Void)?) {
         guard let data = generateOutputData(generatorType) else {
             completion?(success: false)
@@ -119,6 +154,13 @@ public extension UsbongTree {
         }
     }
     
+    /**
+     Save output of current `UsbongNodeState`s to `Documents/Answers/{timeStamp}.csv`
+     
+     - parameters:
+       - generatorType: Type of an `UsbongAnswersGenerator`
+       - completion: Handler for when the writing completes, whether successful or not
+    */
     func saveOutputData<T: UsbongAnswersGenerator>(generatorType: T.Type, completion: ((success: Bool, filePath: String) -> Void)?) {
         let fileManager = NSFileManager.defaultManager()
         let urls = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
