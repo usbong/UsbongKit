@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VOa-rI-UEO">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="cgy-ME-GOA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VOa-rI-UEO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="loW-Ea-Ksh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5Kb-gi-CLb" kind="relationship" relationship="rootViewController" id="HBf-sF-0R2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eav-zT-ar3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1399" y="2162"/>
+        </scene>
+        <!--Tree-->
+        <scene sceneID="0oJ-AY-6NO">
+            <objects>
+                <viewController id="5Kb-gi-CLb" customClass="TreeViewController" customModule="UsbongKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gz2-Rs-c0g"/>
+                        <viewControllerLayoutGuide type="bottom" id="t2z-GY-uIk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fiH-4R-hx1">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="EAG-0s-QbN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmV-3x-XJZ" customClass="NodeView" customModule="UsbongKit">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PtA-XH-vZD">
+                                <rect key="frame" x="0.0" y="486" width="600" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsz-tR-wGm">
+                                        <rect key="frame" x="442" y="8" width="150" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="Q1O-mT-kj9"/>
+                                            <constraint firstAttribute="height" constant="34" id="XGb-fT-QZH"/>
+                                        </constraints>
+                                        <state key="normal" title="NEXT" backgroundImage="Button-Normal">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" backgroundImage="Button-Highlighted"/>
+                                        <connections>
+                                            <action selector="didPressNext:" destination="5Kb-gi-CLb" eventType="touchUpInside" id="Rl7-9S-wIe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UN-he-bYO">
+                                        <rect key="frame" x="8" y="8" width="150" height="34"/>
+                                        <state key="normal" title="BACK" backgroundImage="Button-Normal">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" backgroundImage="Button-Highlighted"/>
+                                        <connections>
+                                            <action selector="didPressPrevious:" destination="5Kb-gi-CLb" eventType="touchUpInside" id="sFV-wI-anA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="7UN-he-bYO" firstAttribute="leading" secondItem="PtA-XH-vZD" secondAttribute="leadingMargin" id="7jK-ar-Kwq"/>
+                                    <constraint firstItem="vsz-tR-wGm" firstAttribute="centerY" secondItem="PtA-XH-vZD" secondAttribute="centerY" id="R4f-Kx-jgm"/>
+                                    <constraint firstItem="vsz-tR-wGm" firstAttribute="height" secondItem="7UN-he-bYO" secondAttribute="height" id="YrK-er-U8x"/>
+                                    <constraint firstItem="vsz-tR-wGm" firstAttribute="trailing" secondItem="PtA-XH-vZD" secondAttribute="trailingMargin" id="dke-Km-Awm"/>
+                                    <constraint firstAttribute="height" constant="50" id="ga9-52-83M"/>
+                                    <constraint firstItem="7UN-he-bYO" firstAttribute="centerY" secondItem="PtA-XH-vZD" secondAttribute="centerY" id="kb6-2E-M40"/>
+                                    <constraint firstItem="vsz-tR-wGm" firstAttribute="width" secondItem="7UN-he-bYO" secondAttribute="width" id="pUE-hj-zCF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.84705882349999995" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="PtA-XH-vZD" firstAttribute="leading" secondItem="fiH-4R-hx1" secondAttribute="leading" id="H1Z-8l-oYS"/>
+                            <constraint firstAttribute="trailing" secondItem="dmV-3x-XJZ" secondAttribute="trailing" id="J84-2H-leK"/>
+                            <constraint firstItem="EAG-0s-QbN" firstAttribute="top" secondItem="fiH-4R-hx1" secondAttribute="top" id="J9c-mP-DjL"/>
+                            <constraint firstAttribute="trailing" secondItem="EAG-0s-QbN" secondAttribute="trailing" id="K5J-Yk-T40"/>
+                            <constraint firstItem="t2z-GY-uIk" firstAttribute="top" secondItem="EAG-0s-QbN" secondAttribute="bottom" id="UGL-Xb-Bh7"/>
+                            <constraint firstItem="t2z-GY-uIk" firstAttribute="top" secondItem="dmV-3x-XJZ" secondAttribute="bottom" id="YAO-XP-PSD"/>
+                            <constraint firstAttribute="trailing" secondItem="PtA-XH-vZD" secondAttribute="trailing" id="iB5-Vt-uZL"/>
+                            <constraint firstItem="EAG-0s-QbN" firstAttribute="leading" secondItem="fiH-4R-hx1" secondAttribute="leading" id="mwK-K6-dKg"/>
+                            <constraint firstItem="t2z-GY-uIk" firstAttribute="top" secondItem="PtA-XH-vZD" secondAttribute="bottom" id="nVc-VH-E1l"/>
+                            <constraint firstItem="dmV-3x-XJZ" firstAttribute="leading" secondItem="fiH-4R-hx1" secondAttribute="leading" id="qgc-wJ-HEn"/>
+                            <constraint firstItem="dmV-3x-XJZ" firstAttribute="top" secondItem="fiH-4R-hx1" secondAttribute="topMargin" id="vdg-BE-HRJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tree" id="LdJ-oD-vwD">
+                        <barButtonItem key="leftBarButtonItem" title="Exit" id="RZ0-vh-3NZ">
+                            <connections>
+                                <action selector="didPressExit:" destination="5Kb-gi-CLb" id="Hy4-X0-6nk"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="More" id="Zsf-jp-RVi">
+                            <connections>
+                                <action selector="didPressMore:" destination="5Kb-gi-CLb" id="FVs-Qn-lhV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonsContainerViewHeightConstraint" destination="ga9-52-83M" id="1ov-He-jea"/>
+                        <outlet property="nextButton" destination="vsz-tR-wGm" id="do2-XJ-Hi0"/>
+                        <outlet property="nodeView" destination="dmV-3x-XJZ" id="9ND-o4-xRL"/>
+                        <outlet property="previousButton" destination="7UN-he-bYO" id="puN-Vg-zei"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rP4-dF-nHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2090" y="2162"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background" width="240" height="320"/>
+        <image name="Button-Highlighted" width="91" height="21"/>
+        <image name="Button-Normal" width="91" height="21"/>
+    </resources>
+</document>
