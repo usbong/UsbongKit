@@ -406,7 +406,7 @@
 				CF348C481C6D84B90091BDF7 /* RadioTableViewCell */,
 				CF348C491C6D84BE0091BDF7 /* CheckboxTableViewCell */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		DF19203A1CF91BB100507CA0 /* docs */ = {
