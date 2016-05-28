@@ -398,13 +398,7 @@
 				DF10096F1C2FDA22003A9BDA /* CheckboxButton.swift */,
 				DF1009701C2FDA22003A9BDA /* RadioButton.swift */,
 				DF1009711C2FDA22003A9BDA /* HintsTextView.swift */,
-				CF435EFE1C94F22800CEBB6B /* DateTableViewCell */,
-				CF348C4A1C6D84CF0091BDF7 /* TextFieldTableViewCell */,
-				CFD8EC211C6DCBD400E629CE /* TextAreaTableViewCell */,
-				CF348C461C6D84AE0091BDF7 /* ImageTableViewCell */,
-				CF348C471C6D84B40091BDF7 /* TextTableViewCell */,
-				CF348C481C6D84B90091BDF7 /* RadioTableViewCell */,
-				CF348C491C6D84BE0091BDF7 /* CheckboxTableViewCell */,
+				DF19203F1CF93C1F00507CA0 /* Modules */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -415,6 +409,20 @@
 				DF19203D1CF9200100507CA0 /* Extending-UsbongKit.md */,
 			);
 			path = docs;
+			sourceTree = "<group>";
+		};
+		DF19203F1CF93C1F00507CA0 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CF435EFE1C94F22800CEBB6B /* DateTableViewCell */,
+				CF348C4A1C6D84CF0091BDF7 /* TextFieldTableViewCell */,
+				CFD8EC211C6DCBD400E629CE /* TextAreaTableViewCell */,
+				CF348C461C6D84AE0091BDF7 /* ImageTableViewCell */,
+				CF348C471C6D84B40091BDF7 /* TextTableViewCell */,
+				CF348C481C6D84B90091BDF7 /* RadioTableViewCell */,
+				CF348C491C6D84BE0091BDF7 /* CheckboxTableViewCell */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		DF350AD01C2FEE7700A1956E /* Usbong */ = {
