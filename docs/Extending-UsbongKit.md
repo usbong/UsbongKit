@@ -59,4 +59,19 @@ case let titleModule as TitleModule:
 
 # Adding Nodes
 
+Creating a Node is faster than creating a module since a Node is simply a collection of modules. Thus, to create a custom node, subclass `Node`, and add in your combination of modules in `modules`. Let's say you want to create a Node with your `TitleModule` and the node you want is a combination of a title followed by a text (`TextModule`):
+
+```swift
+
+public class TitleAndTextNode: Node {
+  public init(title: String, text: String) {
+    super.init(modules: [
+      TitleModule(title: title),
+      TextModule(text: text)
+      ])
+  }
+}
+
+```
+
 # Adding Task Nodes
