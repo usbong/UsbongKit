@@ -45,6 +45,8 @@
 		DF1920351CF8336A00507CA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF1920341CF8336A00507CA0 /* Assets.xcassets */; };
 		DF1920371CF835BD00507CA0 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1920361CF835BD00507CA0 /* TreeViewController.swift */; };
 		DF1920391CF8371E00507CA0 /* Usbong.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1920381CF8371E00507CA0 /* Usbong.swift */; };
+		DF19203C1CF91BC700507CA0 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = DF19203B1CF91BC700507CA0 /* README.md */; };
+		DF19203E1CF9200100507CA0 /* Extending-UsbongKit.md in Sources */ = {isa = PBXBuildFile; fileRef = DF19203D1CF9200100507CA0 /* Extending-UsbongKit.md */; };
 		DF25EC6C1C36C554002593EA /* UsbongTree+NodeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */; };
 		DF28C9711CA6B34B0074776B /* AutoPlayableTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28C9701CA6B34B0074776B /* AutoPlayableTree.swift */; };
 		DF350AD21C2FEECE00A1956E /* UsbongTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF350AD11C2FEECE00A1956E /* UsbongTree.swift */; };
@@ -180,6 +182,8 @@
 		DF1920341CF8336A00507CA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF1920361CF835BD00507CA0 /* TreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
 		DF1920381CF8371E00507CA0 /* Usbong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usbong.swift; sourceTree = "<group>"; };
+		DF19203B1CF91BC700507CA0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		DF19203D1CF9200100507CA0 /* Extending-UsbongKit.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Extending-UsbongKit.md"; sourceTree = "<group>"; };
 		DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UsbongTree+NodeProvider.swift"; path = "UsbongKit/Usbong/UsbongTree/UsbongTree+NodeProvider.swift"; sourceTree = SOURCE_ROOT; };
 		DF28C9701CA6B34B0074776B /* AutoPlayableTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPlayableTree.swift; sourceTree = "<group>"; };
 		DF350AD11C2FEECE00A1956E /* UsbongTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsbongTree.swift; path = UsbongKit/Usbong/UsbongTree/UsbongTree.swift; sourceTree = SOURCE_ROOT; };
@@ -405,6 +409,14 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		DF19203A1CF91BB100507CA0 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				DF19203D1CF9200100507CA0 /* Extending-UsbongKit.md */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
 		DF350AD01C2FEE7700A1956E /* Usbong */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,6 +527,8 @@
 				DF452B591BDE0AFD003EB5C3 /* UsbongKit-exampleTests */,
 				DF452B641BDE0AFD003EB5C3 /* UsbongKit-exampleUITests */,
 				DFA633CF1BDBD17C00C079B2 /* Products */,
+				DF19203A1CF91BB100507CA0 /* docs */,
+				DF19203B1CF91BC700507CA0 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -868,6 +882,7 @@
 				DF1920391CF8371E00507CA0 /* Usbong.swift in Sources */,
 				DF350AD21C2FEECE00A1956E /* UsbongTree.swift in Sources */,
 				CF348C4D1C6D84EF0091BDF7 /* TextFieldTableViewCell.swift in Sources */,
+				DF19203E1CF9200100507CA0 /* Extending-UsbongKit.md in Sources */,
 				DF66434D1CF6708C00373BBE /* TextInputModule.swift in Sources */,
 				DFDE96711CF70325003F373A /* XMLIdentifier.swift in Sources */,
 				DFDE96731CF70396003F373A /* TaskNodeType.swift in Sources */,
@@ -882,6 +897,7 @@
 				DF10097F1C2FDA22003A9BDA /* RadioButton.swift in Sources */,
 				DF10097E1C2FDA22003A9BDA /* CheckboxButton.swift in Sources */,
 				DF6643621CF674A700373BBE /* TextAreaNode.swift in Sources */,
+				DF19203C1CF91BC700507CA0 /* README.md in Sources */,
 				DF66433C1CF66EA200373BBE /* OptionsTypeModule.swift in Sources */,
 				DF66434B1CF6708C00373BBE /* ListModule.swift in Sources */,
 				DF6643611CF674A700373BBE /* RadioButtonsNode.swift in Sources */,
