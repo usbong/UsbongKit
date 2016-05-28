@@ -39,7 +39,7 @@ You can integrate `UsbongKit` in your project in different ways:
 
 # View utree
 
-To view a utree file, simply run this code in your app:
+To view a utree file, import the framework, `import UsbongKit`, then add this code in your app:
 
 ```swift
 
