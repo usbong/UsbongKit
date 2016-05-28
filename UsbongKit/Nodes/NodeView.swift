@@ -11,8 +11,10 @@ import UIKit
 /// Renders the view for a `Node`
 public class NodeView: UIView {
     public let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.Plain)
+    
     private let backgroundImageView = UIImageView(frame: CGRect.zero)
     
+    /// The node to be rendered. Default is a `TextNode` with text "No Node".
     public var node: Node = TextNode(text: "No Node") {
         didSet {
             tableView.reloadData()
@@ -33,6 +35,7 @@ public class NodeView: UIView {
         super.init(coder: aDecoder)
     }
     
+    /// Configuration for initialization, and addition of subviews
     private func sharedInitialization() {
         // Background image view
         backgroundImageView.frame = bounds
@@ -68,11 +71,19 @@ public class NodeView: UIView {
     }
     
     // MARK: Hints dictionary
+    
+    /// The hints dictionary to be used for the `TextModule`, where the key is the word or phrase, and the value is its definition
     public var hintsDictionary: [String: String] = [:]
+    
+    /// The font color for the word hint
     public var hintsColor = UIColor(red: 0.6, green: 0.56, blue: 0.36, alpha: 1)
+    
+    /// The delegate for the hints text view, where it handles the tapping of a word hint
     public weak var hintsTextViewDelegate: HintsTextViewDelegate?
     
     // MARK: Background image
+    
+    /// The background image for the `NodeView`
     public var backgroundImage: UIImage? {
         get {
             return backgroundImageView.image
@@ -82,6 +93,7 @@ public class NodeView: UIView {
         }
     }
     
+    /// Gets the text attributes (formatting) for a module
     func textAttributesForModule(module: Module) -> [String: AnyObject] {
         let fontSize: CGFloat
         if traitCollection.horizontalSizeClass == .Regular && traitCollection.verticalSizeClass == .Regular {
@@ -98,6 +110,7 @@ public class NodeView: UIView {
         return [NSForegroundColorAttributeName: textColor, NSFontAttributeName: font, NSParagraphStyleAttributeName: paragraphStyle]
     }
     
+    /// Called when the date of the date picker for the `DateNode` is changed
     func didUpdateDatePicker(sender: UIDatePicker) {
         guard let dateNode = node as? DateNode else { return }
         
@@ -105,11 +118,14 @@ public class NodeView: UIView {
     }
 }
 
+// A collection of functions to display data in the table view
 extension NodeView: UITableViewDataSource {
+    /// The number of sections of the table is based on the number of modules of the node
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return node.modules.count
     }
     
+    /// The number of rows in a section is usually one. But for an `OptionsTypeModule` (where modules are lists), it is the number of options/items
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let modules = node.modules
         if let listModule = modules[section] as? OptionsTypeModule {
@@ -119,6 +135,7 @@ extension NodeView: UITableViewDataSource {
         return 1
     }
     
+    /// Returns the cell for a row. This is where the views for modules are determined.
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let module = node.modules[indexPath.section]
         
@@ -214,7 +231,9 @@ extension NodeView: UITableViewDataSource {
     }
 }
 
+// A collection of functions to handle table view events
 extension NodeView: UITableViewDelegate {
+    /// This function is called when a row is selected. It is used for a `SelectionTypeModule`, which is used for radio buttons, and checkboxes
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let selectionModule = node.modules[indexPath.section] as? SelectionTypeModule {
             selectionModule.toggleIndex(indexPath.row)
@@ -223,11 +242,12 @@ extension NodeView: UITableViewDelegate {
         }
     }
     
-    // Allow calculated height of image
+    /// This function is where the height of an image is calculated since images for the ImageModule are made to fit the width of the view, while maintaining its aspect ratio
     public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let module = node.modules[indexPath.section]
         switch module {
         case let imageModule as ImageModule:
+            // Calculate height for the image module
             guard let originalSize = imageModule.image?.size else {
                 return UITableViewAutomaticDimension
             }
@@ -238,12 +258,15 @@ extension NodeView: UITableViewDelegate {
             
             return height
         default:
+            // Default is an automatic height which the `UITableView` calculates based on the cell's constraints
             return UITableViewAutomaticDimension
         }
     }
 }
 
+// A collection of functions to handle text field events
 extension NodeView: UITextFieldDelegate {
+    /// This function is called every time the text is changed in a text field of a text input type node. It updates the text property of the node.
     public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         guard let currentNode = node as? TextInputTypeNode else {
             return true
@@ -264,7 +287,9 @@ extension NodeView: UITextFieldDelegate {
     }
 }
 
+// A collection of functions to handle text view events
 extension NodeView: UITextViewDelegate {
+    /// This function is called every time the text is changed in a text field of a text input type node. It updates the text property of the node.
     public func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         guard let currentNode = node as? TextInputTypeNode else {
             return true
