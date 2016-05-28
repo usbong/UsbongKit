@@ -6,9 +6,8 @@ UsbongKit is a framework that contains the main components for Usbong.
 
 # To-do
 
-- [ ] Add documentation
+- [x] Add documentation
 - [ ] CocoaPods support
-- [ ] Possibly separate Nodes into a separate framework (NodeKit)
 
 # Running the Example App
 
@@ -20,14 +19,35 @@ UsbongKit is a framework that contains the main components for Usbong.
 
 You can integrate `UsbongKit` in your project in different ways:
 
-  - Manual
-    1. Drag-and-drop `UsbongKit.xcodeproj` as sub-project
-    2. Link `UsbongKit.framework` in your project
-  - Framework
-    1. Build the `UsbongKit` framework
-    2. Drag-and-drop `UsbongKit.framework` in your project
-  - [Carthage](https://github.com/carthage/carthage)
-    1. Add `github "usbong/UsbongKit"` in your `Cartfile`
+## Sub-Project
+
+1. Drag-and-drop `UsbongKit.xcodeproj` as sub-project
+2. Run `carthage update --platform iOS` in UsbongKit folder to fetch dependencies
+3. Link `UsbongKit.framework` in your project
+
+## Embed Framework
+
+1. Run `carthage update --platform iOS` in UsbongKit folder to fetch dependencies
+2. Build `UsbongKit` framework
+3. Embed `UsbongKit.framework` in your project
+
+## [Carthage](https://github.com/carthage/carthage)
+
+1. Add `github "usbong/UsbongKit"` in your `Cartfile`
+2. Run `carthage update --platform iOS` in your project directory
+3. Follow [Carthage](https://github.com/carthage/carthage) instructions to add frameworks in your project
+
+# View utree
+
+To view a utree file, simply run this code in your app:
+
+```swift
+
+// parentViewController is the controller which will present the Usbong tree viewer
+// treeURL is the URL for the compressed .utree
+Usbong.presentViewer(onViewController: parentViewController, withUtreeURL: treeURL)
+
+```
 
 # License
 
