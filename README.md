@@ -49,6 +49,10 @@ Usbong.presentViewer(onViewController: parentViewController, withUtreeURL: treeU
 
 ```
 
+# Extend UsbongKit
+
+The documentation for extending UsbongKit can be found [here](./docs/Extending-UsbongKit.md).
+
 # License
 
    Copyright 2016 Usbong Social Systems, Inc.
