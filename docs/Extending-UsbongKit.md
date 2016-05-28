@@ -74,4 +74,37 @@ public class TitleAndTextNode: Node {
 
 ```
 
+You can also add this node to the UsbongKit example app mentioned earlier.
+
 # Adding Task Nodes
+
+Assuming you've created your custom node and its view for your new task node, you can add a new one in `UsbongTree`, which is a class for parsing the utree format.
+
+- To add a task node, the first thing you need to do is add a case in the enum `TaskNodeType`, and its corresponding string (determined by the type in the task-node name). Let's say you added a `titleTextDisplay`, which corresponds to your `TitleAndTextNode`:
+
+```swift
+
+case TitleTextDisplay = "titleTextDisplay"
+
+```
+
+- You'll notice that there is an error. It's located in the switch statement of the function `nodeWithName(taskNodeName: String) -> Node` in the class `UsbongTree`. It's found in `UsbongKit/Usbong/UsbongTree/UsbongTree.swift`. The switch statement now has an error because it doesn't handle all the cases in the `TaskNodeType` enum since you've added a new case, `TitleAndTextDisplay`.
+  - First let's learn what this function does. In this function, it fetches the task node in the XML with the name inside the `taskNodeName` variable.
+    - You can see a `nameInfo` variable, an `XMLNameInfo` object, inside the function. This name info simply decomposes the task-node name into components and provides properties for easier access to images, audios and text determined by the utree format. The `nameInfo.text` is the text of the node which is always the last component in the task node name. The `nameInfo.type` is the task node type (such as textDisplay, imageDisplay, etc.).
+    - The `nodeIndexerAndTypeWithName(taskNodeName)` returns multiple values (called a tuple). The first value is the XML tag, while the second value is the `NodeType`, a main type of a task node. There are three main types of a task node: `TaskNode`, `Decision`, and `EndState`. These are determined by the XML tag of the utree format.
+    - The `finalText` variable is a translated and parsed text of the task node.
+- Since the type of the task node is in `nameInfo.type`, we create a switch statement for it to apply custom behavior for each task node type. Thus, we add our case there for our `TitleTextDisplay`:
+
+```swift
+
+case .TitleTextDisplay:
+  // Let's assume the title is located in the 2nd component of the task node name
+  // You can also customize XMLNameInfo to add a property for title
+  let title = nameInfo.components[1]
+
+  // Create the TitleAndTextNode and pass it to the node variable
+  node = TitleAndTextNode(title: title, text: finalText)
+
+```
+
+- You've now added a new task node! You can test it by creating a utree with your new task node.
