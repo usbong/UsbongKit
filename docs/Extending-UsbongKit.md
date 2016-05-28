@@ -12,7 +12,7 @@ Let's say you want to create a title module, a module that displays text with a 
 
 ```swift
 
-public class VideoModule: Module {
+public class TitleModule: Module {
   public var title: String
 
   public init(title: String) {
