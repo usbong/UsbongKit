@@ -55,7 +55,7 @@ case let titleModule as TitleModule:
 
 ```
 
-- That's it! You've created your own module. To display it, you need to add you module to a node. To have a specific combination of modules in a node, you can create a new `Node` subclass.
+- That's it! You've created your own module. To display it, you need to add your module to a node. You can look at the example app in `UsbongKit-example/`, to display your node with your module. `UsbongKit-example/NodesTableViewController` shows a list of nodes to be displayed. You can add a node with your module in the `nodes: [Node]` array (ex. `Node(modules: [TitleModule(title: "A Title Module")])`). To have a specific combination of modules in a node, you can create a new `Node` subclass.
 
 # Adding Nodes
 
