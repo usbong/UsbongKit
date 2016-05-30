@@ -12,9 +12,9 @@ UsbongKit is a framework that contains the main components for Usbong.
 # Running the Example App
 
 - Make sure you have [carthage](https://github.com/Carthage/Carthage) installed
-- Run `carthage update --platform iOS` in the project
+- Run `carthage bootstrap --platform iOS` in the project
 
-For example, UsbongKit is located in ~/Developer/Usbong/UsbongKit. Therefore, I navigate to the folder in the terminal using "cd" command, and then, run "carthage update" or "carthage update --platform iOS" (specifying the platform will make the update finish faster, since it will only build the frameworks for iOS). Once all dependencies have been downloaded and built, the UsbongKit example app should now be able to be built and run in a simulator or an iOS device.
+  For example, UsbongKit is located in ~/Developer/Usbong/UsbongKit. Therefore, I navigate to the folder in the terminal using "cd" command, and then, run "carthage update" or "carthage update --platform iOS" (specifying the platform will make the update finish faster, since it will only build the frameworks for iOS). Once all dependencies have been downloaded and built, the UsbongKit example app should now be able to be built and run in a simulator or an iOS device.
 
 - Build and run the `UsbongKit-example` target
 
