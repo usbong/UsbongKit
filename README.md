@@ -12,7 +12,7 @@ UsbongKit is a framework that contains the main components for Usbong.
 # Running the Example App
 
 - Make sure you have [carthage](https://github.com/Carthage/Carthage) installed
-- Run `carthage update` in the project
+- Run `carthage update --platform iOS` in the project
 - Build and run the `UsbongKit-example` target
 
 # Installation
