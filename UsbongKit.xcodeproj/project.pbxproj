@@ -697,6 +697,7 @@
 				DFA633D41BDBD17C00C079B2 /* Sources */,
 				DFA633D51BDBD17C00C079B2 /* Frameworks */,
 				DFA633D61BDBD17C00C079B2 /* Resources */,
+				DFF804001CFC1D8000B9C702 /* Carthage Copy Frameworks Script */,
 			);
 			buildRules = (
 			);
@@ -824,6 +825,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd UsbongKit-example/Tree\\ Contents/\nzip -X -r ../Usbong\\ iOS.utree Usbong\\ iOS.utree/\n";
+		};
+		DFF804001CFC1D8000B9C702 /* Carthage Copy Frameworks Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SWXMLHash.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Zip.framework",
+			);
+			name = "Carthage Copy Frameworks Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 /* End PBXShellScriptBuildPhase section */
 
