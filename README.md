@@ -13,29 +13,32 @@ UsbongKit is a framework that contains the main components for Usbong.
 
 - Make sure you have [carthage](https://github.com/Carthage/Carthage) installed
 - Run `carthage update --platform iOS` in the project
+
+For example, UsbongKit is located in ~/Developer/Usbong/UsbongKit. Therefore, I navigate to the folder in the terminal using "cd" command, and then, run "carthage update" or "carthage update --platform iOS" (specifying the platform will make the update finish faster, since it will only build the frameworks for iOS). Once all dependencies have been downloaded and built, the UsbongKit example app should now be able to be built and run in a simulator or an iOS device.
+
 - Build and run the `UsbongKit-example` target
 
 # Installation
 
-You can integrate `UsbongKit` in your project in different ways:
+You can integrate `UsbongKit` in your project in 3 different ways:
 
-## Sub-Project
+## 1. [Carthage](https://github.com/carthage/carthage) (Recommended)
+
+1. Add `github "usbong/UsbongKit"` in your `Cartfile`
+2. Run `carthage update --platform iOS` in your project directory
+3. Follow [Carthage](https://github.com/carthage/carthage) instructions to add frameworks in your project
+
+## 2. Project
 
 1. Drag-and-drop `UsbongKit.xcodeproj` as sub-project
 2. Run `carthage update --platform iOS` in UsbongKit folder to fetch dependencies
 3. Link `UsbongKit.framework` in your project
 
-## Embed Framework
+## 3. Embed Framework
 
 1. Run `carthage update --platform iOS` in UsbongKit folder to fetch dependencies
 2. Build `UsbongKit` framework
 3. Embed `UsbongKit.framework` in your project
-
-## [Carthage](https://github.com/carthage/carthage)
-
-1. Add `github "usbong/UsbongKit"` in your `Cartfile`
-2. Run `carthage update --platform iOS` in your project directory
-3. Follow [Carthage](https://github.com/carthage/carthage) instructions to add frameworks in your project
 
 # View utree
 
