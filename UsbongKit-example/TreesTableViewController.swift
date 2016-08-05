@@ -58,7 +58,13 @@ class TreesTableViewController: UITableViewController {
     // MARK: - Table view delegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        Usbong.presentViewer(onViewController: self, withUtreeURL: treesURLs[indexPath.row])
+        // Create sample data with sample bundles
+        let sampleData = UsbongTreeData(bundles: [
+            IAPBundle(productIdentifier: "com.example.identifier", languages: ["Japanese", "Mandarin"])
+            ])
+        
+        // View tree
+        Usbong.presentViewer(onViewController: self, withUtreeURL: treesURLs[indexPath.row], andData: sampleData)
     }
 
     // MARK: - Navigation

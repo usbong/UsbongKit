@@ -89,6 +89,12 @@
 		DFA633DE1BDBD17C00C079B2 /* UsbongKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */; };
 		DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
 		DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */; };
+		DFC1FD311D54A235006FF586 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC1FD301D54A235006FF586 /* IAPHelper.swift */; };
+		DFC1FD351D54A3C2006FF586 /* IAPBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC1FD341D54A3C2006FF586 /* IAPBundle.swift */; };
+		DFC1FD371D54BEBB006FF586 /* IAPSampleBundles.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC1FD361D54BEBB006FF586 /* IAPSampleBundles.swift */; };
+		DFC1FD391D54C253006FF586 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC1FD381D54C253006FF586 /* PurchasesTableViewController.swift */; };
+		DFC1FD3D1D54C3C2006FF586 /* IAPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC1FD3B1D54C3C2006FF586 /* IAPTableViewCell.swift */; };
+		DFC1FD3E1D54C3C2006FF586 /* IAPTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFC1FD3C1D54C3C2006FF586 /* IAPTableViewCell.xib */; };
 		DFD396E21C363A2A00D56326 /* SpeakableTextTypeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */; };
 		DFDE966A1CF6EEB5003F373A /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDE96691CF6EEB5003F373A /* Defaults.swift */; };
 		DFDE966D1CF6EF08003F373A /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDE966C1CF6EF08003F373A /* NodeType.swift */; };
@@ -233,6 +239,12 @@
 		DFA633DF1BDBD17C00C079B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 		DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLNameInfo.swift; sourceTree = "<group>"; };
+		DFC1FD301D54A235006FF586 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		DFC1FD341D54A3C2006FF586 /* IAPBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPBundle.swift; sourceTree = "<group>"; };
+		DFC1FD361D54BEBB006FF586 /* IAPSampleBundles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPSampleBundles.swift; sourceTree = "<group>"; };
+		DFC1FD381D54C253006FF586 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
+		DFC1FD3B1D54C3C2006FF586 /* IAPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPTableViewCell.swift; sourceTree = "<group>"; };
+		DFC1FD3C1D54C3C2006FF586 /* IAPTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IAPTableViewCell.xib; sourceTree = "<group>"; };
 		DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakableTextTypeModule.swift; sourceTree = "<group>"; };
 		DFDE96691CF6EEB5003F373A /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		DFDE966C1CF6EF08003F373A /* NodeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
@@ -396,6 +408,7 @@
 				DF10096F1C2FDA22003A9BDA /* CheckboxButton.swift */,
 				DF1009701C2FDA22003A9BDA /* RadioButton.swift */,
 				DF1009711C2FDA22003A9BDA /* HintsTextView.swift */,
+				DFC1FD3A1D54C3AC006FF586 /* IAPTableViewCell */,
 				DF19203F1CF93C1F00507CA0 /* Modules */,
 			);
 			path = Views;
@@ -445,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				DF35E1FA1C44FFC7004E5178 /* LanguagesTableViewController.swift */,
+				DFC1FD381D54C253006FF586 /* PurchasesTableViewController.swift */,
 				DF1920361CF835BD00507CA0 /* TreeViewController.swift */,
 				DF1920321CF8328400507CA0 /* UsbongKit.storyboard */,
 				DF1920341CF8336A00507CA0 /* Assets.xcassets */,
@@ -556,6 +570,7 @@
 				DFA633D11BDBD17C00C079B2 /* UsbongKit.h */,
 				DF1920381CF8371E00507CA0 /* Usbong.swift */,
 				DFA633D31BDBD17C00C079B2 /* Info.plist */,
+				DFC1FD2F1D54A203006FF586 /* Helpers */,
 				DF66433A1CF66E7000373BBE /* Modules */,
 				DF35E1F81C44FF09004E5178 /* ViewControllers */,
 				DF10098E1C2FDA30003A9BDA /* Views */,
@@ -581,6 +596,25 @@
 				DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFC1FD2F1D54A203006FF586 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DFC1FD301D54A235006FF586 /* IAPHelper.swift */,
+				DFC1FD341D54A3C2006FF586 /* IAPBundle.swift */,
+				DFC1FD361D54BEBB006FF586 /* IAPSampleBundles.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DFC1FD3A1D54C3AC006FF586 /* IAPTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DFC1FD3B1D54C3C2006FF586 /* IAPTableViewCell.swift */,
+				DFC1FD3C1D54C3C2006FF586 /* IAPTableViewCell.xib */,
+			);
+			name = IAPTableViewCell;
 			sourceTree = "<group>";
 		};
 		DFDE966E1CF6FA70003F373A /* UsbongTree */ = {
@@ -792,6 +826,7 @@
 			files = (
 				DF1009881C2FDA22003A9BDA /* CheckboxTableViewCell.xib in Resources */,
 				DF1920331CF8328400507CA0 /* UsbongKit.storyboard in Resources */,
+				DFC1FD3E1D54C3C2006FF586 /* IAPTableViewCell.xib in Resources */,
 				CF435EFD1C94F22400CEBB6B /* DateTableViewCell.xib in Resources */,
 				CFD8EC201C6DCBCF00E629CE /* TextAreaTableViewCell.xib in Resources */,
 				DF1009841C2FDA22003A9BDA /* TextTableViewCell.xib in Resources */,
@@ -884,8 +919,10 @@
 				DF66434F1CF6735B00373BBE /* TextNode.swift in Sources */,
 				DFDE966D1CF6EF08003F373A /* NodeType.swift in Sources */,
 				DF6643481CF6708C00373BBE /* CheckboxesModule.swift in Sources */,
+				DFC1FD391D54C253006FF586 /* PurchasesTableViewController.swift in Sources */,
 				DF1009811C2FDA22003A9BDA /* ImageTableViewCell.swift in Sources */,
 				DF10098A1C2FDA22003A9BDA /* Node.swift in Sources */,
+				DFC1FD371D54BEBB006FF586 /* IAPSampleBundles.swift in Sources */,
 				DF6643641CF674A700373BBE /* TextFieldNumericalNode.swift in Sources */,
 				CFA624D21C6C49BD0071301D /* Reusable.swift in Sources */,
 				DF6643651CF674A700373BBE /* TextFieldWithUnitNode.swift in Sources */,
@@ -901,6 +938,7 @@
 				DF6643601CF674A700373BBE /* ImageTextNode.swift in Sources */,
 				DF66435E1CF674A700373BBE /* DateNode.swift in Sources */,
 				DF1009801C2FDA22003A9BDA /* HintsTextView.swift in Sources */,
+				DFC1FD3D1D54C3C2006FF586 /* IAPTableViewCell.swift in Sources */,
 				DF25EC6C1C36C554002593EA /* UsbongTree+NodeProvider.swift in Sources */,
 				DF1920391CF8371E00507CA0 /* Usbong.swift in Sources */,
 				DF350AD21C2FEECE00A1956E /* UsbongTree.swift in Sources */,
@@ -918,6 +956,7 @@
 				DFD396E21C363A2A00D56326 /* SpeakableTextTypeModule.swift in Sources */,
 				DF10097F1C2FDA22003A9BDA /* RadioButton.swift in Sources */,
 				DF10097E1C2FDA22003A9BDA /* CheckboxButton.swift in Sources */,
+				DFC1FD351D54A3C2006FF586 /* IAPBundle.swift in Sources */,
 				DF6643621CF674A700373BBE /* TextAreaNode.swift in Sources */,
 				DF66433C1CF66EA200373BBE /* OptionsTypeModule.swift in Sources */,
 				DF66434B1CF6708C00373BBE /* ListModule.swift in Sources */,
@@ -929,6 +968,7 @@
 				CF435EFC1C94F22400CEBB6B /* DateTableViewCell.swift in Sources */,
 				DF1009891C2FDA22003A9BDA /* Module.swift in Sources */,
 				DF1920371CF835BD00507CA0 /* TreeViewController.swift in Sources */,
+				DFC1FD311D54A235006FF586 /* IAPHelper.swift in Sources */,
 				CFD8EC1F1C6DCBCF00E629CE /* TextAreaTableViewCell.swift in Sources */,
 				DF10098C1C2FDA22003A9BDA /* NodeView.swift in Sources */,
 				DF10098B1C2FDA22003A9BDA /* NodeProvider.swift in Sources */,

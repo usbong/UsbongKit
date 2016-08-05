@@ -19,14 +19,25 @@ public struct Usbong {
        - viewController: The parent view controller for the to be presented viewer
        - url: URL for the utree file
     */
-    public static func presentViewer(onViewController viewController: UIViewController, withUtreeURL url: NSURL) {
+    public static func presentViewer(onViewController viewController: UIViewController, withUtreeURL url: NSURL, andData data: UsbongTreeData = UsbongTreeData()) {
         let storyboard = UIStoryboard(name: "UsbongKit", bundle: NSBundle(forClass: TreeViewController.self))
         
         let navController = storyboard.instantiateInitialViewController() as! UINavigationController
         let treeVC = navController.topViewController as! TreeViewController
         
         treeVC.treeURL = url
+        treeVC.store = IAPHelper(bundles: data.bundles)
         
         viewController.presentViewController(navController, animated: true, completion: nil)
+    }
+}
+
+public struct UsbongTreeData {
+    public var bundles: [IAPBundle] = []
+    
+    public init() {}
+    
+    public init(bundles: [IAPBundle]) {
+        self.bundles = bundles
     }
 }

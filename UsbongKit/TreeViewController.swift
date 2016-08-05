@@ -18,6 +18,8 @@ class TreeViewController: UIViewController {
     
     @IBOutlet weak var nodeView: NodeView!
     
+    var store: IAPHelper = IAPHelper(bundles: [])
+    
     var lastSpeechUtterance: AVSpeechUtterance?
     
     var tree: UsbongTree?
@@ -201,20 +203,31 @@ extension TreeViewController {
     }
     
     func showChooseLanguageScreen() {
-        if let tree = self.tree {
-            let languagesTableVC = LanguagesTableViewController()
-            let navVC = UINavigationController(rootViewController: languagesTableVC)
-            
-            languagesTableVC.languages = tree.availableLanguages
-            languagesTableVC.selectedLanguage = tree.currentLanguage
-            languagesTableVC.didSelectLanguageCompletion = { selectedLanguage in
-                tree.currentLanguage = selectedLanguage
-                
-                self.reloadNode()
+        guard tree != nil else { return }
+        
+        performSegueWithIdentifier("showLanguages", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier ?? "" {
+        case "showLanguages":
+            guard let tree = self.tree else {
+                break
             }
             
-            navVC.modalPresentationStyle = .FormSheet
-            presentViewController(navVC, animated: true, completion: nil)
+            let destinationViewController = (segue.destinationViewController as! UINavigationController).topViewController as! LanguagesTableViewController
+            
+            destinationViewController.store = store
+            destinationViewController.languages = tree.availableLanguages
+            destinationViewController.selectedLanguage = tree.currentLanguage
+            destinationViewController.didSelectLanguageCompletion = { selectedLanguage in
+                tree.currentLanguage = selectedLanguage
+                
+                // Reload the node
+                self.reloadNode()
+            }
+        default:
+            break
         }
     }
 }
