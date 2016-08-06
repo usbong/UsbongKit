@@ -10,11 +10,7 @@ import Foundation
 import StoreKit
 
 class PurchasesTableViewController: UITableViewController {
-    var store: IAPHelper = IAPHelper(bundles: []) {
-        didSet {
-            reload()
-        }
-    }
+    var store: IAPHelper = IAPHelper(bundles: [])
     
     var products: [SKProduct] = []
     

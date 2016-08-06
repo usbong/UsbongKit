@@ -54,6 +54,10 @@ public class IAPHelper : NSObject  {
         SKPaymentQueue.defaultQueue().addTransactionObserver(self)
     }
     
+    deinit {
+        SKPaymentQueue.defaultQueue().removeTransactionObserver(self)
+    }
+    
     /// Gets the list of SKProducts from the Apple server calls the handler with the list of products.
     public func requestProductsWithCompletionHandler(handler: RequestProductsCompletionHandler) {
         completionHandler = handler
