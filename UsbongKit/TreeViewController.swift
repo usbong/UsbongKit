@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class TreeViewController: UIViewController {
+class TreeViewController: UIViewController, HintsTextViewDelegate {
     
     @IBOutlet weak var buttonsContainerViewHeightConstraint: NSLayoutConstraint!
     
@@ -268,10 +268,7 @@ extension TreeViewController {
         
         nodeView.node = node
         nodeView.hintsDictionary = tree.hintsDictionary
-        
-        if let delegate = self as? HintsTextViewDelegate {
-            nodeView.hintsTextViewDelegate = delegate
-        }
+        nodeView.hintsTextViewDelegate = self
         
         // Background image
         if let backgroundImagePath = tree.backgroundImageURL?.path {
