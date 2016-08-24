@@ -27,6 +27,7 @@
         <task name="textAreaWithAnswer"></task>
         <task name="timestampDisplay"></task>
         <task name="date"></task>
+        <task name="radioButtonsWithAnswer"></task>
         <transition to="radioButtons~I love to play games" name="Any"></transition>
     </task-node>
     
@@ -60,7 +61,7 @@
     </decision>
     
     <task-node name="textDisplay~Ok. Bye!">
-        <transition to="end-state1" name="No"></transition>
+        <transition to="end-state1" name="Any"></transition>
     </task-node>
     
     <task-node name="link~Choose your class:">
@@ -129,6 +130,22 @@
     </task-node>
     
     <task-node name="date~Today's date is:">
+        <transition to="radioButtonsWithAnswer~Wavelength is inversely proportional to?Answer=1" name="Any"></transition>
+    </task-node>
+    
+    <task-node name="radioButtonsWithAnswer~Wavelength is inversely proportional to?Answer=1">
+        <task name="A) wave speed."></task>
+        <task name="B) frequency."></task>
+        <task name="C) Both A and B."></task>
+        <task name="D) Neither A nor B."></task>
+        <transition to="textDisplay~Correct answer!" name="Yes"></transition>
+        <transition to="textDisplay~Incorrect answer!" name="No"></transition>
+    </task-node>
+    
+    <task-node name="textDisplay~Correct answer!">
+        <transition to="end-state1" name="Any"></transition>
+    </task-node>
+    <task-node name="textDisplay~Incorrect answer!">
         <transition to="end-state1" name="Any"></transition>
     </task-node>
     
