@@ -71,7 +71,7 @@ public class UsbongTree {
             case let radioButtonsNode as RadioButtonsNode:
                 if let taskNodeType = currentTaskNodeType {
                     switch taskNodeType {
-                    case .Link:
+                    case .Link, .RadioButtonsWithAnswer:
                         guard let module = radioButtonsNode.selectionModule as? RadioButtonsModule else {
                             break
                         }
@@ -79,7 +79,18 @@ public class UsbongTree {
                             break
                         }
                         
-                        return module.options[selectedIndex]
+                        switch taskNodeType {
+                        case .Link:
+                            return module.options[selectedIndex]
+                        case .RadioButtonsWithAnswer:
+                            if selectedIndex == currentTargetSelectedIndex {
+                                return "Yes"
+                            } else {
+                                return "No"
+                            }
+                        default:
+                            return "Any"
+                        }
                     default:
                         break
                     }
@@ -122,6 +133,9 @@ public class UsbongTree {
     
     /// Current target text input (for nodes with current answers)
     internal var currentTargetTextInput: String?
+    
+    /// Current target selection (for selection nodes with answers)
+    internal var currentTargetSelectedIndex: Int?
     
     /// The next task node name
     internal var nextTaskNodeName: String? {
@@ -292,7 +306,7 @@ public class UsbongTree {
                 }
                 
                 node = RadioButtonsNode(text: finalText, options: tasks)
-            case .Link, .RadioButtons, .Checklist, .Classification:
+            case .Link, .RadioButtons, .Checklist, .Classification, .RadioButtonsWithAnswer:
                 var tasks: [String] = []
                 
                 // Fetch tasks (and transition info from task elements if link)
@@ -331,6 +345,20 @@ public class UsbongTree {
                     node = ClassificationNode(text: finalText, list: options)
                 case .Link, .RadioButtons:
                     node = RadioButtonsNode(text: finalText, options: tasks)
+                case .RadioButtonsWithAnswer:
+                    let separator = "Answer="
+                    var components = finalText.componentsSeparatedByString(separator)
+                    
+                    // Get answer
+                    if components.count > 1 {
+                        currentTargetSelectedIndex = Int(components.removeLast())
+                    }
+                    
+                    // Rejoin
+                    let text: String = components.joinWithSeparator(separator)
+                    
+                    // Create RadioButtons
+                    node = RadioButtonsNode(text: text, options: tasks)
                 default:
                     break
                 }

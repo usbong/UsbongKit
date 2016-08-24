@@ -26,4 +26,5 @@ internal enum TaskNodeType: String {
     case TextAreaWithAnswer = "textAreaWithAnswer"
     case TimestampDisplay = "timestampDisplay"
     case Date = "date"
+    case RadioButtonsWithAnswer = "radioButtonsWithAnswer"
 }
