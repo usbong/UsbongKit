@@ -54,6 +54,9 @@ class TreeViewController: UIViewController, HintsTextViewDelegate {
                 tree = nil
             }
             
+            // Customize first language
+            tree?.currentLanguage = "Filipino"
+            
             // Save tree to self in main thread
             dispatch_async(dispatch_get_main_queue()) {
                 self.tree = tree
