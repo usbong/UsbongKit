@@ -104,7 +104,7 @@ public class UsbongTree {
                 switch taskNodeType {
                 case .TextFieldWithAnswer, .TextAreaWithAnswer:
                     // Return Yes or No if with answer
-                    if currentTargetTextInput.componentsSeparatedByString("|").contains(textInputTypeNode.textInput) {
+                    if let answers = currentTargetTextInput where answers.componentsSeparatedByString("|").contains(textInputTypeNode.textInput) {
                         return "Yes"
                     } else {
                         return "No"
