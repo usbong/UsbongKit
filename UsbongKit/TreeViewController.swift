@@ -31,8 +31,13 @@ class TreeViewController: UIViewController, HintsTextViewDelegate {
     var backgroundAudioPlayer: AVAudioPlayer?
     var voiceOverAudioPlayer: AVAudioPlayer?
     
+    var previousIdleTimerDisabled = UIApplication.sharedApplication().idleTimerDisabled
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Disable sleep
+        UIApplication.sharedApplication().idleTimerDisabled = true
         
         nodeView.node = TextNode(text: "Loading Tree...")
         nodeView.hintsColor = UIColor.darkGrayColor()
@@ -75,6 +80,9 @@ class TreeViewController: UIViewController, HintsTextViewDelegate {
     
     deinit {
         stopVoiceOver()
+        
+        // Return sleep setting to previous value
+        UIApplication.sharedApplication().idleTimerDisabled = previousIdleTimerDisabled
     }
     
     // MARK: - Actions
