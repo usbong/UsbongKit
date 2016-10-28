@@ -355,7 +355,7 @@ public class UsbongTree {
                     }
                     
                     // Rejoin
-                    let text: String = components.joinWithSeparator(separator)
+                    let text: String = translateText(parseText(components.joinWithSeparator(separator)))
                     
                     // Create RadioButtons
                     node = RadioButtonsNode(text: text, options: tasks)
@@ -380,7 +380,7 @@ public class UsbongTree {
                 }
                 
                 // Rejoin
-                let text: String = components.joinWithSeparator(separator)
+                let text: String = translateText(parseText(components.joinWithSeparator(separator)))
                 
                 // Create TextField or TextArea depending on taskNodeType
                 node = (taskNodeType == .TextFieldWithAnswer) ? TextFieldNode(text: text) : TextAreaNode(text: text)
