@@ -295,7 +295,7 @@ public class UsbongTree {
                     guard let attributes = indexer.element?.attributes else { continue }
                     
                     // Get value of name
-                    let name = attributes[XMLIdentifier.name] ?? "Any"
+                    let name = translateText(parseText(attributes[XMLIdentifier.name] ?? "Any"))
                     
                     // Get value of to
                     let to = attributes[XMLIdentifier.to] ?? ""
@@ -316,7 +316,7 @@ public class UsbongTree {
                         return
                     }
                     var nameComponents = name.componentsSeparatedByString("~")
-                    let key = nameComponents.removeLast()
+                    let key = translateText(parseText(nameComponents.removeLast()))
                     
                     let value = nameComponents.joinWithSeparator("~")
                     tasks.append(key)
