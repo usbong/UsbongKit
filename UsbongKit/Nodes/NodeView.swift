@@ -18,6 +18,7 @@ public class NodeView: UIView {
     public var node: Node = TextNode(text: "No Node") {
         didSet {
             tableView.reloadData()
+            tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: false)
         }
     }
     
