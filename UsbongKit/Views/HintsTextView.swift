@@ -99,21 +99,19 @@ extension NSAttributedString {
                     // Allow words or phrases only - check for previous and next characters
                     var foundStringIsWord = true
                     
-                    // Previous character should be whitespace or newline
-                    let whitespaceAndNewLineCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+                    // Previous/next character of word should be whitespace, newline or punctuation
+                    let validCharacterSet = NSMutableCharacterSet.whitespaceAndNewlineCharacterSet()
+                    validCharacterSet.formUnionWithCharacterSet(.punctuationCharacterSet())
+                    
                     if range.location > 0 {
                         let previousCharacterString = string.substringWithRange(NSRange(location: range.location - 1, length: 1))
-                        if previousCharacterString.rangeOfCharacterFromSet(whitespaceAndNewLineCharacterSet) == nil {
+                        if previousCharacterString.rangeOfCharacterFromSet(validCharacterSet) == nil {
                             foundStringIsWord = false
                         }
                     }
                     
-                    // Next character should be whitespace, newline or punctuation
                     let nextCharacterLocation = range.location + range.length
                     if foundStringIsWord && nextCharacterLocation < string.length {
-                        let validCharacterSet = NSMutableCharacterSet.punctuationCharacterSet()
-                        validCharacterSet.formUnionWithCharacterSet(whitespaceAndNewLineCharacterSet)
-                        
                         let nextCharacterString = string.substringWithRange(NSRange(location: nextCharacterLocation, length: 1))
                         if nextCharacterString.rangeOfCharacterFromSet(validCharacterSet) == nil {
                             foundStringIsWord = false
