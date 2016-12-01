@@ -55,6 +55,7 @@
 		DF452B501BDE0AFD003EB5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */; };
 		DF452B5B1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B5A1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift */; };
 		DF452B661BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */; };
+		DF5726371DEEAA9C00762808 /* NSString+Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5726361DEEAA9C00762808 /* NSString+Words.swift */; };
 		DF63E5A51C324D3A0017B745 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF63E5A41C324D3A0017B745 /* TreeViewController.swift */; };
 		DF66433C1CF66EA200373BBE /* OptionsTypeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66433B1CF66EA200373BBE /* OptionsTypeModule.swift */; };
 		DF66433E1CF66EF600373BBE /* SelectionTypeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66433D1CF66EF600373BBE /* SelectionTypeModule.swift */; };
@@ -204,6 +205,7 @@
 		DF452B611BDE0AFD003EB5C3 /* UsbongKit-exampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UsbongKit-exampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbongKit_exampleUITests.swift; sourceTree = "<group>"; };
 		DF452B671BDE0AFD003EB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF5726361DEEAA9C00762808 /* NSString+Words.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Words.swift"; sourceTree = "<group>"; };
 		DF63E5A41C324D3A0017B745 /* TreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
 		DF66433B1CF66EA200373BBE /* OptionsTypeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTypeModule.swift; sourceTree = "<group>"; };
 		DF66433D1CF66EF600373BBE /* SelectionTypeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTypeModule.swift; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 				DFC1FD301D54A235006FF586 /* IAPHelper.swift */,
 				DFC1FD341D54A3C2006FF586 /* IAPBundle.swift */,
 				DFC1FD361D54BEBB006FF586 /* IAPSampleBundles.swift */,
+				DF5726361DEEAA9C00762808 /* NSString+Words.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -927,6 +930,7 @@
 				CFA624D21C6C49BD0071301D /* Reusable.swift in Sources */,
 				DF6643651CF674A700373BBE /* TextFieldWithUnitNode.swift in Sources */,
 				CFA298021C932EDF005D127C /* UsbongNodeState.swift in Sources */,
+				DF5726371DEEAA9C00762808 /* NSString+Words.swift in Sources */,
 				DF66435D1CF674A700373BBE /* ClassificationNode.swift in Sources */,
 				DF66435F1CF674A700373BBE /* ImageNode.swift in Sources */,
 				DF6643661CF674A700373BBE /* TextImageNode.swift in Sources */,

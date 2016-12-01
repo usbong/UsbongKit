@@ -85,52 +85,24 @@ extension NSAttributedString {
     public func attributedStringWithHints(hintsDictionary: [String: String], withColor color: UIColor? = nil) -> NSAttributedString {
         let mutableAttributedText = NSMutableAttributedString(attributedString: self)
         let string = self.string as NSString
-        let stringLength = string.length
         
-        for (key, value) in hintsDictionary {
-            var range = NSRange(location: 0, length: mutableAttributedText.length)
-            let searchString = key
-            let searchStringLength = searchString.characters.count
-            
-            while range.location != NSNotFound {
-                range = string.rangeOfString(searchString, options: .CaseInsensitiveSearch, range: range)
-                
-                if range.location != NSNotFound {
-                    // Allow words or phrases only - check for previous and next characters
-                    var foundStringIsWord = true
-                    
-                    // Previous/next character of word should be whitespace, newline or punctuation
-                    let validCharacterSet = NSMutableCharacterSet.whitespaceAndNewlineCharacterSet()
-                    validCharacterSet.formUnionWithCharacterSet(.punctuationCharacterSet())
-                    
-                    if range.location > 0 {
-                        let previousCharacterString = string.substringWithRange(NSRange(location: range.location - 1, length: 1))
-                        if previousCharacterString.rangeOfCharacterFromSet(validCharacterSet) == nil {
-                            foundStringIsWord = false
-                        }
-                    }
-                    
-                    let nextCharacterLocation = range.location + range.length
-                    if foundStringIsWord && nextCharacterLocation < string.length {
-                        let nextCharacterString = string.substringWithRange(NSRange(location: nextCharacterLocation, length: 1))
-                        if nextCharacterString.rangeOfCharacterFromSet(validCharacterSet) == nil {
-                            foundStringIsWord = false
-                        }
-                    }
-                    
-                    if foundStringIsWord && mutableAttributedText.attribute(ContainsHintKey, atIndex: range.location, longestEffectiveRange: nil, inRange: range) == nil {
-                        let targetRange = NSRange(location: range.location, length: searchStringLength)
-                        mutableAttributedText.addAttributes([ContainsHintKey: value], range: targetRange)
-                        
-                        if let targetColor = color {
-                            mutableAttributedText.addAttribute(NSForegroundColorAttributeName, value: targetColor, range: targetRange)
-                        }
-                    }
-                    
-                    let newLocation = range.location + range.length
-                    range = NSRange(location: newLocation, length: stringLength - newLocation)
-                }
+        // Add hint in each word if available
+        string.forEachWord { (word, range) in
+            guard let hint = hintsDictionary[word.lowercaseString] else {
+                return
             }
+            
+            var attributes = [String: AnyObject]()
+            
+            // Add hint
+            attributes[ContainsHintKey] = hint
+            
+            // Set color
+            if let targetColor = color {
+                attributes[NSForegroundColorAttributeName] = targetColor
+            }
+            
+            mutableAttributedText.addAttributes(attributes, range: range)
         }
         
         return mutableAttributedText

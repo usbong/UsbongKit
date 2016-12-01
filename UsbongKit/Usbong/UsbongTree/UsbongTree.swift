@@ -591,8 +591,8 @@ public class UsbongTree {
                 
                 let stringXMLIndexers = resources[XMLIdentifier.string].all
                 for stringXMLIndexer in stringXMLIndexers {
-                    if let key = stringXMLIndexer.element?.attributes[XMLIdentifier.name], let value = stringXMLIndexer.element?.text {
-                        hints[key] = value
+                    if let word = stringXMLIndexer.element?.attributes[XMLIdentifier.name], let hint = stringXMLIndexer.element?.text {
+                        hints[word.lowercaseString] = hint
                     }
                 }
                 
