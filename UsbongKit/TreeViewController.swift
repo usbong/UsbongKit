@@ -165,11 +165,11 @@ extension TreeViewController {
         let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         // Voice-over
-        let speechText = "Speech " + (voiceOverOn ? "Off" : "On")
-        let speechAction = UIAlertAction(title: speechText, style: .Default) { (action) -> Void in
+        let autoSpeakText = "Turn Auto-Speak " + (voiceOverOn ? "Off" : "On")
+        let autoSpeakAction = UIAlertAction(title: autoSpeakText, style: .Default) { (action) -> Void in
             self.voiceOverOn = !self.voiceOverOn
         }
-        actionController.addAction(speechAction)
+        actionController.addAction(autoSpeakAction)
         
         // Auto-play
         let autoPlayText = "Auto-play " + (autoPlay ? "Off" : "On")
