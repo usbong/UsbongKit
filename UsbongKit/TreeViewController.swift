@@ -164,12 +164,20 @@ extension TreeViewController {
     func showAvailableActions(sender: AnyObject?) {
         let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
+        // Speak
+        let speakText = "Speak"
+        let speakAction = UIAlertAction(title: speakText, style: .Default) { _ in
+            self.stopVoiceOver()
+            self.startVoiceOver()
+        }
+        actionController.addAction(speakAction)
+        
         // Voice-over
-        let speechText = "Speech " + (voiceOverOn ? "Off" : "On")
-        let speechAction = UIAlertAction(title: speechText, style: .Default) { (action) -> Void in
+        let autoSpeakText = "Turn Auto-Speak " + (voiceOverOn ? "Off" : "On")
+        let autoSpeakAction = UIAlertAction(title: autoSpeakText, style: .Default) { (action) -> Void in
             self.voiceOverOn = !self.voiceOverOn
         }
-        actionController.addAction(speechAction)
+        actionController.addAction(autoSpeakAction)
         
         // Auto-play
         let autoPlayText = "Auto-play " + (autoPlay ? "Off" : "On")
