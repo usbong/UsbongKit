@@ -1,0 +1,1329 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF348C4D1C6D84EF0091BDF7 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF348C4B1C6D84EF0091BDF7 /* TextFieldTableViewCell.swift */; };
+		CF348C4E1C6D84EF0091BDF7 /* TextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF348C4C1C6D84EF0091BDF7 /* TextFieldTableViewCell.xib */; };
+		CF435EFC1C94F22400CEBB6B /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF435EFA1C94F22400CEBB6B /* DateTableViewCell.swift */; };
+		CF435EFD1C94F22400CEBB6B /* DateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF435EFB1C94F22400CEBB6B /* DateTableViewCell.xib */; };
+		CF45F6DE1CA6DD74009F4B62 /* VoiceOverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45F6DD1CA6DD74009F4B62 /* VoiceOverCoordinator.swift */; };
+		CFA298021C932EDF005D127C /* UsbongNodeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA298011C932EDF005D127C /* UsbongNodeState.swift */; };
+		CFA298041C9333A7005D127C /* UsbongAnswersGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA298031C9333A7005D127C /* UsbongAnswersGenerator.swift */; };
+		CFA624D21C6C49BD0071301D /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA624D11C6C49BD0071301D /* Reusable.swift */; };
+		CFC404311BEE4319000658E7 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
+		CFC404321BEE4319000658E7 /* UsbongKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFC404381BEE4350000658E7 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
+		CFC404391BEE4350000658E7 /* SWXMLHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFC4043D1BEE440B000658E7 /* Usbong iOS.utree in Resources */ = {isa = PBXBuildFile; fileRef = CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */; };
+		CFD8EC1F1C6DCBCF00E629CE /* TextAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD8EC1D1C6DCBCF00E629CE /* TextAreaTableViewCell.swift */; };
+		CFD8EC201C6DCBCF00E629CE /* TextAreaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD8EC1E1C6DCBCF00E629CE /* TextAreaTableViewCell.xib */; };
+		DF0D9AD01C36B1570048B8DF /* UsbongLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0D9ACF1C36B1570048B8DF /* UsbongLanguage.swift */; };
+		DF10096C1C2FD9C7003A9BDA /* NodesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1009691C2FD9C7003A9BDA /* NodesTableViewController.swift */; };
+		DF10096D1C2FD9C7003A9BDA /* NodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10096A1C2FD9C7003A9BDA /* NodeViewController.swift */; };
+		DF10096E1C2FD9C7003A9BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF10096B1C2FD9C7003A9BDA /* Main.storyboard */; };
+		DF10097E1C2FDA22003A9BDA /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10096F1C2FDA22003A9BDA /* CheckboxButton.swift */; };
+		DF10097F1C2FDA22003A9BDA /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1009701C2FDA22003A9BDA /* RadioButton.swift */; };
+		DF1009801C2FDA22003A9BDA /* HintsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1009711C2FDA22003A9BDA /* HintsTextView.swift */; };
+		DF1009811C2FDA22003A9BDA /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1009721C2FDA22003A9BDA /* ImageTableViewCell.swift */; };
+		DF1009821C2FDA22003A9BDA /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1009731C2FDA22003A9BDA /* ImageTableViewCell.xib */; };
+		DF1009831C2FDA22003A9BDA /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1009741C2FDA22003A9BDA /* TextTableViewCell.swift */; };
+		DF1009841C2FDA22003A9BDA /* TextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1009751C2FDA22003A9BDA /* TextTableViewCell.xib */; };
+		DF1009851C2FDA22003A9BDA /* RadioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1009761C2FDA22003A9BDA /* RadioTableViewCell.swift */; };
+		DF1009861C2FDA22003A9BDA /* RadioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1009771C2FDA22003A9BDA /* RadioTableViewCell.xib */; };
+		DF1009871C2FDA22003A9BDA /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1009781C2FDA22003A9BDA /* CheckboxTableViewCell.swift */; };
+		DF1009881C2FDA22003A9BDA /* CheckboxTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1009791C2FDA22003A9BDA /* CheckboxTableViewCell.xib */; };
+		DF1009891C2FDA22003A9BDA /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10097A1C2FDA22003A9BDA /* Module.swift */; };
+		DF10098A1C2FDA22003A9BDA /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10097B1C2FDA22003A9BDA /* Node.swift */; };
+		DF10098B1C2FDA22003A9BDA /* NodeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */; };
+		DF10098C1C2FDA22003A9BDA /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10097D1C2FDA22003A9BDA /* NodeView.swift */; };
+		DF1920331CF8328400507CA0 /* UsbongKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF1920321CF8328400507CA0 /* UsbongKit.storyboard */; };
+		DF1920351CF8336A00507CA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF1920341CF8336A00507CA0 /* Assets.xcassets */; };
+		DF1920371CF835BD00507CA0 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1920361CF835BD00507CA0 /* TreeViewController.swift */; };
+		DF1920391CF8371E00507CA0 /* Usbong.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1920381CF8371E00507CA0 /* Usbong.swift */; };
+		DF25EC6C1C36C554002593EA /* UsbongTree+NodeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */; };
+		DF28C9711CA6B34B0074776B /* AutoPlayableTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28C9701CA6B34B0074776B /* AutoPlayableTree.swift */; };
+		DF350AD21C2FEECE00A1956E /* UsbongTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF350AD11C2FEECE00A1956E /* UsbongTree.swift */; };
+		DF350AD41C2FEEDB00A1956E /* UsbongFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */; };
+		DF35E1FB1C44FFC7004E5178 /* LanguagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35E1FA1C44FFC7004E5178 /* LanguagesTableViewController.swift */; };
+		DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */; };
+		DF452B4D1BDE0AFD003EB5C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF452B4C1BDE0AFD003EB5C3 /* Assets.xcassets */; };
+		DF452B501BDE0AFD003EB5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */; };
+		DF452B5B1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B5A1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift */; };
+		DF452B661BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */; };
+		DF5726371DEEAA9C00762808 /* NSString+Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5726361DEEAA9C00762808 /* NSString+Words.swift */; };
+		DF63E5A51C324D3A0017B745 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF63E5A41C324D3A0017B745 /* TreeViewController.swift */; };
+		DF66433C1CF66EA200373BBE /* OptionsTypeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66433B1CF66EA200373BBE /* OptionsTypeModule.swift */; };
+		DF66433E1CF66EF600373BBE /* SelectionTypeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66433D1CF66EF600373BBE /* SelectionTypeModule.swift */; };
+		DF6643411CF66F2600373BBE /* TextModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643401CF66F2600373BBE /* TextModule.swift */; };
+		DF6643481CF6708C00373BBE /* CheckboxesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643421CF6708C00373BBE /* CheckboxesModule.swift */; };
+		DF6643491CF6708C00373BBE /* DateModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643431CF6708C00373BBE /* DateModule.swift */; };
+		DF66434A1CF6708C00373BBE /* ImageModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643441CF6708C00373BBE /* ImageModule.swift */; };
+		DF66434B1CF6708C00373BBE /* ListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643451CF6708C00373BBE /* ListModule.swift */; };
+		DF66434C1CF6708C00373BBE /* RadioButtonsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643461CF6708C00373BBE /* RadioButtonsModule.swift */; };
+		DF66434D1CF6708C00373BBE /* TextInputModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643471CF6708C00373BBE /* TextInputModule.swift */; };
+		DF66434F1CF6735B00373BBE /* TextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66434E1CF6735B00373BBE /* TextNode.swift */; };
+		DF66435C1CF674A700373BBE /* ChecklistNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643501CF674A700373BBE /* ChecklistNode.swift */; };
+		DF66435D1CF674A700373BBE /* ClassificationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643511CF674A700373BBE /* ClassificationNode.swift */; };
+		DF66435E1CF674A700373BBE /* DateNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643521CF674A700373BBE /* DateNode.swift */; };
+		DF66435F1CF674A700373BBE /* ImageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643531CF674A700373BBE /* ImageNode.swift */; };
+		DF6643601CF674A700373BBE /* ImageTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643541CF674A700373BBE /* ImageTextNode.swift */; };
+		DF6643611CF674A700373BBE /* RadioButtonsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643551CF674A700373BBE /* RadioButtonsNode.swift */; };
+		DF6643621CF674A700373BBE /* TextAreaNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643561CF674A700373BBE /* TextAreaNode.swift */; };
+		DF6643631CF674A700373BBE /* TextFieldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643571CF674A700373BBE /* TextFieldNode.swift */; };
+		DF6643641CF674A700373BBE /* TextFieldNumericalNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643581CF674A700373BBE /* TextFieldNumericalNode.swift */; };
+		DF6643651CF674A700373BBE /* TextFieldWithUnitNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643591CF674A700373BBE /* TextFieldWithUnitNode.swift */; };
+		DF6643661CF674A700373BBE /* TextImageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66435A1CF674A700373BBE /* TextImageNode.swift */; };
+		DF6643671CF674A700373BBE /* TimestampNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66435B1CF674A700373BBE /* TimestampNode.swift */; };
+		DF66436A1CF677ED00373BBE /* SelectionTypeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6643691CF677ED00373BBE /* SelectionTypeNode.swift */; };
+		DF66436C1CF678B900373BBE /* TextInputTypeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66436B1CF678B900373BBE /* TextInputTypeNode.swift */; };
+		DF66436E1CF6804100373BBE /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF66436D1CF6804100373BBE /* Zip.framework */; };
+		DF66436F1CF6808700373BBE /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF66436D1CF6804100373BBE /* Zip.framework */; };
+		DF6643701CF6808700373BBE /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF66436D1CF6804100373BBE /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF9992B61C44D5B900536F2E /* PlayableTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9992B51C44D5B900536F2E /* PlayableTree.swift */; };
+		DFA633D21BDBD17C00C079B2 /* UsbongKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA633D11BDBD17C00C079B2 /* UsbongKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFA633D91BDBD17C00C079B2 /* UsbongKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */; };
+		DFA633DE1BDBD17C00C079B2 /* UsbongKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */; };
+		DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */; };
+		DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */; };
+		DFC1FD311D54A235006FF586 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC1FD301D54A235006FF586 /* IAPHelper.swift */; };
+		DFC1FD351D54A3C2006FF586 /* IAPBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC1FD341D54A3C2006FF586 /* IAPBundle.swift */; };
+		DFC1FD371D54BEBB006FF586 /* IAPSampleBundles.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC1FD361D54BEBB006FF586 /* IAPSampleBundles.swift */; };
+		DFC1FD391D54C253006FF586 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC1FD381D54C253006FF586 /* PurchasesTableViewController.swift */; };
+		DFC1FD3D1D54C3C2006FF586 /* IAPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC1FD3B1D54C3C2006FF586 /* IAPTableViewCell.swift */; };
+		DFC1FD3E1D54C3C2006FF586 /* IAPTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFC1FD3C1D54C3C2006FF586 /* IAPTableViewCell.xib */; };
+		DFD396E21C363A2A00D56326 /* SpeakableTextTypeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */; };
+		DFDE966A1CF6EEB5003F373A /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDE96691CF6EEB5003F373A /* Defaults.swift */; };
+		DFDE966D1CF6EF08003F373A /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDE966C1CF6EF08003F373A /* NodeType.swift */; };
+		DFDE96711CF70325003F373A /* XMLIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDE96701CF70325003F373A /* XMLIdentifier.swift */; };
+		DFDE96731CF70396003F373A /* TaskNodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDE96721CF70396003F373A /* TaskNodeType.swift */; };
+		DFF51A641C30B4F3005F670F /* TreesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CFC404331BEE4319000658E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFA633C51BDBD17B00C079B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DFA633CD1BDBD17C00C079B2;
+			remoteInfo = UsbongKit;
+		};
+		DF452B571BDE0AFD003EB5C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFA633C51BDBD17B00C079B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF452B421BDE0AFD003EB5C3;
+			remoteInfo = "UsbongKit-example";
+		};
+		DF452B621BDE0AFD003EB5C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFA633C51BDBD17B00C079B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF452B421BDE0AFD003EB5C3;
+			remoteInfo = "UsbongKit-example";
+		};
+		DFA633DA1BDBD17C00C079B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFA633C51BDBD17B00C079B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DFA633CD1BDBD17C00C079B2;
+			remoteInfo = UsbongKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CFC404351BEE4319000658E7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CFC404321BEE4319000658E7 /* UsbongKit.framework in Embed Frameworks */,
+				DF6643701CF6808700373BBE /* Zip.framework in Embed Frameworks */,
+				CFC404391BEE4350000658E7 /* SWXMLHash.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CF348C4B1C6D84EF0091BDF7 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		CF348C4C1C6D84EF0091BDF7 /* TextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		CF435EFA1C94F22400CEBB6B /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
+		CF435EFB1C94F22400CEBB6B /* DateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateTableViewCell.xib; sourceTree = "<group>"; };
+		CF45F6DD1CA6DD74009F4B62 /* VoiceOverCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceOverCoordinator.swift; sourceTree = "<group>"; };
+		CF45F6E21CA6F2C7009F4B62 /* Usbong iOS.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Usbong iOS.xml"; sourceTree = "<group>"; };
+		CFA298011C932EDF005D127C /* UsbongNodeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongNodeState.swift; sourceTree = "<group>"; };
+		CFA298031C9333A7005D127C /* UsbongAnswersGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongAnswersGenerator.swift; sourceTree = "<group>"; };
+		CFA624D11C6C49BD0071301D /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Usbong iOS.utree"; sourceTree = "<group>"; };
+		CFD8EC1D1C6DCBCF00E629CE /* TextAreaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAreaTableViewCell.swift; sourceTree = "<group>"; };
+		CFD8EC1E1C6DCBCF00E629CE /* TextAreaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextAreaTableViewCell.xib; sourceTree = "<group>"; };
+		DF0D9ACF1C36B1570048B8DF /* UsbongLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongLanguage.swift; sourceTree = "<group>"; };
+		DF1009691C2FD9C7003A9BDA /* NodesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesTableViewController.swift; sourceTree = "<group>"; };
+		DF10096A1C2FD9C7003A9BDA /* NodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeViewController.swift; sourceTree = "<group>"; };
+		DF10096B1C2FD9C7003A9BDA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DF10096F1C2FDA22003A9BDA /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		DF1009701C2FDA22003A9BDA /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		DF1009711C2FDA22003A9BDA /* HintsTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintsTextView.swift; sourceTree = "<group>"; };
+		DF1009721C2FDA22003A9BDA /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		DF1009731C2FDA22003A9BDA /* ImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
+		DF1009741C2FDA22003A9BDA /* TextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
+		DF1009751C2FDA22003A9BDA /* TextTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextTableViewCell.xib; sourceTree = "<group>"; };
+		DF1009761C2FDA22003A9BDA /* RadioTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioTableViewCell.swift; sourceTree = "<group>"; };
+		DF1009771C2FDA22003A9BDA /* RadioTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioTableViewCell.xib; sourceTree = "<group>"; };
+		DF1009781C2FDA22003A9BDA /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
+		DF1009791C2FDA22003A9BDA /* CheckboxTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckboxTableViewCell.xib; sourceTree = "<group>"; };
+		DF10097A1C2FDA22003A9BDA /* Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		DF10097B1C2FDA22003A9BDA /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeProvider.swift; sourceTree = "<group>"; };
+		DF10097D1C2FDA22003A9BDA /* NodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
+		DF1920321CF8328400507CA0 /* UsbongKit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UsbongKit.storyboard; sourceTree = "<group>"; };
+		DF1920341CF8336A00507CA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DF1920361CF835BD00507CA0 /* TreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
+		DF1920381CF8371E00507CA0 /* Usbong.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usbong.swift; sourceTree = "<group>"; };
+		DF19203B1CF91BC700507CA0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		DF19203D1CF9200100507CA0 /* Extending-UsbongKit.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Extending-UsbongKit.md"; sourceTree = "<group>"; };
+		DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UsbongTree+NodeProvider.swift"; path = "UsbongKit/Usbong/UsbongTree/UsbongTree+NodeProvider.swift"; sourceTree = SOURCE_ROOT; };
+		DF28C9701CA6B34B0074776B /* AutoPlayableTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPlayableTree.swift; sourceTree = "<group>"; };
+		DF350AD11C2FEECE00A1956E /* UsbongTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsbongTree.swift; path = UsbongKit/Usbong/UsbongTree/UsbongTree.swift; sourceTree = SOURCE_ROOT; };
+		DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsbongFileManager.swift; sourceTree = "<group>"; };
+		DF35E1FA1C44FFC7004E5178 /* LanguagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewController.swift; sourceTree = "<group>"; };
+		DF452B431BDE0AFD003EB5C3 /* UsbongKit-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UsbongKit-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DF452B4C1BDE0AFD003EB5C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DF452B4F1BDE0AFD003EB5C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DF452B511BDE0AFD003EB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF452B561BDE0AFD003EB5C3 /* UsbongKit-exampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UsbongKit-exampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF452B5A1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbongKit_exampleTests.swift; sourceTree = "<group>"; };
+		DF452B5C1BDE0AFD003EB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF452B611BDE0AFD003EB5C3 /* UsbongKit-exampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UsbongKit-exampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbongKit_exampleUITests.swift; sourceTree = "<group>"; };
+		DF452B671BDE0AFD003EB5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF5726361DEEAA9C00762808 /* NSString+Words.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Words.swift"; sourceTree = "<group>"; };
+		DF63E5A41C324D3A0017B745 /* TreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
+		DF66433B1CF66EA200373BBE /* OptionsTypeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTypeModule.swift; sourceTree = "<group>"; };
+		DF66433D1CF66EF600373BBE /* SelectionTypeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTypeModule.swift; sourceTree = "<group>"; };
+		DF6643401CF66F2600373BBE /* TextModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextModule.swift; sourceTree = "<group>"; };
+		DF6643421CF6708C00373BBE /* CheckboxesModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxesModule.swift; sourceTree = "<group>"; };
+		DF6643431CF6708C00373BBE /* DateModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateModule.swift; sourceTree = "<group>"; };
+		DF6643441CF6708C00373BBE /* ImageModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageModule.swift; sourceTree = "<group>"; };
+		DF6643451CF6708C00373BBE /* ListModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListModule.swift; sourceTree = "<group>"; };
+		DF6643461CF6708C00373BBE /* RadioButtonsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonsModule.swift; sourceTree = "<group>"; };
+		DF6643471CF6708C00373BBE /* TextInputModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputModule.swift; sourceTree = "<group>"; };
+		DF66434E1CF6735B00373BBE /* TextNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNode.swift; sourceTree = "<group>"; };
+		DF6643501CF674A700373BBE /* ChecklistNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistNode.swift; sourceTree = "<group>"; };
+		DF6643511CF674A700373BBE /* ClassificationNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationNode.swift; sourceTree = "<group>"; };
+		DF6643521CF674A700373BBE /* DateNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateNode.swift; sourceTree = "<group>"; };
+		DF6643531CF674A700373BBE /* ImageNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageNode.swift; sourceTree = "<group>"; };
+		DF6643541CF674A700373BBE /* ImageTextNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTextNode.swift; sourceTree = "<group>"; };
+		DF6643551CF674A700373BBE /* RadioButtonsNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonsNode.swift; sourceTree = "<group>"; };
+		DF6643561CF674A700373BBE /* TextAreaNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAreaNode.swift; sourceTree = "<group>"; };
+		DF6643571CF674A700373BBE /* TextFieldNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldNode.swift; sourceTree = "<group>"; };
+		DF6643581CF674A700373BBE /* TextFieldNumericalNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldNumericalNode.swift; sourceTree = "<group>"; };
+		DF6643591CF674A700373BBE /* TextFieldWithUnitNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldWithUnitNode.swift; sourceTree = "<group>"; };
+		DF66435A1CF674A700373BBE /* TextImageNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextImageNode.swift; sourceTree = "<group>"; };
+		DF66435B1CF674A700373BBE /* TimestampNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimestampNode.swift; sourceTree = "<group>"; };
+		DF6643691CF677ED00373BBE /* SelectionTypeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTypeNode.swift; sourceTree = "<group>"; };
+		DF66436B1CF678B900373BBE /* TextInputTypeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputTypeNode.swift; sourceTree = "<group>"; };
+		DF66436D1CF6804100373BBE /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
+		DF9992B51C44D5B900536F2E /* PlayableTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayableTree.swift; sourceTree = "<group>"; };
+		DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UsbongKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFA633D11BDBD17C00C079B2 /* UsbongKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsbongKit.h; sourceTree = "<group>"; };
+		DFA633D31BDBD17C00C079B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFA633D81BDBD17C00C079B2 /* UsbongKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UsbongKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsbongKitTests.swift; sourceTree = "<group>"; };
+		DFA633DF1BDBD17C00C079B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
+		DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLNameInfo.swift; sourceTree = "<group>"; };
+		DFC1FD301D54A235006FF586 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		DFC1FD341D54A3C2006FF586 /* IAPBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPBundle.swift; sourceTree = "<group>"; };
+		DFC1FD361D54BEBB006FF586 /* IAPSampleBundles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPSampleBundles.swift; sourceTree = "<group>"; };
+		DFC1FD381D54C253006FF586 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
+		DFC1FD3B1D54C3C2006FF586 /* IAPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPTableViewCell.swift; sourceTree = "<group>"; };
+		DFC1FD3C1D54C3C2006FF586 /* IAPTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IAPTableViewCell.xib; sourceTree = "<group>"; };
+		DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakableTextTypeModule.swift; sourceTree = "<group>"; };
+		DFDE96691CF6EEB5003F373A /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		DFDE966C1CF6EF08003F373A /* NodeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
+		DFDE96701CF70325003F373A /* XMLIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLIdentifier.swift; sourceTree = "<group>"; };
+		DFDE96721CF70396003F373A /* TaskNodeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskNodeType.swift; sourceTree = "<group>"; };
+		DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreesTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DF452B401BDE0AFD003EB5C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFC404311BEE4319000658E7 /* UsbongKit.framework in Frameworks */,
+				DF66436F1CF6808700373BBE /* Zip.framework in Frameworks */,
+				CFC404381BEE4350000658E7 /* SWXMLHash.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF452B531BDE0AFD003EB5C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF452B5E1BDE0AFD003EB5C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFA633CA1BDBD17C00C079B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFA6341D1BDBD1F800C079B2 /* SWXMLHash.framework in Frameworks */,
+				DF66436E1CF6804100373BBE /* Zip.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFA633D51BDBD17C00C079B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFA633D91BDBD17C00C079B2 /* UsbongKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CF348C461C6D84AE0091BDF7 /* ImageTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DF1009721C2FDA22003A9BDA /* ImageTableViewCell.swift */,
+				DF1009731C2FDA22003A9BDA /* ImageTableViewCell.xib */,
+			);
+			name = ImageTableViewCell;
+			sourceTree = "<group>";
+		};
+		CF348C471C6D84B40091BDF7 /* TextTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DF1009741C2FDA22003A9BDA /* TextTableViewCell.swift */,
+				DF1009751C2FDA22003A9BDA /* TextTableViewCell.xib */,
+			);
+			name = TextTableViewCell;
+			sourceTree = "<group>";
+		};
+		CF348C481C6D84B90091BDF7 /* RadioTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DF1009761C2FDA22003A9BDA /* RadioTableViewCell.swift */,
+				DF1009771C2FDA22003A9BDA /* RadioTableViewCell.xib */,
+			);
+			name = RadioTableViewCell;
+			sourceTree = "<group>";
+		};
+		CF348C491C6D84BE0091BDF7 /* CheckboxTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DF1009781C2FDA22003A9BDA /* CheckboxTableViewCell.swift */,
+				DF1009791C2FDA22003A9BDA /* CheckboxTableViewCell.xib */,
+			);
+			name = CheckboxTableViewCell;
+			sourceTree = "<group>";
+		};
+		CF348C4A1C6D84CF0091BDF7 /* TextFieldTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CF348C4B1C6D84EF0091BDF7 /* TextFieldTableViewCell.swift */,
+				CF348C4C1C6D84EF0091BDF7 /* TextFieldTableViewCell.xib */,
+			);
+			name = TextFieldTableViewCell;
+			sourceTree = "<group>";
+		};
+		CF435EFE1C94F22800CEBB6B /* DateTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CF435EFA1C94F22400CEBB6B /* DateTableViewCell.swift */,
+				CF435EFB1C94F22400CEBB6B /* DateTableViewCell.xib */,
+			);
+			name = DateTableViewCell;
+			sourceTree = "<group>";
+		};
+		CF45F6DF1CA6F09D009F4B62 /* Tree Contents */ = {
+			isa = PBXGroup;
+			children = (
+				CF45F6E11CA6F2C7009F4B62 /* Usbong iOS.utree */,
+			);
+			path = "Tree Contents";
+			sourceTree = "<group>";
+		};
+		CF45F6E11CA6F2C7009F4B62 /* Usbong iOS.utree */ = {
+			isa = PBXGroup;
+			children = (
+				CF45F6E21CA6F2C7009F4B62 /* Usbong iOS.xml */,
+			);
+			path = "Usbong iOS.utree";
+			sourceTree = "<group>";
+		};
+		CFD8EC211C6DCBD400E629CE /* TextAreaTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CFD8EC1D1C6DCBCF00E629CE /* TextAreaTableViewCell.swift */,
+				CFD8EC1E1C6DCBCF00E629CE /* TextAreaTableViewCell.xib */,
+			);
+			name = TextAreaTableViewCell;
+			sourceTree = "<group>";
+		};
+		DF10098D1C2FDA29003A9BDA /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				DF10097B1C2FDA22003A9BDA /* Node.swift */,
+				DF6643501CF674A700373BBE /* ChecklistNode.swift */,
+				DF6643511CF674A700373BBE /* ClassificationNode.swift */,
+				DF6643521CF674A700373BBE /* DateNode.swift */,
+				DF6643531CF674A700373BBE /* ImageNode.swift */,
+				DF6643541CF674A700373BBE /* ImageTextNode.swift */,
+				DF6643551CF674A700373BBE /* RadioButtonsNode.swift */,
+				DF6643561CF674A700373BBE /* TextAreaNode.swift */,
+				DF6643571CF674A700373BBE /* TextFieldNode.swift */,
+				DF6643581CF674A700373BBE /* TextFieldNumericalNode.swift */,
+				DF6643591CF674A700373BBE /* TextFieldWithUnitNode.swift */,
+				DF66435A1CF674A700373BBE /* TextImageNode.swift */,
+				DF66434E1CF6735B00373BBE /* TextNode.swift */,
+				DF66435B1CF674A700373BBE /* TimestampNode.swift */,
+				DF10097D1C2FDA22003A9BDA /* NodeView.swift */,
+				DF10097C1C2FDA22003A9BDA /* NodeProvider.swift */,
+				DF6643681CF677DF00373BBE /* Protocols */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		DF10098E1C2FDA30003A9BDA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CFA624D11C6C49BD0071301D /* Reusable.swift */,
+				DF10096F1C2FDA22003A9BDA /* CheckboxButton.swift */,
+				DF1009701C2FDA22003A9BDA /* RadioButton.swift */,
+				DF1009711C2FDA22003A9BDA /* HintsTextView.swift */,
+				DFC1FD3A1D54C3AC006FF586 /* IAPTableViewCell */,
+				DF19203F1CF93C1F00507CA0 /* Modules */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DF19203A1CF91BB100507CA0 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				DF19203D1CF9200100507CA0 /* Extending-UsbongKit.md */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
+		DF19203F1CF93C1F00507CA0 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CF435EFE1C94F22800CEBB6B /* DateTableViewCell */,
+				CF348C4A1C6D84CF0091BDF7 /* TextFieldTableViewCell */,
+				CFD8EC211C6DCBD400E629CE /* TextAreaTableViewCell */,
+				CF348C461C6D84AE0091BDF7 /* ImageTableViewCell */,
+				CF348C471C6D84B40091BDF7 /* TextTableViewCell */,
+				CF348C481C6D84B90091BDF7 /* RadioTableViewCell */,
+				CF348C491C6D84BE0091BDF7 /* CheckboxTableViewCell */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		DF350AD01C2FEE7700A1956E /* Usbong */ = {
+			isa = PBXGroup;
+			children = (
+				DFDE966F1CF70317003F373A /* XML */,
+				DFDE966E1CF6FA70003F373A /* UsbongTree */,
+				DF350AD31C2FEEDB00A1956E /* UsbongFileManager.swift */,
+				CFA298011C932EDF005D127C /* UsbongNodeState.swift */,
+				CFA298031C9333A7005D127C /* UsbongAnswersGenerator.swift */,
+				DFDE96691CF6EEB5003F373A /* Defaults.swift */,
+				DFDE966C1CF6EF08003F373A /* NodeType.swift */,
+				DF9992B51C44D5B900536F2E /* PlayableTree.swift */,
+				CF45F6DD1CA6DD74009F4B62 /* VoiceOverCoordinator.swift */,
+				DF28C9701CA6B34B0074776B /* AutoPlayableTree.swift */,
+				DF0D9ACF1C36B1570048B8DF /* UsbongLanguage.swift */,
+			);
+			path = Usbong;
+			sourceTree = "<group>";
+		};
+		DF35E1F81C44FF09004E5178 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DF35E1FA1C44FFC7004E5178 /* LanguagesTableViewController.swift */,
+				DFC1FD381D54C253006FF586 /* PurchasesTableViewController.swift */,
+				DF1920361CF835BD00507CA0 /* TreeViewController.swift */,
+				DF1920321CF8328400507CA0 /* UsbongKit.storyboard */,
+				DF1920341CF8336A00507CA0 /* Assets.xcassets */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DF452B441BDE0AFD003EB5C3 /* UsbongKit-example */ = {
+			isa = PBXGroup;
+			children = (
+				DF452B451BDE0AFD003EB5C3 /* AppDelegate.swift */,
+				DF1009691C2FD9C7003A9BDA /* NodesTableViewController.swift */,
+				DF10096A1C2FD9C7003A9BDA /* NodeViewController.swift */,
+				DFF51A631C30B4F3005F670F /* TreesTableViewController.swift */,
+				DF63E5A41C324D3A0017B745 /* TreeViewController.swift */,
+				DF10096B1C2FD9C7003A9BDA /* Main.storyboard */,
+				DF452B4C1BDE0AFD003EB5C3 /* Assets.xcassets */,
+				DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */,
+				DF452B511BDE0AFD003EB5C3 /* Info.plist */,
+				CFC4043C1BEE43B0000658E7 /* Usbong iOS.utree */,
+				CF45F6DF1CA6F09D009F4B62 /* Tree Contents */,
+			);
+			path = "UsbongKit-example";
+			sourceTree = "<group>";
+		};
+		DF452B591BDE0AFD003EB5C3 /* UsbongKit-exampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				DF452B5A1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift */,
+				DF452B5C1BDE0AFD003EB5C3 /* Info.plist */,
+			);
+			path = "UsbongKit-exampleTests";
+			sourceTree = "<group>";
+		};
+		DF452B641BDE0AFD003EB5C3 /* UsbongKit-exampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DF452B651BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift */,
+				DF452B671BDE0AFD003EB5C3 /* Info.plist */,
+			);
+			path = "UsbongKit-exampleUITests";
+			sourceTree = "<group>";
+		};
+		DF66433A1CF66E7000373BBE /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				DF10097A1C2FDA22003A9BDA /* Module.swift */,
+				DF6643401CF66F2600373BBE /* TextModule.swift */,
+				DF6643421CF6708C00373BBE /* CheckboxesModule.swift */,
+				DF6643431CF6708C00373BBE /* DateModule.swift */,
+				DF6643441CF6708C00373BBE /* ImageModule.swift */,
+				DF6643451CF6708C00373BBE /* ListModule.swift */,
+				DF6643461CF6708C00373BBE /* RadioButtonsModule.swift */,
+				DF6643471CF6708C00373BBE /* TextInputModule.swift */,
+				DF66433F1CF66F1400373BBE /* Protocols */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		DF66433F1CF66F1400373BBE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DFD396E11C363A2A00D56326 /* SpeakableTextTypeModule.swift */,
+				DF66433B1CF66EA200373BBE /* OptionsTypeModule.swift */,
+				DF66433D1CF66EF600373BBE /* SelectionTypeModule.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DF6643681CF677DF00373BBE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DF6643691CF677ED00373BBE /* SelectionTypeNode.swift */,
+				DF66436B1CF678B900373BBE /* TextInputTypeNode.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DFA633C41BDBD17B00C079B2 = {
+			isa = PBXGroup;
+			children = (
+				DFA6341F1BDBD1FF00C079B2 /* Frameworks */,
+				DFA633D01BDBD17C00C079B2 /* UsbongKit */,
+				DFA633DC1BDBD17C00C079B2 /* UsbongKitTests */,
+				DF452B441BDE0AFD003EB5C3 /* UsbongKit-example */,
+				DF452B591BDE0AFD003EB5C3 /* UsbongKit-exampleTests */,
+				DF452B641BDE0AFD003EB5C3 /* UsbongKit-exampleUITests */,
+				DFA633CF1BDBD17C00C079B2 /* Products */,
+				DF19203A1CF91BB100507CA0 /* docs */,
+				DF19203B1CF91BC700507CA0 /* README.md */,
+			);
+			sourceTree = "<group>";
+		};
+		DFA633CF1BDBD17C00C079B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */,
+				DFA633D81BDBD17C00C079B2 /* UsbongKitTests.xctest */,
+				DF452B431BDE0AFD003EB5C3 /* UsbongKit-example.app */,
+				DF452B561BDE0AFD003EB5C3 /* UsbongKit-exampleTests.xctest */,
+				DF452B611BDE0AFD003EB5C3 /* UsbongKit-exampleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DFA633D01BDBD17C00C079B2 /* UsbongKit */ = {
+			isa = PBXGroup;
+			children = (
+				DFA633D11BDBD17C00C079B2 /* UsbongKit.h */,
+				DF1920381CF8371E00507CA0 /* Usbong.swift */,
+				DFA633D31BDBD17C00C079B2 /* Info.plist */,
+				DFC1FD2F1D54A203006FF586 /* Helpers */,
+				DF66433A1CF66E7000373BBE /* Modules */,
+				DF35E1F81C44FF09004E5178 /* ViewControllers */,
+				DF10098E1C2FDA30003A9BDA /* Views */,
+				DF10098D1C2FDA29003A9BDA /* Nodes */,
+				DF350AD01C2FEE7700A1956E /* Usbong */,
+			);
+			path = UsbongKit;
+			sourceTree = "<group>";
+		};
+		DFA633DC1BDBD17C00C079B2 /* UsbongKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				DFA633DD1BDBD17C00C079B2 /* UsbongKitTests.swift */,
+				DFA633DF1BDBD17C00C079B2 /* Info.plist */,
+			);
+			path = UsbongKitTests;
+			sourceTree = "<group>";
+		};
+		DFA6341F1BDBD1FF00C079B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF66436D1CF6804100373BBE /* Zip.framework */,
+				DFA6341A1BDBD1F800C079B2 /* SWXMLHash.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFC1FD2F1D54A203006FF586 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DFC1FD301D54A235006FF586 /* IAPHelper.swift */,
+				DFC1FD341D54A3C2006FF586 /* IAPBundle.swift */,
+				DFC1FD361D54BEBB006FF586 /* IAPSampleBundles.swift */,
+				DF5726361DEEAA9C00762808 /* NSString+Words.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DFC1FD3A1D54C3AC006FF586 /* IAPTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DFC1FD3B1D54C3C2006FF586 /* IAPTableViewCell.swift */,
+				DFC1FD3C1D54C3C2006FF586 /* IAPTableViewCell.xib */,
+			);
+			name = IAPTableViewCell;
+			sourceTree = "<group>";
+		};
+		DFDE966E1CF6FA70003F373A /* UsbongTree */ = {
+			isa = PBXGroup;
+			children = (
+				DF350AD11C2FEECE00A1956E /* UsbongTree.swift */,
+				DF25EC6B1C36C554002593EA /* UsbongTree+NodeProvider.swift */,
+			);
+			path = UsbongTree;
+			sourceTree = "<group>";
+		};
+		DFDE966F1CF70317003F373A /* XML */ = {
+			isa = PBXGroup;
+			children = (
+				DFB73C3B1C34EC5900451519 /* XMLNameInfo.swift */,
+				DFDE96701CF70325003F373A /* XMLIdentifier.swift */,
+				DFDE96721CF70396003F373A /* TaskNodeType.swift */,
+			);
+			path = XML;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		DFA633CB1BDBD17C00C079B2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFA633D21BDBD17C00C079B2 /* UsbongKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		DF452B421BDE0AFD003EB5C3 /* UsbongKit-example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF452B6E1BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-example" */;
+			buildPhases = (
+				DF452B3F1BDE0AFD003EB5C3 /* Sources */,
+				DF452B401BDE0AFD003EB5C3 /* Frameworks */,
+				CF45F6E01CA6F224009F4B62 /* Compress Sample Tree */,
+				DF452B411BDE0AFD003EB5C3 /* Resources */,
+				CFC404351BEE4319000658E7 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFC404341BEE4319000658E7 /* PBXTargetDependency */,
+			);
+			name = "UsbongKit-example";
+			productName = "UsbongKit-example";
+			productReference = DF452B431BDE0AFD003EB5C3 /* UsbongKit-example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DF452B551BDE0AFD003EB5C3 /* UsbongKit-exampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF452B6F1BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-exampleTests" */;
+			buildPhases = (
+				DF452B521BDE0AFD003EB5C3 /* Sources */,
+				DF452B531BDE0AFD003EB5C3 /* Frameworks */,
+				DF452B541BDE0AFD003EB5C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF452B581BDE0AFD003EB5C3 /* PBXTargetDependency */,
+			);
+			name = "UsbongKit-exampleTests";
+			productName = "UsbongKit-exampleTests";
+			productReference = DF452B561BDE0AFD003EB5C3 /* UsbongKit-exampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DF452B601BDE0AFD003EB5C3 /* UsbongKit-exampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF452B701BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-exampleUITests" */;
+			buildPhases = (
+				DF452B5D1BDE0AFD003EB5C3 /* Sources */,
+				DF452B5E1BDE0AFD003EB5C3 /* Frameworks */,
+				DF452B5F1BDE0AFD003EB5C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF452B631BDE0AFD003EB5C3 /* PBXTargetDependency */,
+			);
+			name = "UsbongKit-exampleUITests";
+			productName = "UsbongKit-exampleUITests";
+			productReference = DF452B611BDE0AFD003EB5C3 /* UsbongKit-exampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		DFA633CD1BDBD17C00C079B2 /* UsbongKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFA633E21BDBD17C00C079B2 /* Build configuration list for PBXNativeTarget "UsbongKit" */;
+			buildPhases = (
+				DFA633C91BDBD17C00C079B2 /* Sources */,
+				DFA633CA1BDBD17C00C079B2 /* Frameworks */,
+				DFA633CB1BDBD17C00C079B2 /* Headers */,
+				DFA633CC1BDBD17C00C079B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UsbongKit;
+			productName = UsbongKit;
+			productReference = DFA633CE1BDBD17C00C079B2 /* UsbongKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DFA633D71BDBD17C00C079B2 /* UsbongKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFA633E51BDBD17C00C079B2 /* Build configuration list for PBXNativeTarget "UsbongKitTests" */;
+			buildPhases = (
+				DFA633D41BDBD17C00C079B2 /* Sources */,
+				DFA633D51BDBD17C00C079B2 /* Frameworks */,
+				DFA633D61BDBD17C00C079B2 /* Resources */,
+				DFF804001CFC1D8000B9C702 /* Carthage Copy Frameworks Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DFA633DB1BDBD17C00C079B2 /* PBXTargetDependency */,
+			);
+			name = UsbongKitTests;
+			productName = UsbongKitTests;
+			productReference = DFA633D81BDBD17C00C079B2 /* UsbongKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DFA633C51BDBD17B00C079B2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Usbong Social Systems, Inc.";
+				TargetAttributes = {
+					DF452B421BDE0AFD003EB5C3 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					DF452B551BDE0AFD003EB5C3 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = DF452B421BDE0AFD003EB5C3;
+					};
+					DF452B601BDE0AFD003EB5C3 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = DF452B421BDE0AFD003EB5C3;
+					};
+					DFA633CD1BDBD17C00C079B2 = {
+						CreatedOnToolsVersion = 7.0.1;
+						LastSwiftMigration = 0810;
+					};
+					DFA633D71BDBD17C00C079B2 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = DFA633C81BDBD17B00C079B2 /* Build configuration list for PBXProject "UsbongKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DFA633C41BDBD17B00C079B2;
+			productRefGroup = DFA633CF1BDBD17C00C079B2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DFA633CD1BDBD17C00C079B2 /* UsbongKit */,
+				DFA633D71BDBD17C00C079B2 /* UsbongKitTests */,
+				DF452B421BDE0AFD003EB5C3 /* UsbongKit-example */,
+				DF452B551BDE0AFD003EB5C3 /* UsbongKit-exampleTests */,
+				DF452B601BDE0AFD003EB5C3 /* UsbongKit-exampleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DF452B411BDE0AFD003EB5C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFC4043D1BEE440B000658E7 /* Usbong iOS.utree in Resources */,
+				DF452B501BDE0AFD003EB5C3 /* LaunchScreen.storyboard in Resources */,
+				DF452B4D1BDE0AFD003EB5C3 /* Assets.xcassets in Resources */,
+				DF10096E1C2FD9C7003A9BDA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF452B541BDE0AFD003EB5C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF452B5F1BDE0AFD003EB5C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFA633CC1BDBD17C00C079B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF1009881C2FDA22003A9BDA /* CheckboxTableViewCell.xib in Resources */,
+				DF1920331CF8328400507CA0 /* UsbongKit.storyboard in Resources */,
+				DFC1FD3E1D54C3C2006FF586 /* IAPTableViewCell.xib in Resources */,
+				CF435EFD1C94F22400CEBB6B /* DateTableViewCell.xib in Resources */,
+				CFD8EC201C6DCBCF00E629CE /* TextAreaTableViewCell.xib in Resources */,
+				DF1009841C2FDA22003A9BDA /* TextTableViewCell.xib in Resources */,
+				CF348C4E1C6D84EF0091BDF7 /* TextFieldTableViewCell.xib in Resources */,
+				DF1009821C2FDA22003A9BDA /* ImageTableViewCell.xib in Resources */,
+				DF1920351CF8336A00507CA0 /* Assets.xcassets in Resources */,
+				DF1009861C2FDA22003A9BDA /* RadioTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFA633D61BDBD17C00C079B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CF45F6E01CA6F224009F4B62 /* Compress Sample Tree */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Compress Sample Tree";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd UsbongKit-example/Tree\\ Contents/\nzip -X -r ../Usbong\\ iOS.utree Usbong\\ iOS.utree/\n";
+		};
+		DFF804001CFC1D8000B9C702 /* Carthage Copy Frameworks Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SWXMLHash.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Zip.framework",
+			);
+			name = "Carthage Copy Frameworks Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DF452B3F1BDE0AFD003EB5C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF10096D1C2FD9C7003A9BDA /* NodeViewController.swift in Sources */,
+				DF452B461BDE0AFD003EB5C3 /* AppDelegate.swift in Sources */,
+				DF63E5A51C324D3A0017B745 /* TreeViewController.swift in Sources */,
+				DF10096C1C2FD9C7003A9BDA /* NodesTableViewController.swift in Sources */,
+				DFF51A641C30B4F3005F670F /* TreesTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF452B521BDE0AFD003EB5C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF452B5B1BDE0AFD003EB5C3 /* UsbongKit_exampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF452B5D1BDE0AFD003EB5C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF452B661BDE0AFD003EB5C3 /* UsbongKit_exampleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFA633C91BDBD17C00C079B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF1009851C2FDA22003A9BDA /* RadioTableViewCell.swift in Sources */,
+				DFDE966A1CF6EEB5003F373A /* Defaults.swift in Sources */,
+				DF0D9AD01C36B1570048B8DF /* UsbongLanguage.swift in Sources */,
+				DF66436A1CF677ED00373BBE /* SelectionTypeNode.swift in Sources */,
+				DF66434F1CF6735B00373BBE /* TextNode.swift in Sources */,
+				DFDE966D1CF6EF08003F373A /* NodeType.swift in Sources */,
+				DF6643481CF6708C00373BBE /* CheckboxesModule.swift in Sources */,
+				DFC1FD391D54C253006FF586 /* PurchasesTableViewController.swift in Sources */,
+				DF1009811C2FDA22003A9BDA /* ImageTableViewCell.swift in Sources */,
+				DF10098A1C2FDA22003A9BDA /* Node.swift in Sources */,
+				DFC1FD371D54BEBB006FF586 /* IAPSampleBundles.swift in Sources */,
+				DF6643641CF674A700373BBE /* TextFieldNumericalNode.swift in Sources */,
+				CFA624D21C6C49BD0071301D /* Reusable.swift in Sources */,
+				DF6643651CF674A700373BBE /* TextFieldWithUnitNode.swift in Sources */,
+				CFA298021C932EDF005D127C /* UsbongNodeState.swift in Sources */,
+				DF5726371DEEAA9C00762808 /* NSString+Words.swift in Sources */,
+				DF66435D1CF674A700373BBE /* ClassificationNode.swift in Sources */,
+				DF66435F1CF674A700373BBE /* ImageNode.swift in Sources */,
+				DF6643661CF674A700373BBE /* TextImageNode.swift in Sources */,
+				DF6643411CF66F2600373BBE /* TextModule.swift in Sources */,
+				DF6643671CF674A700373BBE /* TimestampNode.swift in Sources */,
+				CF45F6DE1CA6DD74009F4B62 /* VoiceOverCoordinator.swift in Sources */,
+				DF1009831C2FDA22003A9BDA /* TextTableViewCell.swift in Sources */,
+				CFA298041C9333A7005D127C /* UsbongAnswersGenerator.swift in Sources */,
+				DF6643601CF674A700373BBE /* ImageTextNode.swift in Sources */,
+				DF66435E1CF674A700373BBE /* DateNode.swift in Sources */,
+				DF1009801C2FDA22003A9BDA /* HintsTextView.swift in Sources */,
+				DFC1FD3D1D54C3C2006FF586 /* IAPTableViewCell.swift in Sources */,
+				DF25EC6C1C36C554002593EA /* UsbongTree+NodeProvider.swift in Sources */,
+				DF1920391CF8371E00507CA0 /* Usbong.swift in Sources */,
+				DF350AD21C2FEECE00A1956E /* UsbongTree.swift in Sources */,
+				CF348C4D1C6D84EF0091BDF7 /* TextFieldTableViewCell.swift in Sources */,
+				DF66434D1CF6708C00373BBE /* TextInputModule.swift in Sources */,
+				DFDE96711CF70325003F373A /* XMLIdentifier.swift in Sources */,
+				DFDE96731CF70396003F373A /* TaskNodeType.swift in Sources */,
+				DF6643491CF6708C00373BBE /* DateModule.swift in Sources */,
+				DF1009871C2FDA22003A9BDA /* CheckboxTableViewCell.swift in Sources */,
+				DF350AD41C2FEEDB00A1956E /* UsbongFileManager.swift in Sources */,
+				DF6643631CF674A700373BBE /* TextFieldNode.swift in Sources */,
+				DF66435C1CF674A700373BBE /* ChecklistNode.swift in Sources */,
+				DF66436C1CF678B900373BBE /* TextInputTypeNode.swift in Sources */,
+				DF66433E1CF66EF600373BBE /* SelectionTypeModule.swift in Sources */,
+				DFD396E21C363A2A00D56326 /* SpeakableTextTypeModule.swift in Sources */,
+				DF10097F1C2FDA22003A9BDA /* RadioButton.swift in Sources */,
+				DF10097E1C2FDA22003A9BDA /* CheckboxButton.swift in Sources */,
+				DFC1FD351D54A3C2006FF586 /* IAPBundle.swift in Sources */,
+				DF6643621CF674A700373BBE /* TextAreaNode.swift in Sources */,
+				DF66433C1CF66EA200373BBE /* OptionsTypeModule.swift in Sources */,
+				DF66434B1CF6708C00373BBE /* ListModule.swift in Sources */,
+				DF6643611CF674A700373BBE /* RadioButtonsNode.swift in Sources */,
+				DF9992B61C44D5B900536F2E /* PlayableTree.swift in Sources */,
+				DF28C9711CA6B34B0074776B /* AutoPlayableTree.swift in Sources */,
+				DFB73C3C1C34EC5900451519 /* XMLNameInfo.swift in Sources */,
+				DF35E1FB1C44FFC7004E5178 /* LanguagesTableViewController.swift in Sources */,
+				CF435EFC1C94F22400CEBB6B /* DateTableViewCell.swift in Sources */,
+				DF1009891C2FDA22003A9BDA /* Module.swift in Sources */,
+				DF1920371CF835BD00507CA0 /* TreeViewController.swift in Sources */,
+				DFC1FD311D54A235006FF586 /* IAPHelper.swift in Sources */,
+				CFD8EC1F1C6DCBCF00E629CE /* TextAreaTableViewCell.swift in Sources */,
+				DF10098C1C2FDA22003A9BDA /* NodeView.swift in Sources */,
+				DF10098B1C2FDA22003A9BDA /* NodeProvider.swift in Sources */,
+				DF66434A1CF6708C00373BBE /* ImageModule.swift in Sources */,
+				DF66434C1CF6708C00373BBE /* RadioButtonsModule.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFA633D41BDBD17C00C079B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFA633DE1BDBD17C00C079B2 /* UsbongKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CFC404341BEE4319000658E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DFA633CD1BDBD17C00C079B2 /* UsbongKit */;
+			targetProxy = CFC404331BEE4319000658E7 /* PBXContainerItemProxy */;
+		};
+		DF452B581BDE0AFD003EB5C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF452B421BDE0AFD003EB5C3 /* UsbongKit-example */;
+			targetProxy = DF452B571BDE0AFD003EB5C3 /* PBXContainerItemProxy */;
+		};
+		DF452B631BDE0AFD003EB5C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF452B421BDE0AFD003EB5C3 /* UsbongKit-example */;
+			targetProxy = DF452B621BDE0AFD003EB5C3 /* PBXContainerItemProxy */;
+		};
+		DFA633DB1BDBD17C00C079B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DFA633CD1BDBD17C00C079B2 /* UsbongKit */;
+			targetProxy = DFA633DA1BDBD17C00C079B2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DF452B4E1BDE0AFD003EB5C3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF452B4F1BDE0AFD003EB5C3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DF452B681BDE0AFD003EB5C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "UsbongKit-example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ph.usbong.UsbongKit-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DF452B691BDE0AFD003EB5C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "UsbongKit-example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ph.usbong.UsbongKit-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DF452B6A1BDE0AFD003EB5C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "UsbongKit-exampleTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ph.usbong.UsbongKit-exampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UsbongKit-example.app/UsbongKit-example";
+			};
+			name = Debug;
+		};
+		DF452B6B1BDE0AFD003EB5C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "UsbongKit-exampleTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ph.usbong.UsbongKit-exampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UsbongKit-example.app/UsbongKit-example";
+			};
+			name = Release;
+		};
+		DF452B6C1BDE0AFD003EB5C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "UsbongKit-exampleUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ph.usbong.UsbongKit-exampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "UsbongKit-example";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		DF452B6D1BDE0AFD003EB5C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "UsbongKit-exampleUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ph.usbong.UsbongKit-exampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "UsbongKit-example";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+		DFA633E01BDBD17C00C079B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DFA633E11BDBD17C00C079B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DFA633E31BDBD17C00C079B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = UsbongKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ph.usbong.UsbongKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0.1;
+			};
+			name = Debug;
+		};
+		DFA633E41BDBD17C00C079B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = UsbongKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ph.usbong.UsbongKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0.1;
+			};
+			name = Release;
+		};
+		DFA633E61BDBD17C00C079B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = UsbongKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ph.usbong.UsbongKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DFA633E71BDBD17C00C079B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = UsbongKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ph.usbong.UsbongKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DF452B6E1BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF452B681BDE0AFD003EB5C3 /* Debug */,
+				DF452B691BDE0AFD003EB5C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF452B6F1BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-exampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF452B6A1BDE0AFD003EB5C3 /* Debug */,
+				DF452B6B1BDE0AFD003EB5C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF452B701BDE0AFD003EB5C3 /* Build configuration list for PBXNativeTarget "UsbongKit-exampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF452B6C1BDE0AFD003EB5C3 /* Debug */,
+				DF452B6D1BDE0AFD003EB5C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFA633C81BDBD17B00C079B2 /* Build configuration list for PBXProject "UsbongKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFA633E01BDBD17C00C079B2 /* Debug */,
+				DFA633E11BDBD17C00C079B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFA633E21BDBD17C00C079B2 /* Build configuration list for PBXNativeTarget "UsbongKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFA633E31BDBD17C00C079B2 /* Debug */,
+				DFA633E41BDBD17C00C079B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFA633E51BDBD17C00C079B2 /* Build configuration list for PBXNativeTarget "UsbongKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFA633E61BDBD17C00C079B2 /* Debug */,
+				DFA633E71BDBD17C00C079B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DFA633C51BDBD17B00C079B2 /* Project object */;
+}

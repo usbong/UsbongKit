@@ -1,0 +1,183 @@
+//
+//  Reusable.swift
+//  Boarderline
+//
+//  Created by Joe Amanse on 01/02/2016.
+//  Copyright © 2016 Joe Christopher Paul Amanse. All rights reserved.
+//
+
+import UIKit
+
+/// Make your UITableViewCell and UICollectionViewCell subclasses
+/// conform to this protocol when they are *not* NIB-based but only code-based
+/// to be able to dequeue them in a type-safe manner
+public protocol Reusable: class {
+    /// The reuse identifier to use when registering and later dequeuing a reusable cell
+    static var reuseIdentifier: String { get }
+}
+
+/// Make your UITableViewCell and UICollectionViewCell subclasses
+/// conform to this protocol when they *are* NIB-based
+/// to be able to dequeue them in a type-safe manner
+public protocol NibReusable: Reusable, NibLoadable {}
+
+// MARK: - Default implementation for Reusable
+
+public extension Reusable {
+    /// By default, use the name of the class as String for its reuseIdentifier
+    static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+}
+
+// MARK: - UITableView support for Reusable & NibReusable
+
+public extension UITableView {
+    /**
+     Register a NIB-Based `UITableViewCell` subclass (conforming to `NibReusable`)
+     - parameter cellType: the `UITableViewCell` (`NibReusable`-conforming) subclass to register
+     - seealso: `registerNib(_:,forCellReuseIdentifier:)`
+     */
+    func registerReusableCell<T: UITableViewCell>(_ cellType: T.Type) where T: NibReusable {
+        self.register(T.nib, forCellReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    /**
+     Register a Class-Based `UITableViewCell` subclass (conforming to `Reusable`)
+     - parameter cellType: the `UITableViewCell` (`Reusable`-conforming) subclass to register
+     - seealso: `registerClass(_:,forCellReuseIdentifier:)`
+     */
+    func registerReusableCell<T: UITableViewCell>(_ cellType: T.Type) where T: Reusable {
+        self.register(T.self, forCellReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    /**
+     Returns a reusable `UITableViewCell` object for the class infered by the return-type
+     - parameter indexPath: The index path specifying the location of the cell.
+     - returns: A `Reusable`, `UITableViewCell` instance
+     - seealso: `dequeueReusableCellWithIdentifier(_:,forIndexPath:)`
+     */
+    func dequeueReusableCell<T: UITableViewCell>(indexPath: IndexPath) -> T where T: Reusable {
+        return self.dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as! T
+    }
+    
+    /**
+     Register a NIB-Based `UITableViewHeaderFooterView` subclass (conforming to `NibReusable`)
+     - parameter viewType: the `UITableViewHeaderFooterView` (`NibReusable`-conforming) subclass to register
+     - seealso: `registerNib(_:,forHeaderFooterViewReuseIdentifier:)`
+     */
+    func registerReusableHeaderFooterView<T: UITableViewHeaderFooterView>(_ viewType: T.Type) where T: NibReusable {
+        self.register(T.nib, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    /**
+     Register a Class-Based `UITableViewHeaderFooterView` subclass (conforming to `Reusable`)
+     - parameter viewType: the `UITableViewHeaderFooterView` (`Reusable`-confirming) subclass to register
+     - seealso: `registerClass(_:,forHeaderFooterViewReuseIdentifier:)`
+     */
+    func registerReusableHeaderFooterView<T: UITableViewHeaderFooterView>(_ viewType: T.Type) where T: Reusable {
+        self.register(T.self, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    /**
+     Returns a reusable `UITableViewHeaderFooterView` object for the class infered by the return-type
+     - returns: A `Reusable`, `UITableViewHeaderFooterView` instance
+     - seealso: `dequeueReusableHeaderFooterViewWithIdentifier(_:)`
+     */
+    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>() -> T? where T: Reusable {
+        return self.dequeueReusableHeaderFooterView(withIdentifier: T.reuseIdentifier) as! T?
+    }
+}
+
+// MARK: - UICollectionView support for Reusable & NibReusable
+
+public extension UICollectionView {
+    /**
+     Register a NIB-Based `UICollectionViewCell` subclass (conforming to `NibReusable`)
+     - parameter cellType: the `UICollectionViewCell` (`NibReusable`-conforming) subclass to register
+     - seealso: `registerNib(_:,forCellWithReuseIdentifier:)`
+     */
+    func registerReusableCell<T: UICollectionViewCell>(_ cellType: T.Type) where T: NibReusable {
+        self.register(T.nib, forCellWithReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    /**
+     Register a Class-Based `UICollectionViewCell` subclass (conforming to `Reusable`)
+     - parameter cellType: the `UICollectionViewCell` (`Reusable`-conforming) subclass to register
+     - seealso: `registerClass(_:,forCellWithReuseIdentifier:)`
+     */
+    func registerReusableCell<T: UICollectionViewCell>(_ cellType: T.Type) where T: Reusable {
+        self.register(T.self, forCellWithReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    /**
+     Returns a reusable `UICollectionViewCell` object for the class infered by the return-type
+     - parameter indexPath: The index path specifying the location of the cell.
+     - returns: A `Reusable`, `UICollectionViewCell` instance
+     - seealso: `dequeueReusableCellWithReuseIdentifier(_:,forIndexPath:)`
+     */
+    func dequeueReusableCell<T: UICollectionViewCell>(indexPath: IndexPath) -> T where T: Reusable {
+        return self.dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T
+    }
+    
+    /**
+     Register a NIB-Based `UICollectionReusableView` subclass (conforming to `NibReusable`) as a Supplementary View
+     - parameter elementKind: The kind of supplementary view to create.
+     - parameter viewType: the `UIView` (`NibReusable`-conforming) subclass to register as Supplementary View
+     - seealso: `registerNib(_:,forSupplementaryViewOfKind:,withReuseIdentifier:)`
+     */
+    func registerReusableSupplementaryView<T: UICollectionReusableView>(_ elementKind: String, viewType: T.Type) where T: NibReusable {
+        self.register(T.nib, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    /**
+     Register a Class-Based `UICollectionReusableView` subclass (conforming to `Reusable`) as a Supplementary View
+     - parameter elementKind: The kind of supplementary view to create.
+     - parameter viewType: the `UIView` (`Reusable`-conforming) subclass to register as Supplementary View
+     - seealso: `registerClass(_:,forSupplementaryViewOfKind:,withReuseIdentifier:)`
+     */
+    func registerReusableSupplementaryView<T: UICollectionReusableView>(_ elementKind: String, viewType: T.Type) where T: Reusable {
+        self.register(T.self, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: T.reuseIdentifier)
+    }
+    
+    /**
+     Returns a reusable `UICollectionReusableView` object for the class infered by the return-type
+     - parameter elementKind: The kind of supplementary view to retrieve.
+     - parameter indexPath:   The index path specifying the location of the cell.
+     - returns: A `Reusable`, `UICollectionReusableView` instance
+     - seealso: `dequeueReusableSupplementaryViewOfKind(_:,withReuseIdentifier:,forIndexPath:)`
+     */
+    func dequeueReusableSupplementaryView<T: UICollectionReusableView>(_ elementKind: String, indexPath: IndexPath) -> T where T: Reusable {
+        return self.dequeueReusableSupplementaryView(ofKind: elementKind, withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T
+    }
+}
+
+/// Make your UIView subclasses
+/// conform to this protocol when they *are* NIB-based
+/// to be able to instantiate them from NIB in a type-safe manner
+public protocol NibLoadable: class {
+    /// The nib file to use to load a new instance of the View designed in a XIB
+    static var nib: UINib { get }
+}
+
+// MARK: - Default implementation form NibLoadable
+
+public extension NibLoadable {
+    /// By default, use the nib which have the same name as the name of the class,
+    /// and located in the main bundle
+    static var nib: UINib {
+        return UINib(nibName: String(describing: self), bundle: Bundle(for: self))
+    }
+}
+
+// MARK: - Support for instantiation from nib
+
+public extension NibLoadable where Self: UIView {
+    /**
+     Returns a `UIView` object instantiated from nib
+     - returns: A `NibLoadable`, `UIView` instance
+     */
+    static func loadFromNib() -> Self {
+        return nib.instantiate(withOwner: nil, options: nil).first as! Self
+    }
+}
