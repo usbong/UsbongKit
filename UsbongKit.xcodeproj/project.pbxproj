@@ -769,6 +769,7 @@
 					};
 					DFA633CD1BDBD17C00C079B2 = {
 						CreatedOnToolsVersion = 7.0.1;
+						LastSwiftMigration = 0810;
 					};
 					DFA633D71BDBD17C00C079B2 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -1219,6 +1220,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ph.usbong.UsbongKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -1240,6 +1242,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ph.usbong.UsbongKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};
