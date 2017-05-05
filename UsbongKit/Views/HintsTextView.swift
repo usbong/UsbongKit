@@ -73,7 +73,7 @@ open class HintsTextView: UITextView {
             if charIndex < self.textStorage.length {
                 var range: NSRange? = NSRange(location: 0, length: 1)
                 if let hint = attributedText.attribute(ContainsHintKey, at: charIndex, effectiveRange: &range!) as? String {
-                    let tappedString = (attributedText.string as NSString).substring(with: range ?? NSRange()) as String ?? ""
+                    let tappedString = (attributedText.string as NSString).substring(with: range ?? NSRange()) as String
                     hintsTextViewDelegate?.hintsTextView(self, didTapString: tappedString, withHint: hint)
                 }
             }
@@ -95,7 +95,7 @@ extension NSAttributedString {
             var attributes = [String: AnyObject]()
             
             // Add hint
-            attributes[ContainsHintKey] = hint as AnyObject?
+            attributes[ContainsHintKey] = hint as AnyObject
             
             // Set color
             if let targetColor = color {

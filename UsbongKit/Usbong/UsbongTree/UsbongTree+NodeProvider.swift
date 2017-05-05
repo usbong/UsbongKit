@@ -15,12 +15,13 @@ extension UsbongTree: NodeProvider {
             return false
         }
         
-        return nodeIndexerAndTypeWithName(name: name) != nil
+        return nodeIndexerAndTypeWithName(name) != nil
     }
     public var previousNodeIsAvailable: Bool {
         return taskNodeNames.count > 1
     }
     
+    @discardableResult
     public func transitionToNextNode() -> Bool {
         let transitionName = currentTargetTransitionName
         guard let nextTaskNodeName = currentTransitionInfo[transitionName] else {
@@ -31,7 +32,7 @@ extension UsbongTree: NodeProvider {
         let state = UsbongNodeState(transitionName: transitionName, node: currentNode, type: currentTaskNodeType)
         
         // Make current node to next task node
-        currentNode = nodeWithName(taskNodeName: nextTaskNodeName)
+        currentNode = nodeWithName(nextTaskNodeName)
         
         // Append task node name to array
         taskNodeNames.append(nextTaskNodeName)
@@ -41,6 +42,8 @@ extension UsbongTree: NodeProvider {
         
         return true
     }
+    
+    @discardableResult
     public func transitionToPreviousNode() -> Bool {
         if previousNodeIsAvailable {
             // Remove last state from array

@@ -18,6 +18,7 @@ open class NodeView: UIView {
     open var node: Node = TextNode(text: "No Node") {
         didSet {
             tableView.reloadData()
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         }
     }
     
@@ -61,13 +62,13 @@ open class NodeView: UIView {
         
         addSubview(tableView)
         
-        tableView.registerReusableCell(TextTableViewCell)
-        tableView.registerReusableCell(ImageTableViewCell)
-        tableView.registerReusableCell(RadioTableViewCell)
-        tableView.registerReusableCell(CheckboxTableViewCell)
-        tableView.registerReusableCell(TextFieldTableViewCell)
-        tableView.registerReusableCell(TextAreaTableViewCell)
-        tableView.registerReusableCell(DateTableViewCell)
+        tableView.registerReusableCell(TextTableViewCell.self)
+        tableView.registerReusableCell(ImageTableViewCell.self)
+        tableView.registerReusableCell(RadioTableViewCell.self)
+        tableView.registerReusableCell(CheckboxTableViewCell.self)
+        tableView.registerReusableCell(TextFieldTableViewCell.self)
+        tableView.registerReusableCell(TextAreaTableViewCell.self)
+        tableView.registerReusableCell(DateTableViewCell.self)
     }
     
     // MARK: Hints dictionary

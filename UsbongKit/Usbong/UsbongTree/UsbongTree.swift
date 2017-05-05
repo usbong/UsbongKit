@@ -10,18 +10,18 @@ import Foundation
 import SWXMLHash
 
 /// An `UsbongTree` object parses utree files, and tracks its current location and states.
-public class UsbongTree {
+open class UsbongTree {
     /// The URL for the .utree folder inside the unpacked tree
-    public let treeRootURL: URL
+    open let treeRootURL: URL
     
     /// Title derived from the folder
-    public let title: String
+    open let title: String
     
     /// Base language of the utree. Default is "English"
-    public let baseLanguage: String
+    open let baseLanguage: String
     
     /// Current set language of utree
-    public var currentLanguage: String {
+    open var currentLanguage: String {
         didSet {
             reloadCurrentTaskNode()
             loadHintsDictionary()
@@ -29,30 +29,30 @@ public class UsbongTree {
     }
     
     /// The language code for the current language
-    public var currentLanguageCode: String {
+    open var currentLanguageCode: String {
         return UsbongLanguage(language: currentLanguage).languageCode
     }
     
     /// Available languages of the utree
-    public let availableLanguages: [String]
+    open let availableLanguages: [String]
     
     /// Current background image URL
-    public private(set) var backgroundImageURL: URL?
+    open fileprivate(set) var backgroundImageURL: URL?
     
     /// Current background audio URL
-    public private(set) var backgroundAudioURL: URL?
+    open fileprivate(set) var backgroundAudioURL: URL?
     
     /// Current voice-over audio URL
-    public private(set) var currentVoiceOverAudioURL: URL?
+    open fileprivate(set) var currentVoiceOverAudioURL: URL?
     
     /// A collection of task node names from start to current
     internal var taskNodeNames: [String] = []
     
     /// The target number of ticks for a checklist
-    internal private(set) var checklistTargetNumberOfTicks = 0
+    internal fileprivate(set) var checklistTargetNumberOfTicks = 0
     
     /// The current transition info
-    internal private(set) var currentTransitionInfo: [String: String] = [:]
+    internal fileprivate(set) var currentTransitionInfo: [String: String] = [:]
     
     /// Usbong node states. This is for generating the answers
     internal var usbongNodeStates: [UsbongNodeState] = []
@@ -149,38 +149,38 @@ public class UsbongTree {
     internal let hintsXMLURLs: [URL]
     
     /// Dictionary for hints
-    public private(set) var hintsDictionary: [String: String] = [:]
+    open fileprivate(set) var hintsDictionary: [String: String] = [:]
     
     /// XMLIndexer for tree
-    private let treeXMLIndexer: XMLIndexer
+    fileprivate let treeXMLIndexer: XMLIndexer
     
     /// XMLIndexer for "process-definition"
-    private var processDefinitionIndexer: XMLIndexer {
+    fileprivate var processDefinitionIndexer: XMLIndexer {
         return treeXMLIndexer[XMLIdentifier.processDefinition]
     }
     
     // Current node is stored so that it isn't computed/fetched everytime it's being accessed
     /// The current node
-    public internal(set) var currentNode: Node?
+    open internal(set) var currentNode: Node?
     
     /**
      Creates an instance of `UsbongTree`
      
      - parameter treeRootURL: The URL for the .utree folder inside the unpacked tree
-     */
+    */
     public init(treeRootURL: URL) {
         let fileManager = FileManager.default
         
-        self.treeRootURL = treeRootURL as URL
+        self.treeRootURL = treeRootURL
         
         // Fetch main XML URL
-        let fileName = treeRootURL.deletingPathExtension().lastPathComponent ?? ""
+        let fileName = treeRootURL.deletingPathExtension().lastPathComponent
         let XMLURL = treeRootURL.appendingPathComponent(fileName).appendingPathExtension("xml")
-        let XMLData = try! Data(contentsOf: XMLURL) ?? Data() //edited by Mike, 20170322
+        let XMLData = (try? Data(contentsOf: XMLURL)) ?? Data()
         
         // Set title, if blank, set to "Untitled"
         let title: String
-        if fileName.replacingOccurrences(of:" ", with: "").characters.count == 0 {
+        if fileName.replacingOccurrences(of: " ", with: "").characters.count == 0 {
             title = "Untitled"
         } else {
             title = fileName
@@ -198,7 +198,7 @@ public class UsbongTree {
         // Fetch URLs for language XMLs
         let transURL = treeRootURL.appendingPathComponent("trans", isDirectory: true)
         var languageXMLURLs = (try? fileManager.contentsOfDirectory(at: transURL,
-                                                                         includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)) ?? []
+                includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)) ?? []
         
         // Filter URLs - allow only .xml files
         languageXMLURLs = languageXMLURLs.filter { $0.pathExtension.caseInsensitiveCompare("xml") == .orderedSame }
@@ -208,7 +208,7 @@ public class UsbongTree {
         // Set available languages and also include base language
         var availableLanguages: [String] = []
         languageXMLURLs.forEach { url in
-            let language = url.deletingPathExtension().lastPathComponent ?? "Unknown"
+            let language = url.deletingPathExtension().lastPathComponent 
             availableLanguages.append(language)
         }
         
@@ -222,14 +222,14 @@ public class UsbongTree {
         // Fetch URLs for hints XMLs
         let hintsURL = treeRootURL.appendingPathComponent("hints", isDirectory: true)
         hintsXMLURLs = (try? fileManager.contentsOfDirectory(at: hintsURL,
-                                                                  includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)) ?? []
+                includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)) ?? []
         loadHintsDictionary()
         
         // Fetch starting task node
         if let element = processDefinitionIndexer[XMLIdentifier.startState][XMLIdentifier.transition].element {
             if let startName = element.attributes[XMLIdentifier.to] {
                 taskNodeNames.append(startName)
-                currentNode = nodeWithName(taskNodeName: startName)
+                currentNode = nodeWithName(startName)
             }
         }
     }
@@ -237,7 +237,7 @@ public class UsbongTree {
     /// Reloads or refetchs the current task node
     internal func reloadCurrentTaskNode() {
         if let currentTaskNodeName = taskNodeNames.last {
-            currentNode = nodeWithName(taskNodeName: currentTaskNodeName)
+            currentNode = nodeWithName(currentTaskNodeName)
         }
     }
     
@@ -250,14 +250,14 @@ public class UsbongTree {
      - parameter taskNodeName: The task node name
      
      - returns: The created `Node` object
-     */
-    internal func nodeWithName(taskNodeName: String) -> Node {
+    */
+    internal func nodeWithName(_ taskNodeName: String) -> Node {
         var node: Node = TextNode(text: "Unknown Node")
-        guard let (nodeIndexer, type) = nodeIndexerAndTypeWithName(name: taskNodeName) else {
+        guard let (nodeIndexer, type) = nodeIndexerAndTypeWithName(taskNodeName) else {
             return node
         }
         
-        let nameInfo = XMLNameInfo(name: taskNodeName, language: currentLanguage, treeRootURL: treeRootURL as URL)
+        let nameInfo = XMLNameInfo(name: taskNodeName, language: currentLanguage, treeRootURL: treeRootURL)
         
         // Get urls for assets
         backgroundAudioURL = nameInfo.backgroundAudioURL
@@ -275,7 +275,7 @@ public class UsbongTree {
             currentTaskNodeType = taskNodeType
             
             var fetchedTransitionInfo: [String: String] = [:]
-            let finalText = parseText(text: translateText(text: nameInfo.text))
+            let finalText = parseText(translateText(nameInfo.text))
             switch taskNodeType {
             case .TextDisplay:
                 node = TextNode(text: finalText)
@@ -295,7 +295,7 @@ public class UsbongTree {
                     guard let attributes = indexer.element?.attributes else { continue }
                     
                     // Get value of name
-                    let name = translateText(text: parseText(text: attributes[XMLIdentifier.name] ?? "Any"))
+                    let name = translateText(parseText(attributes[XMLIdentifier.name] ?? "Any"))
                     
                     // Get value of to
                     let to = attributes[XMLIdentifier.to] ?? ""
@@ -315,8 +315,9 @@ public class UsbongTree {
                     guard let name = taskIndexer.element?.attributes[XMLIdentifier.name] else {
                         return
                     }
-                    var nameComponents = name.components(separatedBy:"~")
-                    let key = translateText(text: parseText(text: nameComponents.removeLast()))
+                    
+                    var nameComponents = name.components(separatedBy: "~")
+                    let key = translateText(parseText(nameComponents.removeLast()))
                     
                     let value = nameComponents.joined(separator: "~")
                     tasks.append(key)
@@ -355,7 +356,7 @@ public class UsbongTree {
                     }
                     
                     // Rejoin
-                    let text: String = translateText(text: parseText(text: components.joined(separator: separator)))
+                    let text: String = translateText(parseText(components.joined(separator: separator)))
                     
                     // Create RadioButtons
                     node = RadioButtonsNode(text: text, options: tasks)
@@ -380,7 +381,7 @@ public class UsbongTree {
                 }
                 
                 // Rejoin
-                let text: String = translateText(text: parseText(text: components.joined(separator: separator)))
+                let text: String = translateText(parseText(components.joined(separator: separator)))
                 
                 // Create TextField or TextArea depending on taskNodeType
                 node = (taskNodeType == .TextFieldWithAnswer) ? TextFieldNode(text: text) : TextAreaNode(text: text)
@@ -396,7 +397,7 @@ public class UsbongTree {
             // Get additional transition info if not Decision
             // Decision's transitions were already added in fetchedTransitionInfo
             if type != .decision {
-                let additionalTransitionInfo = transitionInfoFromTransitionIndexers(transitionIndexers: nodeIndexer[XMLIdentifier.transition].all, andTaskNodeType: taskNodeType)
+                let additionalTransitionInfo = transitionInfoFromTransitionIndexers(nodeIndexer[XMLIdentifier.transition].all, andTaskNodeType: taskNodeType)
                 for (key, value) in additionalTransitionInfo {
                     currentTransitionInfo[key] = value
                 }
@@ -418,12 +419,12 @@ public class UsbongTree {
      ```
      
      - parameters:
-     - transitionIndexers: The transition indexers ("transition" XML tags)
-     - type: The task node type
+       - transitionIndexers: The transition indexers ("transition" XML tags)
+       - type: The task node type
      
      - returns: Dictionary of type `[String: String]` which contains task node name and key pairs
-     */
-    private func transitionInfoFromTransitionIndexers(transitionIndexers: [XMLIndexer], andTaskNodeType type: TaskNodeType) -> [String: String] {
+    */
+    fileprivate func transitionInfoFromTransitionIndexers(_ transitionIndexers: [XMLIndexer], andTaskNodeType type: TaskNodeType) -> [String: String] {
         var transitionInfo: [String: String] = [:]
         
         for indexer in transitionIndexers {
@@ -441,7 +442,7 @@ public class UsbongTree {
             if type == .Link {
                 var components = to.components(separatedBy: "~")
                 components.removeLast()
-                to = components.joined(separator:"~")
+                to = components.joined(separator: "~")
             }
             
             transitionInfo[name] = to
@@ -458,8 +459,8 @@ public class UsbongTree {
      - parameter name: value of 'name' in XML tag
      
      - returns: XMLIndexer for the XML tag
-     */
-    private func taskNodeIndexerWithName(name: String) -> XMLIndexer? {
+    */
+    fileprivate func taskNodeIndexerWithName(_ name: String) -> XMLIndexer? {
         return try? processDefinitionIndexer[XMLIdentifier.taskNode].withAttr(XMLIdentifier.name, name)
     }
     
@@ -469,8 +470,8 @@ public class UsbongTree {
      - parameter name: value of 'name' in XML tag
      
      - returns: XMLIndexer for the XML tag
-     */
-    private func endStateIndexerWithName(name: String) -> XMLIndexer? {
+    */
+    fileprivate func endStateIndexerWithName(_ name: String) -> XMLIndexer? {
         return try? processDefinitionIndexer[XMLIdentifier.endState].withAttr(XMLIdentifier.name, name)
     }
     
@@ -480,8 +481,8 @@ public class UsbongTree {
      - parameter name: value of 'name' in XML tag
      
      - returns: XMLIndexer for the XML tag
-     */
-    private func decisionIndexerWithName(name: String) -> XMLIndexer? {
+    */
+    fileprivate func decisionIndexerWithName(_ name: String) -> XMLIndexer? {
         return try? processDefinitionIndexer[XMLIdentifier.decision].withAttr(XMLIdentifier.name, name)
     }
     
@@ -491,23 +492,23 @@ public class UsbongTree {
      - parameter name: value of 'name' in XML tag
      
      - returns: An XMLIndexer for the XML tag with the `NodeType`
-     */
-    internal func nodeIndexerAndTypeWithName(name: String) -> (indexer: XMLIndexer, type: NodeType)? {
+    */
+    internal func nodeIndexerAndTypeWithName(_ name: String) -> (indexer: XMLIndexer, type: NodeType)? {
         var indexer: XMLIndexer?
         var type = NodeType.taskNode
         
         // Find task node
-        indexer = taskNodeIndexerWithName(name: name)
+        indexer = taskNodeIndexerWithName(name)
         
         // Find end state, if task node not found
         if indexer == nil {
-            indexer = endStateIndexerWithName(name: name)
+            indexer = endStateIndexerWithName(name)
             type = .endState
         }
         
         // Find decision if end state not found
         if indexer == nil {
-            indexer = decisionIndexerWithName(name: name)
+            indexer = decisionIndexerWithName(name)
             type = .decision
         }
         
@@ -521,10 +522,10 @@ public class UsbongTree {
     // MARK: Language
     
     /// XML URL for current language
-    private var currentLanguageXMLURL: URL? {
+    fileprivate var currentLanguageXMLURL: URL? {
         for url in languageXMLURLs {
             // Check if file name is equal to language
-            let name = url.deletingPathExtension().lastPathComponent ?? "Unknown"
+            let name = url.deletingPathExtension().lastPathComponent
             if currentLanguage == name {
                 return url
             }
@@ -538,8 +539,8 @@ public class UsbongTree {
      - parameter text: The text to be translated
      
      - returns: The translated text
-     */
-    private func translateText(text: String) -> String {
+    */
+    fileprivate func translateText(_ text: String) -> String {
         guard text.characters.count > 0 else {
             return ""
         }
@@ -548,7 +549,7 @@ public class UsbongTree {
         
         // Fetch translation from XML
         if let languageXMLURL = currentLanguageXMLURL {
-            let languageXML = try! SWXMLHash.parse(Data(contentsOf: languageXMLURL) ?? Data())
+            let languageXML = SWXMLHash.parse((try? Data(contentsOf: languageXMLURL)) ?? Data())
             let resources = languageXML[XMLIdentifier.resources]
             
             if let stringElement = try? resources[XMLIdentifier.string].withAttr(XMLIdentifier.name, text) {
@@ -565,8 +566,8 @@ public class UsbongTree {
      - parameter text: The text to be translated
      
      - returns: The translated text
-     */
-    private func parseText(text: String) -> String {
+    */
+    fileprivate func parseText(_ text: String) -> String {
         guard text.characters.count > 0 else {
             return ""
         }
@@ -577,16 +578,17 @@ public class UsbongTree {
     // MARK: Hints
     
     /// Loads the hints dictionary based on the hints XML for the current language
-    private func loadHintsDictionary() {
+    fileprivate func loadHintsDictionary() {
         hintsDictionary.removeAll()
         for url in hintsXMLURLs {
             // Check if file name is equal to language
-            let name = url.deletingPathExtension().lastPathComponent ?? "Unknown"
+            let name = url.deletingPathExtension().lastPathComponent
             if currentLanguage == name {
                 var hints = [String: String]()
                 
                 // Fetch hints from XML
-                let hintsXML = try! SWXMLHash.parse(Data(contentsOf: url) ?? Data())
+                
+                let hintsXML = SWXMLHash.parse((try? Data(contentsOf: url)) ?? Data())
                 let resources = hintsXML[XMLIdentifier.resources]
                 
                 let stringXMLIndexers = resources[XMLIdentifier.string].all
@@ -605,11 +607,11 @@ public class UsbongTree {
     // MARK: End state
     
     /// Checks if current node is an end state node
-    public var currentNodeIsEndState: Bool {
+    open var currentNodeIsEndState: Bool {
         guard let name = taskNodeNames.last else {
             return true
         }
-        guard let (_, type) = nodeIndexerAndTypeWithName(name: name) else {
+        guard let (_, type) = nodeIndexerAndTypeWithName(name) else {
             return true
         }
         
@@ -617,11 +619,11 @@ public class UsbongTree {
     }
     
     /// Checks if next node is an end state node
-    public var nextNodeIsEndState: Bool {
+    open var nextNodeIsEndState: Bool {
         guard let name = nextTaskNodeName else {
             return true
         }
-        guard let (_, type) = nodeIndexerAndTypeWithName(name: name) else {
+        guard let (_, type) = nodeIndexerAndTypeWithName(name) else {
             return true
         }
         
@@ -631,13 +633,13 @@ public class UsbongTree {
     // MARK: Prevent next
     
     /// Checks if node can transition to next node. For example, if checklist node has nothing selected, prevent transition.
-    public var shouldPreventTransitionToNextTaskNode: Bool {
+    open var shouldPreventTransitionToNextTaskNode: Bool {
         return !(currentNode is ChecklistNode) && currentNodeIsSelectionType && nothingSelected
     }
     
     // MARK: Save state of last node
     
-    public func saveStateOfLastNode() {
+    open func saveStateOfLastNode() {
         let state = UsbongNodeState(transitionName: currentTargetTransitionName, node: currentNode, type: currentTaskNodeType)
         usbongNodeStates.append(state)
     }

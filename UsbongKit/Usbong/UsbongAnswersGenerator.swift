@@ -168,7 +168,7 @@ public extension UsbongTree {
         let answersURL = documentsURL.appendingPathComponent("Answers", isDirectory: true)
         
         var isDirectory: ObjCBool = false
-        let fileExists = fileManager.fileExists(atPath: answersURL.path ?? "", isDirectory: &isDirectory)
+        let fileExists = fileManager.fileExists(atPath: answersURL.path, isDirectory: &isDirectory)
         
         // If Answers directory doesn't exist (or it exists but not a directory), create directory
         if !fileExists || (fileExists && !isDirectory.boolValue) {
@@ -183,10 +183,7 @@ public extension UsbongTree {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
         let fileName = dateFormatter.string(from: Date()) + ".csv"
-        
-        guard let targetFilePath = answersURL.appendingPathComponent(fileName).path as? String else {
-            return
-        }
+        let targetFilePath = answersURL.appendingPathComponent(fileName).path
         
         writeOutputData(generatorType, toFilePath: targetFilePath) { (success) -> Void in
             completion?(success, targetFilePath)

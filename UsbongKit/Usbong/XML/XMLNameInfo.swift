@@ -91,10 +91,8 @@ internal struct XMLNameInfo {
         let supportedImageFormats = XMLNameInfo.supportedImageFormats
         for format in supportedImageFormats {
             let url = imageURLWithoutExtension.appendingPathExtension(format)
-            if let path = url.path as? String {
-                if fileManager.fileExists(atPath: path) {
-                    return url
-                }
+            if fileManager.fileExists(atPath: url.path) {
+                return url
             }
         }
         
@@ -141,9 +139,7 @@ internal struct XMLNameInfo {
                 return nil
         }
         for content in contents {
-            guard let fileName = content.deletingPathExtension().lastPathComponent as? String else {
-                continue
-            }
+            let fileName = content.deletingPathExtension().lastPathComponent
             
             if fileName.compare(backgroundImageFileName, options: .caseInsensitive,
                 range: nil, locale: nil) == .orderedSame {
@@ -171,11 +167,10 @@ internal struct XMLNameInfo {
         if let contents = try? FileManager.default.contentsOfDirectory(at: audioURL,
             includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants) {
                 for content in contents {
-                    if let fileName = try? content.deletingPathExtension().lastPathComponent {
-                        if fileName.compare(targetFileName, options: .caseInsensitive,
-                            range: nil, locale: nil) == .orderedSame {
-                                return content
-                        }
+                    let fileName = content.deletingPathExtension().lastPathComponent
+                    if fileName.compare(targetFileName, options: .caseInsensitive,
+                        range: nil, locale: nil) == .orderedSame {
+                            return content
                     }
                 }
         }
@@ -201,11 +196,10 @@ internal struct XMLNameInfo {
         if let contents = try? FileManager.default.contentsOfDirectory(at: audioLanguageURL,
             includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants) {
                 for content in contents {
-                    if let fileName = try? content.deletingPathExtension().lastPathComponent {
-                        if fileName.compare(targetFileName, options: .caseInsensitive,
-                            range: nil, locale: nil) == .orderedSame {
-                                return content
-                        }
+                    let fileName = content.deletingPathExtension().lastPathComponent
+                    if fileName.compare(targetFileName, options: .caseInsensitive,
+                        range: nil, locale: nil) == .orderedSame {
+                            return content
                     }
                 }
         }

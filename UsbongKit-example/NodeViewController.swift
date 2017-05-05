@@ -43,13 +43,13 @@ class NodeViewController: UIViewController {
                 utterance.voice = AVSpeechSynthesisVoice(language: "en-EN")
                 
                 // Speak
-                speechSynthesizer.speakUtterance(utterance)
+                speechSynthesizer.speak(utterance)
             }
         }
     }
     func stopTextToSpeech() {
-        if speechSynthesizer.speaking {
-            speechSynthesizer.stopSpeakingAtBoundary(.Immediate)
+        if speechSynthesizer.isSpeaking {
+            speechSynthesizer.stopSpeaking(at: .immediate)
         }
     }
 }

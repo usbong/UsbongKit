@@ -134,7 +134,7 @@ open class UsbongFileManager {
         // TODO: If temporary directory has lots of unpacked trees, delete all first
         
         // If unpack directory exists, it means, same file is already unpacked
-        if FileManager.default.fileExists(atPath: unpackDirectoryURL.path ?? "") {
+        if FileManager.default.fileExists(atPath: unpackDirectoryURL.path) {
             print("UsbongFileManager: Tree has already been unpacked before. Skipping unpack...")
             
             // Return first tree in unpacked directory
