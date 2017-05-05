@@ -17,8 +17,8 @@ class TreeViewController: UIViewController, PlayableTree, HintsTextViewDelegate,
     @IBOutlet weak var nodeView: NodeView!
     var tree: UsbongTree?
     
-    var treeURL: NSURL?
-    var treeRootURL: NSURL?
+    var treeURL: URL?
+    var treeRootURL: URL?
     
     lazy var speechSynthesizer = AVSpeechSynthesizer()
     var backgroundAudioPlayer: AVAudioPlayer?
@@ -62,14 +62,14 @@ class TreeViewController: UIViewController, PlayableTree, HintsTextViewDelegate,
     
     // MARK: - Actions
     
-    @IBAction func didPressExit(sender: AnyObject?) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func didPressExit(_ sender: AnyObject?) {
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func didPressMore(sender: AnyObject) {
+    @IBAction func didPressMore(_ sender: AnyObject) {
         showAvailableActions(sender)
     }
-    @IBAction func didChangeSegmentedControllerValue(sender: AnyObject?) {
+    @IBAction func didChangeSegmentedControllerValue(_ sender: AnyObject?) {
         if let segmentedControl = sender as? UISegmentedControl {
             let index = segmentedControl.selectedSegmentIndex
             switch index {

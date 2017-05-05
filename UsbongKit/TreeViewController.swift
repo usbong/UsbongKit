@@ -54,10 +54,6 @@ class TreeViewController: UIViewController, HintsTextViewDelegate {
                 tree = nil
             }
             
-            //added by Mike, 20160114
-            // Customize first language
-            tree?.currentLanguage = "Filipino"
-            
             // Save tree to self in main thread
             DispatchQueue.main.async {
                 self.tree = tree
@@ -178,7 +174,8 @@ extension TreeViewController {
         
         // Voice-over
         let autoSpeakText = "Turn Auto-Speak " + (voiceOverOn ? "Off" : "On")
-        let autoSpeakAction = UIAlertAction(title: autoSpeakText, style: .default) { (action) -> Void in            self.voiceOverOn = !self.voiceOverOn
+        let autoSpeakAction = UIAlertAction(title: autoSpeakText, style: .default) { (action) -> Void in
+            self.voiceOverOn = !self.voiceOverOn
         }
         actionController.addAction(autoSpeakAction)
         

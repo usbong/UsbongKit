@@ -23,14 +23,14 @@ public struct UsbongNodeState {
         
         // Add fields based on node
         if let node = node as? SelectionTypeNode {
-            fields["selectedIndices"] = node.selectionModule.selectedIndices as AnyObject?
+            fields["selectedIndices"] = node.selectionModule.selectedIndices as AnyObject
         }
         if let node = node as? TextInputTypeNode {
-            fields["textInput"] = node.textInput as AnyObject?
+            fields["textInput"] = node.textInput as AnyObject
         }
         
         if let dateNode = node as? DateNode {
-            fields["date"] = dateNode.date as AnyObject?
+            fields["date"] = dateNode.date as AnyObject
         }
     }
 }

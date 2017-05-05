@@ -43,29 +43,29 @@ class NodesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return nodes.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = titleForNode(nodes[indexPath.row])
         
         return cell
     }
     
-    func titleForNode(node: Node) -> String {
-        return String(node.dynamicType)
+    func titleForNode(_ node: Node) -> String {
+        return String(describing: type(of: node))
     }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {
             return
         }
@@ -75,11 +75,11 @@ class NodesTableViewController: UITableViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 let selectedNode = nodes[selectedIndexPath.row]
                 
-                if let vc = segue.destinationViewController as? NodeViewController {
+                if let vc = segue.destination as? NodeViewController {
                     vc.navigationItem.title = titleForNode(selectedNode)
                     
                     if let timeStampNode = selectedNode as? TimestampNode {
-                        timeStampNode.date = NSDate()
+                        timeStampNode.date = Date()
                     }
                     
                     vc.node = selectedNode

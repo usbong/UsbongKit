@@ -19,7 +19,8 @@ internal extension NSString {
         
         for i in 0 ..< self.length {
             let char = self.character(at: i)
-            let isWordCharacter = !nonWordCharacterSet.characterIsMember(UniChar((UnicodeScalar(char)?.value)!))
+            
+            let isWordCharacter = !nonWordCharacterSet.characterIsMember(char)
             
             // Found first character in word
             if !foundWord && isWordCharacter {
